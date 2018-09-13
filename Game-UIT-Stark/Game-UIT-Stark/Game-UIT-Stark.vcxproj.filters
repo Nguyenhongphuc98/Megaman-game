@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="BaseFrameWork">
+      <UniqueIdentifier>{3e9d180c-d6e1-4ac4-a98e-fa9c226e1aa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseClass">
+      <UniqueIdentifier>{9355fca9-a9e3-40c8-b82c-a4098058bfd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{98e19e03-b22d-4438-9f39-e93c84b5c341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RawResource">
+      <UniqueIdentifier>{9d237a5d-20c7-4fb1-aecd-f91fd03ff5c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain">
+      <UniqueIdentifier>{0bed4b81-6fed-4d97-8f4f-1383a8be7ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other">
+      <UniqueIdentifier>{774e1591-4343-48cf-a728-8595a5bc1379}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
