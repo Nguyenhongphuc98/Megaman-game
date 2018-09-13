@@ -32,4 +32,41 @@
       <UniqueIdentifier>{774e1591-4343-48cf-a728-8595a5bc1379}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="FGraphics.h">
+      <Filter>BaseFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="FKeyBoard.h">
+      <Filter>BaseFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>GameMain</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game.cpp">
+      <Filter>GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="FGraphics.cpp">
+      <Filter>BaseFrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="FKeyBoard.cpp">
+      <Filter>BaseFrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
