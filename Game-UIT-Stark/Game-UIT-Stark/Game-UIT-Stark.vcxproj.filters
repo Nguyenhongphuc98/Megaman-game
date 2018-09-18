@@ -48,6 +48,9 @@
     <ClInclude Include="Window.h">
       <Filter>GameMain</Filter>
     </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>Other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -67,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>Other</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

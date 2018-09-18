@@ -4,6 +4,9 @@
 
 #include<windows.h>
 #include"Global.h"
+#include<vector>
+
+using namespace std;
 
 class Window
 {
