@@ -51,6 +51,12 @@
     <ClInclude Include="QuadTree.h">
       <Filter>Other</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionRect.h">
+      <Filter>BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>BaseClass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -73,6 +79,12 @@
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
       <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionRect.cpp">
+      <Filter>BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>BaseClass</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
