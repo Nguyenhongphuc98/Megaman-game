@@ -25,6 +25,14 @@ bool CollisionRect::IsIntersect(CollisionRect CRect)
 		||(this->top-height)>CRect.top);
 }
 
+bool CollisionRect::IsContain(CollisionRect CRect)
+{
+	return (this->top >= CRect.GetTop()
+		&& this->left <= CRect.GetLeft()
+		&& (this->GetLeft() + this->GetWidth()) >= (CRect.GetLeft() + CRect.GetWidth())
+		&& (this->GetTop()-this->GetHeight())<= (CRect.GetTop() - CRect.GetHeight()));
+}
+
 void CollisionRect::SetVelocityX(float v)
 {
 	this->velocityX = v;

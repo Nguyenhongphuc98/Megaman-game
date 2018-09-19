@@ -19,6 +19,7 @@ public:
 	~CollisionRect();
 	
 	bool IsIntersect(CollisionRect CRect);
+	bool IsContain(CollisionRect CRect);
 
 	void SetVelocityX(float v);
 	float GetVelocityX();

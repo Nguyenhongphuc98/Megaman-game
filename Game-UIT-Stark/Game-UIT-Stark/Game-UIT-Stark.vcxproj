@@ -116,6 +116,8 @@
     <ClInclude Include="FKeyBoard.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="QuadNode.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
@@ -127,6 +129,8 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="QuadNode.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
