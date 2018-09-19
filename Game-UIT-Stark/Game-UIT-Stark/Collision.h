@@ -27,6 +27,9 @@ private:
 	float tXToEndCollision;
 	float tYToEndCollision;
 
+	float timeToCollision;
+	float timeToEndCollision;
+
 public:
 	 Collision();
 	~ Collision();
