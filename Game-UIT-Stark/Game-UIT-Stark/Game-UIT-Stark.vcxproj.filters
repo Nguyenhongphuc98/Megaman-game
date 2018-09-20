@@ -31,6 +31,15 @@
     <Filter Include="Other">
       <UniqueIdentifier>{774e1591-4343-48cf-a728-8595a5bc1379}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{699ed08f-9fba-4060-9cd8-ace0cb98f62f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\include">
+      <UniqueIdentifier>{b7004347-aa3a-452b-b912-36d510767e77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\src">
+      <UniqueIdentifier>{b94eac92-4c19-4cdd-b8fa-5c4e6715e10b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -62,6 +71,15 @@
     </ClInclude>
     <ClInclude Include="QuadNode.h">
       <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trace.h">
+      <Filter>Utility\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Utility\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
