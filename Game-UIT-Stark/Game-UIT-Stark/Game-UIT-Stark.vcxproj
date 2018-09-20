@@ -113,6 +113,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionRect.h" />
     <ClInclude Include="define.h" />
@@ -123,11 +124,13 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="QuadNode.h" />
     <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Trace.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CollisionRect.cpp" />
     <ClCompile Include="FGraphics.cpp" />
@@ -138,6 +141,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="QuadNode.cpp" />
     <ClCompile Include="QuadTree.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

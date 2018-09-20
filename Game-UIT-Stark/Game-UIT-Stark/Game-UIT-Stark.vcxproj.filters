@@ -40,6 +40,27 @@
     <Filter Include="Utility\src">
       <UniqueIdentifier>{b94eac92-4c19-4cdd-b8fa-5c4e6715e10b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{3752d9bb-acff-4f89-813b-17a6091634dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\MapManager">
+      <UniqueIdentifier>{47a80acf-013a-427b-baa6-e8f7d95f2d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\SceneManager">
+      <UniqueIdentifier>{d4348118-9eda-4a75-8af8-bfc1db030e73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\SoundManager">
+      <UniqueIdentifier>{da9da5b1-77ef-44a1-8f65-3ba895f795c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\SpriteManager">
+      <UniqueIdentifier>{beaf0280-4186-4cd5-bbfe-eef1896ddb5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\SoundManager\include">
+      <UniqueIdentifier>{dc6b978d-8354-45d3-acfd-724797fe720e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\SoundManager\src">
+      <UniqueIdentifier>{72c4ebaf-ef26-4f6c-a530-b18b7516725d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -81,6 +102,12 @@
     <ClInclude Include="Utils.h">
       <Filter>Utility\include</Filter>
     </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Manager\SoundManager\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Manager\SoundManager\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -115,6 +142,12 @@
     </ClCompile>
     <ClCompile Include="QuadNode.cpp">
       <Filter>Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Manager\SoundManager\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Manager\SoundManager\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
