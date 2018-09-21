@@ -23,7 +23,7 @@ public:
 	~Window();
 
 	void Init(HINSTANCE hInstance, char* title, int width, int height);	
-	void StartPrograme();
+	void StartProgram();
 
 	//cai nay phai xai static vi de binh thuong no co con tro this, khong tuong thich
 	//voi WNDPROC

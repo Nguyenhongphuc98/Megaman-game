@@ -4,7 +4,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPre, LPSTR lpCmdLine, int cmd
 {
 	Window  *window = new Window();
 	window->Init(hInstance, "UIT_Stark", 800, 600);
-	window->StartPrograme();
+	window->StartProgram();
 
 	return 1;
 }

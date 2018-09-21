@@ -5,7 +5,6 @@ Window::Window()
 {
 	this->windowHinstance = NULL;
 	this->windowHWND = NULL;
-
 }
 
 Window::~Window()
@@ -21,7 +20,7 @@ void Window::Init(HINSTANCE hInstance, char * title, int width, int height)
 
 	//register window to use
 	WNDCLASSEX wndclassex;
-	wndclassex.lpszClassName = this->windowTitle;
+	wndclassex.lpszClassName = (LPCWSTR)this->windowTitle;
 	wndclassex.hInstance = this->windowHinstance;
 	wndclassex.style = CS_HREDRAW | CS_VREDRAW;
 	wndclassex.lpfnWndProc = (WNDPROC)(this->WndProc);
@@ -37,8 +36,8 @@ void Window::Init(HINSTANCE hInstance, char * title, int width, int height)
 	RegisterClassEx(&wndclassex);
 
 	//create window
-	this->windowHWND = CreateWindow(this->windowTitle,
-		this->windowTitle,
+	this->windowHWND = CreateWindow((LPCWSTR)this->windowTitle,
+		(LPCWSTR)this->windowTitle,
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, 
 		CW_USEDEFAULT, 
@@ -60,11 +59,18 @@ void Window::Init(HINSTANCE hInstance, char * title, int width, int height)
 
 LRESULT Window::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	return lParam;
+	switch (msg)
+	{
+		case WM_DESTROY:
+			PostQuitMessage(0);
+			break;
+	}
+	return DefWindowProc(hwnd,msg,wParam,lParam);
 }
 
-void Window::StartPrograme()
+void Window::StartProgram()
 {
+
 	while (true)
 	{
 

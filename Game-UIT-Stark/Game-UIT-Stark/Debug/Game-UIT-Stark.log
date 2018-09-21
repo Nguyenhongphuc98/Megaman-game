@@ -1,27 +1,34 @@
-﻿  Collision.cpp
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(31): error C3867: 'CollisionRect::GetVelocityY': non-standard syntax; use '&' to create a pointer to member
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(31): error C2446: '>': no conversion from 'float' to 'float (__thiscall CollisionRect::* )(void)'
-  d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(31): note: There is no context in which this conversion is possible
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(38): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(39): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(44): error C3867: 'CollisionRect::GetVelocityX': non-standard syntax; use '&' to create a pointer to member
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(44): error C2446: '==': no conversion from 'float' to 'float (__thiscall CollisionRect::* )(void)'
-  d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(44): note: There is no context in which this conversion is possible
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(81): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(82): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(90): warning C4552: '-': result of expression not used
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(94): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(100): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\collision.cpp(102): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  Audio.cpp
+  Collision.cpp
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(38): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(39): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(81): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(82): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(90): warning C4552: '-': result of expression not used
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(94): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(100): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collision.cpp(102): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  CollisionRect.cpp
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collisionrect.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\collisionrect.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  FGraphics.cpp
+  FKeyBoard.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Game.cpp
+  Global.cpp
+  main.cpp
+  Object.cpp
   QuadNode.cpp
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\quadnode.h(5): error C2008: '=': unexpected in macro definition
-d:\documents\nhập môn phát triển game\game\game\game-uit-stark\game-uit-stark\quadnode.h(6): error C2008: '=': unexpected in macro definition
+  QuadTree.cpp
+  Sound.cpp
+  Window.cpp
   Generating Code...
+  Game-UIT-Stark.vcxproj -> D:\IT\2018\Nhập môn game\Source-Code-Game\Game-UIT-Stark\Debug\Game-UIT-Stark.exe

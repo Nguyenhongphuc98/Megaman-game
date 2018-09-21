@@ -2,8 +2,8 @@
 #ifndef _QuadNode_H_
 #define _QuadNode_H_
 
-#define  MAX_OBJECTS=10;
-#define  MAX_LEVELS=3; //phu thuoc vao do rong map +man hinh camera hien thi(view port)
+#define  MAX_OBJECTS 10;
+#define  MAX_LEVELS 3; //phu thuoc vao do rong map +man hinh camera hien thi(view port)
 
 #include"Window.h"
 #include"Object.h"

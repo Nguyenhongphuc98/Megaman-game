@@ -28,7 +28,7 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 	}
 
 	/* caculate SY */
-	if (object1.GetVelocityY > 0.0f)
+	if (object1.GetVelocityY() > 0.0f)
 	{
 		this->sYToCollision = object2.GetTop()-object2.GetHeight()-object1.GetTop(); 
 		this->sYToEndCollision = object2.GetTop() - (object1.GetTop() - object1.GetHeight());
@@ -41,7 +41,7 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 
 	/* tính thời gian để xảy ra va chạm theo X	*/
 	
-	if (object1.GetVelocityX == 0.0f)
+	if (object1.GetVelocityX() == 0.0f)
 	{
 		this->tXToCollision = -std::numeric_limits<float>::infinity(); //am vo cuc
 		this->tXToEndCollision = std::numeric_limits<float>::infinity();
