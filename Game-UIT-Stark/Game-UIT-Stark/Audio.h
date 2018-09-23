@@ -17,7 +17,7 @@
 #include <mmsystem.h>
 #include <mmreg.h>
 #include <dsound.h>
-#include "../Directx/Include/DxErr.h"
+#include "DxErr.h"
 
 
 //-----------------------------------------------------------------------------
