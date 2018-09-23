@@ -61,34 +61,31 @@
     <Filter Include="Manager\SoundManager\src">
       <UniqueIdentifier>{72c4ebaf-ef26-4f6c-a530-b18b7516725d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseClass\include">
+      <UniqueIdentifier>{bc3cdfb9-87dc-4683-aa29-802c465e767a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseClass\src">
+      <UniqueIdentifier>{308cf0f7-82b0-4308-acb9-929aa3013281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseFrameWork\include">
+      <UniqueIdentifier>{aa24ab3a-396f-45fd-9bcf-f5396dc850f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseFrameWork\src">
+      <UniqueIdentifier>{61ccc631-97f6-4005-baa8-5b3766648f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain\include">
+      <UniqueIdentifier>{84f92f9a-d710-411f-93c4-d596f0eb10cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain\src">
+      <UniqueIdentifier>{ab475256-4bee-4d97-87bb-c5838d0cb341}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
     <ClInclude Include="Global.h">
       <Filter>Other</Filter>
     </ClInclude>
-    <ClInclude Include="FGraphics.h">
-      <Filter>BaseFrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="FKeyBoard.h">
-      <Filter>BaseFrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
     <ClInclude Include="QuadTree.h">
       <Filter>Other</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionRect.h">
-      <Filter>BaseClass</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>BaseClass</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>BaseClass</Filter>
     </ClInclude>
     <ClInclude Include="QuadNode.h">
       <Filter>Other</Filter>
@@ -108,37 +105,40 @@
     <ClInclude Include="Sound.h">
       <Filter>Manager\SoundManager\include</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>BaseClass\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>BaseClass\include</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionRect.h">
+      <Filter>BaseClass\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>BaseClass\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FGraphics.h">
+      <Filter>BaseFrameWork\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FKeyBoard.h">
+      <Filter>BaseFrameWork\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>GameMain\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>GameMain\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
     <ClCompile Include="Global.cpp">
       <Filter>Other</Filter>
-    </ClCompile>
-    <ClCompile Include="FGraphics.cpp">
-      <Filter>BaseFrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="FKeyBoard.cpp">
-      <Filter>BaseFrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>GameMain</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
       <Filter>Other</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionRect.cpp">
-      <Filter>BaseClass</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>BaseClass</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>BaseClass</Filter>
     </ClCompile>
     <ClCompile Include="QuadNode.cpp">
       <Filter>Other</Filter>
@@ -148,6 +148,30 @@
     </ClCompile>
     <ClCompile Include="Sound.cpp">
       <Filter>Manager\SoundManager\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>BaseClass\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>BaseClass\src</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionRect.cpp">
+      <Filter>BaseClass\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>BaseClass\src</Filter>
+    </ClCompile>
+    <ClCompile Include="FGraphics.cpp">
+      <Filter>BaseFrameWork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="FKeyBoard.cpp">
+      <Filter>BaseFrameWork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>GameMain\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>GameMain\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
