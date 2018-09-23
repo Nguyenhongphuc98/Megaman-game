@@ -121,9 +121,13 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionRect.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="define_Category.h" />
+    <ClInclude Include="define_CollisionType.h" />
+    <ClInclude Include="define_eSceneID.h" />
     <ClInclude Include="FGraphics.h" />
     <ClInclude Include="FKeyBoard.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="QuadNode.h" />
@@ -141,6 +145,7 @@
     <ClCompile Include="FGraphics.cpp" />
     <ClCompile Include="FKeyBoard.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />

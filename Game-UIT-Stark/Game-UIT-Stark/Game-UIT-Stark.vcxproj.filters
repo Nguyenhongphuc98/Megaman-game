@@ -79,17 +79,20 @@
     <Filter Include="GameMain\src">
       <UniqueIdentifier>{ab475256-4bee-4d97-87bb-c5838d0cb341}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Other\include">
+      <UniqueIdentifier>{78221a44-9155-4ef8-9661-2d1998bf68ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other\src">
+      <UniqueIdentifier>{d9295e51-75aa-4c27-8783-a1b122f3164b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\include">
+      <UniqueIdentifier>{002daaa7-1e72-4988-9503-c4b48a12d3f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\src">
+      <UniqueIdentifier>{91f02cda-3d7a-46f1-9a6c-3ed7d5cb520c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Global.h">
-      <Filter>Other</Filter>
-    </ClInclude>
-    <ClInclude Include="QuadTree.h">
-      <Filter>Other</Filter>
-    </ClInclude>
-    <ClInclude Include="QuadNode.h">
-      <Filter>Other</Filter>
-    </ClInclude>
     <ClInclude Include="define.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -129,19 +132,31 @@
     <ClInclude Include="Window.h">
       <Filter>GameMain\include</Filter>
     </ClInclude>
+    <ClInclude Include="define_Category.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="define_CollisionType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="define_eSceneID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Other\include</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadNode.h">
+      <Filter>Other\include</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>Other\include</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObject\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Global.cpp">
-      <Filter>Other</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadTree.cpp">
-      <Filter>Other</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadNode.cpp">
-      <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="Audio.cpp">
       <Filter>Manager\SoundManager\src</Filter>
@@ -172,6 +187,18 @@
     </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>GameMain\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>Other\src</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadNode.cpp">
+      <Filter>Other\src</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>Other\src</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObject\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
