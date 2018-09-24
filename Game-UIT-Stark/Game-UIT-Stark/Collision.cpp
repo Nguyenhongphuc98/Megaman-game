@@ -1,4 +1,5 @@
 ﻿#include"Collision.h"
+Collision* Collision::instance;
 
 Collision::Collision()
 {
@@ -6,6 +7,13 @@ Collision::Collision()
 
 Collision::~Collision()
 {
+}
+
+Collision * Collision::Instance()
+{
+	if (!instance)
+		instance = new Collision();
+	return instance;
 }
 
 ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, CollisionRect object2)
@@ -30,13 +38,13 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 	/* caculate SY */
 	if (object1.GetVelocityY() > 0.0f)
 	{
-		this->sYToCollision = object2.GetTop()-object2.GetHeight()-object1.GetTop(); 
-		this->sYToEndCollision = object2.GetTop() - (object1.GetTop() - object1.GetHeight());
+		this->sYToCollision = object2.GetTop()-(object1.GetHeight()+object1.GetTop()); 
+		this->sYToEndCollision = (object2.GetTop() + (object2.GetHeight()) - object1.GetTop());
 	}
 	else
 	{
-		this->sYToCollision = object2.GetTop() - (object1.GetTop() - object1.GetHeight());
-		this->sYToEndCollision = (object2.GetTop()-object2.GetHeight()) - object1.GetTop();
+		this->sYToCollision = (object2.GetTop() + object2.GetHeight()) - object1.GetTop();
+		this->sYToEndCollision = object2.GetTop()-(object1.GetHeight() + object1.GetTop());
 	}
 
 	/* tính thời gian để xảy ra va chạm theo X	*/
@@ -66,6 +74,7 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 
 	/* tính toán kết quả của va chạm */
 	ResultColision result;
+	result.collision = false;
 
 	/*cả 2 trục va chạm thì va chạm mới chính xác là xảy ra */
 	/*1 trong 2 kết thúc thì va chạm kết thúc               */
@@ -84,10 +93,11 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 	}
 	else /* Có va chạm */
 	{
+		result.collision = true;
 		/* va chạm theo Y trước -> trái hoặc phải*/
 		if (this->tXToCollision > this->tYToCollision)
 		{
-			result.velocityY - 0.0f;
+			result.velocityY = 0.0f;
 			if (this->sXToCollision < 0.0f)
 				result.velocityY = 1.0f;
 			else
@@ -102,7 +112,5 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 				result.velocityY = -1.0f;
 		}
 	}
-
-
 	return result;
 }	

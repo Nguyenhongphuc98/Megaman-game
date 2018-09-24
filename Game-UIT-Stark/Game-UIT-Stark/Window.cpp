@@ -1,5 +1,5 @@
 ﻿#include"Window.h"
-
+Window * Window::instance=NULL;
 
 Window::Window()
 {
@@ -11,6 +11,13 @@ Window::~Window()
 {
 }
 
+Window* Window::Instance()
+{
+	if (!instance)
+		instance = new Window();
+	return instance;
+}
+
 void Window::Init(HINSTANCE hInstance, char * title, int width, int height)
 {
 	this->windowHinstance = hInstance;
@@ -20,11 +27,11 @@ void Window::Init(HINSTANCE hInstance, char * title, int width, int height)
 
 	//register window to use
 	WNDCLASSEX wndclassex;
-	wndclassex.lpszClassName = (LPCWSTR)this->windowTitle;
+	wndclassex.lpszClassName = this->windowTitle;
 	wndclassex.hInstance = this->windowHinstance;
 	wndclassex.style = CS_HREDRAW | CS_VREDRAW;
 	wndclassex.lpfnWndProc = (WNDPROC)(this->WndProc);
-	wndclassex.cbSize = sizeof(wndclassex);
+	wndclassex.cbSize = sizeof(WNDCLASSEX);
 	wndclassex.cbClsExtra = 0;
 	wndclassex.cbWndExtra = 0;
 	wndclassex.hbrBackground= (HBRUSH)GetStockObject(BLACK_BRUSH);
@@ -36,9 +43,10 @@ void Window::Init(HINSTANCE hInstance, char * title, int width, int height)
 	RegisterClassEx(&wndclassex);
 
 	//create window
-	this->windowHWND = CreateWindow((LPCWSTR)this->windowTitle,
-		(LPCWSTR)this->windowTitle,
+	this->windowHWND = CreateWindow(this->windowTitle,
+		this->windowTitle,
 		WS_OVERLAPPEDWINDOW,
+		//WS_EX_TOPMOST|WS_VISIBLE|WS_POPUP,
 		CW_USEDEFAULT, 
 		CW_USEDEFAULT, 
 		this->windowWidth,
@@ -68,11 +76,83 @@ LRESULT Window::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	return DefWindowProc(hwnd,msg,wParam,lParam);
 }
 
+char * Window::GetTitle()
+{
+	return this->windowTitle;
+}
+
+
+
 void Window::StartProgram()
 {
+	Graphic *graphics = Graphic::Instance();
+	//LPDIRECT3DSURFACE9  surface = graphics->LoadSurface("background.jpg");
+	LPDIRECT3DSURFACE9 surfacePink = graphics->CreateSurface(D3DCOLOR_XRGB(255, 2, 102));
+	LPDIRECT3DSURFACE9 surfaceWhite = graphics->CreateSurface(D3DCOLOR_XRGB(255, 255, 255));
+	LPDIRECT3DSURFACE9 surfaceBackground = graphics->CreateSurface(D3DCOLOR_XRGB(0, 0, 0));
 
+	vector<Object> ListObjectStatic;
+	Object rectBottom(Global::GROUND, 400, 590, 0, 0, 800, 20);
+	Object rectTop(Global::GROUND, 400, 10, 0, 0, 800, 20);
+	Object rectLeft(Global::GROUND, 10, 300, 0, 0, 20, 600);
+	Object rectRight(Global::GROUND, 790, 300, 0, 0, 20, 600);
+	ListObjectStatic.push_back(rectBottom);
+	ListObjectStatic.push_back(rectTop);
+	ListObjectStatic.push_back(rectLeft);
+	ListObjectStatic.push_back(rectRight);
+
+	Object ball(Global::GROUND,400,300,2,3,30,30);
+
+	MSG msg;
 	while (true)
 	{
+		if (PeekMessageA(&msg, Window::Instance()->GetHWND(), 0, 0, PM_REMOVE)) {
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+		}
 
+		if (graphics->GetD3DDevice()->BeginScene()) {
+
+			graphics->DrawSurface(surfaceBackground, NULL, NULL);
+
+			for (int i = 0; i < ListObjectStatic.size(); i++) {
+				RECT r = Global::ConvertCollisionRectToRECT(ListObjectStatic[i].GetBound());
+				graphics->DrawSurface(surfacePink, NULL, &r);
+			}
+
+			
+			for (int i = 0; i < ListObjectStatic.size(); i++) {
+				ResultColision result = Collision::Instance()->ProcessCollisionSweptAABB(ball.GetBound(), ListObjectStatic[i].GetBound());
+				if (result.collision) {
+					//chung to da va cham
+					//ball.UpdateVelocity(result);					
+					break;
+				}
+			}
+			ball.Update();
+			RECT rball = Global::ConvertCollisionRectToRECT(ball.GetBound());
+			graphics->DrawSurface(surfaceWhite, NULL, &rball);
+
+		
+			graphics->GetD3DDevice()->EndScene();
+		}
+
+		graphics->GetD3DDevice()->Present(NULL, NULL, NULL, NULL);
+		Sleep(20);
 	}
+}
+
+int Window::GetWidth()
+{
+	return this->windowWidth;
+}
+
+int Window::GetHeight()
+{
+	return this->windowHeight;
+}
+
+HWND Window::GetHWND()
+{
+	return this->windowHWND;
 }

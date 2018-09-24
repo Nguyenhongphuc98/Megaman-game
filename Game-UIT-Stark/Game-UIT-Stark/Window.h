@@ -4,7 +4,9 @@
 
 #include<windows.h>
 #include"Global.h"
+#include"FGraphics.h"
 #include<vector>
+#include"Object.h"
 
 using namespace std;
 
@@ -14,6 +16,8 @@ private:
 	HINSTANCE	windowHinstance;
 	HWND		windowHWND;
 
+	static Window* instance;
+
 	char*		windowTitle;
 	int			windowWidth;
 	int			windowHeight;
@@ -21,6 +25,7 @@ private:
 public:
 	Window();
 	~Window();
+	static Window* Instance();
 
 	void Init(HINSTANCE hInstance, char* title, int width, int height);	
 	void StartProgram();

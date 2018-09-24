@@ -8,6 +8,7 @@ class KeyBoard
 {
 private:
 	static KeyBoard * Instance;
+
 	LPDIRECTINPUT8 DInput;				// The DirectInput object         
 	LPDIRECTINPUTDEVICE8 Keyboard;		// The keyboard device 
 	BYTE CurrentKeyStates[256],			// DirectInput keyboard current state buffer 

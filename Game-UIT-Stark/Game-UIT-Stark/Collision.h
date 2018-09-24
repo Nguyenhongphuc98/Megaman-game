@@ -7,9 +7,10 @@
 
 struct ResultColision
 {
+	bool collision; //flag if collision it =true
 	float timeToColision; //thời gian để xảy ra va chạm tiếp theo
-	int velocityX; //hướng của vector theo x saukhi va chạm
-	int velocityY; //hướng của vector theo y saukhi va chạm
+	int velocityX; //hướng của vector theo x sau khi va chạm
+	int velocityY; //hướng của vector theo y sau khi va chạm
 };
 
 class  Collision
@@ -30,9 +31,13 @@ private:
 	float timeToCollision;
 	float timeToEndCollision;
 
+	static Collision *instance;
+
 public:
 	 Collision();
 	~ Collision();
+
+	static Collision* Instance();
 
 	ResultColision ProcessCollisionSweptAABB(CollisionRect oject1, CollisionRect object2);
 };
