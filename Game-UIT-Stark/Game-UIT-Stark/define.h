@@ -12,6 +12,7 @@
 #include <string>
 #include <algorithm>
 #include "Trace.h"
+#include "Global.h"
 //#include "utils.h"
 //#include "ConfigReader.h"
 

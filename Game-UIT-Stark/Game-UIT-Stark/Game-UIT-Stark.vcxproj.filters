@@ -200,5 +200,11 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>GameObject\src</Filter>
     </ClCompile>
+    <ClCompile Include="Trace.cpp">
+      <Filter>Utility\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Utility\src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
