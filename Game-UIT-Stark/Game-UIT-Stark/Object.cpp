@@ -40,12 +40,7 @@ ResultColision Object::ProcessCollision(Object * object)
 	return result;
 }
 
-void Object::UpdateVelocity(ResultColision result)
-{
-	timeToCollision = result.timeToColision;
-	this->velocityX *= result.velocityX;
-	this->velocityY *= result.velocityY;
-}
+
 
 void Object::Update()
 {
@@ -61,4 +56,54 @@ void Object::Update()
 
 	this->centerX = this->centerX + velocityX;
 	this->centerY = this->centerY + velocityY;
+}
+
+Global::IdObject Object::GetIdObject()
+{
+	return this->idObject;
+}
+
+int Object::GetWidth()
+{
+	return this->width;
+}
+
+int Object::GetHeight()
+{
+	return this->height;
+}
+
+int Object::GetLocationX()
+{
+	return centerX;
+}
+
+int Object::GetLocationY()
+{
+	return this->centerY;
+}
+
+int Object::GetVelocityX()
+{
+	return velocityX;
+}
+
+int Object::GetVelocityY()
+{
+	return this->velocityY;
+}
+
+Global::Team Object::GetTeam()
+{
+	return this->team;
+}
+
+void Object::SetVelocityX(int vx)
+{
+	this->velocityX = vx;
+}
+
+void Object::SetVelocityY(int vy)
+{
+	this->velocityY = vy;
 }

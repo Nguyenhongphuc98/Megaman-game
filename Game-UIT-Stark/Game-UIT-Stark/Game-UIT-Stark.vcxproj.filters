@@ -43,17 +43,11 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{3752d9bb-acff-4f89-813b-17a6091634dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Manager\MapManager">
-      <UniqueIdentifier>{47a80acf-013a-427b-baa6-e8f7d95f2d0f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Manager\SceneManager">
       <UniqueIdentifier>{d4348118-9eda-4a75-8af8-bfc1db030e73}</UniqueIdentifier>
     </Filter>
     <Filter Include="Manager\SoundManager">
       <UniqueIdentifier>{da9da5b1-77ef-44a1-8f65-3ba895f795c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\SpriteManager">
-      <UniqueIdentifier>{beaf0280-4186-4cd5-bbfe-eef1896ddb5d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Manager\SoundManager\include">
       <UniqueIdentifier>{dc6b978d-8354-45d3-acfd-724797fe720e}</UniqueIdentifier>
@@ -153,6 +147,12 @@
     <ClInclude Include="GameObject.h">
       <Filter>GameObject\include</Filter>
     </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>BaseClass\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>BaseClass\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -205,6 +205,12 @@
     </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Utility\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>BaseClass\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>BaseClass\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

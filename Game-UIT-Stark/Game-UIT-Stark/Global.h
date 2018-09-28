@@ -20,6 +20,26 @@ public:
 	enum IdObject {
 		GROUND
 	};
+
+	enum Status
+	{
+		RUN,
+		JUMP
+	};
+
+	enum  Direction
+	{
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN,
+		UNKNOW
+	};
+
+	enum Team
+	{
+		PROTAGONIST
+	};
 };
 
 

@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collision.h" />
@@ -137,11 +138,13 @@
     <ClInclude Include="QuadNode.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Sound.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="Trace.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -156,6 +159,7 @@
     <ClCompile Include="QuadNode.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Trace.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Window.cpp" />
