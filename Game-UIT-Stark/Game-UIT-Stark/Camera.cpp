@@ -1,11 +1,11 @@
 #include "Camera.h"
 
-Camera::Camera() : GameObject()
+Camera::Camera() : Object()
 {
-	_Position.x = 0;
-	_Position.y = 0;
-	_Size.x = SCREEN_WIDTH;
-	_Size.y = SCREEN_HEIGHT;
+	locationX = 0;
+	locationY = 0;
+	width = SCREEN_WIDTH;
+	height = SCREEN_HEIGHT;
 	followPlayerX = true;
 	followPlayerY = false;
 }
@@ -41,4 +41,9 @@ Camera * Camera::Instance()
 	if (!instance)
 		instance = new Camera();
 	return instance;
+}
+
+CollisionRect Camera::GetBound()
+{
+	return CollisionRect();
 }

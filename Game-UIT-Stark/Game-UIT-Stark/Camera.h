@@ -1,6 +1,6 @@
 #pragma once
-#include "GameObject.h"
-class Camera : public GameObject
+#include "Object.h"
+class Camera : public Object
 {
 private:
 	static Camera * instance;
@@ -20,4 +20,5 @@ public:
 	void setPosition(const POINT& p);
 	void setSize(const POINT &p);*/
 	static Camera* Instance();
+	CollisionRect	GetBound();
 };

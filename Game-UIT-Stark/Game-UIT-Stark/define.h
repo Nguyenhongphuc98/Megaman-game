@@ -11,10 +11,14 @@
 #include <functional>
 #include <string>
 #include <algorithm>
+#include<vector>
+
 #include "Trace.h"
 #include "Global.h"
 //#include "utils.h"
 //#include "ConfigReader.h"
+
+using namespace std;
 
 #ifdef _DEBUG
 #define SHOW_BOUNDINGBOX

@@ -91,17 +91,6 @@ void Window::StartProgram()
 	LPDIRECT3DSURFACE9 surfaceWhite = graphics->CreateSurface(D3DCOLOR_XRGB(255, 255, 255));
 	LPDIRECT3DSURFACE9 surfaceBackground = graphics->CreateSurface(D3DCOLOR_XRGB(0, 0, 0));
 
-	vector<Object> ListObjectStatic;
-	Object rectBottom(Global::GROUND, 400, 590, 0, 0, 800, 20);
-	Object rectTop(Global::GROUND, 400, 10, 0, 0, 800, 20);
-	Object rectLeft(Global::GROUND, 10, 300, 0, 0, 20, 600);
-	Object rectRight(Global::GROUND, 790, 300, 0, 0, 20, 600);
-	ListObjectStatic.push_back(rectBottom);
-	ListObjectStatic.push_back(rectTop);
-	ListObjectStatic.push_back(rectLeft);
-	ListObjectStatic.push_back(rectRight);
-
-	Object ball(Global::GROUND,400,300,2,3,30,30);
 
 	MSG msg;
 	while (true)
@@ -112,28 +101,7 @@ void Window::StartProgram()
 		}
 
 		if (graphics->GetD3DDevice()->BeginScene()) {
-
 			graphics->DrawSurface(surfaceBackground, NULL, NULL);
-
-			for (int i = 0; i < ListObjectStatic.size(); i++) {
-				RECT r = Global::ConvertCollisionRectToRECT(ListObjectStatic[i].GetBound());
-				graphics->DrawSurface(surfacePink, NULL, &r);
-			}
-
-			
-			for (int i = 0; i < ListObjectStatic.size(); i++) {
-				ResultColision result = Collision::Instance()->ProcessCollisionSweptAABB(ball.GetBound(), ListObjectStatic[i].GetBound());
-				if (result.collision) {
-					//chung to da va cham
-					//ball.UpdateVelocity(result);					
-					break;
-				}
-			}
-			ball.Update();
-			RECT rball = Global::ConvertCollisionRectToRECT(ball.GetBound());
-			graphics->DrawSurface(surfaceWhite, NULL, &rball);
-
-		
 			graphics->GetD3DDevice()->EndScene();
 		}
 

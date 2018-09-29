@@ -144,9 +144,6 @@
     <ClInclude Include="QuadTree.h">
       <Filter>Other\include</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>GameObject\include</Filter>
-    </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>BaseClass\include</Filter>
     </ClInclude>
@@ -196,9 +193,6 @@
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
       <Filter>Other\src</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>GameObject\src</Filter>
     </ClCompile>
     <ClCompile Include="Trace.cpp">
       <Filter>Utility\src</Filter>

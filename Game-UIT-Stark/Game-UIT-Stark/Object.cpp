@@ -3,7 +3,8 @@
 
 Object::Object()
 {
-	timeToCollision = 1;
+	locationX = locationY = 0;
+	velocityX = velocityY = 0;
 }
 
 Object::~Object()
@@ -13,22 +14,14 @@ Object::~Object()
 Object::Object(Global::IdObject id, int x, int y, int vx, int vy, int w, int h)
 {
 	this->idObject = id;
-	this->centerX = x;
-	this->centerY = y;
+	this->locationX = x;
+	this->locationY = y;
 	this->velocityX = vx;
 	this->velocityY = vy;
 	this->width = w;
 	this->height = h;
-	timeToCollision = 1;
 }
 
-CollisionRect Object::GetBound()
-{
-	int left = this->centerX - this->width / 2;
-	int top = this->centerY - this->height / 2;
-	CollisionRect bound(top, left, width, height, velocityX, velocityY);
-	return bound;
-}
 
 ResultColision Object::ProcessCollision(Object * object)
 {
@@ -42,20 +35,11 @@ ResultColision Object::ProcessCollision(Object * object)
 
 
 
-void Object::Update()
+void Object::Update(DWORD dt, vector<Object*> *List_Object_Can_Collision)
 {
-	//this->centerX = this->centerX+ velocityX*timeToCollision;
-	//this->centerY = this->centerY+ velocityY *timeToCollision;
-	//timeToCollision = 1;
-
-	//xai tam cai nay vi xu li va cham dang bi loi
-	if (this->centerX > 760 || this->centerX < 40)
-		velocityX *= -1;
-	if (this->centerY > 560 || this->centerY < 40)
-		velocityY *= -1;
-
-	this->centerX = this->centerX + velocityX;
-	this->centerY = this->centerY + velocityY;
+	this->dt = dt;
+	dx = velocityX * dt;
+	dy = velocityY * dt;
 }
 
 Global::IdObject Object::GetIdObject()
@@ -75,12 +59,12 @@ int Object::GetHeight()
 
 int Object::GetLocationX()
 {
-	return centerX;
+	return locationX;
 }
 
 int Object::GetLocationY()
 {
-	return this->centerY;
+	return this->locationY;
 }
 
 int Object::GetVelocityX()
