@@ -3,10 +3,11 @@
 #define _Sprite_H_
 #include "Window.h" //thằng này là cái tự viết chứa phần khởi tạo cửa sổ chứ không có gì hết.
 #include<vector>
+#include "FGraphics.h"
 using namespace std;
 
 class  Sprite
-{
+{	
 private:
 	LPD3DXSPRITE		spriteHander; //Xài thằng này để thao tác với sprite
 	LPDIRECT3DTEXTURE9	texture;// lưu sprite xí mà load lên

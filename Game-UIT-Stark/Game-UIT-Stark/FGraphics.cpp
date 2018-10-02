@@ -69,6 +69,12 @@ void Graphic::Init()
 		0, //chi so bo dem - neu chi co 1 bodem thi la 0
 		D3DBACKBUFFER_TYPE_MONO,  //doi so dinh kieu
 		&this->backBuffer);
+
+	if (D3DXCreateSprite(this->pD3dDevice, &this->spriteHandler) != D3D_OK)
+	{
+		Global::Notify("Can't create spritehandler", "Error");
+		return;
+	}
 }
 
 LPDIRECT3DSURFACE9 Graphic::GetBackBuffer()
@@ -84,6 +90,11 @@ LPDIRECT3D9 Graphic::GetD3D()
 LPDIRECT3DDEVICE9 Graphic::GetD3DDevice()
 {
 	return this->pD3dDevice;
+}
+
+LPD3DXSPRITE Graphic::GetSpriteHandler()
+{
+	return this->spriteHandler;
 }
 
 LPDIRECT3DSURFACE9 Graphic::LoadSurface(char * fileName, D3DCOLOR transparencyColor)

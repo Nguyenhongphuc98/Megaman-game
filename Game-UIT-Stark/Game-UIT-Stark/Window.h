@@ -2,11 +2,7 @@
 #ifndef _Window_H_
 #define _Window_H_
 
-#include<windows.h>
-#include"Global.h"
-#include"FGraphics.h"
-#include<vector>
-#include"Object.h"
+#include"define.h"
 
 using namespace std;
 

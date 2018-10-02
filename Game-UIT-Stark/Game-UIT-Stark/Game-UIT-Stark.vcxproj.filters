@@ -150,6 +150,9 @@
     <ClInclude Include="Animation.h">
       <Filter>BaseClass\include</Filter>
     </ClInclude>
+    <ClInclude Include="MegaMan.h">
+      <Filter>GameObject\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -205,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>BaseClass\src</Filter>
+    </ClCompile>
+    <ClCompile Include="MegaMan.cpp">
+      <Filter>GameObject\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

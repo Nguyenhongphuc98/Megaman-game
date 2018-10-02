@@ -1,21 +1,29 @@
 #pragma once
 #ifndef _Game_H_
 #define _Game_H_
+#include"FGraphics.h"
+#include "FKeyBoard.h"
+
+//cai nay la test
+#include "MegaMan.h"
 
 class Game
 {
 private:
-
+	MegaMan megaMan;
 public:
 	Game();
 	~Game();
 
-	void Init(); 
+	void Init();
+	void LoadResource();
+
 	void ProcessInput();
-	void Update();
+	void Update(float deta);
 	void Render();
 
-	void StartGame(); //go to the main loop
+	void RunGame(float delta); //go to the main loop
+	FKeyBoard *keyboard;
 };
 
 

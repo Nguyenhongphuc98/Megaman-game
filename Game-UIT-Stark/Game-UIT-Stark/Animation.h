@@ -9,12 +9,12 @@ using namespace std;
 
 class  Animation
 {
-protected:
+public:
 	map<Global::Status, Sprite*> ListSprite; //danh sach trang thai cua no
 
 public:
 	 Animation();
-	~ Animation();
+	virtual ~ Animation();
 
 	void SetFrame(Global::Status status, int index);
 	int GetCurrentFrame(Global::Status status);

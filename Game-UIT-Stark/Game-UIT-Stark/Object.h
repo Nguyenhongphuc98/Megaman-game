@@ -2,14 +2,16 @@
 #ifndef _Object_H_
 #define _Object_H_
 #include"Global.h"
-#include"Collision.h"
-#include"define.h"
+#include<vector>
+#include "Animation.h"
+using namespace std;
 
 class Object
 {
 protected:
 	Global::IdObject	idObject;
 	Global::Team		team;
+	Animation *animation;
 
 	int locationX; //left
 	int locationY; //top
@@ -33,7 +35,7 @@ public:
 	virtual CollisionRect	GetBound() = 0;
 	Global::IdObject GetIdObject();
 	ResultColision			ProcessCollision(Object *object);
-	virtual void			Update(DWORD dt, vector<Object*> *List_Object_Can_Collision);
+	virtual void			Update(DWORD dt, vector<Object*> List_Object_Can_Collision);
 	virtual void			Render() {};
 
 	int GetWidth();

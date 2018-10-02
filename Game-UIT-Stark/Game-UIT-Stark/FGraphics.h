@@ -10,6 +10,7 @@ private:
 	LPDIRECT3D9			pD3d;
 	LPDIRECT3DDEVICE9	pD3dDevice;
 	LPDIRECT3DSURFACE9	backBuffer;
+	LPD3DXSPRITE		spriteHandler;
 
 	static Graphic*		_instance;
 	Graphic();
@@ -24,6 +25,7 @@ public:
 	LPDIRECT3DSURFACE9	GetBackBuffer();
 	LPDIRECT3D9			GetD3D();
 	LPDIRECT3DDEVICE9	GetD3DDevice();
+	LPD3DXSPRITE		GetSpriteHandler();
 
 	LPDIRECT3DSURFACE9	LoadSurface(char *fileName, D3DCOLOR transparencyColor = D3DCOLOR_XRGB(0, 0, 0));
 	LPDIRECT3DSURFACE9	CreateSurface(D3DCOLOR fillColor = D3DCOLOR_XRGB(0, 0, 0));

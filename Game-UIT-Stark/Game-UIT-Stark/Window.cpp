@@ -1,4 +1,5 @@
 ﻿#include"Window.h"
+#include "Game.h"
 Window * Window::instance=NULL;
 
 Window::Window()
@@ -85,28 +86,34 @@ char * Window::GetTitle()
 
 void Window::StartProgram()
 {
-	Graphic *graphics = Graphic::Instance();
-	//LPDIRECT3DSURFACE9  surface = graphics->LoadSurface("background.jpg");
-	LPDIRECT3DSURFACE9 surfacePink = graphics->CreateSurface(D3DCOLOR_XRGB(255, 2, 102));
-	LPDIRECT3DSURFACE9 surfaceWhite = graphics->CreateSurface(D3DCOLOR_XRGB(255, 255, 255));
-	LPDIRECT3DSURFACE9 surfaceBackground = graphics->CreateSurface(D3DCOLOR_XRGB(0, 0, 0));
-
-
+	Game myGame;
+	myGame.Init();
 	MSG msg;
+
+	float tickPerFrame = 1000/MAX_FRAME_RATE; //tickPerframe max_frame_rate - 1k tick -> a tick=1k/max
+	float delta = 0;
+	float lastFrameTime = GetTickCount();
+	float currentFrameTime;
+
 	while (true)
 	{
 		if (PeekMessageA(&msg, Window::Instance()->GetHWND(), 0, 0, PM_REMOVE)) {
-				TranslateMessage(&msg);
-				DispatchMessage(&msg);
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
 		}
 
-		if (graphics->GetD3DDevice()->BeginScene()) {
-			graphics->DrawSurface(surfaceBackground, NULL, NULL);
-			graphics->GetD3DDevice()->EndScene();
+		currentFrameTime = GetTickCount();
+		delta = currentFrameTime - lastFrameTime;
+		if(delta>tickPerFrame)
+		{
+			lastFrameTime = currentFrameTime;
+			myGame.RunGame(delta);
+		}
+		else
+		{
+			Sleep(tickPerFrame-delta);
 		}
 
-		graphics->GetD3DDevice()->Present(NULL, NULL, NULL, NULL);
-		Sleep(20);
 	}
 }
 

@@ -35,7 +35,7 @@ ResultColision Object::ProcessCollision(Object * object)
 
 
 
-void Object::Update(DWORD dt, vector<Object*> *List_Object_Can_Collision)
+void Object::Update(DWORD dt, vector<Object*> List_Object_Can_Collision)
 {
 	this->dt = dt;
 	dx = velocityX * dt;

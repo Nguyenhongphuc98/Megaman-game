@@ -1,61 +1,39 @@
 ﻿  Animation.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\animation.cpp(41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Audio.cpp
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\animation.cpp(41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Camera.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Collision.cpp
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(90): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(91): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(100): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(102): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(104): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(108): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(110): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collision.cpp(112): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  CollisionRect.cpp
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collisionrect.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\collisionrect.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   FGraphics.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\fgraphics.cpp(160): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\fgraphics.cpp(160): warning C4566: character represented by universal-character-name '\u1EA5' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\fgraphics.cpp(160): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\fgraphics.cpp(182): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\fgraphics.cpp(171): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\fgraphics.cpp(171): warning C4566: character represented by universal-character-name '\u1EA5' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\fgraphics.cpp(171): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\fgraphics.cpp(193): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
   FKeyBoard.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Game.cpp
-  Global.cpp
   main.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Object.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
   QuadNode.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
   QuadTree.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Sound.cpp
   Sprite.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\sprite.cpp(8): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1ED3' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1EAF' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1EB1' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u01B0' cannot be represented in the current code page (1252)
-d:\documents\nhập môn phát triển game\game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1EE3' cannot be represented in the current code page (1252)
-  Trace.cpp
-  Utils.cpp
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\animation.h(13): error C2065: 'Sprite': undeclared identifier
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\animation.h(13): error C2059: syntax error: '>'
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\animation.h(13): error C2976: 'std::map': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\map(81): note: see declaration of 'std::map'
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\sprite.cpp(8): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1ED3' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1EAF' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1EB1' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u01B0' cannot be represented in the current code page (1252)
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\sprite.cpp(21): warning C4566: character represented by universal-character-name '\u1EE3' cannot be represented in the current code page (1252)
   Window.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\window.cpp(94): warning C4244: 'initializing': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\window.cpp(104): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\window.cpp(112): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
   Generating Code...
-  Game-UIT-Stark.vcxproj -> D:\DOCUMENTS\NHẬP MÔN PHÁT TRIỂN GAME\Game\Game-UIT-Stark\x64\Debug\Game-UIT-Stark.exe

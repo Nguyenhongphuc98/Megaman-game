@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include"define.h"
 class Camera : public Object
 {
 private:
