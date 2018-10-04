@@ -35,7 +35,7 @@ public:
 	virtual CollisionRect	GetBound() = 0;
 	Global::IdObject GetIdObject();
 	ResultColision			ProcessCollision(Object *object);
-	virtual void			Update(DWORD dt, vector<Object*> List_Object_Can_Collision);
+	virtual void			Update(DWORD dt);
 	virtual void			Render() {};
 
 	int GetWidth();

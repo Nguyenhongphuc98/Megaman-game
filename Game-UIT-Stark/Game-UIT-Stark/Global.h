@@ -24,7 +24,8 @@ public:
 	enum Status
 	{
 		RUN,
-		JUMP
+		JUMP,
+		STAND
 	};
 
 	enum  Direction

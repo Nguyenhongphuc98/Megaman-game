@@ -11,11 +11,14 @@ private:
 	Global::Status status;
 	static MegaMan* instance;
 public:
-	virtual void Update(float deltaTime);
+	virtual void LoadResource();
+	virtual void Update(float deltaTime, vector<Object*> List_Object_Can_Collision);
 	virtual void Render();
 	virtual ResultColision ProcessCollision();
 
 	static MegaMan* Instance();
 	CollisionRect	GetBound() ;
+
+	MegaMan();
 };
 #endif

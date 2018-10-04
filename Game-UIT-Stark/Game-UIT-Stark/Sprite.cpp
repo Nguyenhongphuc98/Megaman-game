@@ -22,7 +22,7 @@ Sprite::Sprite(char *path, vector<RECT*> listSourceRect)
 
 	//đổ màu trong suốt là cái màu hồng hồng tím tím (màu background bên sprite) -248,0,248.
 	//mục đích để lúc load lên nó xóa màu đó trùng vơis màu nền.
-	this->texture = graphic->LoadTeture(path, D3DCOLOR_XRGB(248, 0, 248));
+	this->texture = graphic->LoadTeture(path, D3DCOLOR_XRGB(0, 102, 102));
 }
 
 Sprite::~Sprite()
@@ -34,8 +34,8 @@ Sprite::~Sprite()
 void Sprite::Render()
 {
 
-	if (Graphic::Instance()->GetD3DDevice()->BeginScene())
-	{
+	//if (Graphic::Instance()->GetD3DDevice()->BeginScene())
+	//{
 		//set cái này để thực hiện mấy phép chuyển đổi.
 		this->spriteHander->SetTransform(&(matScale*matTranslate));
 
@@ -46,13 +46,13 @@ void Sprite::Render()
 				this->listSourceRect[currentFrame],//vung can lay de ve,
 				&center,//tâm vẽ - xoay
 				&position,//vị trí sprite
-				D3DCOLOR_XRGB(255, 255, 255)//màu thay thế
+				D3DCOLOR_XRGB(255,255,255)//màu thay thế
 			);
 			this->spriteHander->End();// mở khóa  để làm việc khác (như kiểu trả lại luồng)
 		}
 
-		Graphic::Instance()->GetD3DDevice()->EndScene();
-	}
+	/*	Graphic::Instance()->GetD3DDevice()->EndScene();
+	}*/
 
 
 }

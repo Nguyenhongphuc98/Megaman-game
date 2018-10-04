@@ -28,7 +28,7 @@ using namespace std;
 #define SCREEN_WIDTH 512//800//640
 #define SCREEN_HEIGHT 448//600//480
 
-#define MAX_FRAME_RATE 90
+#define MAX_FRAME_RATE 60
 
 #define VECTOR2 D3DXVECTOR2
 #define VECTOR3 D3DXVECTOR3

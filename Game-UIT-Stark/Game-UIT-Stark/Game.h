@@ -10,7 +10,7 @@
 class Game
 {
 private:
-	MegaMan megaMan;
+	MegaMan *megaMan;
 public:
 	Game();
 	~Game();

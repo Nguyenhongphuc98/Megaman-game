@@ -2,6 +2,7 @@
 
 Game::Game()
 {
+	megaMan = MegaMan::Instance();
 }
 
 Game::~Game()
@@ -48,7 +49,7 @@ void Game::Render()
 		//draw current sence here
 		
 		spriteHander->End();
-		megaMan.Render();
+		megaMan->Render();
 		device->EndScene();
 	}
 	device->Present(NULL, NULL, NULL, NULL);

@@ -13,14 +13,14 @@ public:
 	map<Global::Status, Sprite*> ListSprite; //danh sach trang thai cua no
 
 public:
-	 Animation();
-	virtual ~ Animation();
+	Animation();
+	virtual ~Animation();
 
 	void SetFrame(Global::Status status, int index);
 	int GetCurrentFrame(Global::Status status);
-	virtual void LoadResource() = 0;
+	virtual void LoadResource() {};
 
-	virtual void Update(Global::Status status)=0;
+	virtual void Update(Global::Status status) {};
 	virtual void Render(Global::Direction direction,
 		Global::Status status,
 		D3DXVECTOR3 position,

@@ -5,6 +5,8 @@ Object::Object()
 {
 	locationX = locationY = 0;
 	velocityX = velocityY = 0;
+
+	animation = new Animation();
 }
 
 Object::~Object()
@@ -35,7 +37,7 @@ ResultColision Object::ProcessCollision(Object * object)
 
 
 
-void Object::Update(DWORD dt, vector<Object*> List_Object_Can_Collision)
+void Object::Update(DWORD dt)
 {
 	this->dt = dt;
 	dx = velocityX * dt;
