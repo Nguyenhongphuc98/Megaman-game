@@ -5,7 +5,7 @@
 #include "Collision.h"
 #include "Global.h"
 
-#define MEGAMAN_WALKING_SPEED 0.1f
+#define MEGAMAN_WALKING_SPEED 0.05f
 
 class MegaMan:public Object
 {

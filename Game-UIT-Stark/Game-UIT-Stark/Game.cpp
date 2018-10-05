@@ -31,14 +31,14 @@ void Game::ProcessInput()
 	{
 		megaMan->SetDirection(Global::LEFT);
 		megaMan->SetStatus(Global::RUN);
-		Trace::Log("on left key");
+		//Trace::Log("on left key");
 	}
 
 	if (keyboard->IsKeyDown(DIK_RIGHT))
 	{
 		megaMan->SetDirection(Global::RIGHT);
 		megaMan->SetStatus(Global::RUN);
-		Trace::Log("on right key");
+		//Trace::Log("on right key");
 	}
 
 	if(keyboard->IsKeyUp(DIK_LEFT)|| keyboard->IsKeyUp(DIK_RIGHT))
@@ -90,8 +90,8 @@ void Game::Render()
 
 void Game::RunGame(float delta)
 {
-
-	this->ProcessInput();												//Input
-	this->Update(delta);//Update sence
-	this->Render();	//Render
+	//Trace::Log("run game");
+	this->ProcessInput();	//Input
+	this->Update(delta);	//Update sence
+	this->Render();			//Render
 }
