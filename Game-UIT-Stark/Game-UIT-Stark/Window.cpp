@@ -104,7 +104,7 @@ void Window::StartProgram()
 
 		currentFrameTime = GetTickCount();
 		delta = currentFrameTime - lastFrameTime;
-		if(delta>tickPerFrame)
+		if(delta>=tickPerFrame)
 		{
 			lastFrameTime = currentFrameTime;
 			myGame.RunGame(delta);
@@ -130,4 +130,9 @@ int Window::GetHeight()
 HWND Window::GetHWND()
 {
 	return this->windowHWND;
+}
+
+HINSTANCE Window::GetHinstance()
+{
+	return this->windowHinstance;
 }

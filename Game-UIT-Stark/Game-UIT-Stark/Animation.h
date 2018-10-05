@@ -24,10 +24,10 @@ public:
 	virtual void Render(Global::Direction direction,
 		Global::Status status,
 		D3DXVECTOR3 position,
-		D3DXVECTOR3 scale ,
-		D3DXVECTOR3 translation ,
-		float		rotation ,
-		D3DXVECTOR3 rotationCenter);
+		D3DXVECTOR3 scale = D3DXVECTOR3(1,1,0),
+		D3DXVECTOR3 translation = D3DXVECTOR3(0, 0, 0),
+		float		rotation =0,
+		D3DXVECTOR3 rotationCenter = D3DXVECTOR3());
 
 	void NextFrame(Global::Status status);
 	void UpdateDirection(Global::Status status, Global::Direction direction);

@@ -34,6 +34,7 @@ public:
 	int GetWidth();
 	int GetHeight();
 	HWND GetHWND();
+	HINSTANCE GetHinstance();
 
 };
 

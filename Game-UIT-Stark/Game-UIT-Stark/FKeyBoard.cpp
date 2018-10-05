@@ -1,4 +1,4 @@
-#include "FKeyBoard.h"
+﻿#include "FKeyBoard.h"
 
 FKeyBoard* FKeyBoard::Instance = nullptr;
 
@@ -6,7 +6,62 @@ FKeyBoard::FKeyBoard() :
 	DInput(nullptr),
 	Keyboard(nullptr)
 {
+	Window* apps = Window::Instance();
 
+	HRESULT result;
+	result = DirectInput8Create(
+		apps->GetHinstance(),
+		DIRECTINPUT_VERSION,
+		IID_IDirectInput8,
+		(void**)&DInput,
+		NULL);
+
+	if (result != DI_OK)
+	{
+		Global::Notify("Không thể tạo keyboard input", "Lỗi");
+		return ;
+	}
+
+	result = DInput->CreateDevice(
+		GUID_SysKeyboard,
+		&Keyboard,
+		NULL);
+
+	if (result != DI_OK)
+	{
+		Global::Notify(" Can't create Keyboard device","[Error]");
+		return ;
+	}
+
+
+	result = Keyboard->SetDataFormat(&c_dfDIKeyboard);
+	if (result != DI_OK)
+	{
+		Global::Notify("Không thể set data format keyboard", "Lỗi");
+		return ;
+	}
+
+	result = Keyboard->SetCooperativeLevel(apps->GetHWND(), DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+
+	if (result != DI_OK)
+	{
+		Global::Notify("Không thể SetCooperativeLevel", "Lỗi");
+		return ;
+	}
+
+	DIPROPDWORD dipdw;
+
+	dipdw.diph.dwSize = sizeof(DIPROPDWORD);
+	dipdw.diph.dwHeaderSize = sizeof(DIPROPHEADER);
+	dipdw.diph.dwObj = 0;
+	dipdw.diph.dwHow = DIPH_DEVICE;
+	dipdw.dwData = GL_KEY_BUFFER_SIZE; // Arbitrary buffer size
+
+
+	result = Keyboard->SetProperty(DIPROP_BUFFERSIZE, &dipdw.diph);
+	if (result != DI_OK)
+		return ;
+	Acquire();
 }
 // Check input  
 FKeyBoard::~FKeyBoard() {
@@ -77,8 +132,10 @@ void FKeyBoard::Update()
 	for (int i = 0; i < 256; i++)
 		PreviousKeyStates[i] = CurrentKeyStates[i];
 
+	//Acquire();
 	// Collect new key states
 	Keyboard->GetDeviceState(sizeof(CurrentKeyStates), CurrentKeyStates);
+	//Unacquire();
 }
 
 void FKeyBoard::Unacquire()

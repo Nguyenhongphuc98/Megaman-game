@@ -5,10 +5,13 @@
 #include "Collision.h"
 #include "Global.h"
 
+#define MEGAMAN_WALKING_SPEED 0.1f
+
 class MegaMan:public Object
 {
 private:
 	Global::Status status;
+	Global::Direction direction;
 	static MegaMan* instance;
 public:
 	virtual void LoadResource();
@@ -20,5 +23,7 @@ public:
 	CollisionRect	GetBound() ;
 
 	MegaMan();
+	void SetStatus(Global::Status);
+	void SetDirection(Global::Direction);
 };
 #endif

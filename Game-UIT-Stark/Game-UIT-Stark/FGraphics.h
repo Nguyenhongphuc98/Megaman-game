@@ -31,6 +31,6 @@ public:
 	LPDIRECT3DSURFACE9	CreateSurface(D3DCOLOR fillColor = D3DCOLOR_XRGB(0, 0, 0));
 	LPDIRECT3DTEXTURE9	LoadTeture(char *filename, D3DCOLOR transparencyColor = D3DCOLOR_XRGB(0, 0, 0));
 	void				DrawSurface(LPDIRECT3DSURFACE9 surface, RECT* source, RECT* des);
-
+	void				DrawTexture(LPDIRECT3DTEXTURE9 Texture, RECT* sourceRect, D3DXVECTOR3 position, D3DXVECTOR2 scale = D3DXVECTOR2(1, 1), D3DXVECTOR2 translation = D3DXVECTOR2(0, 0), float rotation = 0, D3DXVECTOR3 rotationCenter = D3DXVECTOR3(0,0, 0));
 };
 #endif

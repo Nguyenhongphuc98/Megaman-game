@@ -4,6 +4,7 @@
 #include<Windows.h>
 #include"Collision.h"
 
+
 class Global
 {
 private:

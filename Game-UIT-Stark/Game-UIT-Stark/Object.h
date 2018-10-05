@@ -19,8 +19,8 @@ protected:
 	int dx; //quang duong thuc su se di / frame -> dx=v*dt	
 	int dy;
 
-	int velocityX;
-	int velocityY;
+	float velocityX;
+	float velocityY;
 
 	int width;
 	int height;
@@ -31,7 +31,7 @@ public:
 	Object();
 	~Object();
 
-	Object(Global::IdObject idObject, int x, int y, int vx, int vy, int w, int h);
+	Object(Global::IdObject idObject, int x, int y, float vx, float vy, int w, int h);
 	virtual CollisionRect	GetBound() = 0;
 	Global::IdObject GetIdObject();
 	ResultColision			ProcessCollision(Object *object);

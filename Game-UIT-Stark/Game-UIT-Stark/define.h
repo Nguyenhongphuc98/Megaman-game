@@ -35,3 +35,5 @@ using namespace std;
 #define POINT VECTOR2
 
 #define SAFE_DELETE(p) { if(p) { delete p; p = nullptr; } }
+
+#define GL_KEY_BUFFER_SIZE	1024

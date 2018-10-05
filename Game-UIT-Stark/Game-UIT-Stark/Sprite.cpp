@@ -37,19 +37,24 @@ void Sprite::Render()
 	//if (Graphic::Instance()->GetD3DDevice()->BeginScene())
 	//{
 		//set cái này để thực hiện mấy phép chuyển đổi.
-		this->spriteHander->SetTransform(&(matScale*matTranslate));
+		//this->spriteHander->SetTransform(&(matScale*matTranslate));
 
-		if (this->spriteHander->Begin(D3DXSPRITE_ALPHABLEND))//khóa lại để vẽ, alphablen de cho phep ve trong suot
-		{
-			this->spriteHander->Draw(
-				texture,
-				this->listSourceRect[currentFrame],//vung can lay de ve,
-				&center,//tâm vẽ - xoay
-				&position,//vị trí sprite
-				D3DCOLOR_XRGB(255,255,255)//màu thay thế
-			);
-			this->spriteHander->End();// mở khóa  để làm việc khác (như kiểu trả lại luồng)
-		}
+		//if (this->spriteHander->Begin(D3DXSPRITE_ALPHABLEND))//khóa lại để vẽ, alphablen de cho phep ve trong suot
+		//{
+		//	this->spritehander->draw(
+		//		texture,
+		//		this->listsourcerect[currentframe],//vung can lay de ve,
+		//		&center,//tâm vẽ - xoay
+		//		&position,//vị trí sprite
+		//		d3dcolor_xrgb(255,255,255)//màu thay thế
+		//	);
+		//	this->spriteHander->End();// mở khóa  để làm việc khác (như kiểu trả lại luồng)
+		//}
+	Graphic::Instance()->DrawTexture(
+		texture, 
+		this->listSourceRect[currentFrame],
+		position,
+		D3DXVECTOR2(2,2));
 
 	/*	Graphic::Instance()->GetD3DDevice()->EndScene();
 	}*/

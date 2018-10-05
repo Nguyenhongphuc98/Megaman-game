@@ -3,8 +3,10 @@
 
 Object::Object()
 {
-	locationX = locationY = 0;
-	velocityX = velocityY = 0;
+	locationX = 200;
+	locationY = 440;
+	velocityX = 0.0f;
+	velocityY = 0.0f;
 
 	animation = new Animation();
 }
@@ -13,7 +15,7 @@ Object::~Object()
 {
 }
 
-Object::Object(Global::IdObject id, int x, int y, int vx, int vy, int w, int h)
+Object::Object(Global::IdObject id, int x, int y, float vx, float vy, int w, int h)
 {
 	this->idObject = id;
 	this->locationX = x;

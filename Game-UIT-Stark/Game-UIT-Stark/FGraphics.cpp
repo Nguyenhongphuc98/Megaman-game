@@ -213,3 +213,33 @@ void Graphic::DrawSurface(LPDIRECT3DSURFACE9 surface, RECT *source, RECT* des)
 	}
 	
 }
+
+void Graphic::DrawTexture(LPDIRECT3DTEXTURE9 Texture, RECT* sourceRect, D3DXVECTOR3 position, D3DXVECTOR2 scale, D3DXVECTOR2 translation, float rotation, D3DXVECTOR3 rotationCenter)
+{
+	D3DXVECTOR2 inRotationCenter = (rotationCenter != D3DXVECTOR3()) ? D3DXVECTOR2(rotationCenter.x, rotationCenter.y) : D3DXVECTOR2(position.x, position.y);
+
+	D3DXVECTOR2 scalingCenter = D3DXVECTOR2(position.x, position.y);
+	D3DXMATRIX	mMatrixTransform;	//Ma trận hỗ trợ phép biến hình
+	D3DXMatrixTransformation2D(
+		&mMatrixTransform,
+		&scalingCenter,
+		0,
+		&scale,
+		&inRotationCenter,
+		rotation,
+		&translation);
+
+	D3DXMATRIX oldMatrix;
+
+	//_SpriteHandler->GetTransform(&oldMatrix);
+	spriteHandler->SetTransform(&mMatrixTransform);
+
+	spriteHandler->Draw(
+		Texture,
+		sourceRect,
+		&rotationCenter,
+		&position,
+		D3DCOLOR_ARGB(255, 255, 255, 255));
+
+//	_SpriteHandler->SetTransform(&oldMatrix);
+}

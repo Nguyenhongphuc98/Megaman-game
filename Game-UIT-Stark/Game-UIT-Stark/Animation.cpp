@@ -27,11 +27,11 @@ void Animation::Render(Global::Direction direction,
 	D3DXVECTOR3 rotationCenter)
 {
 	this->ListSprite[status]->SetPosition(position);
-	this->ListSprite[status]->SetTranslate(translation);
-	this->ListSprite[status]->SetRotation(rotation);
-	this->ListSprite[status]->setCenter(rotationCenter);
+	//this->ListSprite[status]->SetTranslate(translation);
+	//this->ListSprite[status]->SetRotation(rotation);
+	//this->ListSprite[status]->setCenter(rotationCenter);
 
-	this->UpdateDirection(status, direction);
+	//this->UpdateDirection(status, direction);
 	this->ListSprite[status]->Render();
 }
 
