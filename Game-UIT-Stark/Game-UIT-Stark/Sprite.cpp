@@ -1,6 +1,6 @@
 ﻿#include "Sprite.h"
 
-Sprite::Sprite(char *path, vector<RECT*> listSourceRect)
+Sprite::Sprite(char *path, vector<RECT*> listSourceRect, D3DCOLOR transparencyColor)
 {
 	//Window *app = Window::Instance();
 	Graphic *graphic = Graphic::Instance();
@@ -22,7 +22,7 @@ Sprite::Sprite(char *path, vector<RECT*> listSourceRect)
 
 	//đổ màu trong suốt là cái màu hồng hồng tím tím (màu background bên sprite) -248,0,248.
 	//mục đích để lúc load lên nó xóa màu đó trùng vơis màu nền.
-	this->texture = graphic->LoadTeture(path, D3DCOLOR_XRGB(0, 102, 102));
+	this->texture = graphic->LoadTeture(path, transparencyColor);
 }
 
 Sprite::~Sprite()

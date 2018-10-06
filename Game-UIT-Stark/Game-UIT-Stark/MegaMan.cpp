@@ -29,7 +29,7 @@ void MegaMan::LoadResource()
 	listSourceRectStand.push_back(r1);
 	listSourceRectStand.push_back(r2);
 	listSourceRectStand.push_back(r3);
-	animation->ListSprite[Global::STAND] = new Sprite("megaman.png", listSourceRectStand);
+	animation->ListSprite[Global::STAND] = new Sprite("megaman.png", listSourceRectStand, D3DCOLOR_XRGB(0, 102, 102));
 }
 
 void MegaMan::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)

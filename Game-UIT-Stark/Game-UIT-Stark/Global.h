@@ -26,7 +26,7 @@ public:
 	{
 		RUN,
 		JUMP,
-		STAND
+		STAND,
 	};
 
 	enum  Direction

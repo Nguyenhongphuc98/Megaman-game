@@ -4,6 +4,11 @@ RECT *rSource;
 Game::Game()
 {
 	megaMan = MegaMan::Instance();
+	ball = new Ball();
+	bar = new Bar();
+
+	t= Graphic::Instance()->LoadSurface("bground.png");
+
 }
 
 Game::~Game()
@@ -41,8 +46,29 @@ void Game::ProcessInput()
 		//Trace::Log("on right key");
 	}
 
-	if(keyboard->IsKeyUp(DIK_LEFT)|| keyboard->IsKeyUp(DIK_RIGHT))
+	if (keyboard->IsKeyDown(DIK_UP))
+	{		
+		bar->SetDirection(Global::UP);
+		bar->SetStatus(Global::RUN);
+	}
+
+	if (keyboard->IsKeyDown(DIK_DOWN))
+	{
+		bar->SetDirection(Global::DOWN);
+		bar->SetStatus(Global::RUN);
+	}
+
+	if (keyboard->IsKeyUp(DIK_LEFT) || keyboard->IsKeyUp(DIK_RIGHT))
+	{
 		megaMan->SetStatus(Global::STAND);
+		Trace::Log("key up");
+	}
+
+	if (keyboard->IsKeyUp(DIK_UP) || keyboard->IsKeyUp(DIK_DOWN))
+	{
+		bar->SetStatus(Global::STAND);
+		Trace::Log("key up");
+	}
 }
 
 void Game::Update(float deta)
@@ -50,6 +76,7 @@ void Game::Update(float deta)
 	//update current sense
 	vector<Object*> list;
 	megaMan->Update(deta, list);
+	bar->Update(deta, list);
 }
 
 void Game::Render()
@@ -58,7 +85,7 @@ void Game::Render()
 	Graphic *graphics = Graphic::Instance();
 	LPDIRECT3DDEVICE9 device = graphics->GetD3DDevice();
 	LPD3DXSPRITE spriteHander = graphics->GetSpriteHandler();
-	LPDIRECT3DSURFACE9 t = graphics->LoadSurface("bground.png");
+	
 
 
 	if (device->BeginScene())										//Begin draw
@@ -80,6 +107,8 @@ void Game::Render()
 		//	&D3DXVECTOR3(0, 0, 0), D3DCOLOR_XRGB(255, 255, 255));
 		graphics->DrawSurface(t, rSource, NULL);
 		megaMan->Render();
+		ball->Render();
+		bar->Render();
 		spriteHander->End();
 
 		

@@ -6,11 +6,17 @@
 
 //cai nay la test
 #include "MegaMan.h"
+#include"Ball.h"
+#include"Bar.h"
 
 class Game
 {
 private:
 	MegaMan *megaMan;
+	Ball *ball;
+	Bar *bar;
+	//temp;
+	LPDIRECT3DSURFACE9 t;
 public:
 	Game();
 	~Game();

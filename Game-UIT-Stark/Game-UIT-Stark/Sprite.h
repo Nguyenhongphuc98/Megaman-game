@@ -25,7 +25,7 @@ private:
 	vector<RECT*> listSourceRect; //list các ô chữ nhật lưu thông tin vùng ảnh sẽ lấy ra để vẽ
 
 public:
-	Sprite(char* path, vector<RECT*> listSourceRect);
+	Sprite(char* path, vector<RECT*> listSourceRect, D3DCOLOR transparencyColor);
 	~Sprite();
 
 	void Render(); //render ra để show lên màn hình

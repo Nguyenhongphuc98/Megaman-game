@@ -95,6 +95,7 @@ void Window::StartProgram()
 	float lastFrameTime = GetTickCount();
 	float currentFrameTime;
 
+
 	while (true)
 	{
 		if (PeekMessageA(&msg, Window::Instance()->GetHWND(), 0, 0, PM_REMOVE)) {

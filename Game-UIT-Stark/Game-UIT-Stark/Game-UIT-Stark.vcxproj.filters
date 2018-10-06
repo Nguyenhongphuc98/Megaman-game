@@ -153,6 +153,12 @@
     <ClInclude Include="MegaMan.h">
       <Filter>GameObject\include</Filter>
     </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>GameObject\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Bar.h">
+      <Filter>GameObject\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -210,6 +216,12 @@
       <Filter>BaseClass\src</Filter>
     </ClCompile>
     <ClCompile Include="MegaMan.cpp">
+      <Filter>GameObject\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>GameObject\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Bar.cpp">
       <Filter>GameObject\src</Filter>
     </ClCompile>
   </ItemGroup>
