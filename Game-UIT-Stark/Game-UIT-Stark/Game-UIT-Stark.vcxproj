@@ -133,6 +133,7 @@
     <ClInclude Include="define_eSceneID.h" />
     <ClInclude Include="FGraphics.h" />
     <ClInclude Include="FKeyBoard.h" />
+    <ClInclude Include="FMouse.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="MegaMan.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="CollisionRect.cpp" />
     <ClCompile Include="FGraphics.cpp" />
     <ClCompile Include="FKeyBoard.cpp" />
+    <ClCompile Include="FMouse.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="main.cpp" />
