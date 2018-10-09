@@ -3,7 +3,11 @@
 #define _Bar_H_
 #include"Object.h"
 #include"Global.h"
-#define BAR_RUN_SPEED 0.05f
+
+#define BAR_RUN_SPEED 0.2f
+#define BAR_WIDTH 24
+#define BAR_HEIGHT 192
+#define BAR_A 2
 
 class Bar:public Object
 {
@@ -11,6 +15,7 @@ private:
 	Global::Status status;
 	Global::Direction direction;
 
+	LPDIRECT3DSURFACE9 boundingbox;
 public:
 	Bar();
 	~Bar();
@@ -19,6 +24,7 @@ public:
 	virtual void Update(float deltaTime, vector<Object*> List_Object_Can_Collision);
 	virtual void Render();
 	//virtual ResultColision ProcessCollision();
+	virtual void RenderBoundingBox();
 
 	CollisionRect	GetBound();
 	void SetStatus(Global::Status);

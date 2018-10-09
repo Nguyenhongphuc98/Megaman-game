@@ -25,14 +25,21 @@ Object::Object(Global::IdObject id, int x, int y, float vx, float vy, int w, int
 	this->width = w;
 	this->height = h;
 }
+//
+//CollisionRect Object::GetBound()
+//{
+//	return CollisionRect(locationX,locationY,width,height,0,0);
+//}
 
 
 ResultColision Object::ProcessCollision(Object * object)
 {
 	ResultColision result;
+	CollisionRect object1= this->GetBound();
+	CollisionRect object2= object->GetBound();
 	result = Collision::Instance()->ProcessCollisionSweptAABB(
-		this->GetBound(),
-		object->GetBound());
+		object1,
+		object2);
 
 	return result;
 }
@@ -44,6 +51,10 @@ void Object::Update(DWORD dt)
 	this->dt = dt;
 	dx = velocityX * dt;
 	dy = velocityY * dt;
+}
+
+void Object::RenderBoundingBox()
+{
 }
 
 Global::IdObject Object::GetIdObject()
@@ -94,4 +105,10 @@ void Object::SetVelocityX(int vx)
 void Object::SetVelocityY(int vy)
 {
 	this->velocityY = vy;
+}
+
+void Object::SetLocation(int x, int y)
+{
+	locationX = x;
+	locationY = y;
 }

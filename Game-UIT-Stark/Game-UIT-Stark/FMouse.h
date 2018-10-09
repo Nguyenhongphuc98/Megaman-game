@@ -22,9 +22,9 @@ public:
 
 	
 	//void Init(HWND hWnd, HINSTANCE hInstance);
-	int Init_DirectInput(HWND);
+	int Init_DirectInput();
 	void Poll_Mouse();
-	int Init_Mouse(HWND);
+	int Init_Mouse();
 	int Mouse_Button(int);
 	int Mouse_X();
 	int Mouse_Y();
@@ -32,7 +32,7 @@ public:
 	//void Update();
 	//void Unacquire();
 	//void Acquire();
-	//static FMouse *getInstance();
+	static FMouse* GetInstance();
 
 };
 

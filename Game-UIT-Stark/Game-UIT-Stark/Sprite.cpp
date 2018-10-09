@@ -31,7 +31,7 @@ Sprite::~Sprite()
 		texture->Release();
 }
 
-void Sprite::Render()
+void Sprite::Render(D3DXVECTOR2 scale)
 {
 
 	//if (Graphic::Instance()->GetD3DDevice()->BeginScene())
@@ -54,7 +54,7 @@ void Sprite::Render()
 		texture, 
 		this->listSourceRect[currentFrame],
 		position,
-		D3DXVECTOR2(2,2));
+		scale);
 
 	/*	Graphic::Instance()->GetD3DDevice()->EndScene();
 	}*/

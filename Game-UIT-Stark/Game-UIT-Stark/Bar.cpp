@@ -4,7 +4,7 @@
 Bar::Bar()
 {
 	locationX = 30;
-	locationY = 100;
+	locationY = 80;
 	LoadResource();	
 }
 
@@ -16,14 +16,14 @@ void Bar::LoadResource()
 {
 	vector<RECT*> listSourceRectStand;
 	RECT *r1 = new RECT;
-	r1->top = 18;
-	r1->left = 2;
-	r1->right = 24;
-	r1->bottom = 41;
+	r1->top = 384;
+	r1->left = 430;
+	r1->right = 478;
+	r1->bottom = 576;
 
-
+	boundingbox = Graphic::Instance()->CreateSurface(D3DCOLOR_XRGB(0, 122, 204));
 	listSourceRectStand.push_back(r1);
-	animation->ListSprite[Global::STAND] = new Sprite("megaman.png", listSourceRectStand, D3DCOLOR_XRGB(0, 102, 102));
+	animation->ListSprite[Global::STAND] = new Sprite("bar.png", listSourceRectStand, D3DCOLOR_XRGB(0, 102, 102));
 	
 }
 
@@ -36,18 +36,34 @@ void Bar::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 	//get list collision
 
 	//if listCollision.size=0 => 0 va cham
-	locationX += dx;
-	locationY += dy;
+	locationX += dx*BAR_A;
+	locationY += dy * BAR_A;
 }
 
 void Bar::Render()
 {
-	animation->Render(Global::RIGHT, Global::STAND, D3DXVECTOR3(locationX, locationY, 0));
+	animation->Render(Global::RIGHT, Global::STAND, D3DXVECTOR3(locationX, locationY, 0), D3DXVECTOR3(0.5, 1, 0));
+	RenderBoundingBox();
+}
+
+void Bar::RenderBoundingBox()
+{
+	Graphic *g = Graphic::Instance();
+	/*RECT *r = new RECT();
+	r->top = this->locationY-2;
+	r->left = this->locationX-2;
+	r->right = r->left + BAR_WIDTH+3;
+	r->bottom = r->top + BAR_HEIGHT+3;*/
+
+	RECT r;
+	r=Global::ConvertCollisionRectToRECT(this->GetBound());
+
+	g->DrawSurface(boundingbox, NULL, &r);
 }
 
 CollisionRect Bar::GetBound()
 {
-	return CollisionRect();
+	return CollisionRect(locationY-2,locationX-2,BAR_WIDTH+2,BAR_HEIGHT+2,velocityX,velocityY);
 }
 
 void Bar::SetStatus(Global::Status status)

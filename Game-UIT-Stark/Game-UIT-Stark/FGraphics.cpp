@@ -208,7 +208,8 @@ void Graphic::DrawSurface(LPDIRECT3DSURFACE9 surface, RECT *source, RECT* des)
 
 	if FAILED(result)
 	{
-		Global::Notify("Can't draw surface", "Notify");
+		//Global::Notify("Can't draw surface", "Notify");
+		Trace::Log("Can't draw surface");
 		return;
 	}
 	

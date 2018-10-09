@@ -16,8 +16,8 @@ protected:
 	int locationX; //left
 	int locationY; //top
 
-	int dx; //quang duong thuc su se di / frame -> dx=v*dt	
-	int dy;
+	float dx; //quang duong thuc su se di / frame -> dx=v*dt	
+	float dy;
 
 	float velocityX;
 	float velocityY;
@@ -32,11 +32,12 @@ public:
 	~Object();
 
 	Object(Global::IdObject idObject, int x, int y, float vx, float vy, int w, int h);
-	virtual CollisionRect	GetBound() = 0;
+	virtual CollisionRect	GetBound()=0;
 	Global::IdObject GetIdObject();
 	ResultColision			ProcessCollision(Object *object);
 	virtual void			Update(DWORD dt);
 	virtual void			Render() {};
+	virtual void RenderBoundingBox();
 
 	int GetWidth();
 	int GetHeight();
@@ -48,6 +49,7 @@ public:
 
 	void SetVelocityX(int vx);
 	void SetVelocityY(int vy);
+	void SetLocation(int x, int y);
 };
 
 #endif // !_Object_H_

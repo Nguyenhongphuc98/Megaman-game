@@ -28,7 +28,7 @@ public:
 	Sprite(char* path, vector<RECT*> listSourceRect, D3DCOLOR transparencyColor);
 	~Sprite();
 
-	void Render(); //render ra để show lên màn hình
+	void Render(D3DXVECTOR2 scale = D3DXVECTOR2(1, 1)); //render ra để show lên màn hình
 	void SetPosition(D3DXVECTOR3 p); //như cái tên
 	void setCenter(D3DXVECTOR3 c); //như cái tên
 	void SetCurrentFrame(int index); //như cái tên

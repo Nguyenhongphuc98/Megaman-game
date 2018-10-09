@@ -25,8 +25,8 @@ using namespace std;
 #endif
 
 
-#define SCREEN_WIDTH 512//800//640
-#define SCREEN_HEIGHT 448//600//480
+#define SCREEN_WIDTH  800//512//800//640
+#define SCREEN_HEIGHT 600//448//600//480
 
 #define MAX_FRAME_RATE 60
 

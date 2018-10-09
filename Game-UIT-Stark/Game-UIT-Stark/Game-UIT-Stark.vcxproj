@@ -91,6 +91,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>dsound.lib;winmm.lib;comctl32.lib;dxerr.lib;d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

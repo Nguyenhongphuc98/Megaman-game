@@ -4,7 +4,7 @@ CollisionRect::CollisionRect()
 {
 }
 
-CollisionRect::CollisionRect(int top, int left, int width, int height, int vx, int vy)
+CollisionRect::CollisionRect(int top, int left, int width, int height, float vx, float vy)
 {
 	this->top = top;
 	this->left = left;

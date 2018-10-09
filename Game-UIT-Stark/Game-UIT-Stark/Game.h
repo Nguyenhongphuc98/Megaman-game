@@ -3,6 +3,7 @@
 #define _Game_H_
 #include"FGraphics.h"
 #include "FKeyBoard.h"
+#include"FMouse.h"
 
 //cai nay la test
 #include "MegaMan.h"
@@ -15,6 +16,7 @@ private:
 	MegaMan *megaMan;
 	Ball *ball;
 	Bar *bar;
+	Bar *barRight;
 	//temp;
 	LPDIRECT3DSURFACE9 t;
 public:

@@ -15,7 +15,7 @@ private:
 	float velocityY;
 public:
 	CollisionRect();
-	CollisionRect(int top,int left,int width,int height,int vx,int xy);
+	CollisionRect(int top,int left,int width,int height,float vx,float xy);
 	~CollisionRect();
 	
 	bool IsIntersect(CollisionRect CRect);

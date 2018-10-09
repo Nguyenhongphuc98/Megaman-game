@@ -105,14 +105,16 @@ void Window::StartProgram()
 
 		currentFrameTime = GetTickCount();
 		delta = currentFrameTime - lastFrameTime;
-		if(delta>=tickPerFrame)
+		//if(delta>=tickPerFrame)
 		{
 			lastFrameTime = currentFrameTime;
-			myGame.RunGame(delta);
+			//myGame.RunGame(delta);
+			myGame.RunGame(tickPerFrame);
 		}
-		else
+		//else
 		{
-			Sleep(tickPerFrame-delta);
+			//Sleep(tickPerFrame-delta);
+			Sleep(10);
 		}
 
 	}

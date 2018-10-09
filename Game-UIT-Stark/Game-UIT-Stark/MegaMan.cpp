@@ -56,7 +56,7 @@ void MegaMan::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 void MegaMan::Render()
 {
 	//animation->ListSprite[status]->Render();
-	animation->Render(Global::RIGHT, Global::STAND, D3DXVECTOR3(locationX, locationY, 0));
+	animation->Render(Global::RIGHT, Global::STAND, D3DXVECTOR3(locationX, locationY, 0), D3DXVECTOR3(3, 3, 0));
 	animation->NextFrame(Global::STAND);
 }
 
@@ -79,6 +79,8 @@ CollisionRect MegaMan::GetBound()
 
 MegaMan::MegaMan()
 {
+	locationX = 300;
+	locationY = 100;
 	status = Global::STAND;
 	LoadResource();
 }

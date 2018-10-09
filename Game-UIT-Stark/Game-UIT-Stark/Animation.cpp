@@ -32,7 +32,7 @@ void Animation::Render(Global::Direction direction,
 	//this->ListSprite[status]->setCenter(rotationCenter);
 
 	//this->UpdateDirection(status, direction);
-	this->ListSprite[status]->Render();
+	this->ListSprite[status]->Render(D3DXVECTOR2(scale.x,scale.y));
 }
 
 void Animation::NextFrame(Global::Status status)

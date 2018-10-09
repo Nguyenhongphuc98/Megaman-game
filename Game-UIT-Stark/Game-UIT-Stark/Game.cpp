@@ -6,9 +6,9 @@ Game::Game()
 	megaMan = MegaMan::Instance();
 	ball = new Ball();
 	bar = new Bar();
-
-	t= Graphic::Instance()->LoadSurface("bground.png");
-
+	bar->SetLocation(30, 180);
+	barRight = new Bar();
+	barRight->SetLocation(760, 200);
 }
 
 Game::~Game()
@@ -30,6 +30,8 @@ void Game::LoadResource()
 void Game::ProcessInput()
 {
 	//Trace::Log("on process input");
+#pragma region Keyboard
+
 	FKeyBoard *keyboard = FKeyBoard::getInstance();
 	keyboard->Update();
 	if (keyboard->IsKeyDown(DIK_LEFT))
@@ -47,7 +49,7 @@ void Game::ProcessInput()
 	}
 
 	if (keyboard->IsKeyDown(DIK_UP))
-	{		
+	{
 		bar->SetDirection(Global::UP);
 		bar->SetStatus(Global::RUN);
 	}
@@ -69,14 +71,28 @@ void Game::ProcessInput()
 		bar->SetStatus(Global::STAND);
 		Trace::Log("key up");
 	}
+#pragma endregion
+
+#pragma region Mouse
+	//FMouse *mouse = FMouse::GetInstance();
+	//mouse->Poll_Mouse();
+	//if (mouse->Mouse_Button(1)) {
+	//	Global::Notify("Chuot trai", "chuot");
+	//}
+#pragma endregion
+
 }
 
 void Game::Update(float deta)
 {
 	//update current sense
 	vector<Object*> list;
-	megaMan->Update(deta, list);
+	list.clear();
+	list.push_back(bar);
+	list.push_back(barRight);
+	//megaMan->Update(deta, list);
 	bar->Update(deta, list);
+	ball->Update(deta, list);
 }
 
 void Game::Render()
@@ -98,20 +114,13 @@ void Game::Render()
 
 		//draw current sence here
 		spriteHander->Begin(D3DXSPRITE_ALPHABLEND);
-		RECT *rSource=new RECT;
-		rSource->top = 10;
-		rSource->left = 590;
-		rSource->right = 846;
-		rSource->bottom = 175;
-		//spriteHander->Draw(t, rSource, &D3DXVECTOR3(-100, -100, 0),
-		//	&D3DXVECTOR3(0, 0, 0), D3DCOLOR_XRGB(255, 255, 255));
-		graphics->DrawSurface(t, rSource, NULL);
-		megaMan->Render();
+
+	//	megaMan->Render();
 		ball->Render();
 		bar->Render();
+		barRight->Render();
 		spriteHander->End();
 
-		
 		device->EndScene();
 	}
 	device->Present(NULL, NULL, NULL, NULL);
