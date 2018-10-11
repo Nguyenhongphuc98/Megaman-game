@@ -74,11 +74,12 @@ void Game::ProcessInput()
 #pragma endregion
 
 #pragma region Mouse
-	//FMouse *mouse = FMouse::GetInstance();
-	//mouse->Poll_Mouse();
-	//if (mouse->Mouse_Button(1)) {
-	//	Global::Notify("Chuot trai", "chuot");
-	//}
+	/*FMouse *mouse = FMouse::GetInstance();
+	mouse->Poll_Mouse();
+	if (mouse->Mouse_Button(1)) {
+		Global::Notify("Chuot trai", "chuot");
+	}*/
+
 #pragma endregion
 
 }

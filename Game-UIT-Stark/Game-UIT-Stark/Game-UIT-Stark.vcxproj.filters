@@ -162,6 +162,9 @@
     <ClInclude Include="FMouse.h">
       <Filter>BaseFrameWork\include</Filter>
     </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>BaseFrameWork\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -228,6 +231,9 @@
       <Filter>GameObject\src</Filter>
     </ClCompile>
     <ClCompile Include="FMouse.cpp">
+      <Filter>BaseFrameWork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
       <Filter>BaseFrameWork\src</Filter>
     </ClCompile>
   </ItemGroup>
