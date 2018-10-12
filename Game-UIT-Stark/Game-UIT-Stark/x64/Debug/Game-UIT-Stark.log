@@ -1,3 +1,10 @@
-﻿  Game.cpp
+﻿  FMouse.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Game.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Window.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\documents\gamedevelopment\game\game\game-uit-stark\game-uit-stark\window.cpp(95): warning C4244: 'initializing': conversion from 'DWORD' to 'float', possible loss of data
+d:\documents\gamedevelopment\game\game\game-uit-stark\game-uit-stark\window.cpp(106): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+  Generating Code...
   Game-UIT-Stark.vcxproj -> D:\DOCUMENTS\GameDevelopment\Game\Game\Game-UIT-Stark\x64\Debug\Game-UIT-Stark.exe

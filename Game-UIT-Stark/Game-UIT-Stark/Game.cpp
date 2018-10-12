@@ -1,6 +1,7 @@
 #include"Game.h"
 RECT *rSource;
 
+
 Game::Game()
 {
 	megaMan = MegaMan::Instance();
@@ -15,13 +16,19 @@ Game::~Game()
 {
 }
 
-void Game::Init()
+void Game::Init(HINSTANCE hInstance, HWND hWnd)
 {
+	
 	//khoi tao source
+	_HInstance = hInstance;
+	_HWnd = hWnd;
+
+	FMouse::Init(_HInstance, _HWnd);
 }
 
 void Game::LoadResource()
 {
+	
 	//load resource man dau tien
 
 	
@@ -71,15 +78,37 @@ void Game::ProcessInput()
 		bar->SetStatus(Global::STAND);
 		Trace::Log("key up");
 	}
+
 #pragma endregion
 
 #pragma region Mouse
-	/*FMouse *mouse = FMouse::GetInstance();
-	mouse->Poll_Mouse();
-	if (mouse->Mouse_Button(1)) {
-		Global::Notify("Chuot trai", "chuot");
-	}*/
+	
+	FMouse::ProcessMouseInformation();
+	
 
+		if (FMouse::GetMouse(0))
+		{
+			barRight->SetDirection(Global::DOWN);
+			barRight->SetStatus(Global::RUN);
+			Trace::Log("key up");
+		}
+		if (FMouse::GetMouse(1))
+		{
+			barRight->SetDirection(Global::UP);
+			barRight->SetStatus(Global::RUN);
+			Trace::Log("key up");
+		}
+		/*if (keyboard->IsKeyUp(DIK_LEFT) || keyboard->IsKeyUp(DIK_RIGHT))
+		{
+			megaMan->SetStatus(Global::STAND);
+			Trace::Log("key up");
+		}*/
+		if (!(FMouse::GetMouse(1) || FMouse::GetMouse(0)))
+		{
+			barRight->SetStatus(Global::STAND);
+			Trace::Log("key up");
+		}
+	FMouse::ClearBuffedInput();
 #pragma endregion
 
 }
@@ -93,6 +122,7 @@ void Game::Update(float deta)
 	list.push_back(barRight);
 	//megaMan->Update(deta, list);
 	bar->Update(deta, list);
+	barRight->Update(deta, list);
 	ball->Update(deta, list);
 }
 

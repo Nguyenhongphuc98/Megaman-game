@@ -87,7 +87,7 @@ char * Window::GetTitle()
 void Window::StartProgram()
 {
 	Game myGame;
-	myGame.Init();
+	myGame.Init(windowHinstance, windowHWND);
 	MSG msg;
 
 	float tickPerFrame = 1000/MAX_FRAME_RATE; //tickPerframe max_frame_rate - 1k tick -> a tick=1k/max

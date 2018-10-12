@@ -19,11 +19,16 @@ private:
 	Bar *barRight;
 	//temp;
 	LPDIRECT3DSURFACE9 t;
+
+	HINSTANCE _HInstance; //handle for a window instance
+	HWND _HWnd;
+
 public:
 	Game();
 	~Game();
 
-	void Init();
+	bool InitGame();
+	void Init(HINSTANCE hInstance, HWND hWnd);
 	void LoadResource();
 
 	void ProcessInput();
