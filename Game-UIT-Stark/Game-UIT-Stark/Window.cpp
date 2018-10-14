@@ -92,9 +92,7 @@ void Window::StartProgram()
 
 	float tickPerFrame = 1000/MAX_FRAME_RATE; //tickPerframe max_frame_rate - 1k tick -> a tick=1k/max
 	float delta = 0;
-	float lastFrameTime = GetTickCount();
-	float currentFrameTime;
-
+	float lastFrameTime = GetTickCount();	
 
 	while (true)
 	{

@@ -43,7 +43,7 @@ void Bar::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 void Bar::Render()
 {
 	animation->Render(Global::RIGHT, Global::STAND, D3DXVECTOR3(locationX, locationY, 0), D3DXVECTOR3(0.5, 1, 0));
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void Bar::RenderBoundingBox()
@@ -63,7 +63,7 @@ void Bar::RenderBoundingBox()
 
 CollisionRect Bar::GetBound()
 {
-	return CollisionRect(locationY-2,locationX-2,BAR_WIDTH+2,BAR_HEIGHT+2,velocityX,velocityY);
+	return CollisionRect(locationY,locationX,BAR_WIDTH,BAR_HEIGHT,velocityX,velocityY);
 }
 
 void Bar::SetStatus(Global::Status status)

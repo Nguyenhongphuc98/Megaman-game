@@ -26,7 +26,7 @@ Ball::~Ball()
 
 CollisionRect Ball::GetBound()
 {
-	return CollisionRect(locationY-2, locationX-2,BALL_WIDTH+2,BALL_HEIGHT+2,velocityX,velocityY);
+	return CollisionRect(locationY, locationX,BALL_WIDTH,BALL_HEIGHT,velocityX,velocityY);
 }
 
 void Ball::Render()
@@ -40,7 +40,7 @@ void Ball::Render()
 void Ball::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 {
 	Object::Update(deltaTime);
-
+	
 	ResultColision r;
 	for (int i = 0; i < List_Object_Can_Collision.size(); i++)
 	{

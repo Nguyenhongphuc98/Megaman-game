@@ -3,14 +3,13 @@
 #define _Ball_H_
 #include"Object.h"
 
-#define BALL_SPEED 0.15f
+#define BALL_SPEED 0.18f
 #define BALL_WIDTH 57
 #define BALL_HEIGHT 57
 
 class Ball:public Object
 {
 private:
-	LPDIRECT3DSURFACE9 boundingbox;
 public:
 	Ball();
 	~Ball();
