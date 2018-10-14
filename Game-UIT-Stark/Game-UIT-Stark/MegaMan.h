@@ -13,6 +13,8 @@ private:
 	Global::Status status;
 	Global::Direction direction;
 	static MegaMan* instance;
+
+	int tempAllowRender = 0;
 public:
 	virtual void LoadResource();
 	virtual void Update(float deltaTime, vector<Object*> List_Object_Can_Collision);

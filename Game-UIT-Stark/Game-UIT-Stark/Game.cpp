@@ -151,12 +151,13 @@ void Game::Render()
 		//draw current sence here
 		spriteHander->Begin(D3DXSPRITE_ALPHABLEND);
 
-	//	megaMan->Render();
+		
 		ball->Render();
 		bar->Render();
 		barRight->Render();
 		top->Render();
 		bottom->Render();
+		megaMan->Render();
 
 		spriteHander->End();
 
