@@ -98,23 +98,23 @@ void Window::StartProgram()
 
 	while (true)
 	{
+		Timer::Instance()->StartCounter();
 		if (PeekMessageA(&msg, Window::Instance()->GetHWND(), 0, 0, PM_REMOVE)) {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
 
-		currentFrameTime = GetTickCount();
-		delta = currentFrameTime - lastFrameTime;
-		//if(delta>=tickPerFrame)
+		delta+= Timer::Instance()->GetCouter();
+		if(delta>=tickPerFrame)
 		{
-			lastFrameTime = currentFrameTime;
-			//myGame.RunGame(delta);
-			myGame.RunGame(tickPerFrame);
+			myGame.RunGame(delta);
+			delta = 0;
 		}
-		//else
+		else
 		{
-			//Sleep(tickPerFrame-delta);
-			Sleep(10);
+			Sleep(tickPerFrame-delta);
+			delta = tickPerFrame;
+			//Sleep(10);
 		}
 
 	}

@@ -3,6 +3,7 @@
 #define _Window_H_
 
 #include"define.h"
+#include"Timer.h"
 
 using namespace std;
 

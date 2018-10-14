@@ -42,23 +42,15 @@ void Ball::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 	Object::Update(deltaTime);
 
 	ResultColision r;
-	/*for (int i = 0; i < List_Object_Can_Collision.size(); i++)
+	for (int i = 0; i < List_Object_Can_Collision.size(); i++)
 	{
 		r = this->ProcessCollision(List_Object_Can_Collision[i]);
 		if (r.collision)
 			break;
-	}*/
+	}
 
-	r=Collision::Instance()->ProcessCollisionSweptAABB(this->GetBound(), List_Object_Can_Collision[0]->GetBound());
-	if (r.collision==false)
-	//bool b=false;
-	//for (int i = 0; i < List_Object_Can_Collision.size(); i++)
-	//{
-	//	b = this->GetBound().IsIntersect(List_Object_Can_Collision[i]->GetBound());
-	//	if (b)
-	//		break;
-	//}
-	//if(!b)
+
+	if (r.collision == false)
 	{
 		locationX += dx;
 		locationY += dy;
@@ -70,32 +62,36 @@ void Ball::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 		// block 
 		locationX += (r.timeToColision * dx + r.velocityX * 0.4f);		// nx*0.4f : need to push out a bit to avoid overlapping next frame
 		locationY += (r.timeToColision * dy + r.velocityY * 0.4f);
-		
-		if (r.velocityX!=0)
+
+		if (r.velocityX == -1)
 		{
 			velocityX = -BALL_SPEED;
+			Trace::Log("X=-1");
 		}
-		
-		if (r.velocityY)
+
+		if (r.velocityX == 1)
+		{
+			velocityX = BALL_SPEED;
+			Trace::Log("X=1");
+		}
+
+		if (r.velocityY == -1)
 		{
 			velocityY = -BALL_SPEED;
+			Trace::Log("Y=-1");
 		}
-		
-
+		if (r.velocityY == 1)
+		{
+			velocityY = BALL_SPEED;
+			Trace::Log("Y=1");
+		}
 	}
 }
 
 void Ball::RenderBoundingBox()
 {
-	Graphic *g = Graphic::Instance();
-	//RECT *r = new RECT();
-	//r->top = this->locationY-2;
-	//r->left = this->locationX-2;
-	//r->right = r->left + BALL_WIDTH+3;
-	//r->bottom = r->top + BALL_HEIGHT+3;
-
 	RECT r;
 	r = Global::ConvertCollisionRectToRECT(GetBound());
 
-	g->DrawSurface(boundingbox,NULL,&r);
+	Graphic::Instance()->DrawSurface(boundingbox, NULL, &r);
 }

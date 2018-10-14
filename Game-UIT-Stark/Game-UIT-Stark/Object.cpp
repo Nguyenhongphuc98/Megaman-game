@@ -9,6 +9,7 @@ Object::Object()
 	velocityY = 0.0f;
 
 	animation = new Animation();
+	boundingbox = Graphic::Instance()->CreateSurface(D3DCOLOR_XRGB(0, 122, 204));
 }
 
 Object::~Object()
@@ -24,6 +25,7 @@ Object::Object(Global::IdObject id, int x, int y, float vx, float vy, int w, int
 	this->velocityY = vy;
 	this->width = w;
 	this->height = h;
+	boundingbox = Graphic::Instance()->CreateSurface(D3DCOLOR_XRGB(0, 122, 204));
 }
 //
 //CollisionRect Object::GetBound()
@@ -55,6 +57,10 @@ void Object::Update(DWORD dt)
 
 void Object::RenderBoundingBox()
 {
+	RECT r;
+	r = Global::ConvertCollisionRectToRECT(GetBound());
+
+	Graphic::Instance()->DrawSurface(boundingbox, NULL, &r);
 }
 
 Global::IdObject Object::GetIdObject()

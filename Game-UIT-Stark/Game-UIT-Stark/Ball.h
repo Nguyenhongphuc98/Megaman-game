@@ -3,7 +3,7 @@
 #define _Ball_H_
 #include"Object.h"
 
-#define BALL_SPEED -0.13f
+#define BALL_SPEED 0.15f
 #define BALL_WIDTH 57
 #define BALL_HEIGHT 57
 

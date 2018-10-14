@@ -12,6 +12,7 @@ protected:
 	Global::IdObject	idObject;
 	Global::Team		team;
 	Animation *animation;
+	LPDIRECT3DSURFACE9 boundingbox;
 
 	int locationX; //left
 	int locationY; //top

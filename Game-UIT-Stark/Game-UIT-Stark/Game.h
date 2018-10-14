@@ -9,6 +9,7 @@
 #include "MegaMan.h"
 #include"Ball.h"
 #include"Bar.h"
+#include"Wall.h"
 
 class Game
 {
@@ -17,8 +18,8 @@ private:
 	Ball *ball;
 	Bar *bar;
 	Bar *barRight;
-	//temp;
-	LPDIRECT3DSURFACE9 t;
+	Wall *bottom;
+	Wall *top;
 
 	HINSTANCE _HInstance; //handle for a window instance
 	HWND _HWnd;

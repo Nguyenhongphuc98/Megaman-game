@@ -75,7 +75,7 @@ void Bar::SetStatus(Global::Status status)
 		//set x,y lai vi trang thi khac nhau thi boundingbox khac nhau
 		velocityX = 0;
 		velocityY = 0;
-		Trace::Log("stand bar");
+		//Trace::Log("stand bar");
 		break;
 	case Global::RUN:
 		if (this->direction == Global::UP)

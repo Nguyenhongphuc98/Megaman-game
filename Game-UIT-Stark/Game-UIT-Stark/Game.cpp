@@ -6,10 +6,16 @@ Game::Game()
 {
 	megaMan = MegaMan::Instance();
 	ball = new Ball();
+
 	bar = new Bar();
-	bar->SetLocation(30, 180);
+	bar->SetLocation(31, 180);
 	barRight = new Bar();
-	barRight->SetLocation(760, 200);
+	barRight->SetLocation(771, 200);
+
+	top = new Wall();
+	top->SetLocation(0, 1);
+	bottom = new Wall();
+	bottom->SetLocation(0, 579);
 }
 
 Game::~Game()
@@ -90,23 +96,19 @@ void Game::ProcessInput()
 		{
 			barRight->SetDirection(Global::DOWN);
 			barRight->SetStatus(Global::RUN);
-			Trace::Log("key up");
+			Trace::Log("Mouse left");
 		}
 		if (FMouse::GetMouse(1))
 		{
 			barRight->SetDirection(Global::UP);
 			barRight->SetStatus(Global::RUN);
-			Trace::Log("key up");
+			Trace::Log("Mouse right");
 		}
-		/*if (keyboard->IsKeyUp(DIK_LEFT) || keyboard->IsKeyUp(DIK_RIGHT))
-		{
-			megaMan->SetStatus(Global::STAND);
-			Trace::Log("key up");
-		}*/
+
 		if (!(FMouse::GetMouse(1) || FMouse::GetMouse(0)))
 		{
 			barRight->SetStatus(Global::STAND);
-			Trace::Log("key up");
+			//Trace::Log("key up");
 		}
 	FMouse::ClearBuffedInput();
 #pragma endregion
@@ -120,6 +122,9 @@ void Game::Update(float deta)
 	list.clear();
 	list.push_back(bar);
 	list.push_back(barRight);
+	list.push_back(top);
+	list.push_back(bottom);
+
 	//megaMan->Update(deta, list);
 	bar->Update(deta, list);
 	barRight->Update(deta, list);
@@ -150,6 +155,9 @@ void Game::Render()
 		ball->Render();
 		bar->Render();
 		barRight->Render();
+		top->Render();
+		bottom->Render();
+
 		spriteHander->End();
 
 		device->EndScene();

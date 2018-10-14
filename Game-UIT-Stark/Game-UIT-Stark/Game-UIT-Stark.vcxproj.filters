@@ -165,6 +165,12 @@
     <ClInclude Include="Vector2.h">
       <Filter>BaseFrameWork\include</Filter>
     </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>GameObject\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>BaseFrameWork\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -234,6 +240,12 @@
       <Filter>BaseFrameWork\src</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
+      <Filter>BaseFrameWork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>GameObject\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
       <Filter>BaseFrameWork\src</Filter>
     </ClCompile>
   </ItemGroup>
