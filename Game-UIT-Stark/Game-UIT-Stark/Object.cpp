@@ -51,8 +51,10 @@ ResultColision Object::ProcessCollision(Object * object)
 void Object::Update(DWORD dt)
 {
 	this->dt = dt;
-	dx = velocityX * dt;
-	dy = velocityY * dt;
+	/*dx = velocityX * dt;
+	dy = velocityY * dt;*/
+	dx = velocityX;
+	dy = velocityY;
 }
 
 void Object::RenderBoundingBox()

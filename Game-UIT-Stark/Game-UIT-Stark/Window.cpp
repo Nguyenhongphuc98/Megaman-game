@@ -105,6 +105,7 @@ void Window::StartProgram()
 		delta+= Timer::Instance()->GetCouter();
 		if(delta>=tickPerFrame)
 		{
+			//Trace::Log("%f", delta);// log cái này ra dùm anh
 			myGame.RunGame(delta);
 			delta = 0;
 		}

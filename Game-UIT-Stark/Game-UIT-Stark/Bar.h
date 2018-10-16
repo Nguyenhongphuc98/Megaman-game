@@ -4,7 +4,7 @@
 #include"Object.h"
 #include"Global.h"
 
-#define BAR_RUN_SPEED 0.2f
+#define BAR_RUN_SPEED 2.0f
 #define BAR_WIDTH 24
 #define BAR_HEIGHT 192
 #define BAR_A 2

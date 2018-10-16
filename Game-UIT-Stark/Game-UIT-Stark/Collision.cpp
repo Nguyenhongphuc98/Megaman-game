@@ -69,8 +69,8 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 	}
 	else
 	{
-		this->tXToCollision = this->sXToCollision / vx;
-		this->tXToEndCollision = this->sXToEndCollision / vx;
+		this->tXToCollision = this->sXToCollision / (vx);
+		this->tXToEndCollision = this->sXToEndCollision / (vx);
 	}
 
 	/* tính thời gian để xảy ra va chạm theo Y	*/
@@ -81,8 +81,8 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 	}
 	else
 	{
-		this->tYToCollision = this->sYToCollision / vy;
-		this->tYToEndCollision = this->sYToEndCollision / vy;
+		this->tYToCollision = this->sYToCollision / (vy);
+		this->tYToEndCollision = this->sYToEndCollision / (vy);
 	}
 
 	/* tính toán kết quả của va chạm */
@@ -113,7 +113,7 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 		{
 			result.velocityY = 0.0f;
 			//sx
-			if (vx < 0.0f)
+			if (sXToCollision < 0.0f)
 				result.velocityX = 1.0f;
 			else
 				result.velocityX = -1.0f;
@@ -122,7 +122,7 @@ ResultColision Collision::ProcessCollisionSweptAABB(CollisionRect object1, Colli
 		{
 			result.velocityX = 0.0f;
 			//sy
-			if (vy < 0.0f)
+			if (sYToCollision < 0.0f)
 				result.velocityY = 1.0f;
 			else
 				result.velocityY = -1.0f;

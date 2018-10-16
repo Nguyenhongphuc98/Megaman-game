@@ -6,6 +6,7 @@ Ball::Ball()
 	locationY = 200;
 
 	velocityX = velocityY = BALL_SPEED;
+	
 
 	vector<RECT*> listSourceRectStand;
 	RECT *r1 = new RECT;
