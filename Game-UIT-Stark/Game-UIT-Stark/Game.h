@@ -20,6 +20,8 @@ private:
 	Bar *barRight;
 	Wall *bottom;
 	Wall *top;
+	Wall *left;
+	Wall *right;
 
 	HINSTANCE _HInstance; //handle for a window instance
 	HWND _HWnd;

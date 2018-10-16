@@ -8,14 +8,23 @@ Game::Game()
 	ball = new Ball();
 
 	bar = new Bar();
-	bar->SetLocation(31, 180);
+	bar->SetLocation(100, 180);
 	barRight = new Bar();
-	barRight->SetLocation(771, 200);
+	barRight->SetLocation(700, 200);
 
+	//wall
 	top = new Wall();
+	top->SetStatus(Global::HORIZONTAL);
 	top->SetLocation(0, 1);
 	bottom = new Wall();
+	bottom->SetStatus(Global::HORIZONTAL);
 	bottom->SetLocation(0, 579);
+	left = new Wall();
+	left->SetStatus(Global::VERTICAL);
+	left->SetLocation(0, 0);
+	right = new Wall();
+	right->SetStatus(Global::VERTICAL);
+	right->SetLocation(780, 0);
 }
 
 Game::~Game()
@@ -124,6 +133,8 @@ void Game::Update(float deta)
 	list.push_back(barRight);
 	list.push_back(top);
 	list.push_back(bottom);
+	list.push_back(left);
+	list.push_back(right);
 
 	//megaMan->Update(deta, list);
 	bar->Update(deta, list);
@@ -158,6 +169,8 @@ void Game::Render()
 		top->Render();
 		bottom->Render();
 		megaMan->Render();
+		left->Render();
+		right->Render();
 
 		spriteHander->End();
 

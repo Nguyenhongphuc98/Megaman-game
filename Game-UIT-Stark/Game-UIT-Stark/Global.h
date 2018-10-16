@@ -27,6 +27,8 @@ public:
 		RUN,
 		JUMP,
 		STAND,
+		VERTICAL,
+		HORIZONTAL
 	};
 
 	enum  Direction
