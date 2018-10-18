@@ -14,8 +14,8 @@ protected:
 	Animation *animation;
 	LPDIRECT3DSURFACE9 boundingbox;
 
-	int locationX; //left
-	int locationY; //top
+	float locationX; //left
+	float locationY; //top
 
 	float dx; //quang duong thuc su se di / frame -> dx=v*dt	
 	float dy;
@@ -23,8 +23,8 @@ protected:
 	float velocityX;
 	float velocityY;
 
-	int width;
-	int height;
+	float width;
+	float height;
 
 	DWORD dt;
 
@@ -32,7 +32,7 @@ public:
 	Object();
 	~Object();
 
-	Object(Global::IdObject idObject, int x, int y, float vx, float vy, int w, int h);
+	Object(Global::IdObject idObject, float x, float y, float vx, float vy, float w, float h);
 	virtual CollisionRect	GetBound()=0;
 	Global::IdObject GetIdObject();
 	ResultColision			ProcessCollision(Object *object);
@@ -40,17 +40,17 @@ public:
 	virtual void			Render() {};
 	virtual void RenderBoundingBox();
 
-	int GetWidth();
-	int GetHeight();
-	int GetLocationX();
-	int GetLocationY();
-	int GetVelocityX();
-	int GetVelocityY();
+	float GetWidth();
+	float GetHeight();
+	float GetLocationX();
+	float GetLocationY();
+	float GetVelocityX();
+	float GetVelocityY();
 	Global::Team GetTeam();
 
-	void SetVelocityX(int vx);
-	void SetVelocityY(int vy);
-	void SetLocation(int x, int y);
+	void SetVelocityX(float vx);
+	void SetVelocityY(float vy);
+	void SetLocation(float x, float y);
 };
 
 #endif // !_Object_H_

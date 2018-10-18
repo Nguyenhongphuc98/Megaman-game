@@ -4,7 +4,7 @@ CollisionRect::CollisionRect()
 {
 }
 
-CollisionRect::CollisionRect(int top, int left, int width, int height, float vx, float vy)
+CollisionRect::CollisionRect(float top, float left, float width, float height, float vx, float vy)
 {
 	this->top = top;
 	this->left = left;
@@ -19,10 +19,10 @@ CollisionRect::~CollisionRect()
 
 bool CollisionRect::IsIntersect(CollisionRect CRect)
 {
-	return !(this->left>(CRect.left+CRect.width)
-		||this->top<(CRect.top-CRect.height)
-		||(this->left+width)<CRect.left
-		||(this->top-height)>CRect.top);
+	return !(this->left > (CRect.left + CRect.width)
+		|| this->top > (CRect.top + CRect.height)
+		|| (this->left + this->width) < CRect.left
+		|| (this->top + this->height) < CRect.top);
 }
 
 bool CollisionRect::IsContain(CollisionRect CRect)
@@ -53,22 +53,22 @@ float CollisionRect::GetVelocityY()
 	return this->velocityY;
 }
 
-int CollisionRect::GetTop()
+float CollisionRect::GetTop()
 {
 	return this->top;
 }
 
-int CollisionRect::GetLeft()
+float CollisionRect::GetLeft()
 {
 	return this->left;
 }
 
-int CollisionRect::GetWidth()
+float CollisionRect::GetWidth()
 {
 	return this->width;
 }
 
-int CollisionRect::GetHeight()
+float CollisionRect::GetHeight()
 {
 	return this->height;
 }

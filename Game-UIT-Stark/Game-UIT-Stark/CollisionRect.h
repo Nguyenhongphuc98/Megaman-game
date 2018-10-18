@@ -6,16 +6,16 @@
 class CollisionRect
 {
 private:
-	int top; //y
-	int left;//x
-	int width;
-	int height;
+	float top; //y
+	float left;//x
+	float width;
+	float height;
 
 	float velocityX;
 	float velocityY;
 public:
 	CollisionRect();
-	CollisionRect(int top,int left,int width,int height,float vx,float xy);
+	CollisionRect(float top, float left, float width, float height,float vx,float xy);
 	~CollisionRect();
 	
 	bool IsIntersect(CollisionRect CRect);
@@ -27,10 +27,10 @@ public:
 	void SetVelocityY(float v);
 	float GetVelocityY();
 
-	int GetTop();
-	int GetLeft();
-	int GetWidth();
-	int GetHeight();
+	float GetTop();
+	float GetLeft();
+	float GetWidth();
+	float GetHeight();
 };
 
 #endif // !_CollisionRect_H_

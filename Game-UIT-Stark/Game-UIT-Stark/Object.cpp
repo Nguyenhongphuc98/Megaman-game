@@ -16,7 +16,7 @@ Object::~Object()
 {
 }
 
-Object::Object(Global::IdObject id, int x, int y, float vx, float vy, int w, int h)
+Object::Object(Global::IdObject id, float x, float y, float vx, float vy, float w, float h)
 {
 	this->idObject = id;
 	this->locationX = x;
@@ -51,10 +51,10 @@ ResultColision Object::ProcessCollision(Object * object)
 void Object::Update(DWORD dt)
 {
 	this->dt = dt;
-	//dx = velocityX * dt;
-	//dy = velocityY * dt;
-	dx = velocityX;
-	dy = velocityY;
+	dx = velocityX * dt;
+	dy = velocityY * dt;
+	//dx = velocityX;
+	//dy = velocityY;
 }
 
 void Object::RenderBoundingBox()
@@ -70,32 +70,32 @@ Global::IdObject Object::GetIdObject()
 	return this->idObject;
 }
 
-int Object::GetWidth()
+float Object::GetWidth()
 {
 	return this->width;
 }
 
-int Object::GetHeight()
+float Object::GetHeight()
 {
 	return this->height;
 }
 
-int Object::GetLocationX()
+float Object::GetLocationX()
 {
 	return locationX;
 }
 
-int Object::GetLocationY()
+float Object::GetLocationY()
 {
 	return this->locationY;
 }
 
-int Object::GetVelocityX()
+float Object::GetVelocityX()
 {
 	return velocityX;
 }
 
-int Object::GetVelocityY()
+float Object::GetVelocityY()
 {
 	return this->velocityY;
 }
@@ -105,17 +105,17 @@ Global::Team Object::GetTeam()
 	return this->team;
 }
 
-void Object::SetVelocityX(int vx)
+void Object::SetVelocityX(float vx)
 {
 	this->velocityX = vx;
 }
 
-void Object::SetVelocityY(int vy)
+void Object::SetVelocityY(float vy)
 {
 	this->velocityY = vy;
 }
 
-void Object::SetLocation(int x, int y)
+void Object::SetLocation(float x, float y)
 {
 	locationX = x;
 	locationY = y;

@@ -38,6 +38,11 @@ void Bar::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 	//if listCollision.size=0 => 0 va cham
 	locationX += dx*BAR_A;
 	locationY += dy * BAR_A;
+
+	if (locationY >= 388)
+		locationY = 387;
+	if (locationY <= 20)
+		locationY = 21;
 }
 
 void Bar::Render()

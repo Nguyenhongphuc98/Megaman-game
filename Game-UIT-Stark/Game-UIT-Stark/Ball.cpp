@@ -27,7 +27,7 @@ Ball::~Ball()
 
 CollisionRect Ball::GetBound()
 {
-	return CollisionRect(locationY, locationX,BALL_WIDTH,BALL_HEIGHT,velocityX,velocityY);
+	return CollisionRect(locationY, locationX,BALL_WIDTH,BALL_HEIGHT,dx,dy);
 }
 
 void Ball::Render()
@@ -41,17 +41,18 @@ void Ball::Render()
 void Ball::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 {
 	Object::Update(deltaTime);
-	
-	ResultColision r;
+
+
+	vector<ResultColision> ListResultCo;
 	for (int i = 0; i < List_Object_Can_Collision.size(); i++)
 	{
-		r = this->ProcessCollision(List_Object_Can_Collision[i]);
+		ResultColision r = this->ProcessCollision(List_Object_Can_Collision[i]);
 		if (r.collision)
-			break;
+			ListResultCo.push_back(r);
 	}
 
 
-	if (r.collision == false)
+	if (ListResultCo.size() == 0)
 	{
 		locationX += dx;
 		locationY += dy;
@@ -61,27 +62,42 @@ void Ball::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 		Trace::Log("collision");
 		//Global::Notify("collision", "notify");
 		// block 
-		locationX += (r.timeToColision * dx + r.velocityX * 0.4f);		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-		locationY += (r.timeToColision * dy + r.velocityY * 0.4f);
 
-		if (r.velocityX == -1)
+		//get tmin
+		float min_tx = 1.0f, min_ty = 1.0f, nx = 0, ny = 0;
+		for (int i = 0; i < ListResultCo.size(); i++) {
+			if (ListResultCo[i].timeToColision < min_tx && ListResultCo[i].velocityX != 0) {
+				min_tx = ListResultCo[i].timeToColision; nx = ListResultCo[i].velocityX;
+			}
+
+			if (ListResultCo[i].timeToColision < min_ty  && ListResultCo[i].velocityY != 0) {
+				min_ty = ListResultCo[i].timeToColision; ny = ListResultCo[i].velocityY;
+			}
+		}
+		//locationX += (r.timeToColision * dx + r.velocityX * 0.4f);		// nx*0.4f : need to push out a bit to avoid overlapping next frame
+		//locationY += (r.timeToColision * dy + r.velocityY * 0.4f);
+
+		locationX += (min_tx * dx + nx * 0.4f);		// nx*0.4f : need to push out a bit to avoid overlapping next frame
+		locationY += (min_ty * dy + ny * 0.4f);
+
+		if (nx == -1)
 		{
 			velocityX = -BALL_SPEED;
 			Trace::Log("X=-1");
 		}
 
-		if (r.velocityX == 1)
+		if (nx == 1)
 		{
 			velocityX = BALL_SPEED;
 			Trace::Log("X=1");
 		}
 
-		if (r.velocityY == -1)
+		if (ny == -1)
 		{
 			velocityY = -BALL_SPEED;
 			Trace::Log("Y=-1");
 		}
-		if (r.velocityY == 1)
+		if (ny == 1)
 		{
 			velocityY = BALL_SPEED;
 			Trace::Log("Y=1");

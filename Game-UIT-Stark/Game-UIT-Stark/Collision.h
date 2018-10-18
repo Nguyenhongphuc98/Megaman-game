@@ -9,8 +9,8 @@ struct ResultColision
 {
 	bool collision; //flag if collision it =true
 	float timeToColision; //thời gian để xảy ra va chạm tiếp theo
-	int velocityX; //hướng của vector theo x sau khi va chạm
-	int velocityY; //hướng của vector theo y sau khi va chạm
+	float velocityX; //hướng của vector theo x sau khi va chạm
+	float velocityY; //hướng của vector theo y sau khi va chạm
 };
 
 class  Collision

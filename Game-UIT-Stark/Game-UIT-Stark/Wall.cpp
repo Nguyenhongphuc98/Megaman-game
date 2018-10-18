@@ -40,13 +40,13 @@ CollisionRect Wall::GetBound()
 
 void Wall::Render()
 {
-	if (status == Global::VERTICAL) {
+	/*if (status == Global::VERTICAL) {
 		animation->Render(Global::RIGHT, Global::VERTICAL, D3DXVECTOR3(locationX, locationY, 0), D3DXVECTOR3(1, 1.5, 0));
 	}
 	else
-	{
+	{*/
 		Object::RenderBoundingBox();
-	}
+	//}
 
 }
 

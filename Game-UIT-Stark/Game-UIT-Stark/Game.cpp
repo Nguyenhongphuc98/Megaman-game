@@ -10,15 +10,15 @@ Game::Game()
 	bar = new Bar();
 	bar->SetLocation(100, 180);
 	barRight = new Bar();
-	barRight->SetLocation(700, 200);
+	barRight->SetLocation(650, 200);
 
 	//wall
 	top = new Wall();
 	top->SetStatus(Global::HORIZONTAL);
-	top->SetLocation(0, 1);
+	top->SetLocation(0, 0);
 	bottom = new Wall();
 	bottom->SetStatus(Global::HORIZONTAL);
-	bottom->SetLocation(0, 579);
+	bottom->SetLocation(0, 580);
 	left = new Wall();
 	left->SetStatus(Global::VERTICAL);
 	left->SetLocation(0, 0);
