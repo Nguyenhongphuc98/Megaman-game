@@ -3,6 +3,7 @@
 
 Bar::Bar()
 {
+	idObject = Global::BAR;
 	locationX = 30;
 	locationY = 80;
 	LoadResource();	
@@ -36,8 +37,8 @@ void Bar::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 	//get list collision
 
 	//if listCollision.size=0 => 0 va cham
-	locationX += dx*BAR_A;
-	locationY += dy * BAR_A;
+	locationX += dx;
+	locationY += dy;
 
 	if (locationY >= 388)
 		locationY = 387;

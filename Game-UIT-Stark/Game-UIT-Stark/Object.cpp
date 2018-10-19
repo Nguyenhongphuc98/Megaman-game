@@ -100,6 +100,16 @@ float Object::GetVelocityY()
 	return this->velocityY;
 }
 
+float Object::GetDx()
+{
+	return dx;
+}
+
+float Object::GetDy()
+{
+	return dy;
+}
+
 Global::Team Object::GetTeam()
 {
 	return this->team;

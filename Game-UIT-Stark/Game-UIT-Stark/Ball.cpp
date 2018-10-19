@@ -33,7 +33,7 @@ CollisionRect Ball::GetBound()
 void Ball::Render()
 {
 	
-	animation->Render(Global::RIGHT, Global::STAND, D3DXVECTOR3(locationX, locationY, 0), D3DXVECTOR3(0.5, 0.5, 0));
+	animation->Render(Global::RIGHT, Global::STAND, D3DXVECTOR3(locationX, locationY, 0), D3DXVECTOR3(0.25, 0.25, 0));
 	//animation->NextFrame(Global::STAND);
 //	RenderBoundingBox();
 }
@@ -44,11 +44,17 @@ void Ball::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 
 
 	vector<ResultColision> ListResultCo;
+	vector<Object*> Objects;
 	for (int i = 0; i < List_Object_Can_Collision.size(); i++)
 	{
 		ResultColision r = this->ProcessCollision(List_Object_Can_Collision[i]);
 		if (r.collision)
+		{
 			ListResultCo.push_back(r);
+			if(List_Object_Can_Collision[i]->GetIdObject()==Global::BAR)
+			Objects.push_back(List_Object_Can_Collision[i]);
+		}
+		
 	}
 
 
@@ -79,6 +85,11 @@ void Ball::Update(float deltaTime, vector<Object*> List_Object_Can_Collision)
 
 		locationX += (min_tx * dx + nx * 0.4f);		// nx*0.4f : need to push out a bit to avoid overlapping next frame
 		locationY += (min_ty * dy + ny * 0.4f);
+
+		//process colli bar
+		//for (int i = 0; i < Objects.size(); i++) {
+		//	Objects[i]->SetLocation(Objects[i]->GetLocationX(), Objects[i]->GetLocationY() - ny*Objects[i]->GetLocationY()*(1.0f - min_ty)-0.4f*ny);
+		//}
 
 		if (nx == -1)
 		{

@@ -3,9 +3,9 @@
 #define _Ball_H_
 #include"Object.h"
 
-#define BALL_SPEED 1.0f
-#define BALL_WIDTH 57
-#define BALL_HEIGHT 57
+#define BALL_SPEED 0.3f
+#define BALL_WIDTH 28
+#define BALL_HEIGHT 28
 
 class Ball:public Object
 {

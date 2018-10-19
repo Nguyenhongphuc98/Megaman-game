@@ -46,6 +46,8 @@ public:
 	float GetLocationY();
 	float GetVelocityX();
 	float GetVelocityY();
+	float GetDx();
+	float GetDy();
 	Global::Team GetTeam();
 
 	void SetVelocityX(float vx);

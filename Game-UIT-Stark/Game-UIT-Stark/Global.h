@@ -19,7 +19,8 @@ public:
 
 	//emum in game
 	enum IdObject {
-		GROUND
+		GROUND,
+		BAR
 	};
 
 	enum Status

@@ -136,10 +136,11 @@ void Game::Update(float deta)
 	list.push_back(left);
 	list.push_back(right);
 
+	ball->Update(deta, list);
 	//megaMan->Update(deta, list);
 	bar->Update(deta, list);
 	barRight->Update(deta, list);
-	ball->Update(deta, list);
+
 }
 
 void Game::Render()

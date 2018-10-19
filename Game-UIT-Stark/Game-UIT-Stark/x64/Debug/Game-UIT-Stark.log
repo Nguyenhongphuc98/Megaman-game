@@ -3,7 +3,7 @@
 d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\ball.cpp(43): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
   Bar.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\bar.cpp(33): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\bar.cpp(34): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
   Game.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
   Window.cpp
