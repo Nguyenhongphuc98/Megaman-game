@@ -69,7 +69,7 @@ void Bar::RenderBoundingBox()
 
 CollisionRect Bar::GetBound()
 {
-	return CollisionRect(locationY,locationX,BAR_WIDTH,BAR_HEIGHT,velocityX,velocityY);
+	return CollisionRect(locationY,locationX,BAR_WIDTH,BAR_HEIGHT,dx,dy);
 }
 
 void Bar::SetStatus(Global::Status status)
