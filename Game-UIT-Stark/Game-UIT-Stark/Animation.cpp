@@ -32,7 +32,19 @@ void Animation::Render(Global::Direction direction,
 	//this->ListSprite[status]->setCenter(rotationCenter);
 
 	//this->UpdateDirection(status, direction);
-	this->ListSprite[status]->Render(D3DXVECTOR2(scale.x,scale.y));
+	if (direction == Global::LEFT)
+	{
+		position.x += 60;//megaman width
+		this->ListSprite[status]->SetPosition(position);
+		this->ListSprite[status]->Render(D3DXVECTOR2(-scale.x, scale.y));
+		position.x -= 60;
+		this->ListSprite[status]->SetPosition(position);
+	}
+	else
+	{
+		this->ListSprite[status]->Render(D3DXVECTOR2(scale.x, scale.y));
+	}
+	
 }
 
 void Animation::NextFrame(Global::Status status)

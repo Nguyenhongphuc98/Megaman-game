@@ -1,6 +1,7 @@
 #pragma once
 #include "define.h"
 #include"Window.h"
+#include"Global.h"
 
 #ifndef _FKeyBoard_H_
 #define _FKeyBoard_H_

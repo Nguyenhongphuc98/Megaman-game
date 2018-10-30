@@ -4,8 +4,12 @@
 #include "Object.h"
 #include "Collision.h"
 #include "Global.h"
+#include"Camera.h"
 
-#define MEGAMAN_WALKING_SPEED 0.05f
+#define MEGAMAN_WALKING_SPEED 0.5f
+#define MEGAMAN_JUMP_SPEED 2.0f
+#define MEGAMAN_WIDTH 60
+#define MEGAMAN_HEIGHT 70
 
 class MegaMan:public Object
 {
@@ -19,7 +23,8 @@ public:
 	virtual void LoadResource();
 	virtual void Update(float deltaTime, vector<Object*> List_Object_Can_Collision);
 	virtual void Render();
-	virtual ResultColision ProcessCollision();
+	void RenderBoundingBox();
+	//virtual ResultColision ProcessCollision();
 
 	static MegaMan* Instance();
 	CollisionRect	GetBound() ;

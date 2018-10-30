@@ -1,14 +1,7 @@
-﻿  Ball.cpp
+﻿  MegaMan.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\ball.cpp(43): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-  Bar.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\bar.cpp(34): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-  Game.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Window.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\window.cpp(95): warning C4244: 'initializing': conversion from 'DWORD' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\window.cpp(114): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-  Generating Code...
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\megaman.cpp(182): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\megaman.cpp(185): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\megaman.cpp(252): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\game-uit-stark\game-uit-stark\megaman.cpp(254): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
   Game-UIT-Stark.vcxproj -> D:\IT\2018\Nhập môn game\Source-Code-Game\Game-UIT-Stark\x64\Debug\Game-UIT-Stark.exe

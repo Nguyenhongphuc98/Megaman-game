@@ -75,6 +75,7 @@ void Graphic::Init()
 		Global::Notify("Can't create spritehandler", "Error");
 		return;
 	}
+
 }
 
 LPDIRECT3DSURFACE9 Graphic::GetBackBuffer()
@@ -179,7 +180,7 @@ LPDIRECT3DTEXTURE9 Graphic::LoadTeture(char * filename, D3DCOLOR transparencyCol
 		infor.Width, //chiều rộng sprite
 		infor.Height,//chiều cao sprite
 		1,
-		D3DPOOL_DEFAULT,// kiểu surface
+		D3DUSAGE_DYNAMIC,//D3DPOOL_DEFAULT,// kiểu surface
 		D3DFMT_UNKNOWN, //định dạng
 		D3DPOOL_DEFAULT, //nơi lưu trữ ( bộ nhớ)
 		D3DX_DEFAULT, // bọ lọc ảnh
@@ -232,7 +233,7 @@ void Graphic::DrawTexture(LPDIRECT3DTEXTURE9 Texture, RECT* sourceRect, D3DXVECT
 
 	D3DXMATRIX oldMatrix;
 
-	//_SpriteHandler->GetTransform(&oldMatrix);
+
 	spriteHandler->SetTransform(&mMatrixTransform);
 
 	spriteHandler->Draw(
@@ -240,7 +241,6 @@ void Graphic::DrawTexture(LPDIRECT3DTEXTURE9 Texture, RECT* sourceRect, D3DXVECT
 		sourceRect,
 		&rotationCenter,
 		&position,
-		D3DCOLOR_ARGB(255, 255, 255, 255));
+		D3DCOLOR_XRGB(255, 255, 255));
 
-//	_SpriteHandler->SetTransform(&oldMatrix);
 }

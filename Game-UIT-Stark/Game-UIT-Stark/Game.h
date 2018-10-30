@@ -7,31 +7,21 @@
 
 //cai nay la test
 #include "MegaMan.h"
-#include"Ball.h"
-#include"Bar.h"
-#include"Wall.h"
+#include"Map.h"
+#include"Brick.h"
 
 class Game
 {
 private:
 	MegaMan *megaMan;
-	Ball *ball;
-	Bar *bar;
-	Bar *barRight;
-	Wall *bottom;
-	Wall *top;
-	Wall *left;
-	Wall *right;
-
-	HINSTANCE _HInstance; //handle for a window instance
-	HWND _HWnd;
+	Map* map;
+	Brick *br1,*br2,*br3,*br4,*br5,*br6,*br7,*br8;
 
 public:
 	Game();
 	~Game();
 
-	bool InitGame();
-	void Init(HINSTANCE hInstance, HWND hWnd);
+	void Init();
 	void LoadResource();
 
 	void ProcessInput();

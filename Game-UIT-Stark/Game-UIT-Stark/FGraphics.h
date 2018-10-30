@@ -3,6 +3,7 @@
 #define _Graphic_H_
 #include<d3d9.h>
 #include<d3dx9.h>
+#include"Global.h"
 
 class Graphic
 {

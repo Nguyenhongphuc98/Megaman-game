@@ -4,49 +4,40 @@ RECT *rSource;
 
 Game::Game()
 {
-	megaMan = MegaMan::Instance();
-	ball = new Ball();
-
-	bar = new Bar();
-	bar->SetLocation(100, 180);
-	barRight = new Bar();
-	barRight->SetLocation(650, 200);
-
-	//wall
-	top = new Wall();
-	top->SetStatus(Global::HORIZONTAL);
-	top->SetLocation(0, 0);
-	bottom = new Wall();
-	bottom->SetStatus(Global::HORIZONTAL);
-	bottom->SetLocation(0, 580);
-	left = new Wall();
-	left->SetStatus(Global::VERTICAL);
-	left->SetLocation(0, 0);
-	right = new Wall();
-	right->SetStatus(Global::VERTICAL);
-	right->SetLocation(780, 0);
+	LoadResource();
 }
 
 Game::~Game()
 {
 }
 
-void Game::Init(HINSTANCE hInstance, HWND hWnd)
+void Game::Init()
 {
-	
-	//khoi tao source
-	_HInstance = hInstance;
-	_HWnd = hWnd;
-
-	FMouse::Init(_HInstance, _HWnd);
+	FMouse::Init(Window::Instance()->GetHinstance(), Window::Instance()->GetHWND());
 }
 
 void Game::LoadResource()
 {
 	
 	//load resource man dau tien
-
-	
+	megaMan = MegaMan::Instance();
+	map = new Map();
+	br1 = new Brick();
+	br1->SetLocation(0, 100);
+	br2 = new Brick();
+	br2->SetLocation(150, 200);
+	br3 = new Brick();
+	br3->SetLocation(240, 250);
+	br4 = new Brick();
+	br4->SetLocation(310, 300);
+	br5 = new Brick();
+	br5->SetLocation(374, 300);
+	br6 = new Brick();
+	br6->SetLocation(438, 300);
+	br7 = new Brick();
+	br7->SetLocation(502, 300);
+	br8 = new Brick();
+	br8->SetLocation(566, 300);
 }
 
 void Game::ProcessInput()
@@ -56,6 +47,8 @@ void Game::ProcessInput()
 
 	FKeyBoard *keyboard = FKeyBoard::getInstance();
 	keyboard->Update();
+
+	//megaMan->SetStatus(Global::STAND);
 	if (keyboard->IsKeyDown(DIK_LEFT))
 	{
 		megaMan->SetDirection(Global::LEFT);
@@ -72,14 +65,14 @@ void Game::ProcessInput()
 
 	if (keyboard->IsKeyDown(DIK_UP))
 	{
-		bar->SetDirection(Global::UP);
-		bar->SetStatus(Global::RUN);
+		//megaMan->SetDirection(Global::UP);
+		megaMan->SetStatus(Global::JUMP);
 	}
 
 	if (keyboard->IsKeyDown(DIK_DOWN))
 	{
-		bar->SetDirection(Global::DOWN);
-		bar->SetStatus(Global::RUN);
+		megaMan->SetDirection(Global::DOWN);
+		megaMan->SetStatus(Global::JUMP);
 	}
 
 	if (keyboard->IsKeyUp(DIK_LEFT) || keyboard->IsKeyUp(DIK_RIGHT))
@@ -88,9 +81,10 @@ void Game::ProcessInput()
 		Trace::Log("key up");
 	}
 
-	if (keyboard->IsKeyUp(DIK_UP) || keyboard->IsKeyUp(DIK_DOWN))
+	if (keyboard->IsKeyUp(DIK_UP))
 	{
-		bar->SetStatus(Global::STAND);
+		megaMan->SetDirection(Global::RIGHT);
+		megaMan->SetStatus(Global::STAND);
 		Trace::Log("key up");
 	}
 
@@ -98,28 +92,28 @@ void Game::ProcessInput()
 
 #pragma region Mouse
 	
-	FMouse::ProcessMouseInformation();
-	
+	//FMouse::ProcessMouseInformation();
+	//
 
-		if (FMouse::GetMouse(0))
-		{
-			barRight->SetDirection(Global::DOWN);
-			barRight->SetStatus(Global::RUN);
-			Trace::Log("Mouse left");
-		}
-		if (FMouse::GetMouse(1))
-		{
-			barRight->SetDirection(Global::UP);
-			barRight->SetStatus(Global::RUN);
-			Trace::Log("Mouse right");
-		}
+	//	if (FMouse::GetMouse(0))
+	//	{
+	//		barRight->SetDirection(Global::DOWN);
+	//		barRight->SetStatus(Global::RUN);
+	//		Trace::Log("Mouse left");
+	//	}
+	//	if (FMouse::GetMouse(1))
+	//	{
+	//		barRight->SetDirection(Global::UP);
+	//		barRight->SetStatus(Global::RUN);
+	//		Trace::Log("Mouse right");
+	//	}
 
-		if (!(FMouse::GetMouse(1) || FMouse::GetMouse(0)))
-		{
-			barRight->SetStatus(Global::STAND);
-			//Trace::Log("key up");
-		}
-	FMouse::ClearBuffedInput();
+	//	if (!(FMouse::GetMouse(1) || FMouse::GetMouse(0)))
+	//	{
+	//		barRight->SetStatus(Global::STAND);
+	//		//Trace::Log("key up");
+	//	}
+	//FMouse::ClearBuffedInput();
 #pragma endregion
 
 }
@@ -128,19 +122,16 @@ void Game::Update(float deta)
 {
 	//update current sense
 	vector<Object*> list;
-	list.clear();
-	list.push_back(bar);
-	list.push_back(barRight);
-	list.push_back(top);
-	list.push_back(bottom);
-	list.push_back(left);
-	list.push_back(right);
-
-	ball->Update(deta, list);
-	//megaMan->Update(deta, list);
-	bar->Update(deta, list);
-	barRight->Update(deta, list);
-
+	list.push_back(br1);
+	list.push_back(br2);
+	list.push_back(br3);
+	list.push_back(br4);
+	list.push_back(br5);
+	list.push_back(br6);
+	list.push_back(br7);
+	list.push_back(br8);
+	megaMan->Update(deta, list);
+	Camera::Instance()->Update(megaMan->GetLocationX(),megaMan->GetLocationY());
 }
 
 void Game::Render()
@@ -151,32 +142,31 @@ void Game::Render()
 	LPD3DXSPRITE spriteHander = graphics->GetSpriteHandler();
 	
 
-
-	if (device->BeginScene())										//Begin draw
+	if (device->BeginScene())//Begin draw
 	{
-			//Begin draw sprite
-		device->ColorFill(											//Fill backbuffer
-			graphics->GetBackBuffer(),
-			NULL,
-			D3DCOLOR_XRGB(0, 0, 0));
-
+		//Begin draw sprite
+		//Fill backbuffer
+		device->ColorFill(graphics->GetBackBuffer(),NULL,D3DCOLOR_XRGB(0, 0, 0));
+			
 		//draw current sence here
 		spriteHander->Begin(D3DXSPRITE_ALPHABLEND);
 
-		
-		ball->Render();
-		bar->Render();
-		barRight->Render();
-		top->Render();
-		bottom->Render();
+		//map->Render();
+
 		megaMan->Render();
-		left->Render();
-		right->Render();
+		br1->Render();
+		br2->Render();
+		br3->Render();
+		br4->Render();
+		br5->Render();
+		br6->Render();
+		br7->Render();
+		br8->Render();
 
 		spriteHander->End();
-
 		device->EndScene();
 	}
+
 	device->Present(NULL, NULL, NULL, NULL);
 }
 

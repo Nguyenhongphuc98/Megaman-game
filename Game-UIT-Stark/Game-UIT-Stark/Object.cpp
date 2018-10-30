@@ -59,10 +59,7 @@ void Object::Update(DWORD dt)
 
 void Object::RenderBoundingBox()
 {
-	RECT r;
-	r = Global::ConvertCollisionRectToRECT(GetBound());
-
-	Graphic::Instance()->DrawSurface(boundingbox, NULL, &r);
+	
 }
 
 Global::IdObject Object::GetIdObject()

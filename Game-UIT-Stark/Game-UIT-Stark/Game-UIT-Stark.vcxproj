@@ -125,6 +125,7 @@
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Bar.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionRect.h" />
@@ -137,6 +138,7 @@
     <ClInclude Include="FMouse.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="MegaMan.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="QuadNode.h" />
@@ -155,6 +157,7 @@
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bar.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CollisionRect.cpp" />
@@ -164,6 +167,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="MegaMan.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="QuadNode.cpp" />

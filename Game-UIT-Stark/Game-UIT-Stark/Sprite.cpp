@@ -16,9 +16,9 @@ Sprite::Sprite(char *path, vector<RECT*> listSourceRect, D3DCOLOR transparencyCo
 
 					//cái này liên quan đến vẽ nên cần device bên graphic
 					//như kiểu gắn sprite hander vào device ấy cho dễ hiểu
-	result = D3DXCreateSprite(graphic->GetD3DDevice(), &this->spriteHander);
+	/*result = D3DXCreateSprite(graphic->GetD3DDevice(), &this->spriteHander);
 	if FAILED(result)
-		Global::Notify("Lỗi rồi,không gắn thằng sprite hander vô device được!!","Notify");
+		Global::Notify("Lỗi rồi,không gắn thằng sprite hander vô device được!!","Notify");*/
 
 	//đổ màu trong suốt là cái màu hồng hồng tím tím (màu background bên sprite) -248,0,248.
 	//mục đích để lúc load lên nó xóa màu đó trùng vơis màu nền.
@@ -39,27 +39,11 @@ void Sprite::Render(D3DXVECTOR2 scale)
 		//set cái này để thực hiện mấy phép chuyển đổi.
 		//this->spriteHander->SetTransform(&(matScale*matTranslate));
 
-		//if (this->spriteHander->Begin(D3DXSPRITE_ALPHABLEND))//khóa lại để vẽ, alphablen de cho phep ve trong suot
-		//{
-		//	this->spritehander->draw(
-		//		texture,
-		//		this->listsourcerect[currentframe],//vung can lay de ve,
-		//		&center,//tâm vẽ - xoay
-		//		&position,//vị trí sprite
-		//		d3dcolor_xrgb(255,255,255)//màu thay thế
-		//	);
-		//	this->spriteHander->End();// mở khóa  để làm việc khác (như kiểu trả lại luồng)
-		//}
 	Graphic::Instance()->DrawTexture(
 		texture, 
 		this->listSourceRect[currentFrame],
 		position,
 		scale);
-
-	/*	Graphic::Instance()->GetD3DDevice()->EndScene();
-	}*/
-
-
 }
 
 void Sprite::SetPosition(D3DXVECTOR3 p)

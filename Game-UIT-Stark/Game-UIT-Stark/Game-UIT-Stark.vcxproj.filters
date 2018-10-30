@@ -171,6 +171,12 @@
     <ClInclude Include="Timer.h">
       <Filter>BaseFrameWork\include</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Other\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>GameObject\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -247,6 +253,12 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>BaseFrameWork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Other\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>GameObject\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

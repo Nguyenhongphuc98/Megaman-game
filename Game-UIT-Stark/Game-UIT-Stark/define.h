@@ -15,8 +15,6 @@
 #include "Trace.h"
 //#include "utils.h"
 //#include "ConfigReader.h"
-#include "Global.h"
-#include "vector"
 
 using namespace std;
 
@@ -27,6 +25,9 @@ using namespace std;
 
 #define SCREEN_WIDTH  800//512//800//640
 #define SCREEN_HEIGHT 600//448//600//480
+
+#define WORLD_X 5388
+#define WORLD_Y 5388
 
 #define MAX_FRAME_RATE 90
 

@@ -87,7 +87,7 @@ char * Window::GetTitle()
 void Window::StartProgram()
 {
 	Game myGame;
-	myGame.Init(windowHinstance, windowHWND);
+	myGame.Init();
 	MSG msg;
 
 	float tickPerFrame = 1000/MAX_FRAME_RATE; //tickPerframe max_frame_rate - 1k tick -> a tick=1k/max
@@ -105,7 +105,7 @@ void Window::StartProgram()
 		delta+= Timer::Instance()->GetCouter();
 		if(delta>=tickPerFrame)
 		{
-			//Trace::Log("%f", delta);// log cái này ra dùm anh
+			//Trace::Log("%f", delta);
 			myGame.RunGame(delta);
 			delta = 0;
 		}
@@ -113,7 +113,7 @@ void Window::StartProgram()
 		{
 			Sleep(tickPerFrame-delta);
 			delta = tickPerFrame;
-			//Sleep(10);
+		//	Sleep(10);
 		}
 
 	}
