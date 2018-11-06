@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{d563476a-df9b-4978-9a4d-b24fcef77ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Define">
+      <UniqueIdentifier>{607b280f-5a3b-4102-bcea-6ee483b27f3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\source">
+      <UniqueIdentifier>{118f7a8d-1993-41bb-8d31-6664e28862df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain">
+      <UniqueIdentifier>{206cfaa4-d0fb-4815-8270-8c6be163fc3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain\Define">
+      <UniqueIdentifier>{6a21a332-2064-4333-bfb9-2c0c829798a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain\Source">
+      <UniqueIdentifier>{1904ab9f-67fd-4c37-bc82-f568c9210ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{6ba7f636-9703-454c-96bb-c4a6b3493be5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Define">
+      <UniqueIdentifier>{c56c4a7d-ced4-4506-864c-67bdeafd5ea4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Source">
+      <UniqueIdentifier>{f1c40e54-c7e1-49e2-bd5d-4566c2a0af25}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyTexture.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>GameMain\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGame.h">
+      <Filter>GameMain\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Megaman.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualObject.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Speedburner.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponSystem.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MyTexture.cpp">
+      <Filter>FrameWork\source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>FrameWork\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>FrameWork\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>GameMain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGame.cpp">
+      <Filter>GameMain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Megaman.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>FrameWork\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>FrameWork\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>FrameWork\source</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualObject.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Speedburner.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponSystem.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

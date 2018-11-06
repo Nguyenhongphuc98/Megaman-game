@@ -1,0 +1,18 @@
+﻿Game.obj : error LNK2019: unresolved external symbol _Direct3DCreate9@4 referenced in function "protected: int __thiscall Game::InitDirectX(void)" (?InitDirectX@Game@@IAEHXZ)
+Game.obj : error LNK2019: unresolved external symbol _D3DXCreateSprite@8 referenced in function "protected: int __thiscall Game::InitDirectX(void)" (?InitDirectX@Game@@IAEHXZ)
+Game.obj : error LNK2019: unresolved external symbol _DirectInput8Create@20 referenced in function "protected: void __thiscall Game::InitKeyboard(void)" (?InitKeyboard@Game@@IAEXXZ)
+Game.obj : error LNK2001: unresolved external symbol _IID_IDirectInput8A
+Game.obj : error LNK2001: unresolved external symbol _GUID_SysKeyboard
+Game.obj : error LNK2001: unresolved external symbol _c_dfDIKeyboard
+MyGame.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall MyGame::OnKeyDown(int)" (?OnKeyDown@MyGame@@UAEXH@Z)
+MyTexture.obj : error LNK2019: unresolved external symbol _D3DXGetImageInfoFromFileA@8 referenced in function "public: void __thiscall MyTexture::Load(void)" (?Load@MyTexture@@QAEXXZ)
+MyTexture.obj : error LNK2019: unresolved external symbol _D3DXCreateTextureFromFileExA@56 referenced in function "public: void __thiscall MyTexture::Load(void)" (?Load@MyTexture@@QAEXXZ)
+Sprite.obj : error LNK2019: unresolved external symbol _D3DXMatrixMultiply@12 referenced in function "public: struct D3DXMATRIX __thiscall D3DXMATRIX::operator*(struct D3DXMATRIX const &)const " (??DD3DXMATRIX@@QBE?AU0@ABU0@@Z)
+Sprite.obj : error LNK2019: unresolved external symbol _D3DXMatrixTransformation2D@28 referenced in function "public: void __thiscall Sprite::DrawFlipX(int,int)" (?DrawFlipX@Sprite@@QAEXHH@Z)
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64\d3d9.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64\d3dx9.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64\dxerr.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64\dsound.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64\dxguid.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64\dinput8.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\Nguyen Hong Phuc\source\repos\MegamanX3\Debug\MegamanX3.exe : fatal error LNK1120: 11 unresolved externals
