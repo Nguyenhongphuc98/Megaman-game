@@ -1,21 +1,19 @@
 #pragma once
 #ifndef Megaman_H_
 #define Megaman_H_
-#include"Object.h"
+#include"ActionObject.h"
 #include<d3dx9.h>
-#include"Camera.h"
 
-#define MEGAMAN_HEIGHT 74
-#define MEGAMAN_WIDTH 60
+#define MEGAMAN_HEIGHT 84
+#define MEGAMAN_WIDTH 75
 #define MEGAMAN_GRAVITY -0.02f
 #define MEGAMAN_WALK_SPEED 0.2f
 #define MEGAMAN_JUMP_SPEED 1.5f
 
-class Megaman:public Object
+class Megaman:public ActionObject
 {
 private:
-	State state;
-	Direction direction;
+	
 
 public:
 	Megaman();

@@ -3,6 +3,7 @@
 #define Object_H_
 #include"Animation.h"
 #include"Collision.h"
+#include"TXT.h"
 
 class Object
 {

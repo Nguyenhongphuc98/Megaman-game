@@ -2,8 +2,8 @@
 
 Ground::Ground()
 {
-	x = 420;
-	y = 75;
+	x = 518;
+	y = 94;
 	vx = vy = 0;
 	LoadResource();
 }

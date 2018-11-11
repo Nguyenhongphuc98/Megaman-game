@@ -9,14 +9,17 @@
 #include"Background.h"
 #include"VirtualObject.h"
 #include"WeaponSystem.h"
+#include"Map.h"
+#include"NotorBanger.h"
 
 class MyGame :public Game
 {
 private:
 	Megaman* megaman;
-	Ground* ground1;
-	BackGround* background;
-	VirtualObject* vO1;
+	Map* map;
+	VirtualObject* O1,*O2,*O3,*O4,*O5;
+	NotorBanger* notorBanger;
+	
 public:
 	MyGame();
 	MyGame(int cmd);

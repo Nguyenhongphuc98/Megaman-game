@@ -40,6 +40,12 @@
     <Filter Include="Objects\Source">
       <UniqueIdentifier>{f1c40e54-c7e1-49e2-bd5d-4566c2a0af25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Define\Enemies">
+      <UniqueIdentifier>{d1c1e7e8-296e-4d9a-b5de-4b069ab30329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Source\Enemies">
+      <UniqueIdentifier>{8f821a4a-da89-40f1-93dd-70d66f1f9c72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyTexture.h">
@@ -89,6 +95,18 @@
     </ClInclude>
     <ClInclude Include="WeaponSystem.h">
       <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionObject.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="NotorBanger.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="TXT.h">
+      <Filter>FrameWork\Define</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +160,18 @@
     </ClCompile>
     <ClCompile Include="WeaponSystem.cpp">
       <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>FrameWork\source</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionObject.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="NotorBanger.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="TXT.cpp">
+      <Filter>FrameWork\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -35,6 +35,7 @@ protected:
 	void RenderFrame();
 
 public:
+	Game() {};
 	Game(int nCmdShow);
 	~Game();
 

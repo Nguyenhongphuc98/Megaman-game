@@ -3,7 +3,7 @@
 #define Virtual_Object_H_
 #include "Object.h"
 
-//virtual object co location Top-Left
+//virtual object co location button-Left in world
 class VirtualObject:public Object
 {
 public:

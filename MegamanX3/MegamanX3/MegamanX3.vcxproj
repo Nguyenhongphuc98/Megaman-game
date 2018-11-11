@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionObject.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bullet.h" />
@@ -27,16 +28,20 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Megaman.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyTexture.h" />
+    <ClInclude Include="NotorBanger.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Speedburner.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="TXT.h" />
     <ClInclude Include="VirtualObject.h" />
     <ClInclude Include="WeaponSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ActionObject.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -46,12 +51,15 @@
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Megaman.cpp" />
     <ClCompile Include="MyGame.cpp" />
     <ClCompile Include="MyTexture.cpp" />
+    <ClCompile Include="NotorBanger.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Speedburner.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="TXT.cpp" />
     <ClCompile Include="VirtualObject.cpp" />
     <ClCompile Include="WeaponSystem.cpp" />
   </ItemGroup>

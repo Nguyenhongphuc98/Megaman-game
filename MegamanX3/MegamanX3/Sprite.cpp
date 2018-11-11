@@ -148,14 +148,42 @@ void Sprite::DrawFlipY(int x, int y)
 
 void Sprite::DrawRect(int X, int Y, RECT SrcRect)
 {
-	D3DXVECTOR3 position((float)X, (float)Y, 0);
+	/*D3DXVECTOR3 position((float)X, (float)Y, 0);
 	G_SpriteHandler->Draw(
 		texture->texture,
 		&SrcRect,
 		NULL,
 		&position,
 		D3DCOLOR_XRGB(255, 255, 255)
+	);*/
+
+	D3DXMATRIX oldMt;
+	G_SpriteHandler->GetTransform(&oldMt);
+	D3DXMATRIX newMt;
+
+	//tam thu phong
+	D3DXVECTOR2 center = D3DXVECTOR2(X, Y);
+	//D3DXVECTOR2 rotate = D3DXVECTOR2(1, -1);
+
+	D3DXMatrixTransformation2D(&newMt, &center, 0.0f, &G_Scale, NULL, 0.0f, NULL);
+	D3DXMATRIX finalMt = newMt * oldMt;
+	G_SpriteHandler->SetTransform(&finalMt);
+
+
+	D3DXVECTOR3 position(0, 0, 0);
+	//diem neo
+	D3DXVECTOR3 fcenter(0, 0, 0); //top left
+	position.x = X -(SrcRect.right - SrcRect.left) / 2;
+	position.y = Y -(SrcRect.bottom - SrcRect.top) / 2;
+	G_SpriteHandler->Draw(
+		texture->texture,
+		&SrcRect,
+		&fcenter,
+		&position,
+		0xFFFFFFFF //color
 	);
+
+	G_SpriteHandler->SetTransform(&oldMt);
 }
 
 void Sprite::DrawCurrentFrame(int index, int X, int Y)

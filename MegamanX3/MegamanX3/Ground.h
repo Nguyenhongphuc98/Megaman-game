@@ -4,8 +4,8 @@
 #include"Object.h"
 #include"Camera.h"
 
-#define GROUNG_WIDTH 828
-#define GROUND_HEIGHT 146
+#define GROUNG_WIDTH 1035
+#define GROUND_HEIGHT 183
 
 class Ground:public Object
 {

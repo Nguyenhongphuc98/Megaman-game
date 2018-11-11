@@ -3,7 +3,7 @@
 Megaman::Megaman()
 {
 	x = 400;
-	y = 300;
+	y = 1747;
 	LoadResource();
 }
 
@@ -68,7 +68,7 @@ void Megaman::Render()
 void Megaman::LoadResource()
 {
 	//=====================Load Status Stand=============================
-	RECT* r1 = new RECT();
+	/*RECT* r1 = new RECT();
 	r1->top = 3;
 	r1->bottom = 40;
 	r1->left = 3;
@@ -103,13 +103,15 @@ void Megaman::LoadResource()
 	list_source_rect.push_back(r2);
 	list_source_rect.push_back(r3);
 	list_source_rect.push_back(r4);
-	list_source_rect.push_back(r5);
+	list_source_rect.push_back(r5);*/
+
+	vector<RECT*> list_source_rect = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanstand.txt");
 	MyTexture* texture_stand = new MyTexture((char*)"SourceImage\\megamanstand.png", D3DCOLOR_XRGB(50, 96, 166));
 	animation->listSprite[State::STAND] = new Sprite(texture_stand, list_source_rect, 1);
 
 	//=====================Load Status Run=============================
 
-	RECT* r11 = new RECT();
+	/*RECT* r11 = new RECT();
 	r11->top = 0;
 	r11->bottom = 35;
 	r11->left = 3;
@@ -151,12 +153,14 @@ void Megaman::LoadResource()
 	list_source_rect_run.push_back(r13);
 	list_source_rect_run.push_back(r14);
 	list_source_rect_run.push_back(r15);
-	list_source_rect_run.push_back(r16);
+	list_source_rect_run.push_back(r16);*/
+
+	vector<RECT*> list_source_rect_run = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrun.txt");
 	MyTexture* texture_run = new MyTexture((char*)"SourceImage\\megamanrun.png", D3DCOLOR_XRGB(50, 96, 166));
 	animation->listSprite[State::RUN] = new Sprite(texture_run, list_source_rect_run, 1);
 
 	//=====================Load Status Jump=============================
-	RECT* r17 = new RECT();
+	/*RECT* r17 = new RECT();
 	r17->top = 3;
 	r17->bottom = 48;
 	r17->left = 3;
@@ -207,13 +211,14 @@ void Megaman::LoadResource()
 	list_source_rect_jump.push_back(r20);
 	list_source_rect_jump.push_back(r21);
 	list_source_rect_jump.push_back(r22);
-	list_source_rect_jump.push_back(r23);
+	list_source_rect_jump.push_back(r23);*/
 
+	vector<RECT*> list_source_rect_jump = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanjump.txt");
 	MyTexture* texture_jump = new MyTexture((char*)"SourceImage\\megamanjump.png", D3DCOLOR_XRGB(50, 96, 166));
 	animation->listSprite[State::JUMP] = new Sprite(texture_jump, list_source_rect_jump, 1);
 
 	//=====================Load Status Shoot=============================
-	RECT* r31 = new RECT();
+	/*RECT* r31 = new RECT();
 	r31->top = 0;
 	r31->bottom = 35;
 	r31->left = 9;
@@ -248,7 +253,9 @@ void Megaman::LoadResource()
 	list_source_rect_runshoot.push_back(r41);
 	list_source_rect_runshoot.push_back(r51);
 	list_source_rect_runshoot.push_back(r61);
-	list_source_rect_runshoot.push_back(r71);
+	list_source_rect_runshoot.push_back(r71);*/
+
+	vector<RECT*> list_source_rect_runshoot = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrunshoot.txt");
 	MyTexture* texture_runshoot = new MyTexture((char*)"SourceImage\\megamanrunshoot.png", D3DCOLOR_XRGB(50, 96, 166));
 	animation->listSprite[State::SHOOT] = new Sprite(texture_runshoot, list_source_rect_runshoot, 1);
 }

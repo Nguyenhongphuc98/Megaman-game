@@ -15,7 +15,9 @@ public:
 	static Camera* Instance();
 	void Update(float x, float y);
 	void Reset();
+
 	D3DXVECTOR2 GetPositionInViewPort(float x,float y);
+	void GetCameraPosition(float &x, float&y);
 };
 
 

@@ -20,17 +20,17 @@ D3DFORMAT	G_BackBufferFormat;
 
 
 RECT		G_WindowSize;
-int			G_ScreenWidth = 800; //640;	//640	//1024	//1366
-int			G_ScreenHeight = 600; //480;	//480	//768	//768
+int			G_ScreenWidth = 600; //640;	//640	//1024	//1366
+int			G_ScreenHeight = 580; //480;	//480	//768	//768
 
 
 //
 //GLOBAL VARIANT
 //
 
-D3DXVECTOR2 G_Scale = D3DXVECTOR2(2, 2);
-D3DXVECTOR2 G_ScaleFlipX = D3DXVECTOR2(-2, 2);
-D3DXVECTOR2 G_ScaleFlipY = D3DXVECTOR2(2, -2);
+D3DXVECTOR2 G_Scale = D3DXVECTOR2(2.5, 2.5);
+D3DXVECTOR2 G_ScaleFlipX = D3DXVECTOR2(-2.5, 2.5);
+D3DXVECTOR2 G_ScaleFlipY = D3DXVECTOR2(2.5, -2.5);
 
 HINSTANCE					G_hInstance;		// Handle of the game instance
 HWND						G_hWnd;				// Handle of the Game Window
