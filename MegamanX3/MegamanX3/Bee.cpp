@@ -1,0 +1,57 @@
+#include"Bee.h"
+
+Bee::Bee()
+{
+	x = 500;
+	y = 1153 * G_Scale.y;
+	LoadResource();
+}
+
+Bee::~Bee()
+{
+}
+
+void Bee::Update(DWORD dt, vector<Object*>* List_object_can_col)
+{
+}
+
+void Bee::Render()
+{
+	ActionObject::Render();
+}
+
+void Bee::LoadResource()
+{
+	MyTexture* texture = new MyTexture((char*)"SourceImage\\bee.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	vector<RECT*> list_source_rect_flapping = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beeflaping.txt");
+	animation->listSprite[State::FLAPPING] = new Sprite(texture, list_source_rect_flapping, 2);
+
+	vector<RECT*> list_source_rect_flapping_and_flying = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beeflapingandflying.txt");
+	animation->listSprite[State::FLAPPINGANDFLYING] = new Sprite(texture, list_source_rect_flapping_and_flying, 1);
+
+	vector<RECT*> list_source_rect_stand = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beestand.txt");
+	animation->listSprite[State::STAND] = new Sprite(texture, list_source_rect_stand, 10);
+}
+
+BoundingBox Bee::GetBoundingBox()
+{
+	BoundingBox bound;
+	bound.x = x - BEE_WIDTH / 2;
+	bound.y = y - BEE_HEIGHT / 2;
+	bound.w = BEE_WIDTH;
+	bound.h = BEE_HEIGHT;
+	bound.vx = dx;
+	bound.vy = dy;
+	return bound;
+}
+
+void Bee::SetState(State s)
+{
+	this->state = s;
+}
+
+void Bee::SetDirection(Direction d)
+{
+	this->direction = d;
+}

@@ -108,6 +108,21 @@
     <ClInclude Include="TXT.h">
       <Filter>FrameWork\Define</Filter>
     </ClInclude>
+    <ClInclude Include="BlastHornet.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Helit.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Bee.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Shurikein.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadGunnerCustomer.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyTexture.cpp">
@@ -172,6 +187,21 @@
     </ClCompile>
     <ClCompile Include="TXT.cpp">
       <Filter>FrameWork\source</Filter>
+    </ClCompile>
+    <ClCompile Include="BlastHornet.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Helit.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Bee.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Shurikein.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadGunnerCustomer.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

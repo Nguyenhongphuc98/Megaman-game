@@ -21,9 +21,19 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 	G_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 	this->map->Render();
-	this->megaman->Render();
+	this->megaman->Render();		
 	this->notorBanger->Render();
+	this->blastHornet->Render();
+	this->helit->Render();
+	this->bee->Render();
+	this->shurikein->Render();
+	this->head_gunner_customer->Render();
+
+	G_Scale = D3DXVECTOR2(1, 1);
+	G_ScaleFlipX= D3DXVECTOR2(-1, 1);
 	WeaponSystem::Instance()->Render();
+	G_Scale = D3DXVECTOR2(2.5, 2.5);
+	G_ScaleFlipX = D3DXVECTOR2(-2.5, 2.5);
 
 	G_SpriteHandler->End();
 }
@@ -52,11 +62,14 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 	if (IsKeyDown(DIK_A))
 	{
 		megaman->SetState(SHOOT);
-
 		float x, y;
-		megaman->GetPosition(x,y);
+		megaman->GetPosition(x, y);
 		Bullet *bullet = new  Speedburner(x, y, megaman->GetDirection(), NORMALBULLET);
 		WeaponSystem::Instance()->AddBulletMegaman(bullet);
+	}
+
+	if (IsKeyDown(DIK_UP)) {
+		megaman->SetState(CLIMB);
 	}
 }
 
@@ -86,16 +99,43 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 
 	this->notorBanger = new NotorBanger();
 	this->notorBanger->SetDirection(RIGHT);
-	this->notorBanger->SetState(JUMP);
+	this->notorBanger->SetState(SHOOT90);
+	
+	this->blastHornet = new BlastHornet();
+	this->blastHornet->SetDirection(RIGHT);
+	this->blastHornet->SetState(REDKNEE);
 
-	O1 = new VirtualObject(505 * G_Scale.y, 0 * G_Scale.x, 547 * G_Scale.x, 72 * G_Scale.y);
-	O2 = new VirtualObject(504 * G_Scale.y, 547 * G_Scale.x, 150 * G_Scale.x, 64 * G_Scale.y);
-	O3 = new VirtualObject(504 * G_Scale.y, 693 * G_Scale.x, 64 * G_Scale.x, 128 * G_Scale.y);
-	O4 = new VirtualObject(504 * G_Scale.y, 757 * G_Scale.x, 66 * G_Scale.x, 111 * G_Scale.y);
-	O5 = new VirtualObject(504 * G_Scale.y, 823 * G_Scale.x, 64 * G_Scale.x, 95 * G_Scale.y);
+	this->helit = new Helit();
+	this-> helit->SetDirection(RIGHT);
+	this->helit->SetState(RUN);
+
+	this->bee = new Bee();
+	this->bee->SetDirection(RIGHT);
+	this->bee->SetState(FLAPPING);
+
+	this->shurikein = new Shurikein();
+	this->shurikein->SetDirection(RIGHT);
+	this->shurikein->SetState(APPEAR);
+
+	this->head_gunner_customer = new HeadGunnerCustomer();
+	this->head_gunner_customer->SetDirection(RIGHT);
+	this->head_gunner_customer->SetState(SHOOTABOVE);
+
+	O1 = new VirtualObject(1030 * G_Scale.y, 4 * G_Scale.x, 351 * G_Scale.x, 76 * G_Scale.y);
+	O2 = new VirtualObject(1030 * G_Scale.y, 359 * G_Scale.x, 160 * G_Scale.x, 128 * G_Scale.y);
+	O3 = new VirtualObject(1030 * G_Scale.y, 519 * G_Scale.x, 126 * G_Scale.x, 177 * G_Scale.y);
+	O4 = new VirtualObject(1030 * G_Scale.y, 645 * G_Scale.x, 210 * G_Scale.x, 80 * G_Scale.y);
+	O5 = new VirtualObject(1030 * G_Scale.y, 950 * G_Scale.x, 80 * G_Scale.x, 80 * G_Scale.y);
 	map = new Map();
 }
 
 void MyGame::OnKeyDown(int KeyCode)
 {
+	/*if (KeyCode == DIK_A)
+	{
+		float x, y;
+		megaman->GetPosition(x, y);
+		Bullet *bullet = new  Speedburner(x, y, megaman->GetDirection(), NORMALBULLET);
+		WeaponSystem::Instance()->AddBulletMegaman(bullet);
+	}*/
 }

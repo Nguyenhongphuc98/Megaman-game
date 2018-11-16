@@ -6,8 +6,8 @@
 #include"Camera.h"
 #include<string>
 #include<d3dx9.h>
-#define WIDTH_MAP_IMAGE 4861
-#define HEIGHT_MAP_IMAGE 1549
+#define WIDTH_MAP_IMAGE 7947
+#define HEIGHT_MAP_IMAGE 2067
 
 //When draw map, must convert position scale 
 //change oy worldport to imageport(~cameraport)

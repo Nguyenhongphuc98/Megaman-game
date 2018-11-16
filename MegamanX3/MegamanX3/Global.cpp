@@ -46,26 +46,7 @@ LPD3DXSPRITE				G_SpriteHandler;	// spriteHandler to draw texture
 
 void GLTrace(char* format, ...)
 {
-	//char *_traceFile = "C:\\Temp\\Sample_TH_game.log";
-	//int _traceNum = 1;
-
-	//if (!_traceNum) return;
-
-	//FILE *f = stderr;
-	//if (_traceFile != NULL)
-	//{
-	//	if (fopen_s(&f, _traceFile, "a") != 0)
-	//	{
-	//		fprintf(stderr, "WARNING: Failed to open trace file '%s' for writing!\n", _traceFile);
-	//		return;
-	//	}
-	//}
-	//va_list ap;
-	//va_start(ap, format);
-	//fprintf(f, format, ap);
-	//va_end(ap);
-	//fprintf(f, "\n");
-	//if (_traceFile != NULL) fclose(f);
+	
 }
 
 void GLMessage(const char* text)

@@ -7,6 +7,7 @@
 #include "Global.h"
 #include <dinput.h>
 
+
 class Game
 {
 protected:

@@ -71,13 +71,33 @@ extern bool pause_Sound;
 //=============================================================
 
 enum State {
+	//megaman
 	RUN,
 	JUMP,
 	STAND,
 	SHOOT,
+	CLIMB,
+	//weapons
 	NORMALBULLET,
 	SUPERBULLET,
-	DESTROYBULLET
+	DESTROYBULLET,
+	//blast_hornet
+	REDKNEE,
+	REDHANDS,
+	PREPAREOPENVENOM,
+	OPENINGVENOM,
+	//bee
+	FLAPPING, //vo canh
+	FLAPPINGANDFLYING,
+	//notorbanger
+	SHOOT90,
+	//shurikein
+	APPEAR,
+	ROTATERIGHT,
+	ROTATELEFT,
+	//HeadGunnerCustomer
+	SHOOTABOVE,
+	SHOOTBELOW,
 };
 
 enum Direction {

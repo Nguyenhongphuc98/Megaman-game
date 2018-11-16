@@ -196,6 +196,7 @@ void Game::OnKeyUp(int KeyCode)
 
 void Game::OnKeyDown(int KeyCode)
 {
+	
 }
 
 int Game::IsKeyDown(int KeyCode)

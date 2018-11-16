@@ -14,6 +14,7 @@ public:
 	int current_frame;
 	int max_frame;
 	int animation_time;
+	int animation_count_time;
 	vector<RECT*> List_source_rect;
 
 public:

@@ -20,14 +20,19 @@ Sprite::Sprite(MyTexture * texture, vector<RECT*> List_source_rect, int animatio
 {
 	this->List_source_rect = List_source_rect;
 	this->animation_time = animation_t;
+	this->animation_count_time = 0;
 	this->max_frame = List_source_rect.size();
 }
 
 void Sprite::Next()
 {
-	current_frame++;
-	if (current_frame > max_frame-1)
-		current_frame = 0;
+	if (animation_count_time%animation_time == 0)
+	{
+		current_frame++;
+		if (current_frame > max_frame - 1)
+			current_frame = 0;
+	}
+	animation_count_time++;
 }
 
 void Sprite::Reset()

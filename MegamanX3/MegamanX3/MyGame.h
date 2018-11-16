@@ -11,6 +11,11 @@
 #include"WeaponSystem.h"
 #include"Map.h"
 #include"NotorBanger.h"
+#include"BlastHornet.h"
+#include"Helit.h"
+#include"Bee.h"
+#include"Shurikein.h"
+#include"HeadGunnerCustomer.h"
 
 class MyGame :public Game
 {
@@ -19,6 +24,11 @@ private:
 	Map* map;
 	VirtualObject* O1,*O2,*O3,*O4,*O5;
 	NotorBanger* notorBanger;
+	BlastHornet* blastHornet;
+	Helit* helit;
+	Bee* bee;
+	Shurikein* shurikein;
+	HeadGunnerCustomer* head_gunner_customer;
 	
 public:
 	MyGame();

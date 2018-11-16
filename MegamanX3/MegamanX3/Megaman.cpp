@@ -2,8 +2,8 @@
 
 Megaman::Megaman()
 {
-	x = 400;
-	y = 1747;
+	x = 100;
+	y = 1143*G_Scale.y;
 	LoadResource();
 }
 
@@ -258,6 +258,11 @@ void Megaman::LoadResource()
 	vector<RECT*> list_source_rect_runshoot = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrunshoot.txt");
 	MyTexture* texture_runshoot = new MyTexture((char*)"SourceImage\\megamanrunshoot.png", D3DCOLOR_XRGB(50, 96, 166));
 	animation->listSprite[State::SHOOT] = new Sprite(texture_runshoot, list_source_rect_runshoot, 1);
+
+	//=====================Load Status Climb=============================
+	vector<RECT*> list_source_rect_climb = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanClimb.txt");
+	MyTexture* texture_climb = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
+	animation->listSprite[State::CLIMB] = new Sprite(texture_climb, list_source_rect_climb, 1);
 }
 
 BoundingBox Megaman::GetBoundingBox()
@@ -290,6 +295,10 @@ void Megaman::SetState(State s)
 		vy = MEGAMAN_JUMP_SPEED;
 		break;
 	case STAND:
+		vx = 0;
+		vy = 0;
+		break;
+	case SHOOT:
 		vx = 0;
 		vy = 0;
 		break;

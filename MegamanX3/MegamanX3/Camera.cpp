@@ -26,8 +26,11 @@ void Camera::Update(float x, float y)
 	if (this->y < G_ScreenHeight)
 		this->y = G_ScreenHeight;
 
-	if (this->x < 1012*G_Scale.x && this->y>(750 * G_Scale.y))
-		this->y = 759 * G_Scale.y;
+	if (this->x < 772*G_Scale.x && this->y>(1287 * G_Scale.y))
+		this->y = 1287 * G_Scale.y;
+
+	if (this->x > 772 * G_Scale.x)
+		this->x = 772 * G_Scale.x;
 }
 
 void Camera::Reset()

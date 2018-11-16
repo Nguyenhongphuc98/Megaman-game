@@ -18,7 +18,7 @@ void Map::LoadResource()
 	rect->right = WIDTH_MAP_IMAGE;
 	rect->bottom = HEIGHT_MAP_IMAGE;
 	list_source_rect.push_back(rect);
-	texture = new MyTexture((char*)"SourceImage\\maplevel1.png",D3DCOLOR_XRGB(255,255,255));
+	texture = new MyTexture((char*)"SourceImage\\Blast_hornet_map_large.png",D3DCOLOR_XRGB(255,255,255));
 	background = new Sprite(texture, list_source_rect, 1);
 }
 
