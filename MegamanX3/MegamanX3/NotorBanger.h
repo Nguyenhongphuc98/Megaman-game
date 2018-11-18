@@ -25,6 +25,7 @@ private:
 
 public:
 	NotorBanger();
+	NotorBanger(int x,int y,int w,int h,Direction d);
 	~NotorBanger();
 
 	void Update(DWORD dt, vector<Object*> *List_object_can_col);

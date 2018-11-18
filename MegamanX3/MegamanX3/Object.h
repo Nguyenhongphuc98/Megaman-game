@@ -9,6 +9,7 @@ class Object
 {
 public:
 	Object();
+	Object(int x,int y,int w,int h);
 	~Object();
 
 protected:

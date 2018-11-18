@@ -8,6 +8,12 @@ Helit::Helit()
 	LoadResource();
 }
 
+Helit::Helit(int x, int y, int w, int h, Direction d):ActionObject(x,y,w,h,d)
+{
+	center_region_x = x;
+	LoadResource();
+}
+
 Helit::~Helit()
 {
 }

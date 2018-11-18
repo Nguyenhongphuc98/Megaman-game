@@ -105,6 +105,12 @@ enum Direction {
 	RIGHT
 };
 
+enum TypeObject {
+	GROUND,
+	NOTORBANGER,
+	HELIT,
+};
+
 //write string to a tracing file
 void GLTrace(char* format, ...);
 

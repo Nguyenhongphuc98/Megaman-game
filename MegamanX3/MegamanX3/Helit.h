@@ -12,6 +12,7 @@ private:
 
 public:
 	Helit();
+	Helit( int x, int y, int w, int h, Direction d);
 	~Helit();
 
 	void Update(DWORD dt, vector<Object*> *List_object_can_col);

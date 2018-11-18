@@ -12,6 +12,7 @@ protected:
 
 public:
 	ActionObject();
+	ActionObject(int x,int y,int w,int h,Direction d);
 	~ActionObject();
 
 	virtual void Update(DWORD dt, vector<Object*> *List_object_can_col) {};

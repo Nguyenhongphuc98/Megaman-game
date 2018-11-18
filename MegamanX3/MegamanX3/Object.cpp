@@ -5,6 +5,14 @@ Object::Object()
 	animation = new Animation();
 }
 
+Object::Object(int x, int y, int w, int h)
+{
+	this->x = x;
+	this->y = y;
+	this->width = w;
+	this->height = h;
+}
+
 Object::~Object()
 {
 }

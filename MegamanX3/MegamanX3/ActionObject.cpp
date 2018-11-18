@@ -4,6 +4,11 @@ ActionObject::ActionObject()
 {
 }
 
+ActionObject::ActionObject(int x, int y, int w, int h, Direction d):Object(x,y,w,h)
+{
+	this->direction = d;
+}
+
 ActionObject::~ActionObject()
 {
 }

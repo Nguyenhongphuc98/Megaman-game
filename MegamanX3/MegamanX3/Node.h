@@ -13,7 +13,7 @@ class Node
 private:
 	Box bound;
 	Node* listChils[4];
-	map<int, Object*> listObjects;
+	map<int, Object*> listObjects; //stt
 public:
 	Node();
 	Node(Box b);

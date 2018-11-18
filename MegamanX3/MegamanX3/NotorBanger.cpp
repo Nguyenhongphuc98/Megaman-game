@@ -12,6 +12,15 @@ NotorBanger::NotorBanger()
 	LoadResource();
 }
 
+NotorBanger::NotorBanger(int x, int y, int w, int h, Direction d):ActionObject(x,y,w,h,d)
+{
+	center_region_x = x;
+	jump_angle = PII / 6;
+	time_animate_shoot90 = 1;
+	pre_y = y - 12;
+	LoadResource();
+}
+
 NotorBanger::~NotorBanger()
 {
 }
