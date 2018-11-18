@@ -24,6 +24,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bee.h" />
     <ClInclude Include="BlastHornet.h" />
+    <ClInclude Include="Box.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collision.h" />
@@ -36,8 +37,10 @@
     <ClInclude Include="Megaman.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyTexture.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="NotorBanger.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Shurikein.h" />
     <ClInclude Include="Speedburner.h" />
     <ClInclude Include="Sprite.h" />
@@ -51,6 +54,7 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Bee.cpp" />
     <ClCompile Include="BlastHornet.cpp" />
+    <ClCompile Include="Box.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -64,8 +68,10 @@
     <ClCompile Include="Megaman.cpp" />
     <ClCompile Include="MyGame.cpp" />
     <ClCompile Include="MyTexture.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="NotorBanger.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Shurikein.cpp" />
     <ClCompile Include="Speedburner.cpp" />
     <ClCompile Include="Sprite.cpp" />

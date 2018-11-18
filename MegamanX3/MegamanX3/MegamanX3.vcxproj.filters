@@ -46,6 +46,12 @@
     <Filter Include="Objects\Source\Enemies">
       <UniqueIdentifier>{8f821a4a-da89-40f1-93dd-70d66f1f9c72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Define\Map">
+      <UniqueIdentifier>{5952381f-aebb-4a80-9d14-e60d3d974977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\source\Map">
+      <UniqueIdentifier>{9dc9e938-6c5d-4c23-a9bb-e59e7498f5e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyTexture.h">
@@ -96,9 +102,6 @@
     <ClInclude Include="WeaponSystem.h">
       <Filter>Objects\Define</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>FrameWork\Define</Filter>
-    </ClInclude>
     <ClInclude Include="ActionObject.h">
       <Filter>Objects\Define</Filter>
     </ClInclude>
@@ -122,6 +125,18 @@
     </ClInclude>
     <ClInclude Include="HeadGunnerCustomer.h">
       <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>FrameWork\Define\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>FrameWork\Define\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>FrameWork\Define\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>FrameWork\Define\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -176,9 +191,6 @@
     <ClCompile Include="WeaponSystem.cpp">
       <Filter>Objects\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>FrameWork\source</Filter>
-    </ClCompile>
     <ClCompile Include="ActionObject.cpp">
       <Filter>Objects\Source</Filter>
     </ClCompile>
@@ -202,6 +214,18 @@
     </ClCompile>
     <ClCompile Include="HeadGunnerCustomer.cpp">
       <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>FrameWork\source\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>FrameWork\source\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>FrameWork\source\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>FrameWork\source\Map</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
