@@ -3,10 +3,12 @@
 #define Helit_H_
 #include"ActionObject.h"
 
+#define HELIT_VX 0.2f
+
 class Helit:public ActionObject	
 {
 private:
-
+	int center_region_x;
 
 public:
 	Helit();

@@ -2,8 +2,10 @@
 
 HeadGunnerCustomer::HeadGunnerCustomer()
 {
-	x = 900;
-	y = 1153 * G_Scale.y;
+	x = 1400;
+	y = 1228 * G_Scale.y;
+
+	count_animation = 0;
 	LoadResource();
 }
 
@@ -13,6 +15,13 @@ HeadGunnerCustomer::~HeadGunnerCustomer()
 
 void HeadGunnerCustomer::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	count_animation++;
+	if (count_animation % 50 == 0)
+		SetState(STAND);
+	if (count_animation % 100 == 0)
+		SetState(SHOOTABOVE);
+	if (count_animation % 150 == 0)
+		SetState(SHOOTBELOW);
 }
 
 void HeadGunnerCustomer::Render()

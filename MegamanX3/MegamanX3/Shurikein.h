@@ -6,10 +6,12 @@
 #define SHURIKEIN_WIDTH 42*2.5
 #define SHURIKEIN_HEIGHT 42*2.5
 
+#define SHURIKEIN_VX 0.3f
+
 class Shurikein:public ActionObject
 {
 private:
-
+	int animation_loop_rotate;
 public:
 	Shurikein();
 	~Shurikein();

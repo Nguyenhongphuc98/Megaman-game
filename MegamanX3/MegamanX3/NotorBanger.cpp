@@ -2,9 +2,13 @@
 
 NotorBanger::NotorBanger()
 {
-	x = 600;
-	y = 1128 * G_Scale.y;
+	x = 1100;
+	y = 1178 * G_Scale.y;
 
+	center_region_x = x;
+	jump_angle = PII/6;
+	time_animate_shoot90 = 1;
+	pre_y = y-12;
 	LoadResource();
 }
 
@@ -15,18 +19,44 @@ NotorBanger::~NotorBanger()
 void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
 	Object::Update(dt,List_object_can_col);
+	
+	
 
-	x += dx;
-	//y += dy;
-
-	if (direction == LEFT && x < 0)
+	if (state == JUMP) 
 	{
-		SetDirection(RIGHT);
+		x += dx;
+		y = pre_y;
+		//x=vx*t=Vo*Cos(a)*t
+		//y=Vo*Sin(a)*t-1/2gt^2
+		float t = GetTickCount() - time_begin_jump;
+		//x =pre_x+ (dx*t*cos(jump_angle));
+		//y = pre_y + ((dy*t*sin(jump_angle)) -((NOTORBANGER_GRAVITY * t)*(NOTORBANGER_GRAVITY * t)) / 2);
+
+		if (/*direction == LEFT && */(x <= (center_region_x - 100)))
+		{
+			SetDirection(LEFT);
+			SetState(SHOOT90);
+		}
+
+		if (/*direction == RIGHT && */(x >= (center_region_x + 100)))
+		{
+			SetDirection(RIGHT);
+			SetState(SHOOT90);
+		}
 	}
+	else
+	{
+		y = pre_y +6;
+		if (animation->listSprite[SHOOT90]->GetCurrentFrame() == 2)
+			time_animate_shoot90++;
 
-	if(direction==RIGHT&&x>1730)
-		SetDirection(LEFT);
-
+		if (time_animate_shoot90 % 20 == 0)
+		{
+			time_begin_jump = GetTickCount();
+			SetState(JUMP);
+			time_animate_shoot90++;			
+		}	
+	}
 }
 
 void NotorBanger::Render()
@@ -93,14 +123,24 @@ void NotorBanger::SetState(State s)
 	{
 	case RUN:
 		break;
-	case JUMP:
-		
+	case JUMP:	
 		vy = NOTORBANGER_VY;
+		if (direction == RIGHT)
+			vx = -NOTORBANGER_VX;
+		else
+		{
+			vx = NOTORBANGER_VX;
+		}
 		break;
 	case STAND:
 		break;
 	case SHOOT:
+		vx = 0;
+		vy = 0;
 		break;
+	case SHOOT90:
+		vx = 0;
+		vy = 0;
 	default:
 		vx = 0;
 		vy = 0;
@@ -111,10 +151,5 @@ void NotorBanger::SetState(State s)
 void NotorBanger::SetDirection(Direction d)
 {
 	this->direction = d;
-	if (direction == RIGHT)
-		vx = NOTORBANGER_VX;
-	else
-	{
-		vx = -NOTORBANGER_VX;
-	}
+
 }

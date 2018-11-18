@@ -84,6 +84,11 @@ void MyGame::Update()
 	megaman->Update(delta_time,List_object_can_col);
 
 	this->notorBanger->Update(delta_time,List_object_can_col);
+	this->shurikein->Update(delta_time, List_object_can_col);
+	this->helit->Update(delta_time, List_object_can_col);
+	this->bee->Update(delta_time, List_object_can_col);
+	this->head_gunner_customer->Update(delta_time, List_object_can_col);
+	this->blastHornet->Update(delta_time, List_object_can_col);
 
 	float x, y;
 	megaman->GetPosition(x, y);
@@ -121,7 +126,7 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 	this->head_gunner_customer->SetDirection(RIGHT);
 	this->head_gunner_customer->SetState(SHOOTABOVE);
 
-	O1 = new VirtualObject(1030 * G_Scale.y, 4 * G_Scale.x, 351 * G_Scale.x, 76 * G_Scale.y);
+	O1 = new VirtualObject(1030 * G_Scale.y, 4 * G_Scale.x, 351 * G_Scale.x, 77 * G_Scale.y);
 	O2 = new VirtualObject(1030 * G_Scale.y, 359 * G_Scale.x, 160 * G_Scale.x, 128 * G_Scale.y);
 	O3 = new VirtualObject(1030 * G_Scale.y, 519 * G_Scale.x, 126 * G_Scale.x, 177 * G_Scale.y);
 	O4 = new VirtualObject(1030 * G_Scale.y, 645 * G_Scale.x, 210 * G_Scale.x, 80 * G_Scale.y);

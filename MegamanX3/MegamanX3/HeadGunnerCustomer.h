@@ -9,6 +9,7 @@
 class HeadGunnerCustomer:public ActionObject
 {
 private:
+	int count_animation;
 
 public:
 	HeadGunnerCustomer();

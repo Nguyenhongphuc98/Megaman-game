@@ -9,6 +9,7 @@
 class BlastHornet:public ActionObject
 {
 private:
+	int count_animation;
 
 public:
 	BlastHornet();

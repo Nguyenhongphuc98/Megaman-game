@@ -2,8 +2,9 @@
 
 Shurikein::Shurikein()
 {
-	x = 100;
+	x = 230;
 	y = 1153 * G_Scale.y;
+	animation_loop_rotate = 0;
 	LoadResource();
 }
 
@@ -13,18 +14,35 @@ Shurikein::~Shurikein()
 
 void Shurikein::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	Object::Update(dt,List_object_can_col);
+	x += dx;
+	y += dy;
+
+	if (state == APPEAR && animation->listSprite[APPEAR]->GetCurrentFrame() == 51)
+		SetState(ROTATELEFT);
+
+	if (state == ROTATELEFT && animation->listSprite[ROTATELEFT]->GetCurrentFrame() == 9)
+	{
+		animation_loop_rotate++;
+		if (animation_loop_rotate % 3 == 0)
+		{
+			animation->listSprite[ROTATELEFT]->Next();
+			SetState(ROTATERIGHT);
+		}
+	}
+	else if (animation->listSprite[ROTATERIGHT]->GetCurrentFrame() == 9)
+	{
+		animation_loop_rotate++;
+		if (animation_loop_rotate % 3 == 0)
+		{
+			animation->listSprite[ROTATERIGHT]->Next();
+			SetState(ROTATELEFT);
+		}
+	}
 }
 
 void Shurikein::Render()
-{
-	/*if (animation->listSprite[APPEAR]->GetCurrentFrame() == 51)
-		SetState(ROTATELEFT);
-
-	if (animation->listSprite[ROTATELEFT]->GetCurrentFrame() == 10)*/
-	{
-		SetState(ROTATERIGHT);
-	}
-		
+{		
 	ActionObject::Render();
 }
 
@@ -58,6 +76,20 @@ BoundingBox Shurikein::GetBoundingBox()
 void Shurikein::SetState(State s)
 {
 	this->state = s;
+	switch (s)
+	{
+	case APPEAR:
+		vx = vy = 0;
+		break;
+	case ROTATERIGHT:
+		vx = SHURIKEIN_VX;
+		break;
+	case ROTATELEFT:
+		vx = -SHURIKEIN_VX;
+		break;
+	default:
+		break;
+	}
 }
 
 void Shurikein::SetDirection(Direction d)

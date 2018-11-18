@@ -3,6 +3,8 @@ Helit::Helit()
 {
 	x = 400;
 	y = 1153 * G_Scale.y;
+
+	center_region_x = x;
 	LoadResource();
 }
 
@@ -12,6 +14,15 @@ Helit::~Helit()
 
 void Helit::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	Object::Update(dt, List_object_can_col);
+	x += dx;
+	y += dy;
+
+	if (direction == RIGHT && (x < center_region_x - 200))
+		SetDirection(LEFT);
+
+	if (direction == LEFT && (x > center_region_x + 200))
+		SetDirection(RIGHT);
 }
 
 void Helit::Render()
@@ -39,4 +50,16 @@ void Helit::SetState(State s)
 void Helit::SetDirection(Direction d)
 {
 	this->direction = d;
+	switch (d)
+	{
+	case LEFT:
+		vx = HELIT_VX;
+		break;
+	case RIGHT:
+		vx = -HELIT_VX;
+		break;
+	default:
+		vx = 0;
+		break;
+	}
 }

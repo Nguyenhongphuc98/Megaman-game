@@ -2,8 +2,9 @@
 
 BlastHornet::BlastHornet()
 {
-	x = 200;
-	y = 1153 * G_Scale.y;
+	x = 1800;
+	y = 1200 * G_Scale.y;
+	count_animation = 0;
 	LoadResource();
 }
 
@@ -13,6 +14,15 @@ BlastHornet::~BlastHornet()
 
 void BlastHornet::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	count_animation++;
+	if (count_animation % 50 == 0)
+		SetState(REDKNEE);
+	if (count_animation % 100 == 0)
+		SetState(REDHANDS);
+	if (count_animation % 150 == 0)
+		SetState(PREPAREOPENVENOM);
+	if (count_animation % 200 == 0)
+		SetState(OPENINGVENOM);
 }
 
 void BlastHornet::Render()

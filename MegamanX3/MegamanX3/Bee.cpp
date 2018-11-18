@@ -2,8 +2,11 @@
 
 Bee::Bee()
 {
-	x = 500;
+	x = 850;
 	y = 1153 * G_Scale.y;
+
+	center_region_y = y;
+	vy = BEE_VY;
 	LoadResource();
 }
 
@@ -13,6 +16,14 @@ Bee::~Bee()
 
 void Bee::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	Object::Update(dt,List_object_can_col);
+	x += dx;
+	y += dy;
+
+	if (vy > 0 && y > center_region_y + 100)
+		vy = -BEE_VY;
+	if (vy <0 && y < center_region_y - 100)
+		vy = BEE_VY;
 }
 
 void Bee::Render()

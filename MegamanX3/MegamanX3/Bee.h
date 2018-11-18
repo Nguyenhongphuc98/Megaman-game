@@ -4,11 +4,12 @@
 #include"ActionObject.h"
 #define BEE_WIDTH 16*2.5
 #define BEE_HEIGHT 18*2.5
+#define BEE_VY 0.3f
 
 class Bee:public ActionObject
 {
 private:
-
+	int center_region_y;
 public:
 	Bee();
 	~Bee();
