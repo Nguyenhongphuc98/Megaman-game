@@ -3,6 +3,7 @@ QuadTree* QuadTree::instance;
 
 QuadTree::QuadTree()
 {
+	BuildTree();
 }
 
 QuadTree::~QuadTree()
@@ -87,6 +88,16 @@ void QuadTree::BuildTree()
 	LoadListNode();
 
 	//linking node there
+	int id, parent_id,child_id;
+	for (auto node : listNode) {
+		id = node.first;
+		parent_id = id / 10;
+
+		if (this->listNode[parent_id]) {
+			child_id = id % 10;
+			this->listNode[parent_id]->GetChilds()[child_id] = node.second;
+		}
+	}
 }
 
 
@@ -134,4 +145,21 @@ int QuadTree::CountWords(string str)
 	while (s >> word)
 		count++;
 	return count;
+}
+
+vector<Object*> QuadTree::GetListObject(Box cam)
+{
+	if(!this->listNode[1])
+	return vector<Object*>();
+
+	vector<Object*> listObject;
+	map<int, Object*> list = this->listNode[1]->GetListObject(cam);
+
+	for (auto obj : list)
+	{
+		//Object* object = obj.second;
+		listObject.push_back(obj.second);
+	}
+
+	return listObject;
 }

@@ -62,6 +62,8 @@ void Megaman::Render()
 {
 	D3DXVECTOR2 position=Camera::Instance()->GetPositionInViewPort(x,y);
 	animation->Render(state, direction, position);
+	if (state == DASH && animation->listSprite[DASH]->GetCurrentFrame() == 1)
+		return;
 	animation->Next(state);
 }
 
@@ -107,7 +109,7 @@ void Megaman::LoadResource()
 
 	vector<RECT*> list_source_rect = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanstand.txt");
 	MyTexture* texture_stand = new MyTexture((char*)"SourceImage\\megamanstand.png", D3DCOLOR_XRGB(50, 96, 166));
-	animation->listSprite[State::STAND] = new Sprite(texture_stand, list_source_rect, 1);
+	animation->listSprite[State::STAND] = new Sprite(texture_stand, list_source_rect, 1	);
 
 	//=====================Load Status Run=============================
 
@@ -215,7 +217,7 @@ void Megaman::LoadResource()
 
 	vector<RECT*> list_source_rect_jump = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanjump.txt");
 	MyTexture* texture_jump = new MyTexture((char*)"SourceImage\\megamanjump.png", D3DCOLOR_XRGB(50, 96, 166));
-	animation->listSprite[State::JUMP] = new Sprite(texture_jump, list_source_rect_jump, 1);
+	animation->listSprite[State::JUMP] = new Sprite(texture_jump, list_source_rect_jump, 2);
 
 	//=====================Load Status Shoot=============================
 	/*RECT* r31 = new RECT();
@@ -263,6 +265,12 @@ void Megaman::LoadResource()
 	vector<RECT*> list_source_rect_climb = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanClimb.txt");
 	MyTexture* texture_climb = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
 	animation->listSprite[State::CLIMB] = new Sprite(texture_climb, list_source_rect_climb, 1);
+	
+	//=====================Load Status Dash=============================
+	vector<RECT*> list_source_rect_dash = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanDash.txt");
+	MyTexture* texture_dash = new MyTexture((char*)"SourceImage\\megamanDash.png", D3DCOLOR_XRGB(50, 96, 166));
+	animation->listSprite[State::DASH] = new Sprite(texture_dash, list_source_rect_dash, 1);
+
 }
 
 BoundingBox Megaman::GetBoundingBox()
@@ -290,7 +298,6 @@ void Megaman::SetState(State s)
 			vx = -MEGAMAN_WALK_SPEED;
 		}
 		break;
-
 	case JUMP:
 		vy = MEGAMAN_JUMP_SPEED;
 		break;
@@ -301,6 +308,14 @@ void Megaman::SetState(State s)
 	case SHOOT:
 		vx = 0;
 		vy = 0;
+		break;
+	case DASH:
+		if (direction == RIGHT)
+			vx = MEGAMAN_DASH_SPEED;
+		else
+		{
+			vx = -MEGAMAN_DASH_SPEED;
+		}
 		break;
 	default:
 		vx = 0;

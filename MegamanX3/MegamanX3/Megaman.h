@@ -8,7 +8,8 @@
 #define MEGAMAN_WIDTH 75
 #define MEGAMAN_GRAVITY -0.02f
 #define MEGAMAN_WALK_SPEED 0.2f
-#define MEGAMAN_JUMP_SPEED 1.5f
+#define MEGAMAN_JUMP_SPEED 1.0f
+#define MEGAMAN_DASH_SPEED 0.4f
 
 class Megaman:public ActionObject
 {

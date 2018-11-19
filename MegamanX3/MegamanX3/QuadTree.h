@@ -31,6 +31,8 @@ public:
 
 	Object* CreateObject(int id, int x, int y, int w, int h, int d);
 	int CountWords(string str);
+
+	vector<Object*> GetListObject(Box cam);
 };
 
 

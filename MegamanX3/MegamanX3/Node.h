@@ -24,6 +24,7 @@ public:
 	map<int, Object*> GetListObject();
 	map<int, Object*> GetListObject(Box cam);
 	Box GetBound();
+	Node** GetChilds();
 };
 
 

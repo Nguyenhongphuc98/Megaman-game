@@ -64,3 +64,8 @@ Box Node::GetBound()
 {
 	return this->bound;
 }
+
+Node ** Node::GetChilds()
+{
+	return listChils;
+}

@@ -77,6 +77,7 @@ enum State {
 	STAND,
 	SHOOT,
 	CLIMB,
+	DASH,
 	//weapons
 	NORMALBULLET,
 	SUPERBULLET,

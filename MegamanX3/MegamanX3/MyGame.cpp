@@ -71,6 +71,10 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 	if (IsKeyDown(DIK_UP)) {
 		megaman->SetState(CLIMB);
 	}
+
+	if (IsKeyDown(DIK_D)) {
+		megaman->SetState(DASH);
+	}
 }
 
 void MyGame::Update()
