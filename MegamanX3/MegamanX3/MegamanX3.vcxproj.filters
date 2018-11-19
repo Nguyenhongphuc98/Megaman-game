@@ -138,6 +138,9 @@
     <ClInclude Include="QuadTree.h">
       <Filter>FrameWork\Define\Map</Filter>
     </ClInclude>
+    <ClInclude Include="CarryArm.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyTexture.cpp">
@@ -226,6 +229,9 @@
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
       <Filter>FrameWork\source\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="CarryArm.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

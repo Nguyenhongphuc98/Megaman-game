@@ -16,6 +16,7 @@
 #include"Bee.h"
 #include"Shurikein.h"
 #include"HeadGunnerCustomer.h"
+#include"CarryArm.h"
 
 class MyGame :public Game
 {
@@ -29,6 +30,7 @@ private:
 	Bee* bee;
 	Shurikein* shurikein;
 	HeadGunnerCustomer* head_gunner_customer;
+	CarryArm* carryArm;
 	
 public:
 	MyGame();

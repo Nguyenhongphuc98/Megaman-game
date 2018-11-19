@@ -20,6 +20,7 @@ void Megaman::Update(DWORD dt, vector<Object*> *List_object_can_col)
 
 	//if (y > 410)
 	//	y = 410;
+	yPre = y;
 
 	vector<ResultCollision> List_result_col;
 	List_result_col.clear();
@@ -56,12 +57,23 @@ void Megaman::Update(DWORD dt, vector<Object*> *List_object_can_col)
 		if (ny != 0) vy = 0;
 	}
 
+	
 }
 
 void Megaman::Render()
 {
-	D3DXVECTOR2 position=Camera::Instance()->GetPositionInViewPort(x,y);
+	D3DXVECTOR2 position = Camera::Instance()->GetPositionInViewPort(x, y);
+
+	if (y < yPre)
+	{
+		animation->listSprite[JUMP]->Set_current_frame(3);
+		animation->Render(JUMP, direction, position);
+		return;
+	}
+
+	
 	animation->Render(state, direction, position);
+	
 	if (state == DASH && animation->listSprite[DASH]->GetCurrentFrame() == 1)
 		return;
 	animation->Next(state);
@@ -264,7 +276,7 @@ void Megaman::LoadResource()
 	//=====================Load Status Climb=============================
 	vector<RECT*> list_source_rect_climb = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanClimb.txt");
 	MyTexture* texture_climb = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
-	animation->listSprite[State::CLIMB] = new Sprite(texture_climb, list_source_rect_climb, 1);
+	animation->listSprite[State::CLIMB] = new Sprite(texture_climb, list_source_rect_climb, 2);
 	
 	//=====================Load Status Dash=============================
 	vector<RECT*> list_source_rect_dash = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanDash.txt");

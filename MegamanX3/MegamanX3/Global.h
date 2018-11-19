@@ -99,6 +99,10 @@ enum State {
 	//HeadGunnerCustomer
 	SHOOTABOVE,
 	SHOOTBELOW,
+	//CarryArm
+	STRAIGHTROPE,
+	BREAKROPE,
+	SLACKROPE,
 };
 
 enum Direction {

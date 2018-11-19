@@ -14,7 +14,7 @@
 class Megaman:public ActionObject
 {
 private:
-	
+	int yPre;
 
 public:
 	Megaman();

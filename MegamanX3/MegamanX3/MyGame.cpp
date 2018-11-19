@@ -28,6 +28,7 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 	this->bee->Render();
 	this->shurikein->Render();
 	this->head_gunner_customer->Render();
+	this->carryArm->Render();
 
 	G_Scale = D3DXVECTOR2(1, 1);
 	G_ScaleFlipX= D3DXVECTOR2(-1, 1);
@@ -93,6 +94,7 @@ void MyGame::Update()
 	this->bee->Update(delta_time, List_object_can_col);
 	this->head_gunner_customer->Update(delta_time, List_object_can_col);
 	this->blastHornet->Update(delta_time, List_object_can_col);
+	this->carryArm->Update(delta_time, List_object_can_col);
 
 	float x, y;
 	megaman->GetPosition(x, y);
@@ -129,6 +131,10 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 	this->head_gunner_customer = new HeadGunnerCustomer();
 	this->head_gunner_customer->SetDirection(RIGHT);
 	this->head_gunner_customer->SetState(SHOOTABOVE);
+
+	this->carryArm = new CarryArm();
+	this->carryArm->SetDirection(RIGHT);
+	this->carryArm->SetState(STRAIGHTROPE);
 
 	O1 = new VirtualObject(1030 * G_Scale.y, 4 * G_Scale.x, 351 * G_Scale.x, 77 * G_Scale.y);
 	O2 = new VirtualObject(1030 * G_Scale.y, 359 * G_Scale.x, 160 * G_Scale.x, 128 * G_Scale.y);
