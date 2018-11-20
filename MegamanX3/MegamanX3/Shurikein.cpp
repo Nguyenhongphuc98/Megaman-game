@@ -18,8 +18,8 @@ void Shurikein::Update(DWORD dt, vector<Object*>* List_object_can_col)
 	x += dx;
 	y += dy;
 
-	if (state == APPEAR && animation->listSprite[APPEAR]->GetCurrentFrame() == 51)
-		SetState(ROTATELEFT);
+	if (state == APPEAR && animation->listSprite[APPEAR]->GetCurrentFrame() == 50)
+		SetState(ROTATELEFT);	
 
 	if (state == ROTATELEFT && animation->listSprite[ROTATELEFT]->GetCurrentFrame() == 9)
 	{
@@ -48,16 +48,22 @@ void Shurikein::Render()
 
 void Shurikein::LoadResource()
 {
-	MyTexture* texture_appear = new MyTexture((char*)"SourceImage\\ShurikeinAppear.png", D3DCOLOR_XRGB(255, 255, 255));
-	vector<RECT*> list_source_rect_appear = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\ShurikeinAppear.txt");
+	//MyTexture* texture_appear = new MyTexture((char*)"SourceImage\\ShurikeinAppear.png", D3DCOLOR_XRGB(255, 255, 255));
+	//vector<RECT*> list_source_rect_appear1 = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\ShurikeinAppear.txt");
+
+	MyTexture* texture_appear = TXT::Instance()->GetTexture(TSHURIKEINAPPEAR);
+	vector<RECT*> list_source_rect_appear = TXT::Instance()->GetListSourceRect(SSHURIKEINRAPPEAR);
 	animation->listSprite[State::APPEAR] = new Sprite(texture_appear, list_source_rect_appear, 2);
 
-	MyTexture* texture_rotate_left = new MyTexture((char*)"SourceImage\\shurikein_rotate_left.png", D3DCOLOR_XRGB(255, 255, 255));
-	vector<RECT*> list_source_rect_rotate_left = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\shurikein_rotate_left.txt");
+	//MyTexture* texture_rotate_left = new MyTexture((char*)"SourceImage\\shurikein_rotate_left.png", D3DCOLOR_XRGB(255, 255, 255));
+	//vector<RECT*> list_source_rect_rotate_left1 = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\shurikein_rotate_left.txt");
+
+	MyTexture* texture_rotate_left = TXT::Instance()->GetTexture(TSHURIKEINROTATELEFT);
+	vector<RECT*> list_source_rect_rotate_left = TXT::Instance()->GetListSourceRect(SSHURIKEINROTATELEFT);
 	animation->listSprite[State::ROTATELEFT] = new Sprite(texture_rotate_left, list_source_rect_rotate_left, 1);
 
 	//MyTexture* texture_rotate_right = new MyTexture((char*)"SourceImage\\shurikein_rotate_right.png", D3DCOLOR_XRGB(255, 255, 255));
-	vector<RECT*> list_source_rect_rotate_right = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\shurikein_rotate_right.txt");
+	vector<RECT*> list_source_rect_rotate_right = TXT::Instance()->GetListSourceRect(SSHURIKEINROTATERIGHT);
 	animation->listSprite[State::ROTATERIGHT] = new Sprite(texture_rotate_left, list_source_rect_rotate_right, 1);
 }
 

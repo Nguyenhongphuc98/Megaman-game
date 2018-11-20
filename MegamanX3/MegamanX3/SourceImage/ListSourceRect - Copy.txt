@@ -1,0 +1,7 @@
+so_sprite
+loai_sprite(enum_id) so_rect
+r1
+r2...
+loai_sprite(enum_id) so_rect
+r1
+r2...

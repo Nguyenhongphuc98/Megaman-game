@@ -29,12 +29,16 @@ void CarryArm::Render()
 
 void CarryArm::LoadResource()
 {
-	MyTexture* texture = new MyTexture((char*)"SourceImage\\subboss_carryarm.png", D3DCOLOR_XRGB(50, 96, 166));
+	//MyTexture* texture = new MyTexture((char*)"SourceImage\\subboss_carryarm.png", D3DCOLOR_XRGB(50, 96, 166));
+	//vector<RECT*> list_source_rect_straight_rope = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\subboss_carryarm_straight.txt");
 
-	vector<RECT*> list_source_rect_straight_rope = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\subboss_carryarm_straight.txt");
+	MyTexture* texture = TXT::Instance()->GetTexture(TCARRYARM);
+
+	vector<RECT*> list_source_rect_straight_rope = TXT::Instance()->GetListSourceRect(SCARRYARMSTRAIGHT);
 	animation->listSprite[State::STRAIGHTROPE] = new Sprite(texture, list_source_rect_straight_rope, 1);
 
-	vector<RECT*> list_source_rect_break_rope = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\subboss_carryarm_break.txt");
+	//vector<RECT*> list_source_rect_break_rope = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\subboss_carryarm_break.txt");
+	vector<RECT*> list_source_rect_break_rope = TXT::Instance()->GetListSourceRect(SCARRYARMBREAK);
 	animation->listSprite[State::BREAKROPE] = new Sprite(texture, list_source_rect_break_rope, 1);
 }
 

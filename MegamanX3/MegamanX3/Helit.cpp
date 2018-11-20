@@ -38,8 +38,11 @@ void Helit::Render()
 
 void Helit::LoadResource()
 {
-	vector<RECT*> list_source_rect_helit = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\helit.txt");
-	MyTexture* texture_helit = new MyTexture((char*)"SourceImage\\helit.png", D3DCOLOR_XRGB(255, 255, 255));
+	//vector<RECT*> list_source_rect_helit = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\helit.txt");
+	//MyTexture* texture_helit = new MyTexture((char*)"SourceImage\\helit.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	vector<RECT*> list_source_rect_helit = TXT::Instance()->GetListSourceRect(SHELITSTAND);
+	MyTexture* texture_helit = TXT::Instance()->GetTexture(THELIT);
 	animation->listSprite[State::RUN] = new Sprite(texture_helit, list_source_rect_helit, 1);
 }
 

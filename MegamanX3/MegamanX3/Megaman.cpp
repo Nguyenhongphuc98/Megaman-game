@@ -119,8 +119,11 @@ void Megaman::LoadResource()
 	list_source_rect.push_back(r4);
 	list_source_rect.push_back(r5);*/
 
-	vector<RECT*> list_source_rect = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanstand.txt");
-	MyTexture* texture_stand = new MyTexture((char*)"SourceImage\\megamanstand.png", D3DCOLOR_XRGB(50, 96, 166));
+	//vector<RECT*> list_source_rect = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanstand.txt");
+	//MyTexture* texture_stand = new MyTexture((char*)"SourceImage\\megamanstand.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	vector<RECT*> list_source_rect = TXT::Instance()->GetListSourceRect(SMEGAMANSTAND);
+	MyTexture* texture_stand = TXT::Instance()->GetTexture(TMEGAMANSTAND);
 	animation->listSprite[State::STAND] = new Sprite(texture_stand, list_source_rect, 1	);
 
 	//=====================Load Status Run=============================
@@ -169,8 +172,11 @@ void Megaman::LoadResource()
 	list_source_rect_run.push_back(r15);
 	list_source_rect_run.push_back(r16);*/
 
-	vector<RECT*> list_source_rect_run = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrun.txt");
-	MyTexture* texture_run = new MyTexture((char*)"SourceImage\\megamanrun.png", D3DCOLOR_XRGB(50, 96, 166));
+	//vector<RECT*> list_source_rect_run = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrun.txt");
+	//MyTexture* texture_run = new MyTexture((char*)"SourceImage\\megamanrun.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	vector<RECT*> list_source_rect_run = TXT::Instance()->GetListSourceRect(SMEGAMANRUN);
+	MyTexture* texture_run = TXT::Instance()->GetTexture(TMEGAMANRUN);
 	animation->listSprite[State::RUN] = new Sprite(texture_run, list_source_rect_run, 1);
 
 	//=====================Load Status Jump=============================
@@ -227,9 +233,12 @@ void Megaman::LoadResource()
 	list_source_rect_jump.push_back(r22);
 	list_source_rect_jump.push_back(r23);*/
 
-	vector<RECT*> list_source_rect_jump = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanjump.txt");
-	MyTexture* texture_jump = new MyTexture((char*)"SourceImage\\megamanjump.png", D3DCOLOR_XRGB(50, 96, 166));
-	animation->listSprite[State::JUMP] = new Sprite(texture_jump, list_source_rect_jump, 2);
+	//vector<RECT*> list_source_rect_jump = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanjump.txt");
+	//MyTexture* texture_jump = new MyTexture((char*)"SourceImage\\megamanjump.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	vector<RECT*> list_source_rect_jump = TXT::Instance()->GetListSourceRect(SMEGAMANJUMP);
+	MyTexture* texture_jump = TXT::Instance()->GetTexture(TMEGAMANJUMP);
+	animation->listSprite[State::JUMP] = new Sprite(texture_jump, list_source_rect_jump, 1);
 
 	//=====================Load Status Shoot=============================
 	/*RECT* r31 = new RECT();
@@ -269,18 +278,27 @@ void Megaman::LoadResource()
 	list_source_rect_runshoot.push_back(r61);
 	list_source_rect_runshoot.push_back(r71);*/
 
-	vector<RECT*> list_source_rect_runshoot = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrunshoot.txt");
-	MyTexture* texture_runshoot = new MyTexture((char*)"SourceImage\\megamanrunshoot.png", D3DCOLOR_XRGB(50, 96, 166));
+	//vector<RECT*> list_source_rect_runshoot = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrunshoot.txt");
+	//MyTexture* texture_runshoot = new MyTexture((char*)"SourceImage\\megamanrunshoot.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	vector<RECT*> list_source_rect_runshoot = TXT::Instance()->GetListSourceRect(SMEGAMANRUNSHOOT);
+	MyTexture* texture_runshoot = TXT::Instance()->GetTexture(TMEGAMANRUNSHOOT);
 	animation->listSprite[State::SHOOT] = new Sprite(texture_runshoot, list_source_rect_runshoot, 1);
 
 	//=====================Load Status Climb=============================
-	vector<RECT*> list_source_rect_climb = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanClimb.txt");
-	MyTexture* texture_climb = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
-	animation->listSprite[State::CLIMB] = new Sprite(texture_climb, list_source_rect_climb, 2);
+	//vector<RECT*> list_source_rect_climb = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanClimb.txt");
+	//MyTexture* texture_climb = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	vector<RECT*> list_source_rect_climb = TXT::Instance()->GetListSourceRect(SMEGAMANCLIMB);
+	MyTexture* texture_climb = TXT::Instance()->GetTexture(TMEGAMANCLIMB);
+	animation->listSprite[State::CLIMB] = new Sprite(texture_climb, list_source_rect_climb, 1);
 	
 	//=====================Load Status Dash=============================
-	vector<RECT*> list_source_rect_dash = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanDash.txt");
-	MyTexture* texture_dash = new MyTexture((char*)"SourceImage\\megamanDash.png", D3DCOLOR_XRGB(50, 96, 166));
+	//vector<RECT*> list_source_rect_dash = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanDash.txt");
+	//MyTexture* texture_dash = new MyTexture((char*)"SourceImage\\megamanDash.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	vector<RECT*> list_source_rect_dash = TXT::Instance()->GetListSourceRect(SMEGAMANDASH);
+	MyTexture* texture_dash = TXT::Instance()->GetTexture(TMEGAMANDASH);
 	animation->listSprite[State::DASH] = new Sprite(texture_dash, list_source_rect_dash, 1);
 
 }

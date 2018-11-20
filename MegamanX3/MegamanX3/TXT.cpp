@@ -3,6 +3,8 @@ TXT* TXT::instance;
 
 TXT::TXT()
 {
+	LoadAllSourceRect();
+	LoadAllTexture();
 }
 
 TXT::~TXT()
@@ -29,8 +31,8 @@ vector<RECT*> TXT::LoadListSourceRect(char * path)
 	getline(f, data);
 	stringstream stream_data;
 	stream_data << data;
-	stream_data>>number_of_source_rect;
-	
+	stream_data >> number_of_source_rect;
+
 	//top-bottom-left-right
 	//int top, bottom, left, right;
 	for (int i = 0; i < number_of_source_rect; i++)
@@ -58,111 +60,95 @@ vector<RECT*> TXT::LoadListSourceRect(char * path)
 	f.close();
 	return list_source_rect;
 }
-//
-//map<int, Object*> TXT::LoadListObject(char * path)
-//{
-//	fstream f;
-//	map<int, Object*> list_object;
-//
-//	f.open(path, ios::in);
-//
-//	int number_of_object,map_width,map_height;
-//	string data;
-//
-//	getline(f, data);
-//	stringstream stream_data;
-//	stream_data << data;
-//	stream_data >> number_of_object>>map_width>>map_height;
-//
-//	int stt, id,x, y, w, h,direction; //stt=key
-//	for (int i = 0; i < number_of_object; i++)
-//	{
-//		data = "";
-//		stream_data.clear();
-//
-//		getline(f, data);
-//		stream_data << data;
-//
-//		stream_data >> stt>>id>>x>>y>>w>>h>> direction;
-//
-//		list_object[stt] = CreateObject(id, x, y, w, h, direction);
-//	}
-//
-//	f.close();
-//	return list_object;
-//}
-//
-//map<int, Node*> TXT::LoadListNode(char * path, map<int, Object*> list_object)
-//{
-//	fstream f;
-//	map<int, Node*> list_node;
-//	string data;
-//
-//	f.open(path, ios::in);
-//
-//	stringstream stream_data;
-//	int id, x, y, w,sttObject; //stt=key
-//	int number_of_object_in_node;
-//	while (getline(f, data))
-//	{
-//		stream_data << data;
-//
-//		stream_data >> id, x, y, w;
-//		Node* node = new Node(x, y, w, w);
-//
-//		number_of_object_in_node = CountWords(data) - 4;
-//		for (int i = 0; i < number_of_object_in_node; i++)
-//		{
-//			stream_data >> sttObject;
-//			//CTreeObject* obj = this->_listObject[key];
-//			node->AddObject(sttObject, list_object[sttObject]);// new CTreeObject(obj->getId(), obj->getBound().getX(), obj->getBound().getY(), obj->getBound().getWidth(), obj->getBound().getHeight(), obj->getDirect()));
-//		}
-//		list_node[id] = node;
-//	}
-//	return list_node;
-//}
-//
-//Object * TXT::CreateObject(int id, int x, int y, int w, int h, int d)
-//{
-//	Direction dir;
-//	if (d == 0)
-//		dir = RIGHT;
-//	else
-//	{
-//		dir = LEFT;
-//	}
-//
-//	Object* o;
-//	//convert to real scale
-//	y *= G_Scale.y;
-//	x *= G_Scale.x;
-//	w *= G_Scale.x;
-//	h *= G_Scale.y;
-//	switch (id)
-//	{
-//	case GROUND:
-//		o= new VirtualObject(y - h, x, w, h);
-//		break;
-//	case NOTORBANGER:
-//		o= new NotorBanger(y - h/2, x+w/2, w, h,dir);
-//		break;
-//	case HELIT:
-//		o= new Helit(y - h / 2, x + w / 2, w, h, dir);
-//		break;
-//	default:
-//		break;
-//	}
-//	return o;
-//}
-//
-//int TXT::CountWords(string str)
-//{
-//		// breaking input into word using string stream 
-//		stringstream s(str); // Used for breaking words 
-//		string word; // to store individual words 
-//
-//		int count = 0;
-//		while (s >> word)
-//			count++;
-//		return count;
-//}
+
+void TXT::LoadAllSourceRect()
+{
+	fstream f;
+	f.open("SourceImage\\ListSourceRect.txt", ios::in);
+
+	int number_of_sprite;
+	string data;
+
+	getline(f, data);
+	stringstream stream_data;
+	stream_data << data;
+	stream_data >> number_of_sprite;
+
+	int type_sprite, number_of_source_rect;
+	for (int i = 0; i < number_of_sprite; i++)
+	{
+
+		data = "";
+		stream_data.clear();
+
+		getline(f, data);
+		stream_data << data;
+
+		stream_data >> type_sprite >> number_of_source_rect;
+		for (int t = 0; t < number_of_source_rect; t++) {
+
+			data = "";
+			stream_data.clear();
+
+			getline(f, data);
+			stream_data << data;
+
+			RECT* r = new RECT();
+			stream_data >> r->top;
+			stream_data >> r->bottom;
+			stream_data >> r->left;
+			stream_data >> r->right;
+
+			this->listSourceRect[(TypeSprite)type_sprite].push_back(r);
+		}
+		getline(f, data);
+	}
+
+	f.close();
+}
+
+void TXT::LoadAllTexture()
+{
+	//===============================MEGAMAN SPRITE=====================================
+	listTexture[TMEGAMANSTAND] = new MyTexture((char*)"SourceImage\\megamanstand.png", D3DCOLOR_XRGB(50, 96, 166));
+	listTexture[TMEGAMANRUN] = new MyTexture((char*)"SourceImage\\megamanrun.png", D3DCOLOR_XRGB(50, 96, 166));
+	listTexture[TMEGAMANJUMP] = new MyTexture((char*)"SourceImage\\megamanjump.png", D3DCOLOR_XRGB(50, 96, 166));
+	listTexture[TMEGAMANRUNSHOOT]= new MyTexture((char*)"SourceImage\\megamanrunshoot.png", D3DCOLOR_XRGB(50, 96, 166));
+	listTexture[TMEGAMANCLIMB] = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
+	listTexture[TMEGAMANDASH] = new MyTexture((char*)"SourceImage\\megamanDash.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	//===============================BEE SPRITE=====================================
+	listTexture[TBEE] = new MyTexture((char*)"SourceImage\\bee.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================BLASTHORNET SPRITE=====================================
+	listTexture[TBLASTHORNETREDKNEE] = new MyTexture((char*)"SourceImage\\blast_hornet_red_knee.png", D3DCOLOR_XRGB(255, 255, 255));
+	listTexture[TBLASTHORNETREDHANDS] = new MyTexture((char*)"SourceImage\\blast_hornet_red_hands.png", D3DCOLOR_XRGB(255, 255, 255));
+	listTexture[TBLASTHORNETPREPAREOPENVENOM] = new MyTexture((char*)"SourceImage\\blast_hornet_prepare_open_venom.png", D3DCOLOR_XRGB(255, 255, 255));
+	listTexture[TBLASTHORNETOPENINGVENOM]= new MyTexture((char*)"SourceImage\\blast_hornet_opening_venom.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================CARRY ARM SPRITE=====================================
+	listTexture[TCARRYARM] = new MyTexture((char*)"SourceImage\\subboss_carryarm.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	//===============================HEAD GUNNER CUSTOMER SPRITE=====================================
+	listTexture[THEADGUNNERCUSTOMER] = new MyTexture((char*)"SourceImage\\HeadGunnerCustomer.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================HELIT SPRITE=====================================
+	listTexture[THELIT] = new MyTexture((char*)"SourceImage\\helit.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================NOTORBANGER SPRITE=====================================
+	listTexture[TNOTORBANGER] = new MyTexture((char*)"SourceImage\\notorBanger.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================SHURIKEIN SPRITE=====================================
+	listTexture[TSHURIKEINAPPEAR] = new MyTexture((char*)"SourceImage\\ShurikeinAppear.png", D3DCOLOR_XRGB(255, 255, 255));
+	listTexture[TSHURIKEINROTATELEFT] = new MyTexture((char*)"SourceImage\\shurikein_rotate_left.png", D3DCOLOR_XRGB(255, 255, 255));
+}
+
+vector<RECT*> TXT::GetListSourceRect(TypeSprite type_sprite)
+{
+	return this->listSourceRect[type_sprite];
+}
+
+MyTexture * TXT::GetTexture(TypeTexture type_texture)
+{
+	return listTexture[type_texture];
+}

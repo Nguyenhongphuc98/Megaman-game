@@ -75,7 +75,8 @@ void NotorBanger::Render()
 
 void NotorBanger::LoadResource()	
 {
-	MyTexture *texture = new MyTexture((char*)"SourceImage\\notorBanger.png", D3DCOLOR_XRGB(255, 255, 255));
+	//MyTexture *texture = new MyTexture((char*)"SourceImage\\notorBanger.png", D3DCOLOR_XRGB(255, 255, 255));
+	MyTexture *texture = TXT::Instance()->GetTexture(TNOTORBANGER);
 
 	/*RECT* r1 = new RECT();
 	r1->top = 5;
@@ -106,10 +107,13 @@ void NotorBanger::LoadResource()
 	list_source_rect_jump.push_back(r3);
 	list_source_rect_jump.push_back(r4);*/
 	
-	vector<RECT*> list_source_rect_jump = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\notorBangerJump.txt");
+
+	//vector<RECT*> list_source_rect_jump2 = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\notorBangerJump.txt");
+	vector<RECT*> list_source_rect_jump = TXT::Instance()->GetListSourceRect(SNOTORBANGERJUMP);
 	animation->listSprite[JUMP] = new Sprite(texture, list_source_rect_jump, 2);
 
-	vector<RECT*> list_source_rect_shoot90 = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\notorBangerShoot90.txt");
+	//vector<RECT*> list_source_rect_shoot90 = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\notorBangerShoot90.txt");
+	vector<RECT*> list_source_rect_shoot90 = TXT::Instance()->GetListSourceRect(SNOTOBANGERSHOOT90);
 	animation->listSprite[SHOOT90] = new Sprite(texture, list_source_rect_shoot90, 2);
 }
 

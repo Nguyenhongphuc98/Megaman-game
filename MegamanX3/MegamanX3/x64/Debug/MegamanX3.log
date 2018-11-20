@@ -1,9 +1,3 @@
-﻿  Megaman.cpp
+﻿  MyGame.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.cpp(23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.cpp(46): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.cpp(50): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  MyGame.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  Generating Code...
   MegamanX3.vcxproj -> D:\IT\2018\Nhập môn game\Source-Code-Game\MegamanX3\x64\Debug\MegamanX3.exe

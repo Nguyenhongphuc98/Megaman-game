@@ -33,15 +33,22 @@ void Bee::Render()
 
 void Bee::LoadResource()
 {
-	MyTexture* texture = new MyTexture((char*)"SourceImage\\bee.png", D3DCOLOR_XRGB(255, 255, 255));
+	//MyTexture* texture = new MyTexture((char*)"SourceImage\\bee.png", D3DCOLOR_XRGB(255, 255, 255));
 
-	vector<RECT*> list_source_rect_flapping = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beeflaping.txt");
+	MyTexture* texture = TXT::Instance()->GetTexture(TBEE);
+	//vector<RECT*> list_source_rect_flapping = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beeflaping.txt");
+
+	vector<RECT*> list_source_rect_flapping = TXT::Instance()->GetListSourceRect(SBEEFLAPING);
 	animation->listSprite[State::FLAPPING] = new Sprite(texture, list_source_rect_flapping, 2);
 
-	vector<RECT*> list_source_rect_flapping_and_flying = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beeflapingandflying.txt");
+	//vector<RECT*> list_source_rect_flapping_and_flying = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beeflapingandflying.txt");
+
+	vector<RECT*> list_source_rect_flapping_and_flying = TXT::Instance()->GetListSourceRect(SBEEFLAPINGANDFLYING);
 	animation->listSprite[State::FLAPPINGANDFLYING] = new Sprite(texture, list_source_rect_flapping_and_flying, 1);
 
-	vector<RECT*> list_source_rect_stand = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beestand.txt");
+	//vector<RECT*> list_source_rect_stand = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\beestand.txt");
+
+	vector<RECT*> list_source_rect_stand = TXT::Instance()->GetListSourceRect(SBEESTAND);
 	animation->listSprite[State::STAND] = new Sprite(texture, list_source_rect_stand, 10);
 }
 

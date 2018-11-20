@@ -8,32 +8,92 @@
 #include<string.h>
 #include<sstream>
 #include<map>
-
-//#include"Global.h"
-//#include"Node.h"
-//#include"VirtualObject.h"
-//#include"Helit.h"
-//#include"NotorBanger.h"
-//#include"HeadGunnerCustomer.h"
+#include<vector>
+#include"MyTexture.h"
 
 using namespace std;
+
+enum TypeSprite {
+	SBEEFLAPING,
+	SBEEFLAPINGANDFLYING,
+	SBEESTAND,
+
+	SBLASTHORNETOPENINGVENOM,
+	SBLASTHORNETPREPAREOPENVENOM,
+	SBLASTHORNETREDHANDS,
+	SBLASTHORNETREDKNEE,
+
+	SHEADGUNNERCUSTOMERSHOOTABOVE,
+	SHEADGUNNERCUSTOMERSHOOTBELOW,
+
+	SHELITSTAND,
+
+	SMEGAMANCLIMB,
+	SMEGAMANDASH,
+	SMEGAMANJUMP,
+	SMEGAMANRUN,
+	SMEGAMANRUNSHOOT,
+	SMEGAMANSTAND,
+
+	SNOTORBANGERJUMP,
+	SNOTOBANGERSHOOT90,
+
+	SSHURIKEINROTATELEFT,
+	SSHURIKEINROTATERIGHT,
+	SSHURIKEINRAPPEAR,
+
+	SCARRYARMSTRAIGHT,
+	SCARRYARMBREAK,
+};
+
+enum TypeTexture {
+	TBEE,
+
+	TBLASTHORNETOPENINGVENOM,
+	TBLASTHORNETPREPAREOPENVENOM,
+	TBLASTHORNETREDHANDS,
+	TBLASTHORNETREDKNEE,
+
+	THEADGUNNERCUSTOMER,
+
+	THELIT,
+
+	TMEGAMANCLIMB,
+	TMEGAMANDASH,
+	TMEGAMANJUMP,
+	TMEGAMANRUN,
+	TMEGAMANRUNSHOOT,
+	TMEGAMANSTAND,
+
+	TNOTORBANGER,
+	TSHURIKEINROTATERIGHT,
+	TSHURIKEINROTATELEFT,
+	TSHURIKEINAPPEAR,
+
+	TCARRYARM,
+};
+
 
 class TXT
 {
 private:
 	static TXT* instance;
+
+	map<TypeSprite, vector<RECT*>> listSourceRect;
+	map<TypeTexture, MyTexture*> listTexture;
+
 public:
 	TXT();
 	~TXT();
 
 	static TXT* Instance();
-	
-	vector<RECT*> LoadListSourceRect(char* path);
-	//map<int, Object*> LoadListObject(char* path);
-	//map<int, Node*> LoadListNode(char* path, map<int, Object*>);
 
-	//Object* CreateObject(int id, int x, int y, int w, int h, int d);
-	//int CountWords(string str);
+	vector<RECT*> LoadListSourceRect(char* path);
+	void LoadAllSourceRect();
+	void LoadAllTexture();
+
+	vector<RECT*> GetListSourceRect(TypeSprite type_sprite);
+	MyTexture* GetTexture(TypeTexture type_texture);
 };
 
 
