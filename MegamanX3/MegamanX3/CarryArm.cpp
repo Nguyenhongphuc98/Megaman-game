@@ -3,7 +3,7 @@
 CarryArm::CarryArm()
 {
 	x = 2000;
-	y = 1200 * G_Scale.y;
+	y = 7100 * G_Scale.y;
 	count_time_change_animation = 0;
 	LoadResource();
 }

@@ -2,7 +2,7 @@
 Helit::Helit()
 {
 	x = 400;
-	y = 1153 * G_Scale.y;
+	y = 7050 * G_Scale.y;
 
 	center_region_x = x;
 	LoadResource();

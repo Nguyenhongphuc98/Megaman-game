@@ -26,10 +26,10 @@ void Camera::Update(float x, float y)
 	if (this->y < G_ScreenHeight)
 		this->y = G_ScreenHeight;
 
-	if (this->x < 772*G_Scale.x && this->y>(1287 * G_Scale.y))
-		this->y = 1287 * G_Scale.y;
+	if (this->x < (772)*G_Scale.x && this->y>((1287+G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y))
+		this->y = (1287 + G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y;
 
-	if (this->x > 772 * G_Scale.x)
+	if (this->x > 772 * G_Scale.x&&this->x<1520*G_Scale.x&&this->y<(1765+G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
 		this->x = 772 * G_Scale.x;
 }
 
@@ -59,4 +59,9 @@ void Camera::GetCameraPosition(float & x, float & y)
 {
 	x = this->x;
 	y = this->y;
+}
+
+Box Camera::GetBound()
+{
+	return Box(this->x / G_Scale.x,this->y / G_Scale.y,G_ScreenWidth/G_Scale.x,G_ScreenHeight / G_Scale.y);
 }

@@ -23,7 +23,7 @@ void QuadTree::LoadListObject()
 	fstream f;
 	//map<int, Object*> list_object;
 
-	f.open("path", ios::in);
+	f.open((char*)"SourceImage\\quadtreelistobject.txt", ios::in);
 
 	int number_of_object, map_width, map_height;
 	string data;
@@ -59,7 +59,7 @@ void QuadTree::LoadListNode()
 	//map<int, Node*> list_node;
 	string data;
 
-	f.open("path", ios::in);
+	f.open((char*)"SourceImage\\quadtreelistnode.txt", ios::in);
 
 	stringstream stream_data;
 	int id, x, y, w, sttObject; //stt=key
@@ -79,6 +79,9 @@ void QuadTree::LoadListNode()
 			node->AddObject(sttObject, this->listObject[sttObject]);// new CTreeObject(obj->getId(), obj->getBound().getX(), obj->getBound().getY(), obj->getBound().getWidth(), obj->getBound().getHeight(), obj->getDirect()));
 		}
 		this->listNode[id] = node;
+
+		data = "";
+		stream_data.clear();
 	}
 }
 

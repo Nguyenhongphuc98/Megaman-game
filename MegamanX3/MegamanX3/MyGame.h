@@ -17,6 +17,7 @@
 #include"Shurikein.h"
 #include"HeadGunnerCustomer.h"
 #include"CarryArm.h"
+#include"QuadTree.h"
 
 class MyGame :public Game
 {

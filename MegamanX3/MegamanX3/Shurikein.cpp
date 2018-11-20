@@ -3,7 +3,7 @@
 Shurikein::Shurikein()
 {
 	x = 230;
-	y = 1153 * G_Scale.y;
+	y = 7030 * G_Scale.y;
 	animation_loop_rotate = 0;
 	LoadResource();
 }

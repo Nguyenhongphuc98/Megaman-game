@@ -80,26 +80,29 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 
 void MyGame::Update()
 {
-	vector<Object*> *List_object_can_col = new vector<Object*>();
-	List_object_can_col->push_back(O1);
-	List_object_can_col->push_back(O2);
-	List_object_can_col->push_back(O3);
-	List_object_can_col->push_back(O4);
-	List_object_can_col->push_back(O5);
-	megaman->Update(delta_time,List_object_can_col);
-
-	this->notorBanger->Update(delta_time,List_object_can_col);
-	this->shurikein->Update(delta_time, List_object_can_col);
-	this->helit->Update(delta_time, List_object_can_col);
-	this->bee->Update(delta_time, List_object_can_col);
-	this->head_gunner_customer->Update(delta_time, List_object_can_col);
-	this->blastHornet->Update(delta_time, List_object_can_col);
-	this->carryArm->Update(delta_time, List_object_can_col);
-
 	float x, y;
 	megaman->GetPosition(x, y);
 	Camera::Instance()->Update(x, y);
-	WeaponSystem::Instance()->Update(delta_time, List_object_can_col);
+
+	//vector<Object*> *List_object_can_col = new vector<Object*>();
+	/*List_object_can_col->push_back(O1);
+	List_object_can_col->push_back(O2);
+	List_object_can_col->push_back(O3);
+	List_object_can_col->push_back(O4);
+	List_object_can_col->push_back(O5);*/
+	vector<Object*> List_object_can_col = QuadTree::Instance()->GetListObject(Camera::Instance()->GetBound());
+	megaman->Update(delta_time,&List_object_can_col);
+
+	this->notorBanger->Update(delta_time,&List_object_can_col);
+	this->shurikein->Update(delta_time, &List_object_can_col);
+	this->helit->Update(delta_time, &List_object_can_col);
+	this->bee->Update(delta_time, &List_object_can_col);
+	this->head_gunner_customer->Update(delta_time,& List_object_can_col);
+	this->blastHornet->Update(delta_time, &List_object_can_col);
+	this->carryArm->Update(delta_time, &List_object_can_col);
+
+
+	WeaponSystem::Instance()->Update(delta_time, &List_object_can_col);
 }
 
 void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)

@@ -3,7 +3,7 @@
 NotorBanger::NotorBanger()
 {
 	x = 1100;
-	y = 1178 * G_Scale.y;
+	y = 7056 * G_Scale.y;
 
 	center_region_x = x;
 	jump_angle = PII/6;

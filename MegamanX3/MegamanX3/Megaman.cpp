@@ -3,7 +3,7 @@
 Megaman::Megaman()
 {
 	x = 100;
-	y = 1143*G_Scale.y;
+	y = 7200*G_Scale.y;
 	LoadResource();
 }
 

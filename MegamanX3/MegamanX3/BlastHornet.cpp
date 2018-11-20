@@ -3,7 +3,7 @@
 BlastHornet::BlastHornet()
 {
 	x = 1800;
-	y = 1200 * G_Scale.y;
+	y = 7100 * G_Scale.y;
 	count_animation = 0;
 	LoadResource();
 }

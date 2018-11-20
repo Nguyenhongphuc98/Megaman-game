@@ -3,7 +3,7 @@
 HeadGunnerCustomer::HeadGunnerCustomer()
 {
 	x = 1400;
-	y = 1228 * G_Scale.y;
+	y = 7108 * G_Scale.y;
 
 	count_animation = 0;
 	LoadResource();

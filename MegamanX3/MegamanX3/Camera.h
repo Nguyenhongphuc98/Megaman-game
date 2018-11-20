@@ -2,6 +2,7 @@
 #ifndef Camera_H_
 #define Camera_H_
 #include"Global.h"
+#include"Box.h"
 
 class Camera
 {
@@ -18,6 +19,7 @@ public:
 
 	D3DXVECTOR2 GetPositionInViewPort(float x,float y);
 	void GetCameraPosition(float &x, float&y);
+	Box GetBound();
 };
 
 

@@ -26,7 +26,7 @@ void Map::Render()
 {
 	float x, y;
 	Camera::Instance()->GetCameraPosition(x, y);
-
+	y -= G_ADDITIONS_TO_BECOME_THE_SQUARE*G_Scale.y; //background added 5880 to be square so have to sub.
 	//Oy of image and worldport is different
 	y = HEIGHT_MAP_IMAGE* G_Scale.y - y;
 	RECT sourceDraw;

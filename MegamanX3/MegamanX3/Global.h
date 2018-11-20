@@ -21,7 +21,7 @@
 
 //size of key buffer(used in game class to save key state
 #define GL_KEY_BUFFER_SIZE	1024
-
+#define G_ADDITIONS_TO_BECOME_THE_SQUARE 5880// background added 5880 to be square
 
 
 //
@@ -31,6 +31,7 @@
 extern D3DXVECTOR2 G_Scale;
 extern D3DXVECTOR2 G_ScaleFlipX;
 extern D3DXVECTOR2 G_ScaleFlipY;
+
 
 extern bool			G_IsFullScreen;
 

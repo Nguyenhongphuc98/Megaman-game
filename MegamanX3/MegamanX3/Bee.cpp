@@ -3,7 +3,7 @@
 Bee::Bee()
 {
 	x = 850;
-	y = 1153 * G_Scale.y;
+	y = 7060 * G_Scale.y;
 
 	center_region_y = y;
 	vy = BEE_VY;
