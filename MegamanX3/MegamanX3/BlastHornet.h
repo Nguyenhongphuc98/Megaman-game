@@ -13,6 +13,7 @@ private:
 
 public:
 	BlastHornet();
+	BlastHornet(int x, int y, int w, int h, Direction d);
 	~BlastHornet();
 
 	void Update(DWORD dt, vector<Object*> *List_object_can_col);

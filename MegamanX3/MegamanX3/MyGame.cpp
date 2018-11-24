@@ -22,13 +22,11 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 
 	this->map->Render();
 	this->megaman->Render();		
-	this->notorBanger->Render();
-	this->blastHornet->Render();
-	this->helit->Render();
-	this->bee->Render();
-	this->shurikein->Render();
-	this->head_gunner_customer->Render();
-	this->carryArm->Render();
+
+
+	for (auto o : ListObject) {	
+		o->Render();
+	}
 
 	G_Scale = D3DXVECTOR2(1, 1);
 	G_ScaleFlipX= D3DXVECTOR2(-1, 1);
@@ -41,23 +39,28 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 
 void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 {
-	megaman->SetState(STAND);
+//	megaman->SetState(STAND);
 
+	int check_key_down = false;
 	if (IsKeyDown(DIK_RIGHT))
 	{
 		megaman->SetDirection(RIGHT);
 		megaman->SetState(RUN);
+		check_key_down = true;
 	}
 
 	if(IsKeyDown(DIK_LEFT))
 	{
 		megaman->SetDirection(LEFT);
 		megaman->SetState(RUN);
+		check_key_down = true;
 	}
 
-	if (IsKeyDown(DIK_SPACE))
+	if (IsKeyDown(DIK_Z)&&megaman->IsGround())
 	{
 		megaman->SetState(JUMP);
+		check_key_down = true;
+		megaman->SetGround(false);
 	}
 
 	if (IsKeyDown(DIK_A))
@@ -67,15 +70,21 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 		megaman->GetPosition(x, y);
 		Bullet *bullet = new  Speedburner(x, y, megaman->GetDirection(), NORMALBULLET);
 		WeaponSystem::Instance()->AddBulletMegaman(bullet);
+		check_key_down = true;
 	}
 
 	if (IsKeyDown(DIK_UP)) {
 		megaman->SetState(CLIMB);
+		check_key_down = true;
 	}
 
 	if (IsKeyDown(DIK_D)) {
 		megaman->SetState(DASH);
+		check_key_down = true;
 	}
+
+	if (!check_key_down&&megaman->IsGround())
+		megaman->SetState(STAND);
 }
 
 void MyGame::Update()
@@ -84,66 +93,50 @@ void MyGame::Update()
 	megaman->GetPosition(x, y);
 	Camera::Instance()->Update(x, y);
 
-	//vector<Object*> *List_object_can_col = new vector<Object*>();
-	/*List_object_can_col->push_back(O1);
-	List_object_can_col->push_back(O2);
-	List_object_can_col->push_back(O3);
-	List_object_can_col->push_back(O4);
-	List_object_can_col->push_back(O5);*/
-	vector<Object*> List_object_can_col = QuadTree::Instance()->GetListObject(Camera::Instance()->GetBound());
-	megaman->Update(delta_time,&List_object_can_col);
+	this->ListObject.clear();
+	this->ListObject = QuadTree::Instance()->GetListObject(Camera::Instance()->GetBound());
 
-	this->notorBanger->Update(delta_time,&List_object_can_col);
-	this->shurikein->Update(delta_time, &List_object_can_col);
-	this->helit->Update(delta_time, &List_object_can_col);
-	this->bee->Update(delta_time, &List_object_can_col);
-	this->head_gunner_customer->Update(delta_time,& List_object_can_col);
-	this->blastHornet->Update(delta_time, &List_object_can_col);
-	this->carryArm->Update(delta_time, &List_object_can_col);
+	this->ListEnemy.clear();
+	this->ListItem.clear();
+	this->ListVirtualObject.clear();
+	
+	vector<Object*> List_temp;
+	for (auto o : ListObject) 
+	{
+		switch (o->GetNameObject())
+		{
+		case CARRYARM:
+		case HEADGUNNERCUSTOMER:
+		case HELIT:
+		case NOTORBANGER:
+			ListEnemy.push_back(o);
+			break;
 
+		case VIRTUALOBJECT:
+			ListVirtualObject.push_back(o);
+			break;
 
-	WeaponSystem::Instance()->Update(delta_time, &List_object_can_col);
+			//item object
+		default:
+			break;
+		}	
+	}
+
+	for (auto o : ListEnemy) {
+		o->Update(delta_time, &ListVirtualObject);
+	}
+
+	megaman->Update(delta_time, &ListVirtualObject);
+	WeaponSystem::Instance()->Update(delta_time, &ListObject);
 }
 
 void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 {
-	this->megaman = new Megaman();
+	this->megaman = Megaman::Instance();
+	//this->megaman = new Megaman();
 	this->megaman->SetDirection(RIGHT);
-	this->megaman->SetState(RUN);
+	this->megaman->SetState(STAND);
 
-	this->notorBanger = new NotorBanger();
-	this->notorBanger->SetDirection(RIGHT);
-	this->notorBanger->SetState(SHOOT90);
-	
-	this->blastHornet = new BlastHornet();
-	this->blastHornet->SetDirection(RIGHT);
-	this->blastHornet->SetState(REDKNEE);
-
-	this->helit = new Helit();
-	this-> helit->SetDirection(RIGHT);
-	this->helit->SetState(RUN);
-
-	this->bee = new Bee();
-	this->bee->SetDirection(RIGHT);
-	this->bee->SetState(FLAPPING);
-
-	this->shurikein = new Shurikein();
-	this->shurikein->SetDirection(RIGHT);
-	this->shurikein->SetState(APPEAR);
-
-	this->head_gunner_customer = new HeadGunnerCustomer();
-	this->head_gunner_customer->SetDirection(RIGHT);
-	this->head_gunner_customer->SetState(SHOOTABOVE);
-
-	this->carryArm = new CarryArm();
-	this->carryArm->SetDirection(RIGHT);
-	this->carryArm->SetState(STRAIGHTROPE);
-
-	O1 = new VirtualObject(1030 * G_Scale.y, 4 * G_Scale.x, 351 * G_Scale.x, 77 * G_Scale.y);
-	O2 = new VirtualObject(1030 * G_Scale.y, 359 * G_Scale.x, 160 * G_Scale.x, 128 * G_Scale.y);
-	O3 = new VirtualObject(1030 * G_Scale.y, 519 * G_Scale.x, 126 * G_Scale.x, 177 * G_Scale.y);
-	O4 = new VirtualObject(1030 * G_Scale.y, 645 * G_Scale.x, 210 * G_Scale.x, 80 * G_Scale.y);
-	O5 = new VirtualObject(1030 * G_Scale.y, 950 * G_Scale.x, 80 * G_Scale.x, 80 * G_Scale.y);
 	map = new Map();
 }
 

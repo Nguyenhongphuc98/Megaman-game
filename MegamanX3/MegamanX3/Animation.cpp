@@ -22,3 +22,8 @@ void Animation::Render(State state, Direction direction, D3DXVECTOR2 position, D
 		listSprite[state]->Draw(position.x, position.y);
 	}
 }
+
+void Animation::Refresh(State s)
+{
+	this->listSprite[s]->Reset();
+}

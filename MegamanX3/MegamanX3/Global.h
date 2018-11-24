@@ -93,6 +93,10 @@ enum State {
 	FLAPPINGANDFLYING,
 	//notorbanger
 	SHOOT90,
+	SHOOT60,
+	UPTHEGUN60,
+	UPTHEGUN90,
+	DOWNTHEGUN,
 	//shurikein
 	APPEAR,
 	ROTATERIGHT,
@@ -112,9 +116,14 @@ enum Direction {
 };
 
 enum TypeObject {
-	GROUND,
+	VIRTUALOBJECT,
 	NOTORBANGER,
 	HELIT,
+	CARRYARM,
+	HEADGUNNERCUSTOMER,
+	BEE,
+	BLASTHORNET,
+	SHURIKEIN,
 };
 
 //write string to a tracing file

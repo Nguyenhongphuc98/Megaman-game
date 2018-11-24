@@ -5,6 +5,16 @@ BlastHornet::BlastHornet()
 	x = 1800;
 	y = 7100 * G_Scale.y;
 	count_animation = 0;
+
+	this->nameObject = BLASTHORNET;
+	LoadResource();
+}
+
+BlastHornet::BlastHornet(int x, int y, int w, int h, Direction d) :ActionObject(x, y, w, h, d)
+{
+	count_animation = 0;
+
+	this->nameObject = BLASTHORNET;
 	LoadResource();
 }
 

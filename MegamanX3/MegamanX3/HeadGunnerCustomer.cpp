@@ -6,6 +6,13 @@ HeadGunnerCustomer::HeadGunnerCustomer()
 	y = 7108 * G_Scale.y;
 
 	count_animation = 0;
+	this->nameObject = HEADGUNNERCUSTOMER;
+	LoadResource();
+}
+
+HeadGunnerCustomer::HeadGunnerCustomer(int x, int y, int w, int h, Direction d):ActionObject(x,y,w,h,d)
+{
+	this->nameObject = HEADGUNNERCUSTOMER;
 	LoadResource();
 }
 

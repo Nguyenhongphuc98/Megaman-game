@@ -11,6 +11,7 @@ Object::Object(int x, int y, int w, int h)
 	this->y = y;
 	this->width = w;
 	this->height = h;
+	animation = new Animation();
 }
 
 Object::~Object()
@@ -46,4 +47,9 @@ void Object::Update(DWORD dt ,vector<Object*> *List_object_can_col)
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
+}
+
+TypeObject Object::GetNameObject()
+{
+	return this->nameObject;
 }

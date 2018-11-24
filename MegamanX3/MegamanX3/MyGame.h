@@ -24,14 +24,11 @@ class MyGame :public Game
 private:
 	Megaman* megaman;
 	Map* map;
-	VirtualObject* O1,*O2,*O3,*O4,*O5;
-	NotorBanger* notorBanger;
-	BlastHornet* blastHornet;
-	Helit* helit;
-	Bee* bee;
-	Shurikein* shurikein;
-	HeadGunnerCustomer* head_gunner_customer;
-	CarryArm* carryArm;
+	vector<Object*> ListObject;
+
+	vector<Object*> ListEnemy;
+	vector<Object*> ListVirtualObject;
+	vector<Object*> ListItem;
 	
 public:
 	MyGame();

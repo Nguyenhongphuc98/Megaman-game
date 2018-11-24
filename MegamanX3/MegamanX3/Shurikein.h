@@ -14,6 +14,7 @@ private:
 	int animation_loop_rotate;
 public:
 	Shurikein();
+	Shurikein(int x, int y, int w, int h, Direction d);
 	~Shurikein();
 
 	void Update(DWORD dt, vector<Object*> *List_object_can_col);

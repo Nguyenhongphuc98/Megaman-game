@@ -12,6 +12,7 @@ private:
 	int center_region_y;
 public:
 	Bee();
+	Bee(int x, int y, int w, int h, Direction d);
 	~Bee();
 
 	void Update(DWORD dt, vector<Object*> *List_object_can_col);

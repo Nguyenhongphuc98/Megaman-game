@@ -5,6 +5,14 @@ CarryArm::CarryArm()
 	x = 2000;
 	y = 7100 * G_Scale.y;
 	count_time_change_animation = 0;
+
+	this->nameObject = CARRYARM;
+	LoadResource();
+}
+
+CarryArm::CarryArm(int x, int y, int w, int h, Direction d):ActionObject(x,y,w,h,d)
+{
+	this->nameObject = CARRYARM;
 	LoadResource();
 }
 

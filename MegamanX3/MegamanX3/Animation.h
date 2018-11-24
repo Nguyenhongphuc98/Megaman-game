@@ -17,7 +17,7 @@ public:
 
 	void Next(State state);
 	void Render(State state, Direction direction, D3DXVECTOR2 position, D3DXVECTOR2 scale = D3DXVECTOR2(1, 1));
-
+	void Refresh(State s);
 };
 
 

@@ -12,7 +12,7 @@ class Sprite
 public:
 	MyTexture* texture;
 	int current_frame;
-	int max_frame;
+	int number_of_frame;
 	int animation_time;
 	int animation_count_time;
 	vector<RECT*> List_source_rect;
@@ -51,6 +51,8 @@ public:
 	void DrawCurrentFrame(int index, int X, int Y);
 
 	int GetCurrentFrame();
+
+	bool IsFinalFrame();
 };
 
 

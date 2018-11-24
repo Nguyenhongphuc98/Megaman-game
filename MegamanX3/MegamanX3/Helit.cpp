@@ -5,12 +5,14 @@ Helit::Helit()
 	y = 7050 * G_Scale.y;
 
 	center_region_x = x;
+	this->nameObject = HELIT;
 	LoadResource();
 }
 
 Helit::Helit(int x, int y, int w, int h, Direction d):ActionObject(x,y,w,h,d)
 {
 	center_region_x = x;
+	this->nameObject = HELIT;
 	LoadResource();
 }
 

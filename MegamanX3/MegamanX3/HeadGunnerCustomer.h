@@ -13,6 +13,7 @@ private:
 
 public:
 	HeadGunnerCustomer();
+	HeadGunnerCustomer(int x, int y, int w, int h, Direction d);
 	~HeadGunnerCustomer();
 
 	void Update(DWORD dt, vector<Object*> *List_object_can_col);

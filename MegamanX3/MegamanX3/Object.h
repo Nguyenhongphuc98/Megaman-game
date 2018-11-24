@@ -18,6 +18,7 @@ protected:
 	float dx, dy; // quang duoc thuc su =v*dt
 	int width, height;
 	DWORD dt;
+	TypeObject nameObject;
 
 	Animation *animation;
 
@@ -31,6 +32,14 @@ public:
 	virtual void Update(DWORD dt, vector<Object*> *List_object_can_col);
 	virtual void Render() = 0;
 	virtual BoundingBox GetBoundingBox()=0;
+
+	virtual void SetState(State s) {};
+	virtual void SetDirection(Direction d) {};
+
+	virtual State GetState() { return STAND; };
+	virtual Direction GetDirection() { return RIGHT; };
+
+	TypeObject GetNameObject();
 
 };
 

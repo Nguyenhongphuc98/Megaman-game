@@ -1,9 +1,12 @@
 #include"Megaman.h"
+Megaman* Megaman::instance;
 
 Megaman::Megaman()
 {
 	x = 100;
 	y = 7200*G_Scale.y;
+	this->isGround = false;
+	this->count_allow_render_jump = 0;
 	LoadResource();
 }
 
@@ -11,8 +14,17 @@ Megaman::~Megaman()
 {
 }
 
+Megaman * Megaman::Instance()
+{
+	if (!instance)
+		instance = new Megaman();
+	return instance;
+}
+
 void Megaman::Update(DWORD dt, vector<Object*> *List_object_can_col)
 {
+	
+
 	vy += MEGAMAN_GRAVITY*dt;
 	Object::Update(dt, List_object_can_col);
 	//x += dx;
@@ -55,18 +67,26 @@ void Megaman::Update(DWORD dt, vector<Object*> *List_object_can_col)
 		y += (min_ty * dy + ny * 0.4f);
 		if (nx != 0) vx = 0;
 		if (ny != 0) vy = 0;
+		this->isGround = true;
 	}
 
-	
 }
 
 void Megaman::Render()
 {
 	D3DXVECTOR2 position = Camera::Instance()->GetPositionInViewPort(x, y);
+	
+	if (this->state == JUMP)
+	{
+		if (animation->listSprite[JUMP]->GetCurrentFrame() >= 3)
+		{
+			animation->listSprite[JUMP]->Set_current_frame(3);
+		}
+	}
 
 	if (y < yPre)
 	{
-		animation->listSprite[JUMP]->Set_current_frame(3);
+		animation->listSprite[JUMP]->Set_current_frame(4);
 		animation->Render(JUMP, direction, position);
 		return;
 	}
@@ -317,6 +337,12 @@ BoundingBox Megaman::GetBoundingBox()
 
 void Megaman::SetState(State s)
 {
+	/*if (this->state == s)
+		return;*/
+
+	if (this->state != s)
+	this->animation->Refresh(s);
+
 	this->state = s;
 	switch (s)
 	{
@@ -330,6 +356,7 @@ void Megaman::SetState(State s)
 		break;
 	case JUMP:
 		vy = MEGAMAN_JUMP_SPEED;
+		this->isGround = false;
 		break;
 	case STAND:
 		vx = 0;

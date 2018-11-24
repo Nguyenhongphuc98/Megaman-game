@@ -5,6 +5,16 @@ Shurikein::Shurikein()
 	x = 230;
 	y = 7030 * G_Scale.y;
 	animation_loop_rotate = 0;
+
+	this->nameObject = SHURIKEIN;
+	LoadResource();
+}
+
+Shurikein::Shurikein(int x, int y, int w, int h, Direction d) :ActionObject(x, y, w, h, d)
+{
+	animation_loop_rotate = 0;
+
+	this->nameObject = SHURIKEIN;
 	LoadResource();
 }
 

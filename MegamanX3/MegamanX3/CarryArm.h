@@ -16,6 +16,7 @@ private:
 	int count_time_change_animation;
 public:
 	CarryArm();
+	CarryArm(int x, int y, int w, int h, Direction d);
 	~CarryArm();
 
 	void Update(DWORD dt, vector<Object*> *List_object_can_col);

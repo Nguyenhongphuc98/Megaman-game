@@ -122,14 +122,24 @@ Object * QuadTree::CreateObject(int id, int x, int y, int w, int h, int d)
 	h *= G_Scale.y;
 	switch (id)
 	{
-	case GROUND:
+	case VIRTUALOBJECT:
 		o = new VirtualObject(y - h, x, w, h);
 		break;
 	case NOTORBANGER:
-		o = new NotorBanger(y - h / 2, x + w / 2, w, h, dir);
+		o = new NotorBanger(x + w / 2, y - h / 2,  w, h, dir);
+		o->SetState(STAND);
 		break;
 	case HELIT:
-		o = new Helit(y - h / 2, x + w / 2, w, h, dir);
+		o = new Helit(x + w / 2, y - h / 2, w, h, dir);
+		o->SetState(RUN);
+		break;
+	case CARRYARM:
+		o = new CarryArm(x + w / 2, y - h / 2, w, h, dir);
+		o->SetState(STRAIGHTROPE);
+		break;
+	case HEADGUNNERCUSTOMER:
+		o = new HeadGunnerCustomer(x + w / 2, y - h / 2, w, h, dir);
+		o->SetState(SHOOTABOVE);
 		break;
 	default:
 		o = new VirtualObject(y - h, x, w, h);

@@ -7,6 +7,17 @@ Bee::Bee()
 
 	center_region_y = y;
 	vy = BEE_VY;
+
+	this->nameObject = BEE;
+	LoadResource();
+}
+
+Bee::Bee(int x, int y, int w, int h, Direction d) :ActionObject(x, y, w, h, d)
+{
+	center_region_y = y;
+	vy = BEE_VY;
+
+	this->nameObject = BEE;
 	LoadResource();
 }
 
