@@ -40,6 +40,7 @@
     <ClInclude Include="MyTexture.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NotorBanger.h" />
+    <ClInclude Include="NotorbangerBullet.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Shurikein.h" />
@@ -72,6 +73,7 @@
     <ClCompile Include="MyTexture.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="NotorBanger.cpp" />
+    <ClCompile Include="NotorbangerBullet.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Shurikein.cpp" />

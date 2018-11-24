@@ -3,6 +3,7 @@
 #define WeaponSystem_H_
 #include<list>
 #include"Speedburner.h"
+#include"NotorbangerBullet.h"
 
 class WeaponSystem
 {

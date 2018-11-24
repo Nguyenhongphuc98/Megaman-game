@@ -23,6 +23,13 @@
 #define GL_KEY_BUFFER_SIZE	1024
 #define G_ADDITIONS_TO_BECOME_THE_SQUARE 5880// background added 5880 to be square
 
+#ifndef max
+#define max(a,b)            (((a) > (b)) ? (a) : (b))
+#endif
+
+#ifndef min
+#define min(a,b)            (((a) < (b)) ? (a) : (b))
+#endif
 
 //
 //GLOBAL VARIANT
@@ -58,12 +65,11 @@ extern LPD3DXSPRITE					G_SpriteHandler;	// spriteHandler to draw texture
 
 
 // Pause
-extern bool Pause;
-extern bool PauseOfWatch;
+
 
 // 
 // Weapon
-extern bool pause_Sound;
+
 //GLOBAL METHOD
 
 
@@ -83,6 +89,7 @@ enum State {
 	NORMALBULLET,
 	SUPERBULLET,
 	DESTROYBULLET,
+	SHOOTING,
 	//blast_hornet
 	REDKNEE,
 	REDHANDS,

@@ -4,6 +4,8 @@
 
 #include"ActionObject.h"
 #include"Megaman.h"
+#include"WeaponSystem.h"
+
 
 #define NOTORBANGER_WIDTH 34*G_Scale.x
 #define NOTORBANGER_HEIGHT 40*G_Scale.y
@@ -18,11 +20,11 @@ class NotorBanger:public ActionObject
 {
 private:
 	int center_region_x;
-	int time_animate_shoot90;
+	//int time_animate_shoot90;
 	float time_begin_jump;
 	float jump_angle;
-	float pre_x;
-	float pre_y;
+	//float pre_x;
+	//float pre_y;
 
 	int distance_to_megaman;
 	int count_number_shots;

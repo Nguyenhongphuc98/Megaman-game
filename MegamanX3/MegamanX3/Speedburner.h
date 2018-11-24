@@ -2,7 +2,7 @@
 #ifndef Speedburner_H_
 #define Speedburner_H_
 #include"Bullet.h"
-#include"Camera.h"
+
 
 #define SPEEDBURNER_DAMAGE 10
 #define SPEEDBURNER_WIDTH_NORMAL 18

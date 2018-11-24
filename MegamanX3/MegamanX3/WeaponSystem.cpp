@@ -18,14 +18,26 @@ WeaponSystem * WeaponSystem::Instance()
 
 void WeaponSystem::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
-	for (std::list<Bullet*>::iterator bullet = WeaponMegaman.begin(); bullet != WeaponMegaman.end(); bullet++) 
+	for (std::list<Bullet*>::iterator bullet = WeaponMegaman.begin(); bullet != WeaponMegaman.end();) 
 	{
 		(*bullet)->Update(dt, List_object_can_col);
+		if ((*bullet)->IsDestroyed())
+			WeaponMegaman.erase(bullet++);
+		else
+		{
+			bullet++;
+		}
 	}
 
-	for (std::list<Bullet*>::iterator bullet = WeaponEnemy.begin(); bullet != WeaponEnemy.end(); bullet++)
+	for (std::list<Bullet*>::iterator bullet = WeaponEnemy.begin(); bullet != WeaponEnemy.end();)
 	{
 		(*bullet)->Update(dt, List_object_can_col);
+		if ((*bullet)->IsDestroyed())
+		 	bullet= WeaponEnemy.erase(bullet);
+		else
+		{
+			bullet++;
+		}
 	}
 }
 

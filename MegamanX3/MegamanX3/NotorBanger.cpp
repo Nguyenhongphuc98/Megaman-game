@@ -7,7 +7,7 @@ NotorBanger::NotorBanger()
 
 	center_region_x = x;
 	jump_angle = PII/4;
-	time_animate_shoot90 = 1;
+	//time_animate_shoot90 = 1;
 
 
 	this->ReSet();
@@ -19,7 +19,7 @@ NotorBanger::NotorBanger(int x, int y, int w, int h, Direction d):ActionObject(x
 {
 	center_region_x = x;
 	jump_angle = PII / 6;
-	time_animate_shoot90 = 1;
+	//time_animate_shoot90 = 1;
 
 
 	this->ReSet();
@@ -197,6 +197,10 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 				{
 					this->count_number_shots++;
 					this->time_begin_shot = GetTickCount();
+
+					Bullet *bullet = new NotorbangerBullet((this->direction==RIGHT)?this->x - 25:this->x+25, this->y + 25,
+						(this->direction==RIGHT)?LEFT:RIGHT, PII / 3);
+					WeaponSystem::Instance()->AddBulletEnemy(bullet);
 				}
 			}
 			break;
@@ -268,6 +272,10 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 				{
 					this->count_number_shots++;
 					this->time_begin_shot = GetTickCount();
+
+					Bullet *bullet = new NotorbangerBullet(this->x, this->y + 60,
+						(this->direction == RIGHT) ? LEFT : RIGHT, PII / 2.3);
+					WeaponSystem::Instance()->AddBulletEnemy(bullet);
 				}
 			}
 			break;

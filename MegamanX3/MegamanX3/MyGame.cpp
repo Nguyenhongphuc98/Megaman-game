@@ -28,11 +28,11 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 		o->Render();
 	}
 
-	G_Scale = D3DXVECTOR2(1, 1);
-	G_ScaleFlipX= D3DXVECTOR2(-1, 1);
+	/*G_Scale = D3DXVECTOR2(1, 1);
+	G_ScaleFlipX= D3DXVECTOR2(-1, 1);*/
 	WeaponSystem::Instance()->Render();
-	G_Scale = D3DXVECTOR2(2.5, 2.5);
-	G_ScaleFlipX = D3DXVECTOR2(-2.5, 2.5);
+	//G_Scale = D3DXVECTOR2(2.5, 2.5);
+	//G_ScaleFlipX = D3DXVECTOR2(-2.5, 2.5);
 
 	G_SpriteHandler->End();
 }
