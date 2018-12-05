@@ -2,6 +2,8 @@
 #ifndef HeadGunnerCustomer_H_
 #define HeadGunnerCustomer_H_
 #include"ActionObject.h"
+#include"HeadGunnerCustomerBulletTube.h"
+#include"WeaponSystem.h"
 
 #define HEADGUNNERCUSTOMER_WIDTH 36*2.5
 #define HEADGUNNERCUSTOMER_HEIGHT 43*2.5
@@ -10,6 +12,7 @@ class HeadGunnerCustomer:public ActionObject
 {
 private:
 	int count_animation;
+	int count_bulet_tube;
 
 public:
 	HeadGunnerCustomer();

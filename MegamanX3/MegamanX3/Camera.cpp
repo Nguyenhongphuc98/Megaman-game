@@ -26,11 +26,18 @@ void Camera::Update(float x, float y)
 	if (this->y < G_ScreenHeight)
 		this->y = G_ScreenHeight;
 
-	if (this->x < (772)*G_Scale.x && this->y>((1285+G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y))
+	//duong ong ngang dau tien
+	if (this->x < (700)*G_Scale.x && this->y>((1285+G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y))
 		this->y = (1285 + G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y;
 
+	//duong ong doc
 	if (this->x > 772 * G_Scale.x&&this->x<1520*G_Scale.x&&this->y<(1765+G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
 		this->x = 772 * G_Scale.x;
+
+	//duong ong ngang tiep theo
+	if (this->x > 770 * G_Scale.x&&this->y > (1799 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+		this->y = (1799 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
 }
 
 void Camera::Reset()

@@ -150,6 +150,21 @@
     <ClInclude Include="NotorbangerBullet.h">
       <Filter>Objects\Define\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="MegamanBullet1.h">
+      <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MegamanBullet2.h">
+      <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MegamanBullet3.h">
+      <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Launchers.h">
+      <Filter>Objects\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadGunnerCustomerBulletTube.h">
+      <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyTexture.cpp">
@@ -243,6 +258,21 @@
       <Filter>Objects\Source\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="NotorbangerBullet.cpp">
+      <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MegamanBullet1.cpp">
+      <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MegamanBullet2.cpp">
+      <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MegamanBullet3.cpp">
+      <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Launchers.cpp">
+      <Filter>Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadGunnerCustomerBulletTube.cpp">
       <Filter>Objects\Source\Bullet</Filter>
     </ClCompile>
   </ItemGroup>

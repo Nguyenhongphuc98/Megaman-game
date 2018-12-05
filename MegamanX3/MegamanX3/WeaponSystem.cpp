@@ -16,7 +16,7 @@ WeaponSystem * WeaponSystem::Instance()
 	return instance;
 }
 
-void WeaponSystem::Update(DWORD dt, vector<Object*>* List_object_can_col)
+void WeaponSystem::UpdateTeamMegaman(DWORD dt, vector<Object*>* List_object_can_col)
 {
 	for (std::list<Bullet*>::iterator bullet = WeaponMegaman.begin(); bullet != WeaponMegaman.end();) 
 	{
@@ -27,13 +27,16 @@ void WeaponSystem::Update(DWORD dt, vector<Object*>* List_object_can_col)
 		{
 			bullet++;
 		}
-	}
+	}	
+}
 
+void WeaponSystem::UpdateTeamEnemies(DWORD dt, vector<Object*>* List_object_can_col)
+{
 	for (std::list<Bullet*>::iterator bullet = WeaponEnemy.begin(); bullet != WeaponEnemy.end();)
 	{
 		(*bullet)->Update(dt, List_object_can_col);
 		if ((*bullet)->IsDestroyed())
-		 	bullet= WeaponEnemy.erase(bullet);
+			bullet = WeaponEnemy.erase(bullet);
 		else
 		{
 			bullet++;

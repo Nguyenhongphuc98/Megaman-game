@@ -5,13 +5,16 @@ HeadGunnerCustomer::HeadGunnerCustomer()
 	x = 1400;
 	y = 7108 * G_Scale.y;
 
-	count_animation = 0;
+	this->count_animation = 0;
+	this->count_bulet_tube = 0;
 	this->nameObject = HEADGUNNERCUSTOMER;
 	LoadResource();
 }
 
 HeadGunnerCustomer::HeadGunnerCustomer(int x, int y, int w, int h, Direction d):ActionObject(x,y,w,h,d)
 {
+	this->count_animation = 0;
+	this->count_bulet_tube = 0;
 	this->nameObject = HEADGUNNERCUSTOMER;
 	LoadResource();
 }
@@ -23,12 +26,18 @@ HeadGunnerCustomer::~HeadGunnerCustomer()
 void HeadGunnerCustomer::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
 	count_animation++;
-	if (count_animation % 50 == 0)
-		SetState(STAND);
 	if (count_animation % 100 == 0)
+		SetState(STAND);
+	if (count_animation % 200 == 0)
 		SetState(SHOOTABOVE);
-	if (count_animation % 150 == 0)
+	if (count_animation % 300 == 0)
 		SetState(SHOOTBELOW);
+
+	if(this->state== SHOOTABOVE&&this->animation->listSprite[state]->IsFinalFrame())
+	{
+		Bullet* bullet = new HeadGunnerCustomerBulletTube(this->x, this->y, (this->direction == RIGHT) ? LEFT : RIGHT);
+		WeaponSystem::Instance()->AddBulletEnemy(bullet);
+	}
 }
 
 void HeadGunnerCustomer::Render()

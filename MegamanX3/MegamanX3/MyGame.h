@@ -4,9 +4,7 @@
 
 #include"Game.h"
 #include"Megaman.h"
-#include"Ground.h"
 #include"Camera.h"
-#include"Background.h"
 #include"VirtualObject.h"
 #include"WeaponSystem.h"
 #include"Map.h"
@@ -17,6 +15,7 @@
 #include"Shurikein.h"
 #include"HeadGunnerCustomer.h"
 #include"CarryArm.h"
+#include"Launchers.h"
 #include"QuadTree.h"
 
 class MyGame :public Game
@@ -29,6 +28,11 @@ private:
 	vector<Object*> ListEnemy;
 	vector<Object*> ListVirtualObject;
 	vector<Object*> ListItem;
+
+	Shurikein* shuri;
+	BlastHornet* hornet;
+	Bee* bee;
+	Launchers* launchers;
 	
 public:
 	MyGame();
@@ -41,6 +45,7 @@ public:
 
 	virtual void LoadResources(LPDIRECT3DDEVICE9 d3ddv);
 	virtual void OnKeyDown(int KeyCode);
+	virtual void OnKeyUp(int KeyCode);
 };
 
 

@@ -12,7 +12,7 @@
 //
 
 
-char*		G_GameName = (char*)"GAME MEGAMAN";
+char*		G_GameName = (char*)"GAME MEGAMAN ";
 int			G_FrameRate = 60;
 
 bool		G_IsFullScreen = false;

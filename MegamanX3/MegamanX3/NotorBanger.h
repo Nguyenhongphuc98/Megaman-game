@@ -7,7 +7,7 @@
 #include"WeaponSystem.h"
 
 
-#define NOTORBANGER_WIDTH 34*G_Scale.x
+#define NOTORBANGER_WIDTH 25*G_Scale.x
 #define NOTORBANGER_HEIGHT 40*G_Scale.y
 #define NOTORBANGER_VX 0.3f
 #define NOTORBANGER_VY 0.5f

@@ -6,9 +6,10 @@
 
 #define MEGAMAN_HEIGHT 84
 #define MEGAMAN_WIDTH 75
-#define MEGAMAN_GRAVITY -0.013f
+#define MEGAMAN_GRAVITY -0.008f
 #define MEGAMAN_WALK_SPEED 0.2f
-#define MEGAMAN_JUMP_SPEED 2.0f
+#define MEGAMAN_STAND_JUMP_SPEED 1.5f
+#define MEGAMAN_RUN_JUMP_SPEED 1.8f
 #define MEGAMAN_DASH_SPEED 0.4f
 
 class Megaman:public ActionObject
@@ -16,10 +17,14 @@ class Megaman:public ActionObject
 private:
 	int yPre;
 	bool isGround;
-	int count_allow_render_jump;
+	bool isAllowClimbWall;
+	bool charging;
 
+	float time_start_press_A;
 	static Megaman* instance;
 
+	State shoot_state_old;
+	Animation * animation_charging;
 public:
 	Megaman();
 	~Megaman();
@@ -34,11 +39,21 @@ public:
 
 	void SetState(State s);
 	void SetDirection(Direction d);
+	bool SetTimeStartPressA();
+	void ResetTimeStartPressA();
 
 	State GetState();
+	State GetShootOldState() { return shoot_state_old; }
+	State GetNewState(State currentState, EControler controler);
 	Direction GetDirection();
+	float GetTimePressA();
 
+
+	bool IsCanJump() { return (isGround||isAllowClimbWall); }
 	bool IsGround() { return isGround; }
+	bool IsFinishUpGun();
+	bool IsFinshAction();
+	bool IsCharging() { return charging; }
 	void SetGround(bool ground) { this->isGround = ground; }
 };
 

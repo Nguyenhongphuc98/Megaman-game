@@ -119,13 +119,7 @@ void NotorbangerBullet::Update(DWORD dt, vector<Object*>* List_object_can_col)
 
 void NotorbangerBullet::Render()
 {
-	/*if (this->destroyed)
-		return;*/
-
-	D3DXVECTOR2 position = Camera::Instance()->GetPositionInViewPort(this->x, this->y);
-	//D3DXVECTOR2 position = D3DXVECTOR2(20, 20);
-	this->animation->Render(this->state, this->direction, position);
-	this->animation->Next(this->state);
+	Bullet::Render();
 }
 
 BoundingBox NotorbangerBullet::GetBoundingBox()

@@ -110,12 +110,13 @@ void TXT::LoadAllSourceRect()
 void TXT::LoadAllTexture()
 {
 	//===============================MEGAMAN SPRITE=====================================
-	listTexture[TMEGAMANSTAND] = new MyTexture((char*)"SourceImage\\megamanstand.png", D3DCOLOR_XRGB(50, 96, 166));
-	listTexture[TMEGAMANRUN] = new MyTexture((char*)"SourceImage\\megamanrun.png", D3DCOLOR_XRGB(50, 96, 166));
-	listTexture[TMEGAMANJUMP] = new MyTexture((char*)"SourceImage\\megamanjump.png", D3DCOLOR_XRGB(50, 96, 166));
-	listTexture[TMEGAMANRUNSHOOT]= new MyTexture((char*)"SourceImage\\megamanrunshoot.png", D3DCOLOR_XRGB(50, 96, 166));
-	listTexture[TMEGAMANCLIMB] = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
-	listTexture[TMEGAMANDASH] = new MyTexture((char*)"SourceImage\\megamanDash.png", D3DCOLOR_XRGB(50, 96, 166));
+	//listTexture[TMEGAMANSTAND] = new MyTexture((char*)"SourceImage\\megamanstand.png", D3DCOLOR_XRGB(50, 96, 166));
+	//listTexture[TMEGAMANRUN] = new MyTexture((char*)"SourceImage\\megamanrun.png", D3DCOLOR_XRGB(50, 96, 166));
+	//listTexture[TMEGAMANJUMP] = new MyTexture((char*)"SourceImage\\megamanjump.png", D3DCOLOR_XRGB(50, 96, 166));
+	//listTexture[TMEGAMANRUNSHOOT]= new MyTexture((char*)"SourceImage\\megamanrunshoot.png", D3DCOLOR_XRGB(50, 96, 166));
+	//listTexture[TMEGAMANCLIMB] = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
+	//listTexture[TMEGAMANDASH] = new MyTexture((char*)"SourceImage\\megamanDash.png", D3DCOLOR_XRGB(50, 96, 166));
+	listTexture[TMEGAMANSTAGE] = new MyTexture((char*)"SourceImage\\megamanstage.png", D3DCOLOR_XRGB(50, 96, 166));
 
 	//===============================BEE SPRITE=====================================
 	listTexture[TBEE] = new MyTexture((char*)"SourceImage\\bee.png", D3DCOLOR_XRGB(255, 255, 255));
@@ -141,6 +142,15 @@ void TXT::LoadAllTexture()
 	//===============================SHURIKEIN SPRITE=====================================
 	listTexture[TSHURIKEINAPPEAR] = new MyTexture((char*)"SourceImage\\ShurikeinAppear.png", D3DCOLOR_XRGB(255, 255, 255));
 	listTexture[TSHURIKEINROTATELEFT] = new MyTexture((char*)"SourceImage\\shurikein_rotate_left.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================BULLET1 MEGAMAN SPRITE=====================================
+	listTexture[TBULLETMEGAMAN] = new MyTexture((char*)"SourceImage\\megamanbullet.png", D3DCOLOR_XRGB(50, 96, 166));
+
+	//===============================LAUNCHERS SPRITE=====================================
+	listTexture[TLAUNCHERS] = new MyTexture((char*)"SourceImage\\launchers.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================EFFECT SPRITE=====================================
+	listTexture[TEFFECT] = new MyTexture((char*)"SourceImage\\effect.png", D3DCOLOR_XRGB(64, 102, 232));
 }
 
 vector<RECT*> TXT::GetListSourceRect(TypeSprite type_sprite)

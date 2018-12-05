@@ -2,11 +2,12 @@
 
 BlastHornet::BlastHornet()
 {
-	x = 1800;
-	y = 7100 * G_Scale.y;
+	x = 4210;
+	y = (1700+G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y;
 	count_animation = 0;
 
 	this->nameObject = BLASTHORNET;
+	this->SetState(REDKNEE);
 	LoadResource();
 }
 

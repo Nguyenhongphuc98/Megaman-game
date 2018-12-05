@@ -4,6 +4,9 @@
 #include<list>
 #include"Speedburner.h"
 #include"NotorbangerBullet.h"
+#include"MegamanBullet1.h"
+#include"MegamanBullet2.h"
+#include"MegamanBullet3.h"
 
 class WeaponSystem
 {
@@ -18,7 +21,8 @@ public:
 
 	static WeaponSystem* Instance();
 
-	void Update(DWORD dt, vector<Object*> *List_object_can_col);
+	void UpdateTeamMegaman(DWORD dt, vector<Object*> *List_object_can_col);
+	void UpdateTeamEnemies(DWORD dt, vector<Object*> *List_object_can_col);
 	void Render();
 
 	std::list<Bullet*> GetListWeaponMegaman();

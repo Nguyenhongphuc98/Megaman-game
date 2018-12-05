@@ -20,7 +20,7 @@ public:
 	~Bullet();
 
 	virtual void Update(DWORD dt, vector<Object*> *List_object_can_col) {};
-	virtual void Render() = 0;
+	virtual void Render();
 	virtual BoundingBox GetBoundingBox() = 0;
 
 	virtual void SetState(State s)=0;

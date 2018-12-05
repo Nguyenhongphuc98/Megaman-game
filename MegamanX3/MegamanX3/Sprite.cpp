@@ -19,8 +19,8 @@ Sprite::Sprite(const Sprite & sprite)
 Sprite::Sprite(MyTexture * texture, vector<RECT*> List_source_rect, int animation_t):texture(texture)
 {
 	this->List_source_rect = List_source_rect;
-	this->animation_time = animation_t+1;
-	this->animation_count_time = 1;
+	this->animation_time = animation_t;
+	this->animation_count_time = 0;
 	this->number_of_frame = List_source_rect.size();
 	this->current_frame = 0;
 }
@@ -30,7 +30,7 @@ void Sprite::Next()
 	if (animation_count_time==animation_time)
 	{
 		current_frame++;
-		animation_count_time = 1;
+		animation_count_time = 0;
 		if (current_frame > number_of_frame - 1)
 			current_frame = 0;
 	}

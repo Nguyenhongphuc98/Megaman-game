@@ -2,10 +2,11 @@
 
 Shurikein::Shurikein()
 {
-	x = 230;
+	x = 430;
 	y = 7030 * G_Scale.y;
 	animation_loop_rotate = 0;
 
+	this->SetState(APPEAR);
 	this->nameObject = SHURIKEIN;
 	LoadResource();
 }

@@ -6,7 +6,11 @@ Megaman::Megaman()
 	x = 100;
 	y = 7200*G_Scale.y;
 	this->isGround = false;
-	this->count_allow_render_jump = 0;
+	this->isAllowClimbWall = false;
+	this->charging = false;
+	this->time_start_press_A = 0;
+
+	animation_charging = new Animation();
 	LoadResource();
 }
 
@@ -37,11 +41,22 @@ void Megaman::Update(DWORD dt, vector<Object*> *List_object_can_col)
 	vector<ResultCollision> List_result_col;
 	List_result_col.clear();
 
-	for (int i=0; i < List_object_can_col->size(); i++) {
+	for (Object* O : *List_object_can_col) {
 		ResultCollision r ;
-		r=Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), List_object_can_col->at(i)->GetBoundingBox());
+		r=Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r.isCollision)
+		{
 			List_result_col.push_back(r);
+			if (O->GetNameObject() == LAUNCHER&&r.ny!=0)
+			{
+				/*vector<Object*> l;
+				O->Update(dt, &l);
+				this->y += 0.1*dt;*/
+				O->SetState(RUN);
+			}
+				
+		}
+			
 	}
 
 	if (List_result_col.size() == 0) {
@@ -65,17 +80,37 @@ void Megaman::Update(DWORD dt, vector<Object*> *List_object_can_col)
 
 		x += (min_tx * dx + nx * 0.4f);		
 		y += (min_ty * dy + ny * 0.4f);
-		if (nx != 0) vx = 0;
-		if (ny != 0) vy = 0;
-		this->isGround = true;
+		if (nx != 0)
+		{
+			vx = 0;
+			this->isAllowClimbWall = true;			
+		}
+		if (ny != 0)
+		{
+			vy = 0;
+			this->isGround = true;
+		}
 	}
 
 }
 
 void Megaman::Render()
 {
-	D3DXVECTOR2 position = Camera::Instance()->GetPositionInViewPort(x, y);
 	
+
+	//==============================================
+
+	D3DXVECTOR2 position = Camera::Instance()->GetPositionInViewPort(x, y);
+
+	//========================================================
+	//this->animation_charging->Render(CHARGINGLV1, direction, position);
+	//this->animation_charging->Next(CHARGINGLV1);
+
+	this->animation_charging->Render(CHARGINGLV2, direction, position);
+	this->animation_charging->Next(CHARGINGLV2);
+
+
+	/*
 	if (this->state == JUMP)
 	{
 		if (animation->listSprite[JUMP]->GetCurrentFrame() >= 3)
@@ -89,12 +124,35 @@ void Megaman::Render()
 		animation->listSprite[JUMP]->Set_current_frame(4);
 		animation->Render(JUMP, direction, position);
 		return;
+	}*/
+
+
+
+	//=======================STAND JUMP=========================
+	/*if (this->state == STANDJUMP)
+	{
+
+	}*/
+
+	if (this->state == JUMPWALL && this->isAllowClimbWall)
+	{
+		if(this->animation->listSprite[state]->IsFinalFrame())
+		this->animation->listSprite[state]->Set_current_frame(3);
+	}
+	
+	animation->Render(state, direction, position);
+
+	if (this->state == RUN)
+	{
+		if (this->animation->listSprite[state]->IsFinalFrame())
+			this->animation->listSprite[state]->Set_current_frame(5);
 	}
 
 	
-	animation->Render(state, direction, position);
 	
 	if (state == DASH && animation->listSprite[DASH]->GetCurrentFrame() == 1)
+		return;
+	if (state == DASHSHOOT && animation->listSprite[DASHSHOOT]->GetCurrentFrame() == 1)
 		return;
 	animation->Next(state);
 }
@@ -102,224 +160,92 @@ void Megaman::Render()
 void Megaman::LoadResource()
 {
 	//=====================Load Status Stand=============================
-	/*RECT* r1 = new RECT();
-	r1->top = 3;
-	r1->bottom = 40;
-	r1->left = 3;
-	r1->right = 34;
-
-	RECT* r2 = new RECT();
-	r2->top = 3;
-	r2->bottom = 40;
-	r2->left = 34;
-	r2->right = 66;
-
-	RECT* r3 = new RECT();
-	r3->top = 3;
-	r3->bottom = 40;
-	r3->left = 67;
-	r3->right = 99;
-
-	RECT* r4 = new RECT();
-	r4->top = 3;
-	r4->bottom = 40;
-	r4->left = 99;
-	r4->right = 131;
-
-	RECT* r5 = new RECT();
-	r5->top = 3;
-	r5->bottom = 40;
-	r5->left = 131;
-	r5->right = 163;
-
-	vector<RECT*> list_source_rect;
-	list_source_rect.push_back(r1);
-	list_source_rect.push_back(r2);
-	list_source_rect.push_back(r3);
-	list_source_rect.push_back(r4);
-	list_source_rect.push_back(r5);*/
+	
 
 	//vector<RECT*> list_source_rect = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanstand.txt");
 	//MyTexture* texture_stand = new MyTexture((char*)"SourceImage\\megamanstand.png", D3DCOLOR_XRGB(50, 96, 166));
 
+	MyTexture* texture = TXT::Instance()->GetTexture(TMEGAMANSTAGE);
+
 	vector<RECT*> list_source_rect = TXT::Instance()->GetListSourceRect(SMEGAMANSTAND);
-	MyTexture* texture_stand = TXT::Instance()->GetTexture(TMEGAMANSTAND);
-	animation->listSprite[State::STAND] = new Sprite(texture_stand, list_source_rect, 1	);
+	animation->listSprite[State::STAND] = new Sprite(texture, list_source_rect, 4);
+
+	vector<RECT*> list_source_rect_stand_talk = TXT::Instance()->GetListSourceRect(SMEGAMANSTANDTALK);
+	animation->listSprite[State::STANDTALK] = new Sprite(texture, list_source_rect_stand_talk, 2);
 
 	//=====================Load Status Run=============================
 
-	/*RECT* r11 = new RECT();
-	r11->top = 0;
-	r11->bottom = 35;
-	r11->left = 3;
-	r11->right = 32;
-
-	RECT* r12 = new RECT();
-	r12->top = 0;
-	r12->bottom = 35;
-	r12->left = 35;
-	r12->right = 58;
-
-	RECT* r13 = new RECT();
-	r13->top = 0;
-	r13->bottom = 35;
-	r13->left = 61;
-	r13->right = 87;
-
-	RECT* r14 = new RECT();
-	r14->top = 0;
-	r14->bottom = 35;
-	r14->left = 93;
-	r14->right = 124;
-
-	RECT* r15 = new RECT();
-	r15->top = 0;
-	r15->bottom = 35;
-	r15->left = 131;
-	r15->right = 166;
-
-	RECT* r16 = new RECT();
-	r16->top = 0;
-	r16->bottom = 35;
-	r16->left = 172;
-	r16->right = 202;
-
-	vector<RECT*> list_source_rect_run;
-	list_source_rect_run.push_back(r11);
-	list_source_rect_run.push_back(r12);
-	list_source_rect_run.push_back(r13);
-	list_source_rect_run.push_back(r14);
-	list_source_rect_run.push_back(r15);
-	list_source_rect_run.push_back(r16);*/
 
 	//vector<RECT*> list_source_rect_run = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrun.txt");
 	//MyTexture* texture_run = new MyTexture((char*)"SourceImage\\megamanrun.png", D3DCOLOR_XRGB(50, 96, 166));
 
 	vector<RECT*> list_source_rect_run = TXT::Instance()->GetListSourceRect(SMEGAMANRUN);
-	MyTexture* texture_run = TXT::Instance()->GetTexture(TMEGAMANRUN);
-	animation->listSprite[State::RUN] = new Sprite(texture_run, list_source_rect_run, 1);
+	//MyTexture* texture_run = TXT::Instance()->GetTexture(TMEGAMANRUN);
+	animation->listSprite[State::RUN] = new Sprite(texture, list_source_rect_run, 1);
+
+	vector<RECT*> list_source_rect_run_shoot = TXT::Instance()->GetListSourceRect(SMEGAMANRUNSHOOT);
+	//MyTexture* texture_run = TXT::Instance()->GetTexture(TMEGAMANRUN);
+	animation->listSprite[State::RUNSHOOT] = new Sprite(texture, list_source_rect_run_shoot, 1);
 
 	//=====================Load Status Jump=============================
-	/*RECT* r17 = new RECT();
-	r17->top = 3;
-	r17->bottom = 48;
-	r17->left = 3;
-	r17->right = 28;
-
-	RECT* r18 = new RECT();
-	r18->top = 3;
-	r18->bottom = 48;
-	r18->left = 34;
-	r18->right = 50;
-
-	RECT* r19 = new RECT();
-	r19->top = 3;
-	r19->bottom = 48;
-	r19->left = 53;
-	r19->right = 73;
-
-	RECT* r20 = new RECT();
-	r20->top = 3;
-	r20->bottom = 48;
-	r20->left = 77;
-	r20->right = 101;
-
-
-	RECT* r21 = new RECT();
-	r21->top = 3;
-	r21->bottom = 48;
-	r21->left = 105;
-	r21->right = 133;
-
-
-	RECT* r22 = new RECT();
-	r22->top = 3;
-	r22->bottom = 48;
-	r22->left = 136;
-	r22->right = 161;
-
-
-	RECT* r23 = new RECT();
-	r23->top = 3;
-	r23->bottom = 48;
-	r23->left = 163;
-	r23->right = 194;
-	vector<RECT*> list_source_rect_jump;
-	list_source_rect_jump.push_back(r17);
-	list_source_rect_jump.push_back(r18);
-	list_source_rect_jump.push_back(r19);
-	list_source_rect_jump.push_back(r20);
-	list_source_rect_jump.push_back(r21);
-	list_source_rect_jump.push_back(r22);
-	list_source_rect_jump.push_back(r23);*/
 
 	//vector<RECT*> list_source_rect_jump = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanjump.txt");
 	//MyTexture* texture_jump = new MyTexture((char*)"SourceImage\\megamanjump.png", D3DCOLOR_XRGB(50, 96, 166));
 
 	vector<RECT*> list_source_rect_jump = TXT::Instance()->GetListSourceRect(SMEGAMANJUMP);
-	MyTexture* texture_jump = TXT::Instance()->GetTexture(TMEGAMANJUMP);
-	animation->listSprite[State::JUMP] = new Sprite(texture_jump, list_source_rect_jump, 1);
+	//MyTexture* texture_jump = TXT::Instance()->GetTexture(TMEGAMANJUMP);
+	animation->listSprite[State::STANDJUMP] = new Sprite(texture, list_source_rect_jump, 1);
+	animation->listSprite[State::RUNJUMP] = new Sprite(texture, list_source_rect_jump, 1);
+
+	vector<RECT*> list_source_rect_jump_shoot = TXT::Instance()->GetListSourceRect(SMEGAMANJUMPSHOOT);
+	animation->listSprite[State::JUMPSHOOT] = new Sprite(texture, list_source_rect_jump_shoot, 3);
+
+	vector<RECT*> list_source_rect_jump_wall = TXT::Instance()->GetListSourceRect(SMEGAMANJUMPWALL);
+	animation->listSprite[State::JUMPWALL] = new Sprite(texture, list_source_rect_jump_wall, 1);
 
 	//=====================Load Status Shoot=============================
-	/*RECT* r31 = new RECT();
-	r31->top = 0;
-	r31->bottom = 35;
-	r31->left = 9;
-	r31->right = 39;
-
-	RECT* r41 = new RECT();
-	r41->top = 0;
-	r41->bottom = 35;
-	r41->left = 44;
-	r41->right = 77;
-
-	RECT* r51 = new RECT();
-	r51->top = 0;
-	r51->bottom = 35;
-	r51->left = 83;
-	r51->right = 119;
-
-	RECT* r61 = new RECT();
-	r61->top = 0;
-	r61->bottom = 35;
-	r61->left = 127;
-	r61->right = 166;
-
-	RECT* r71 = new RECT();
-	r71->top = 0;
-	r71->bottom = 35;
-	r71->left = 173;
-	r71->right = 206;
-
-	vector<RECT*> list_source_rect_runshoot;
-	list_source_rect_runshoot.push_back(r31);
-	list_source_rect_runshoot.push_back(r41);
-	list_source_rect_runshoot.push_back(r51);
-	list_source_rect_runshoot.push_back(r61);
-	list_source_rect_runshoot.push_back(r71);*/
+	
 
 	//vector<RECT*> list_source_rect_runshoot = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanrunshoot.txt");
 	//MyTexture* texture_runshoot = new MyTexture((char*)"SourceImage\\megamanrunshoot.png", D3DCOLOR_XRGB(50, 96, 166));
 
-	vector<RECT*> list_source_rect_runshoot = TXT::Instance()->GetListSourceRect(SMEGAMANRUNSHOOT);
-	MyTexture* texture_runshoot = TXT::Instance()->GetTexture(TMEGAMANRUNSHOOT);
-	animation->listSprite[State::SHOOT] = new Sprite(texture_runshoot, list_source_rect_runshoot, 1);
+	vector<RECT*> list_source_rect_stand_shoot = TXT::Instance()->GetListSourceRect(SMEGAMANSTANDSHOOT);
+	//MyTexture* texture_runshoot = TXT::Instance()->GetTexture(TMEGAMANRUN);
+	animation->listSprite[State::STANDSHOOT] = new Sprite(texture, list_source_rect_stand_shoot, 1);
 
 	//=====================Load Status Climb=============================
 	//vector<RECT*> list_source_rect_climb = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanClimb.txt");
 	//MyTexture* texture_climb = new MyTexture((char*)"SourceImage\\megamanClimb.png", D3DCOLOR_XRGB(50, 96, 166));
 
-	vector<RECT*> list_source_rect_climb = TXT::Instance()->GetListSourceRect(SMEGAMANCLIMB);
-	MyTexture* texture_climb = TXT::Instance()->GetTexture(TMEGAMANCLIMB);
-	animation->listSprite[State::CLIMB] = new Sprite(texture_climb, list_source_rect_climb, 1);
+	//vector<RECT*> list_source_rect_climb = TXT::Instance()->GetListSourceRect(SMEGAMANCLIMB);
+	//MyTexture* texture_climb = TXT::Instance()->GetTexture(TMEGAMANCLIMB);
+	//animation->listSprite[State::CLIMB] = new Sprite(texture_climb, list_source_rect_climb, 1);
 	
 	//=====================Load Status Dash=============================
 	//vector<RECT*> list_source_rect_dash = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\megamanDash.txt");
 	//MyTexture* texture_dash = new MyTexture((char*)"SourceImage\\megamanDash.png", D3DCOLOR_XRGB(50, 96, 166));
 
 	vector<RECT*> list_source_rect_dash = TXT::Instance()->GetListSourceRect(SMEGAMANDASH);
-	MyTexture* texture_dash = TXT::Instance()->GetTexture(TMEGAMANDASH);
-	animation->listSprite[State::DASH] = new Sprite(texture_dash, list_source_rect_dash, 1);
+	//MyTexture* texture_dash = TXT::Instance()->GetTexture(TMEGAMANDASH);
+	animation->listSprite[State::DASH] = new Sprite(texture, list_source_rect_dash, 1);
+
+	vector<RECT*> list_source_rect_dash_shoot = TXT::Instance()->GetListSourceRect(SMEGAMANDASHSHOOT);
+	//MyTexture* texture_dash = TXT::Instance()->GetTexture(TMEGAMANDASH);
+	animation->listSprite[State::DASHSHOOT] = new Sprite(texture, list_source_rect_dash_shoot, 1);
+
+	//=====================Load Status Injured=============================
+
+	vector<RECT*> list_source_rect_injured = TXT::Instance()->GetListSourceRect(SMEGAMANINJURED);
+	animation->listSprite[State::INJURED] = new Sprite(texture, list_source_rect_injured, 1);
+
+	//=====================Load Status charging=============================
+
+	MyTexture* texture_effect = TXT::Instance()->GetTexture(TEFFECT);
+	vector<RECT*> list_source_rect_charinglv1 = TXT::Instance()->GetListSourceRect(SCHARGINGLV1);
+	animation_charging->listSprite[State::CHARGINGLV1] = new Sprite(texture_effect, list_source_rect_charinglv1, 1);
+
+	vector<RECT*> list_source_rect_charinglv2 = TXT::Instance()->GetListSourceRect(SCHARGINGLV2);
+	animation_charging->listSprite[State::CHARGINGLV2] = new Sprite(texture_effect, list_source_rect_charinglv2, 1);
 
 }
 
@@ -335,50 +261,76 @@ BoundingBox Megaman::GetBoundingBox()
 	return bound;
 }
 
-void Megaman::SetState(State s)
+void Megaman::SetState(State new_state)
 {
-	/*if (this->state == s)
-		return;*/
+	if (this->state == new_state)
+		return;
 
-	if (this->state != s)
-	this->animation->Refresh(s);
-
-	this->state = s;
-	switch (s)
+	this->animation->Refresh(this->state);
+	
+	switch (new_state)
 	{
 	case RUN:
-		if(direction==RIGHT)
-		vx = MEGAMAN_WALK_SPEED;
-		else
-		{
-			vx = -MEGAMAN_WALK_SPEED;
-		}
+		vx = (this->direction==RIGHT)? MEGAMAN_WALK_SPEED:-MEGAMAN_WALK_SPEED;
+		this->state = RUN;
 		break;
-	case JUMP:
-		vy = MEGAMAN_JUMP_SPEED;
+
+	case RUNSHOOT:
+		vx = (this->direction == RIGHT) ? MEGAMAN_WALK_SPEED : -MEGAMAN_WALK_SPEED;
+		this->state = RUNSHOOT;
+		this->shoot_state_old = this->state;
+		break;
+
+	case RUNJUMP:
+		vx = (this->direction == RIGHT) ? MEGAMAN_WALK_SPEED : -MEGAMAN_WALK_SPEED;
+		vy = MEGAMAN_RUN_JUMP_SPEED;
+		this->state = RUNJUMP;
 		this->isGround = false;
 		break;
+
 	case STAND:
-		vx = 0;
-		vy = 0;
+		this->state = STAND;
+		vx = vy = 0;
 		break;
-	case SHOOT:
+
+	case STANDJUMP:
+		this->state = STANDJUMP;
 		vx = 0;
-		vy = 0;
+		vy = MEGAMAN_STAND_JUMP_SPEED;
+		this->isGround = false;
 		break;
+
+	case STANDTALK:
+		this->state = STANDTALK;
+		break;
+
+	case JUMPSHOOT:
+		this->state = JUMPSHOOT;
+		this->isGround = false;
+		this->shoot_state_old = this->state;
+		break;
+
+	case STANDSHOOT:
+		this->state = STANDSHOOT;		
+		this->shoot_state_old = this->state;
+		break;
+
 	case DASH:
-		if (direction == RIGHT)
-			vx = MEGAMAN_DASH_SPEED;
-		else
-		{
-			vx = -MEGAMAN_DASH_SPEED;
-		}
+		vx = (this->direction==RIGHT)? MEGAMAN_DASH_SPEED:-MEGAMAN_DASH_SPEED;
+		this->state = DASH;
 		break;
+
+	case INJURED:
+		this->state = INJURED;
+		break;
+
 	default:
-		vx = 0;
-		vy = 0;
+		this->state = new_state;
+		vx = vy = 0;
 		break;
 	}
+
+
 }
 
 void Megaman::SetDirection(Direction d)
@@ -386,12 +338,247 @@ void Megaman::SetDirection(Direction d)
 	this->direction = d;
 }
 
+bool Megaman::SetTimeStartPressA()
+{		
+	if (!this->time_start_press_A)
+	{
+		//this->SetState(SHOOT);
+		this->time_start_press_A = GetTickCount();
+		return true;
+	}
+	else
+		if (this->GetTimePressA() > 400 && !charging)
+		{
+			this->SetState(RUN);
+			charging = true;
+		}
+			
+	return false;
+}
+
+void Megaman::ResetTimeStartPressA()
+{
+	this->time_start_press_A = 0;
+	this->charging = false;
+}
+
 State Megaman::GetState()
 {
 	return state;
 }
 
+State Megaman::GetNewState(State currentState, EControler controler)
+{
+	State new_state = currentState;
+	int temp;
+
+	switch (currentState)
+	{
+	case RUN:
+		switch (controler)
+		{
+		case NoneControl: new_state = STAND;break;
+		case LeftControl:break;
+		case RightControl:break;
+		case ShootControl:new_state = RUNSHOOT;break;
+		case JumpControl:new_state = RUNJUMP;break;
+		case DashControl:new_state = DASH; break;
+		}
+		break;
+
+	case RUNSHOOT:
+		if (!this->animation->listSprite[RUNSHOOT]->IsFinalFrame())
+			return new_state;
+
+		switch (controler)
+		{
+		case NoneControl:  new_state = STAND; break;
+		case LeftControl:new_state = STAND; break;
+		case RightControl: new_state = STAND; break;
+		case ShootControl: break;
+		case JumpControl:new_state = STANDJUMP; break;
+		case DashControl:new_state = DASH; break;
+		}
+		break;
+
+	case RUNJUMP:
+		/*if (!this->animation->listSprite[RUNJUMP]->IsFinalFrame())
+			return new_state;*/
+
+		switch (controler)
+		{
+		case NoneControl:if (this->IsCanJump()) new_state = STAND; break;
+		case LeftControl:
+			if (this->isGround) new_state = RUN;
+			if (this->isAllowClimbWall) new_state = JUMPWALL;	
+			break;
+		case RightControl: 
+			if (this->isGround) new_state = RUN;
+			if (this->isAllowClimbWall) new_state = JUMPWALL;
+			break;
+		case ShootControl:new_state = JUMPSHOOT; break;
+		case JumpControl: break;
+		case DashControl: break;
+		}
+		break;
+
+	case JUMPWALL:
+		switch (controler)
+		{
+		case NoneControl:
+			if (this->isGround) new_state = STAND; break;
+		case LeftControl:
+			if (this->isGround) new_state = RUN;
+			if (this->isAllowClimbWall) new_state = JUMPWALL;
+			break;
+		case RightControl:
+			if (this->isGround) new_state = RUN;
+			if (this->isAllowClimbWall) new_state = JUMPWALL;
+			break;
+		case ShootControl: break;
+		case JumpControl: break;
+		case DashControl: break;
+		}
+		break;
+
+	case JUMPSHOOT:
+		/*if (!this->animation->listSprite[RUNJUMP]->IsFinalFrame())
+			return STAND;*/
+
+		switch (controler)
+		{
+		case NoneControl:
+			if (this->IsCanJump()) new_state = STAND; break;
+		case LeftControl: break;
+		case RightControl: break;
+		case ShootControl: break;
+		case JumpControl: break;
+		case DashControl: break;
+		}
+		break;
+
+	case STAND:
+		switch (controler)
+		{
+		case NoneControl: break;
+		case LeftControl:new_state = RUN; break;
+		case RightControl:new_state = RUN; break;
+		case ShootControl:new_state = STANDSHOOT; break;
+		case JumpControl:new_state = STANDJUMP; break;
+		case DashControl:new_state = DASH; break;
+		}
+		break;
+
+	case STANDTALK:
+		switch (controler)
+		{
+		case NoneControl: break;
+		case LeftControl:new_state = RUN; break;
+		case RightControl:new_state = RUN; break;
+		case ShootControl:new_state = STANDSHOOT; break;
+		case JumpControl:new_state = STANDJUMP; break;
+		case DashControl:new_state = DASH; break;
+		}
+		break;
+
+	case STANDJUMP:
+		/*if (!this->animation->listSprite[STANDJUMP]->IsFinalFrame())
+			return new_state;*/
+		switch (controler)
+		{
+		case NoneControl:if (this->IsCanJump()) new_state = STAND; break;
+		case LeftControl:
+			if (this->isGround) new_state = RUN;
+			if (this->isAllowClimbWall) new_state = JUMPWALL;
+			break;
+		case RightControl:
+			if (this->isGround) new_state = RUN;
+			if (this->isAllowClimbWall) new_state = JUMPWALL;
+			break;
+		case ShootControl:  new_state = JUMPSHOOT; break;
+		case JumpControl: break;
+		case DashControl: break;
+		}
+
+		/*switch (controler)
+		{
+		case NoneControl: if (this->IsCanJump()) new_state = STAND; break;
+		case LeftControl: 
+			if (this->isGround)
+				new_state = RUN; break;
+		case RightControl: if (this->isGround) new_state = RUN; break;
+		case ShootControl:  new_state = JUMPSHOOT; break;
+		case JumpControl: break;
+		case DashControl: break;
+		}*/
+		break;
+
+	case STANDSHOOT:
+		if (!this->animation->listSprite[STANDSHOOT]->IsFinalFrame())
+			return new_state;
+		switch (controler)
+		{
+		case NoneControl: new_state = STAND; break;
+		case LeftControl: break;
+		case RightControl: break;
+		case ShootControl: break;
+		case JumpControl:new_state = JUMPSHOOT; break;
+		case DashControl:new_state = DASHSHOOT; break;
+		}
+		break;
+
+	case DASH:
+		switch (controler)
+		{
+		case NoneControl:new_state = STAND; break;
+		case LeftControl: break;
+		case RightControl: break;
+		case ShootControl:new_state = DASHSHOOT; break;
+		case JumpControl:new_state = STANDJUMP; break;
+		case DashControl: break;
+		}
+		break;
+
+	case DASHSHOOT:
+		switch (controler)
+		{
+		case NoneControl:new_state = STAND; break;
+		case LeftControl: break;
+		case RightControl: break;
+		case ShootControl: break;
+		case JumpControl:new_state = STANDJUMP; break;
+		case DashControl:new_state = DASH; break;
+		}
+		break;
+
+	case INJURED:
+		break;
+
+	default:
+		break;
+	}
+
+	return new_state;
+}
+
 Direction Megaman::GetDirection()
 {
 	return direction;
+}
+
+float Megaman::GetTimePressA()
+{
+	return GetTickCount()-time_start_press_A;
+}
+
+bool Megaman::IsFinishUpGun()
+{
+	if (this->state != SHOOT)
+		return true;
+	return this->animation->listSprite[SHOOT]->IsFinalFrame();
+}
+
+bool Megaman::IsFinshAction()
+{
+	return this->animation->listSprite[state]->IsFinalFrame();
 }

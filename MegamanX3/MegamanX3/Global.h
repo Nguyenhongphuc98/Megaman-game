@@ -77,14 +77,34 @@ extern LPD3DXSPRITE					G_SpriteHandler;	// spriteHandler to draw texture
 //-----------------ENUM----------------------------------------
 //=============================================================
 
+enum EControler {
+	NoneControl,
+	LeftControl,
+	RightControl,
+	ShootControl,
+	JumpControl,
+	DashControl,
+};
+
 enum State {
 	//megaman
 	RUN,
+	RUNSHOOT,
+	RUNJUMP,
 	JUMP,
+	JUMPWALL,
+	JUMPSHOOT,
 	STAND,
+	STANDTALK,
+	STANDJUMP,
 	SHOOT,
+	STANDSHOOT,
 	CLIMB,
 	DASH,
+	DASHSHOOT,
+	INJURED,
+	CHARGINGLV1,
+	CHARGINGLV2,
 	//weapons
 	NORMALBULLET,
 	SUPERBULLET,
@@ -124,13 +144,14 @@ enum Direction {
 
 enum TypeObject {
 	VIRTUALOBJECT,
-	NOTORBANGER,
+	NOTORBANGER,	
 	HELIT,
 	CARRYARM,
 	HEADGUNNERCUSTOMER,
 	BEE,
 	BLASTHORNET,
 	SHURIKEIN,
+	LAUNCHER,
 };
 
 //write string to a tracing file

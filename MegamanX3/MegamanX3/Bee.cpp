@@ -2,13 +2,14 @@
 
 Bee::Bee()
 {
-	x = 850;
-	y = 7060 * G_Scale.y;
+	x = 2420;
+	y = (1481+G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y;
 
 	center_region_y = y;
 	vy = BEE_VY;
 
 	this->nameObject = BEE;
+	this->SetState(FLAPPINGANDFLYING);
 	LoadResource();
 }
 

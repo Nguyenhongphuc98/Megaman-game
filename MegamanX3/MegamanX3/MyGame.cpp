@@ -21,6 +21,7 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 	G_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 	this->map->Render();
+	WeaponSystem::Instance()->Render();
 	this->megaman->Render();		
 
 
@@ -28,63 +29,50 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 		o->Render();
 	}
 
-	/*G_Scale = D3DXVECTOR2(1, 1);
-	G_ScaleFlipX= D3DXVECTOR2(-1, 1);*/
-	WeaponSystem::Instance()->Render();
-	//G_Scale = D3DXVECTOR2(2.5, 2.5);
-	//G_ScaleFlipX = D3DXVECTOR2(-2.5, 2.5);
+	this->hornet->Render();
+	this->bee->Render();
+//	this->shuri->Render();
+	this->launchers->Render();
+
+	
 
 	G_SpriteHandler->End();
 }
 
 void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 {
-//	megaman->SetState(STAND);
+	EControler controler =NoneControl;
 
-	int check_key_down = false;
-	if (IsKeyDown(DIK_RIGHT))
-	{
-		megaman->SetDirection(RIGHT);
-		megaman->SetState(RUN);
-		check_key_down = true;
+	if (IsKeyDown(DIK_LEFT)) {
+		this->megaman->SetDirection(LEFT);
+		controler = LeftControl;
 	}
 
-	if(IsKeyDown(DIK_LEFT))
-	{
-		megaman->SetDirection(LEFT);
-		megaman->SetState(RUN);
-		check_key_down = true;
+	if (IsKeyDown(DIK_RIGHT)) {
+		this->megaman->SetDirection(RIGHT);
+		controler = RightControl;
 	}
 
-	if (IsKeyDown(DIK_Z)&&megaman->IsGround())
-	{
-		megaman->SetState(JUMP);
-		check_key_down = true;
-		megaman->SetGround(false);
+	if (IsKeyDown(DIK_X)) {
+		controler = DashControl;
 	}
 
-	if (IsKeyDown(DIK_A))
-	{
-		megaman->SetState(SHOOT);
-		float x, y;
-		megaman->GetPosition(x, y);
-		Bullet *bullet = new  Speedburner(x, y, megaman->GetDirection(), NORMALBULLET);
-		WeaponSystem::Instance()->AddBulletMegaman(bullet);
-		check_key_down = true;
+	if (IsKeyDown(DIK_A)) {
+		if (!megaman->IsCharging())
+		{
+			controler = ShootControl;
+			megaman->SetTimeStartPressA();
+		}	
 	}
 
-	if (IsKeyDown(DIK_UP)) {
-		megaman->SetState(CLIMB);
-		check_key_down = true;
+	if (IsKeyDown(DIK_Z)) {
+		controler = JumpControl;
 	}
 
-	if (IsKeyDown(DIK_D)) {
-		megaman->SetState(DASH);
-		check_key_down = true;
-	}
 
-	if (!check_key_down&&megaman->IsGround())
-		megaman->SetState(STAND);
+
+	State new_state= this->megaman->GetNewState(megaman->GetState(), controler);
+	this->megaman->SetState(new_state);
 }
 
 void MyGame::Update()
@@ -126,8 +114,16 @@ void MyGame::Update()
 		o->Update(delta_time, &ListVirtualObject);
 	}
 
+	ListVirtualObject.push_back(this->launchers);
+	this->launchers->Update(delta_time,&List_temp);
+
 	megaman->Update(delta_time, &ListVirtualObject);
-	WeaponSystem::Instance()->Update(delta_time, &ListObject);
+	WeaponSystem::Instance()->UpdateTeamEnemies(delta_time, &ListVirtualObject);
+	WeaponSystem::Instance()->UpdateTeamMegaman(delta_time, &ListEnemy);
+
+	this->hornet->Update(delta_time, &ListVirtualObject);
+	this->bee->Update(delta_time, &ListVirtualObject);
+	this->shuri->Update(delta_time, &ListVirtualObject);
 }
 
 void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
@@ -136,6 +132,11 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 	//this->megaman = new Megaman();
 	this->megaman->SetDirection(RIGHT);
 	this->megaman->SetState(STAND);
+
+	this->shuri = new Shurikein();
+	this->bee = new Bee();
+	this->hornet = new BlastHornet();
+	this->launchers = new Launchers();
 
 	map = new Map();
 }
@@ -149,4 +150,38 @@ void MyGame::OnKeyDown(int KeyCode)
 		Bullet *bullet = new  Speedburner(x, y, megaman->GetDirection(), NORMALBULLET);
 		WeaponSystem::Instance()->AddBulletMegaman(bullet);
 	}*/
+}
+
+void MyGame::OnKeyUp(int KeyCode)
+{
+	
+
+	if (KeyCode == DIK_A)
+	{
+		megaman->SetState(megaman->GetShootOldState());
+		float x, y;
+		megaman->GetPosition(x, y);
+
+		(megaman->GetState() == STANDSHOOT)? y += 2:y += 6;
+		(megaman->GetDirection() == RIGHT) ? x += 18 : x -= 18;
+		
+		//Bullet *bullet = new  Speedburner(x, y, megaman->GetDirection(), NORMALBULLET);
+		Bullet *bullet;
+		if(megaman->GetTimePressA()<500)
+		bullet= new MegamanBullet1(x, y, megaman->GetDirection());
+		else
+		{
+			if(megaman->GetTimePressA() < 1000)
+			bullet = new MegamanBullet2(x, y, megaman->GetDirection());
+			else
+			{
+				bullet = new MegamanBullet3(x, y, megaman->GetDirection());
+			}
+		}
+		WeaponSystem::Instance()->AddBulletMegaman(bullet);
+		megaman->ResetTimeStartPressA();
+	}
+
+	/*if (megaman->IsFinishUpGun() && megaman->IsGround())
+		megaman->SetState(STAND);*/
 }
