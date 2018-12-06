@@ -4,6 +4,7 @@
 #include"Animation.h"
 #include"Collision.h"
 #include"TXT.h"
+#include"Global.h"
 
 class Object
 {

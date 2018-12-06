@@ -158,7 +158,12 @@ void MyGame::OnKeyUp(int KeyCode)
 
 	if (KeyCode == DIK_A)
 	{
-		megaman->SetState(megaman->GetShootOldState());
+		//megaman->SetState(megaman->GetShootOldState());
+
+		State new_state = this->megaman->GetNewState(megaman->GetState(), ShootControl);
+		this->megaman->SetState(new_state);
+		this->megaman->ResetAnimation();
+
 		float x, y;
 		megaman->GetPosition(x, y);
 
@@ -171,7 +176,7 @@ void MyGame::OnKeyUp(int KeyCode)
 		bullet= new MegamanBullet1(x, y, megaman->GetDirection());
 		else
 		{
-			if(megaman->GetTimePressA() < 1000)
+			if(megaman->GetTimePressA() < 1300)
 			bullet = new MegamanBullet2(x, y, megaman->GetDirection());
 			else
 			{

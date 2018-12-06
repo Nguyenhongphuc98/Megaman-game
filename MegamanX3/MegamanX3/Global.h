@@ -31,6 +31,15 @@
 #define min(a,b)            (((a) < (b)) ? (a) : (b))
 #endif
 
+
+#define MyDebugOUT( s )            \
+{                             \
+   std::ostringstream os_;    \
+	os_.clear();                   \
+   os_ << s;                   \
+   OutputDebugString( os_.str().c_str() );  \
+}
+
 //
 //GLOBAL VARIANT
 //
