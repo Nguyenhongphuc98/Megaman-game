@@ -7,6 +7,8 @@
 #include"MegamanBullet1.h"
 #include"MegamanBullet2.h"
 #include"MegamanBullet3.h"
+#include"DashSpark.h"
+#include"DashSmoke.h"
 
 class WeaponSystem
 {

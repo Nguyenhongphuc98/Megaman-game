@@ -55,6 +55,17 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 
 	if (IsKeyDown(DIK_X)) {
 		controler = DashControl;
+		if (megaman->IsCanDash())
+		{
+			Bullet *bullet, *bullet2;
+			float x, y;
+			megaman->GetPosition(x, y);
+			bullet = new DashSpark(x-6, y, (megaman->GetDirection()==RIGHT)?LEFT:RIGHT);
+			bullet2 = new DashSmoke(x - 6, y, (megaman->GetDirection() == RIGHT) ? LEFT : RIGHT);
+
+			WeaponSystem::Instance()->AddBulletMegaman(bullet);
+			WeaponSystem::Instance()->AddBulletMegaman(bullet2);
+		}
 	}
 
 	if (IsKeyDown(DIK_A)) {
@@ -189,4 +200,8 @@ void MyGame::OnKeyUp(int KeyCode)
 
 	/*if (megaman->IsFinishUpGun() && megaman->IsGround())
 		megaman->SetState(STAND);*/
+
+	if (KeyCode == DIK_X) {
+		megaman->SetAllowDash(true);
+	}
 }

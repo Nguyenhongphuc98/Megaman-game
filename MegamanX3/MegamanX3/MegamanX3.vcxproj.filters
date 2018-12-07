@@ -165,6 +165,12 @@
     <ClInclude Include="HeadGunnerCustomerBulletTube.h">
       <Filter>Objects\Define\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="DashSpark.h">
+      <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="DashSmoke.h">
+      <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyTexture.cpp">
@@ -273,6 +279,12 @@
       <Filter>Objects\Source</Filter>
     </ClCompile>
     <ClCompile Include="HeadGunnerCustomerBulletTube.cpp">
+      <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="DashSpark.cpp">
+      <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="DashSmoke.cpp">
       <Filter>Objects\Source\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
