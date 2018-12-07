@@ -129,6 +129,7 @@ void MyGame::Update()
 	this->launchers->Update(delta_time,&List_temp);
 
 	megaman->Update(delta_time, &ListVirtualObject);
+	megaman->ProcessCollisionBullet(WeaponSystem::Instance()->GetListWeaponEnemy());
 	WeaponSystem::Instance()->UpdateTeamEnemies(delta_time, &ListVirtualObject);
 	WeaponSystem::Instance()->UpdateTeamMegaman(delta_time, &ListEnemy);
 

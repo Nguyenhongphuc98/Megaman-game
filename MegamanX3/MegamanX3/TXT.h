@@ -77,6 +77,8 @@ enum TypeSprite {
 	SDASHSSMOKE,
 	SWALLKIK,
 	SWALLSLIDE,
+
+	SLIFEBAR,
 };
 
 enum TypeTexture {

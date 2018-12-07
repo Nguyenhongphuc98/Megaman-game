@@ -11,6 +11,7 @@ protected:
 	float damage;
 	float angle;
 	bool destroyed;
+	bool destroying;
 
 	State state;
 	Direction direction;
@@ -27,6 +28,10 @@ public:
 	virtual void SetDirection(Direction d)=0;
 
 	virtual bool IsDestroyed();
+	virtual bool IsDestroying() { return this->destroying; }
+	void SetDestroying(bool destroying) { this->destroying = destroying; }
+
+	int GetDamege();
 };
 
 

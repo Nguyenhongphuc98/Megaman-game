@@ -10,6 +10,8 @@ protected:
 	State state;
 	Direction direction;
 
+	int hitpoints;
+
 public:
 	ActionObject();
 	ActionObject(int x,int y,int w,int h,Direction d);

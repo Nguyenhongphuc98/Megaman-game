@@ -2,6 +2,7 @@
 
 Bullet::Bullet()
 {
+	this->damage = 1;
 }
 
 Bullet::~Bullet()
@@ -18,4 +19,9 @@ void Bullet::Render()
 bool Bullet::IsDestroyed()
 {
 	return false;
+}
+
+int Bullet::GetDamege()
+{
+	return this->damage;
 }

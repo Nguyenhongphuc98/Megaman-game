@@ -3,8 +3,8 @@
 #define Megaman_H_
 #include"ActionObject.h"
 #include<d3dx9.h>
-
-
+#include"Bullet.h"
+#include<list>
 
 
 #define MEGAMAN_HEIGHT 84
@@ -33,13 +33,15 @@ private:
 
 	
 	Animation * animation_charging;
+	Animation * animation_lifebar;
 public:
 	Megaman();
 	~Megaman();
 
 	static Megaman* Instance();
 
-	void Update(DWORD dt, vector<Object*> *List_object_can_col);
+	void Update(DWORD dt, vector<Object*> *List__virtual_object_can_col);
+	void ProcessCollisionBullet(list<Bullet*> List__bullet_enemy);
 	void Render();
 	void LoadResource();
 
