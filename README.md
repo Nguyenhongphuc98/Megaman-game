@@ -15,17 +15,22 @@ Game have three main part:
 - Update: Update all Object (megaman, virtual Object, enemy, bullet, item) - location, collision, state.
 - Render: Show graphic to screen.
 <br>
-List Class and Function:
-- Object:
-+ The class used to inherit, contains the full attribute 1 possible object.<br>
 <br>
-- ActionObject:
-+ All animated objects are treated as actionObject.<br>
-- VirtualObject:
-+ Object static as ground, wall,...<br>
+List Class and Function:<br>
+1.  Object:
+- The class used to inherit, contains the full attribute 1 possible object.<br>
 <br>
-- Megaman:
-+ inherit from ActionObject.<br>
-+ have animation state, charing, lifebar.<br>
-+ Update - with virtual object. tu stand/ jump,..<br>
-+ Process with Bullet: -with enemy, being hurting, and set state bullet to destroy when collision.<br>
+<br>
+2.  ActionObject:
+- All animated objects are treated as actionObject.
+<br>
+<br>
+3.  VirtualObject:
+- Object static as ground, wall,...<br>
+<br>
+<br>
+4.  Megaman:
+- inherit from ActionObject.<br>
+- have animation state, charing, lifebar.<br>
+- Update - with virtual object. tu stand/ jump,..<br>
+- Process with Bullet: -with enemy, being hurting, and set state bullet to destroy when collision.<br>
