@@ -1,21 +1,21 @@
 ﻿  NotorBanger.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(61): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(62): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(9): warning C4305: '=': truncation from 'double' to 'float'
 d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(22): warning C4305: '=': truncation from 'double' to 'float'
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(66): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(114): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(123): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(153): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(157): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(228): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(231): warning C4305: 'argument': truncation from 'double' to 'float'
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(240): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(254): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(289): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(303): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(306): warning C4305: 'argument': truncation from 'double' to 'float'
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(397): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(406): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(65): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(113): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(122): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(152): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(156): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(227): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(230): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(239): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(253): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(288): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(302): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(305): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(399): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\notorbanger.cpp(408): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
   MegamanX3.vcxproj -> D:\IT\2018\Nhập môn game\Source-Code-Game\MegamanX3\x64\Debug\MegamanX3.exe

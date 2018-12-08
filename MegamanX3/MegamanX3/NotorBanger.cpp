@@ -41,8 +41,7 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 
 	//==========reset if distance so far=================
 	
-	float temp = abs(this->x - megaman_x);
-	if ( temp> 500)
+	if (abs(this->x - megaman_x) > 300 &&this->destroyed)
 	{
 		
 		this->destroyed = false;
@@ -56,7 +55,7 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 	if (this->hitpoints <= 0)
 	{
 		this->SetState(DESTROY);
-		this->destroyed = true;
+		//this->destroyed = true;
 		return;
 		//add condition to stop	
 	}
@@ -320,8 +319,11 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 void NotorBanger::Render()
 {
 	if (this->destroyed)
+		return;
+
+	if (this->state == DESTROY && this->animation->listSprite[state]->IsFinalFrame())
 	{
-		if(this->animation->listSprite[state]->IsFinalFrame())
+		destroyed = true;
 		return;
 	}
 		

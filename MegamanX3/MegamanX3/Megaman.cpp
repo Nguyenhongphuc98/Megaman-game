@@ -12,6 +12,7 @@ Megaman::Megaman()
 	this->time_start_press_A = 0;
 	this->xStartDash = 0;
 	this->hitpoints = 16;
+	this->hurting = false;
 
 	animation_charging = new Animation();
 	animation_lifebar = new Animation();
@@ -29,12 +30,10 @@ Megaman * Megaman::Instance()
 	return instance;
 }
 
-void Megaman::Update(DWORD dt, vector<Object*> *List_object_can_col)
+void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 {
-	
-
 	vy += MEGAMAN_GRAVITY*dt;
-	Object::Update(dt, List_object_can_col);
+	Object::Update(dt, List__virtual_object_can_col);
 	//x += dx;
 	//y += dy;
 
@@ -45,7 +44,7 @@ void Megaman::Update(DWORD dt, vector<Object*> *List_object_can_col)
 	vector<ResultCollision> List_result_col;
 	List_result_col.clear();
 
-	for (Object* O : *List_object_can_col) {
+	for (Object* O : *List__virtual_object_can_col) {
 		ResultCollision r ;
 		r=Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r.isCollision)
@@ -107,10 +106,11 @@ void Megaman::ProcessCollisionBullet(list<Bullet*> List__bullet_enemy)
 		r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r)
 		{
-			if (!O->IsDestroying())
+			if (!O->IsDestroying()&&!this->hurting)
 			{
-
+				this->hurting = true;
 				this->hitpoints -= O->GetDamege();
+				this->SetState(INJURED);
 				O->SetState(DESTROYBULLET);
 				O->SetDestroying(true);
 			}
@@ -407,6 +407,8 @@ void Megaman::SetState(State new_state)
 
 	case INJURED:
 		this->state = INJURED;
+		vx = 0;
+		vy = MEGAMAN_GRAVITY;
 		break;
 
 	default:
@@ -666,6 +668,25 @@ State Megaman::GetNewState(State currentState, EControler controler)
 		break;
 
 	case INJURED:
+		if (!this->animation->listSprite[INJURED]->IsFinalFrame())
+		{
+			return new_state;
+		}
+		//-==================================================================
+		this->hurting = false;
+		switch (controler)
+		{
+		case NoneControl:new_state = STAND; break;
+		case LeftControl:new_state = RUN; break;
+		case RightControl:new_state = RUN; break;
+		case ShootControl:new_state = STANDSHOOT; break;
+		case JumpControl:
+			if(this->IsGround())
+			new_state = STANDJUMP; break;
+		case DashControl:
+			if (this->IsGround())
+			new_state = DASH; break;
+		}
 		break;
 
 	default:

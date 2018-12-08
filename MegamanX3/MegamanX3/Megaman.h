@@ -27,6 +27,7 @@ private:
 	bool isGround;
 	bool isAllowClimbWall;
 	bool charging;
+	bool hurting;
 
 	float time_start_press_A;
 	static Megaman* instance;
