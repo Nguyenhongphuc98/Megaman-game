@@ -7,6 +7,7 @@
 #define NOTORBANGER_BULLET_VY 0.5
 #define NOTORBANGER_BULLET_WIDTH 10*G_Scale.x
 #define NOTORBANGER_BULLET_HEIGHT 10*G_Scale.y
+#define NOTORBANGER_BULLET_DAMAGE 1
 
 class NotorbangerBullet:public Bullet
 {

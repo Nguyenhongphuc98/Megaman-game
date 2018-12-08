@@ -9,6 +9,7 @@ NotorBanger::NotorBanger()
 	jump_angle = PII/4;
 	//time_animate_shoot90 = 1;
 
+	this->hitpoints = NOTORBANGER_MAX_HP;
 
 	this->ReSet();
 	this->nameObject = NOTORBANGER;
@@ -21,7 +22,8 @@ NotorBanger::NotorBanger(int x, int y, int w, int h, Direction d):ActionObject(x
 	jump_angle = PII / 6;
 	//time_animate_shoot90 = 1;
 
-
+	this->hitpoints = NOTORBANGER_MAX_HP;
+	this->destroyed = false;
 	this->ReSet();
 
 	this->nameObject = NOTORBANGER;
@@ -34,6 +36,33 @@ NotorBanger::~NotorBanger()
 
 void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	float megaman_x, megaman_y;
+	Megaman::Instance()->GetPosition(megaman_x, megaman_y);
+
+	//==========reset if distance so far=================
+	
+	float temp = abs(this->x - megaman_x);
+	if ( temp> 500)
+	{
+		
+		this->destroyed = false;
+		this->hitpoints = NOTORBANGER_MAX_HP;
+		this->SetState(STAND);
+		MyDebugOUT("reset notorbanger ");
+		this->animation->listSprite[DESTROY]->Set_current_frame(0);
+		return;
+	}
+
+	if (this->hitpoints <= 0)
+	{
+		this->SetState(DESTROY);
+		this->destroyed = true;
+		return;
+		//add condition to stop	
+	}
+
+	//===================================================
+
 	this->vy += -0.0001*dt; //gravity
 	Object::Update(dt,List_object_can_col);
 	
@@ -78,8 +107,8 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 
 #pragma endregion
 
-	float megaman_x, megaman_y;
-	Megaman::Instance()->GetPosition(megaman_x, megaman_y);
+	//float megaman_x, megaman_y;
+	//Megaman::Instance()->GetPosition(megaman_x, megaman_y);
 	if(this->state!=JUMP)
 	this->SetDirection((this->x > megaman_x) ? RIGHT : LEFT);
 	distance_to_megaman = abs(this->x - megaman_x);
@@ -290,49 +319,23 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 
 void NotorBanger::Render()
 {
+	if (this->destroyed)
+	{
+		if(this->animation->listSprite[state]->IsFinalFrame())
+		return;
+	}
+		
 	ActionObject::Render();
 }
 
 void NotorBanger::LoadResource()	
 {
-	//MyTexture *texture = new MyTexture((char*)"SourceImage\\notorBanger.png", D3DCOLOR_XRGB(255, 255, 255));
+
 	MyTexture *texture = TXT::Instance()->GetTexture(TNOTORBANGER);
 
-	/*RECT* r1 = new RECT();
-	r1->top = 5;
-	r1->bottom = 38;
-	r1->left = 4;
-	r1->right = 44;
-
-	RECT* r2 = new RECT();
-	r2->top = 6;
-	r2->bottom = 38;
-	r2->left = 48;
-	r2->right = 89;
-
-	RECT* r3 = new RECT();
-	r3->top = 8;
-	r3->bottom = 38;
-	r3->left = 100;
-	r3->right = 141;
-
-	RECT* r4 = new RECT();
-	r4->top = 1;
-	r4->bottom = 44;
-	r4->left = 145;
-	r4->right = 194;
-	
-	list_source_rect_jump.push_back(r1);
-	list_source_rect_jump.push_back(r2);
-	list_source_rect_jump.push_back(r3);
-	list_source_rect_jump.push_back(r4);*/
-	
-
-	//vector<RECT*> list_source_rect_jump2 = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\notorBangerJump.txt");
 	vector<RECT*> list_source_rect_jump = TXT::Instance()->GetListSourceRect(SNOTORBANGERJUMP);
 	animation->listSprite[JUMP] = new Sprite(texture, list_source_rect_jump, 4);
 
-	//vector<RECT*> list_source_rect_shoot90 = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\notorBangerShoot90.txt");
 	vector<RECT*> list_source_rect_shoot90 = TXT::Instance()->GetListSourceRect(SNOTOBANGERSHOOT90);
 	animation->listSprite[SHOOT90] = new Sprite(texture, list_source_rect_shoot90, 8);
 
@@ -350,6 +353,9 @@ void NotorBanger::LoadResource()
 
 	vector<RECT*> list_source_rect_down_gun = TXT::Instance()->GetListSourceRect(SNOTORBANGERDOWTHEGUN);
 	animation->listSprite[DOWNTHEGUN] = new Sprite(texture, list_source_rect_down_gun, 3);
+
+	vector<RECT*> list_source_rect_destroy = TXT::Instance()->GetListSourceRect(SNOTORBANGERDESTROY);
+	animation->listSprite[DESTROY] = new Sprite(texture, list_source_rect_destroy, 1);
 }
 
 BoundingBox NotorBanger::GetBoundingBox()

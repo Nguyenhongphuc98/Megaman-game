@@ -1,8 +1,8 @@
 #pragma once
 #ifndef Bullet_H_
 #define Bullet_H_
-#include"Object.h"
 #include"Camera.h"
+#include"ActionObject.h"
 
 class Bullet :public Object
 {

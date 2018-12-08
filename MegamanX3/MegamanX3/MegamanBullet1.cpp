@@ -8,6 +8,7 @@ MegamanBullet1::MegamanBullet1(float x, float y, Direction d)
 	this->x = x;
 	this->y = y;
 	this->direction = d;
+	this->damage = MEGAMAN_BULLET1_DAMAGE;
 	this->SetState(SHOOTING);
 
 	MyTexture *texture = TXT::Instance()->GetTexture(TBULLETMEGAMAN);
@@ -22,7 +23,7 @@ MegamanBullet1::~MegamanBullet1()
 {
 }
 
-void MegamanBullet1::Update(DWORD dt, vector<Object*>* List_object_can_col)
+void MegamanBullet1::Update(DWORD dt, vector<Object*>* List_enemy_objects)
 {
 	if (this->distance_has_shot_x > 600||(this->state==DESTROYBULLET&& this->animation->listSprite[state]->IsFinalFrame()))
 	{ 
@@ -30,11 +31,13 @@ void MegamanBullet1::Update(DWORD dt, vector<Object*>* List_object_can_col)
 		return;
 	}
 		
-	Object::Update(dt, List_object_can_col);
+	Object::Update(dt, List_enemy_objects);
 	this->distance_has_shot_x += dx;
 
 	bool check_coll = false;
-	for (Object* O : *List_object_can_col) {
+	for (Object* O : *List_enemy_objects) {
+		if (((ActionObject*)O)->IsDestroy())
+			continue;
 		ResultCollision r;
 		r = Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r.isCollision)
@@ -43,7 +46,8 @@ void MegamanBullet1::Update(DWORD dt, vector<Object*>* List_object_can_col)
 			float x_temp, y_temp;
 
 			O->GetPosition(x_temp, y_temp);
-			O->SetPosition(x_temp+ 10, y_temp);
+			//O->SetPosition(x_temp+ 10, y_temp);
+			((ActionObject*)O)->SetBeingAttacked(this->damage);
 
 			this->SetPosition(x_temp+5, y);
 			this->SetState(DESTROYBULLET);

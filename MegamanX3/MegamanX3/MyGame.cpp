@@ -21,9 +21,8 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 	G_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 	this->map->Render();
-	WeaponSystem::Instance()->Render();
-	this->megaman->Render();		
-
+		
+	
 
 	for (auto o : ListObject) {	
 		o->Render();
@@ -34,7 +33,8 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 //	this->shuri->Render();
 	this->launchers->Render();
 
-	
+	WeaponSystem::Instance()->Render();
+	this->megaman->Render();
 
 	G_SpriteHandler->End();
 }
@@ -42,6 +42,18 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 {
 	EControler controler =NoneControl;
+
+	if (IsKeyDown(DIK_LEFT)&& IsKeyDown(DIK_A)&&(this->megaman->GetTimePressA() < 400)) {
+		this->megaman->SetDirection(LEFT);
+		this->megaman->SetState(RUNSHOOT);
+		return;
+	}
+
+	if (IsKeyDown(DIK_RIGHT) && IsKeyDown(DIK_A)&&(this->megaman->GetTimePressA() < 400)) {
+		this->megaman->SetDirection(RIGHT);
+		this->megaman->SetState(RUNSHOOT);
+		return;
+	}
 
 	if (IsKeyDown(DIK_LEFT)) {
 		this->megaman->SetDirection(LEFT);

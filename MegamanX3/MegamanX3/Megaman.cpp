@@ -364,7 +364,8 @@ void Megaman::SetState(State new_state)
 		break;
 
 	case STANDSHOOT:
-		this->state = STANDSHOOT;		
+		this->state = STANDSHOOT;	
+		vx = 0;
 		MyDebugOUT("stand  shoot\n");
 		break;
 
@@ -375,10 +376,7 @@ void Megaman::SetState(State new_state)
 		{
 			this->xStartDash = x;
 			this->isAllowDash = false;
-
-
-		}
-		
+		}	
 		else
 		if (GetDistanceDash() > MEGAMAN_DISTANCE_DASH)
 		{
@@ -419,9 +417,8 @@ void Megaman::SetState(State new_state)
 	}
 
 
-	//if (!this->state == new_state)
-	//	//return;
-	//this->animation->Refresh(this->state);
+	/*if (!this->state == new_state)
+	this->animation->Refresh(this->state);*/
 }
 
 void Megaman::SetDirection(Direction d)
@@ -500,7 +497,7 @@ State Megaman::GetNewState(State currentState, EControler controler)
 			new_state = STAND; break;
 		case LeftControl:new_state = STAND; break;
 		case RightControl: new_state = STAND; break;
-		case ShootControl: break;
+		case ShootControl: new_state = STANDSHOOT; break;
 		case JumpControl:new_state = STANDJUMP; break;
 		case DashControl:new_state = DASH; break;
 		}

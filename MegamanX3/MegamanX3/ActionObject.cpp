@@ -2,6 +2,7 @@
 
 ActionObject::ActionObject()
 {
+	this->destroyed = false;
 }
 
 ActionObject::ActionObject(int x, int y, int w, int h, Direction d):Object(x,y,w,h)

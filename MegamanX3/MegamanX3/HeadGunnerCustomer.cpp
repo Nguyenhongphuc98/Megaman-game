@@ -33,10 +33,17 @@ void HeadGunnerCustomer::Update(DWORD dt, vector<Object*>* List_object_can_col)
 	if (count_animation % 300 == 0)
 		SetState(SHOOTBELOW);
 
+	if (this->state != SHOOTABOVE)
+		count_bulet_tube = 0;
+
 	if(this->state== SHOOTABOVE&&this->animation->listSprite[state]->IsFinalFrame())
 	{
-		Bullet* bullet = new HeadGunnerCustomerBulletTube(this->x, this->y, (this->direction == RIGHT) ? LEFT : RIGHT);
-		WeaponSystem::Instance()->AddBulletEnemy(bullet);
+		if (count_bulet_tube < 3)
+		{
+			Bullet* bullet = new HeadGunnerCustomerBulletTube(this->x, this->y, (this->direction == RIGHT) ? LEFT : RIGHT);
+			WeaponSystem::Instance()->AddBulletEnemy(bullet);
+			count_bulet_tube++;
+		}
 	}
 }
 

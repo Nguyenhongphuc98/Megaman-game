@@ -11,6 +11,7 @@ protected:
 	Direction direction;
 
 	int hitpoints;
+	bool destroyed;
 
 public:
 	ActionObject();
@@ -25,6 +26,8 @@ public:
 
 	virtual void SetState(State s) {};
 	virtual void SetDirection(Direction d) {};
+	virtual void SetBeingAttacked(int damage) { this->hitpoints -= damage; };
+	virtual bool IsDestroy() { return destroyed; }
 
 	virtual State GetState();
 	virtual Direction GetDirection();
