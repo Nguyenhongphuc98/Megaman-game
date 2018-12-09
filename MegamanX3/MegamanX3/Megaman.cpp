@@ -9,10 +9,13 @@ Megaman::Megaman()
 	this->isAllowClimbWall = false;
 	this->charging = false;
 	this->isAllowDash = true;
+	this->isAllowJump = true;
 	this->time_start_press_A = 0;
 	this->xStartDash = 0;
 	this->hitpoints = 16;
 	this->hurting = false;
+	this->bounsed = false;
+	this->state = FREEFALL;
 
 	animation_charging = new Animation();
 	animation_lifebar = new Animation();
@@ -152,23 +155,20 @@ void Megaman::Render()
 
 	}
 	
+	//================== STAND JUMP=============================
 
-
-	/*
-	if (this->state == JUMP)
+	if (this->state == STANDJUMP)
 	{
-		if (animation->listSprite[JUMP]->GetCurrentFrame() >= 3)
-		{
-			animation->listSprite[JUMP]->Set_current_frame(3);
-		}
+		if (this->GetDistanceJump() > MEGAMAN_DISTANCE_ALLOW_BOUNS+20)
+			this->animation->listSprite[this->state]->Set_current_frame(2);
 	}
 
-	if (y < yPre)
+	//================== RUN JUMP -USING WHEN FREE FALL============
+
+	if (this->state == FREEFALL)
 	{
-		animation->listSprite[JUMP]->Set_current_frame(4);
-		animation->Render(JUMP, direction, position);
-		return;
-	}*/
+		this->animation->listSprite[this->state]->Set_current_frame(3);
+	}
 
 
 
@@ -220,8 +220,8 @@ void Megaman::LoadResource()
 	//=====================Load Status Jump=============================
 
 	vector<RECT*> list_source_rect_jump = TXT::Instance()->GetListSourceRect(SMEGAMANJUMP);	
-	animation->listSprite[State::STANDJUMP] = new Sprite(texture, list_source_rect_jump, 1);
-	animation->listSprite[State::RUNJUMP] = new Sprite(texture, list_source_rect_jump, 1);
+	animation->listSprite[State::STANDJUMP] = new Sprite(texture, list_source_rect_jump, 2);
+	animation->listSprite[State::FREEFALL] = new Sprite(texture, list_source_rect_jump, 1);
 
 	vector<RECT*> list_source_rect_jump_shoot = TXT::Instance()->GetListSourceRect(SMEGAMANJUMPSHOOT);
 	animation->listSprite[State::JUMPSHOOT] = new Sprite(texture, list_source_rect_jump_shoot, 3);
@@ -300,21 +300,22 @@ void Megaman::SetState(State new_state)
 		MyDebugOUT("run shoot \n");
 		break;
 
-	case RUNJUMP:
-		MyDebugOUT("run jump \n");
-		vx = (this->direction == RIGHT) ? MEGAMAN_WALK_SPEED : -MEGAMAN_WALK_SPEED;
-		if (this->isGround)
+	case FREEFALL:
+		MyDebugOUT("Free fall \n");
+		//vx = (this->direction == RIGHT) ? MEGAMAN_WALK_SPEED : -MEGAMAN_WALK_SPEED;
+		/*if (this->isGround)
 		{
 			MyDebugOUT(" start run jump \n");
 			vy = MEGAMAN_RUN_JUMP_SPEED;
-		}
-		this->state = RUNJUMP;
+		}*/
+		this->state = FREEFALL;
 		this->isGround = false;
 		
 		break;
 
 	case STAND:
 		MyDebugOUT("stand \n");
+		this->animation->Refresh(this->state);
 		this->state = STAND;
 		vx = 0;
 		//vy = 0;
@@ -425,16 +426,20 @@ void Megaman::SetState(State new_state)
 
 void Megaman::SetDirection(Direction d)
 {
-	this->direction = d;
+	
 	switch (state)
 	{
 	case RUN:		
 	case RUNSHOOT:
-	case RUNJUMP:
 	case STANDJUMP:
 		vx = (this->direction == RIGHT) ? MEGAMAN_WALK_SPEED : -MEGAMAN_WALK_SPEED;
 		break;
+	case FREEFALL:
+		vx *= (this->direction == d) ? 1 : -1;
+		break;
 	}
+
+	this->direction = d;
 }
 
 bool Megaman::SetTimeStartPressA()
@@ -446,7 +451,7 @@ bool Megaman::SetTimeStartPressA()
 		return true;
 	}
 	else
-		if (this->GetTimePressA() > 400 && !charging)
+		if (this->GetTimePressA() > MEGAMAN_TIME_NEED_TO_CHARING && !charging)
 		{
 			this->SetState(STAND);
 			charging = true;
@@ -482,7 +487,7 @@ State Megaman::GetNewState(State currentState, EControler controler)
 		case ShootControl:new_state = RUNSHOOT;break;
 		case JumpControl:
 			if(isGround)
-			new_state = RUNJUMP;break;
+			new_state = STANDJUMP;break;
 		case DashControl:new_state = DASH; break;
 		}
 		break;
@@ -505,7 +510,7 @@ State Megaman::GetNewState(State currentState, EControler controler)
 		}
 		break;
 
-	case RUNJUMP:
+	case FREEFALL:
 		/*if (!this->animation->listSprite[RUNJUMP]->IsFinalFrame())
 			return new_state;*/
 
@@ -574,7 +579,10 @@ State Megaman::GetNewState(State currentState, EControler controler)
 	case STAND:
 		switch (controler)
 		{
-		case NoneControl: break;
+		case NoneControl:
+			if(this->IsFreeFall())
+				new_state = FREEFALL;
+				break;
 		case LeftControl:new_state = RUN; break;
 		case RightControl:new_state = RUN; break;
 		case ShootControl:new_state = STANDSHOOT; break;
@@ -600,7 +608,7 @@ State Megaman::GetNewState(State currentState, EControler controler)
 			return new_state;*/
 		switch (controler)
 		{
-		case NoneControl:if (this->IsCanJump()) new_state = STAND; break;
+		case NoneControl:if (this->isGround) new_state = STAND; break;
 		case LeftControl:
 			if (this->isGround) new_state = RUN;
 			if (this->isAllowClimbWall) new_state = JUMPWALL;

@@ -43,13 +43,13 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 {
 	EControler controler =NoneControl;
 
-	if (IsKeyDown(DIK_LEFT)&& IsKeyDown(DIK_A)&&(this->megaman->GetTimePressA() < 400)) {
+	if (IsKeyDown(DIK_LEFT)&& IsKeyDown(DIK_A)&&(this->megaman->GetTimePressA() < MEGAMAN_TIME_NEED_TO_CHARING)) {
 		this->megaman->SetDirection(LEFT);
 		this->megaman->SetState(RUNSHOOT);
 		return;
 	}
 
-	if (IsKeyDown(DIK_RIGHT) && IsKeyDown(DIK_A)&&(this->megaman->GetTimePressA() < 400)) {
+	if (IsKeyDown(DIK_RIGHT) && IsKeyDown(DIK_A)&&(this->megaman->GetTimePressA() < MEGAMAN_TIME_NEED_TO_CHARING)) {
 		this->megaman->SetDirection(RIGHT);
 		this->megaman->SetState(RUNSHOOT);
 		return;
@@ -67,17 +67,20 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 
 	if (IsKeyDown(DIK_X)) {
 		controler = DashControl;
+
+		float x, y;
+		megaman->GetPosition(x, y);
 		if (megaman->IsCanDash())
 		{
-			Bullet *bullet, *bullet2;
-			float x, y;
-			megaman->GetPosition(x, y);
+			Bullet *bullet;
+			
 			bullet = new DashSpark(x-6, y, (megaman->GetDirection()==RIGHT)?LEFT:RIGHT);
-			bullet2 = new DashSmoke(x - 6, y, (megaman->GetDirection() == RIGHT) ? LEFT : RIGHT);
-
 			WeaponSystem::Instance()->AddBulletMegaman(bullet);
-			WeaponSystem::Instance()->AddBulletMegaman(bullet2);
+			
 		}
+		Bullet  *bullet2;
+		bullet2 = new DashSmoke(x - 6, y, (megaman->GetDirection() == RIGHT) ? LEFT : RIGHT);
+		WeaponSystem::Instance()->AddBulletMegaman(bullet2);
 	}
 
 	if (IsKeyDown(DIK_A)) {
@@ -89,7 +92,17 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 	}
 
 	if (IsKeyDown(DIK_Z)) {
-		controler = JumpControl;
+		if (megaman->IsCanJump())
+		{
+			controler = JumpControl;
+			this->megaman->SetAllowJump(false);
+			this->megaman->SetStartJump();
+		}
+		
+		if (megaman->GetDistanceJump() > MEGAMAN_DISTANCE_ALLOW_BOUNS&&!megaman->IsBounused())
+		{
+			megaman->SetBonus(MEGAMAN_JUMP_BONUS_SPEED);
+		}
 	}
 
 
@@ -155,7 +168,7 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 	this->megaman = Megaman::Instance();
 	//this->megaman = new Megaman();
 	this->megaman->SetDirection(RIGHT);
-	this->megaman->SetState(STAND);
+	
 
 	this->shuri = new Shurikein();
 	this->bee = new Bee();
@@ -217,4 +230,9 @@ void MyGame::OnKeyUp(int KeyCode)
 	if (KeyCode == DIK_X) {
 		megaman->SetAllowDash(true);
 	}
+
+	if (KeyCode == DIK_Z) {
+		megaman->SetAllowJump(true);
+	}
+	
 }

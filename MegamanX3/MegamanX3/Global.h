@@ -23,6 +23,7 @@
 #define GL_KEY_BUFFER_SIZE	1024
 #define G_ADDITIONS_TO_BECOME_THE_SQUARE 5880// background added 5880 to be square
 
+
 #ifndef max
 #define max(a,b)            (((a) > (b)) ? (a) : (b))
 #endif
@@ -99,7 +100,7 @@ enum State {
 	//megaman
 	RUN,
 	RUNSHOOT,
-	RUNJUMP,
+	FREEFALL,
 	JUMP,
 	JUMPWALL,
 	JUMPSHOOT,
