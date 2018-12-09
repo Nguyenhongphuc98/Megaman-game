@@ -315,7 +315,7 @@ void Megaman::SetState(State new_state)
 
 	case STAND:
 		MyDebugOUT("stand \n");
-		this->animation->Refresh(this->state);
+		//this->animation->Refresh(this->state);
 		this->state = STAND;
 		vx = 0;
 		//vy = 0;

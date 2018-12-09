@@ -7,6 +7,7 @@
 #define MEGAMAN_BULLET2_VY 0
 #define MEGAMAN_BULLET2_WIDTH 22
 #define MEGAMAN_BULLET2_HEIGHT 22
+#define MEGAMAN_BULLET2_DAMAGE 3
 
 class MegamanBullet2 :public Bullet
 {
@@ -17,7 +18,7 @@ public:
 	MegamanBullet2(float x, float y, Direction d);
 	~MegamanBullet2();
 
-	virtual void Update(DWORD dt, vector<Object*> *List_object_can_col);//process col with enemi
+	virtual void Update(DWORD dt, vector<Object*> *List_enemy_objects);//process col with enemi
 	virtual void Render();
 	virtual BoundingBox GetBoundingBox();
 

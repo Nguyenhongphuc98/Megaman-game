@@ -36,8 +36,10 @@ void MegamanBullet1::Update(DWORD dt, vector<Object*>* List_enemy_objects)
 
 	bool check_coll = false;
 	for (Object* O : *List_enemy_objects) {
+
 		if (((ActionObject*)O)->IsDestroy())
 			continue;
+
 		ResultCollision r;
 		r = Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r.isCollision)

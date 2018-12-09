@@ -7,6 +7,8 @@ HeadGunnerCustomer::HeadGunnerCustomer()
 
 	this->count_animation = 0;
 	this->count_bulet_tube = 0;
+	this->destroyed = false;
+	this->hitpoints = HEADGUNNERCUSTOMER_MAX_HP;
 	this->nameObject = HEADGUNNERCUSTOMER;
 	LoadResource();
 }
@@ -15,6 +17,8 @@ HeadGunnerCustomer::HeadGunnerCustomer(int x, int y, int w, int h, Direction d):
 {
 	this->count_animation = 0;
 	this->count_bulet_tube = 0;
+	this->destroyed = false;
+	this->hitpoints = HEADGUNNERCUSTOMER_MAX_HP;
 	this->nameObject = HEADGUNNERCUSTOMER;
 	LoadResource();
 }
@@ -25,6 +29,41 @@ HeadGunnerCustomer::~HeadGunnerCustomer()
 
 void HeadGunnerCustomer::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	float megaman_x, megaman_y;
+	Megaman::Instance()->GetPosition(megaman_x, megaman_y);
+
+
+	//==========reset if distance so far=================
+
+	if ((abs(this->x - megaman_x) > 400|| abs(this->y - megaman_y) >300)&& this->destroyed)
+	{
+		this->destroyed = false;
+		this->hitpoints = HEADGUNNERCUSTOMER_MAX_HP;
+		this->SetState(STAND);
+		MyDebugOUT("reset headgunercustomer ");
+		this->animation->listSprite[DESTROY]->Set_current_frame(0);
+		return;
+	}
+
+	//======================check destroyed=================================
+
+	if (this->state == DESTROY && this->animation->listSprite[state]->IsFinalFrame())
+	{
+		destroyed = true;
+		return;
+	}
+
+	//=============CHECK LIFE===============================
+	if (this->hitpoints <= 0 && this->state != DESTROY)
+	{
+		this->SetState(DESTROY);
+		Bullet* tempBullet = new NotorbangerBullet(this->x, this->y, RIGHT, 0);
+		tempBullet->SetState(DESTROYBULLET);
+		WeaponSystem::Instance()->AddBulletEnemy(tempBullet);
+		return;
+	}
+
+	//=============ALIVE====================================
 	count_animation++;
 	if (count_animation % 100 == 0)
 		SetState(STAND);
@@ -49,6 +88,9 @@ void HeadGunnerCustomer::Update(DWORD dt, vector<Object*>* List_object_can_col)
 
 void HeadGunnerCustomer::Render()
 {
+
+	if(this->destroyed)
+		return;
 	ActionObject::Render();
 }
 
@@ -77,6 +119,9 @@ void HeadGunnerCustomer::LoadResource()
 
 	vector<RECT*> list_source_rect_shoot_below = TXT::Instance()->GetListSourceRect(SHEADGUNNERCUSTOMERSHOOTBELOW);
 	animation->listSprite[State::SHOOTBELOW] = new Sprite(texture, list_source_rect_shoot_below, 1);
+
+	vector<RECT*> list_source_rect_destroy = TXT::Instance()->GetListSourceRect(SHEADGUNNERCUSTOMERDESTROY);
+	animation->listSprite[State::DESTROY] = new Sprite(texture, list_source_rect_destroy, 1);
 }
 
 BoundingBox HeadGunnerCustomer::GetBoundingBox()

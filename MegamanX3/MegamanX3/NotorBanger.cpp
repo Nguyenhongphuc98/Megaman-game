@@ -36,8 +36,11 @@ NotorBanger::~NotorBanger()
 
 void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	
+
 	float megaman_x, megaman_y;
 	Megaman::Instance()->GetPosition(megaman_x, megaman_y);
+
 
 	//==========reset if distance so far=================
 	
@@ -52,13 +55,21 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 		return;
 	}
 
-	if (this->hitpoints <= 0)
+	//===================no update when destroy=====================
+	if (this->destroyed)
+		return;
+
+	//=======================check life=============================
+	if (this->hitpoints <= 0&&this->state!=DESTROY)
 	{
 		this->SetState(DESTROY);
-		//this->destroyed = true;
+		Bullet* tempBullet = new NotorbangerBullet(this->x, this->y, RIGHT, 0);
+		tempBullet->SetState(DESTROYBULLET);
+		WeaponSystem::Instance()->AddBulletEnemy(tempBullet);
 		return;
-		//add condition to stop	
 	}
+
+
 
 	//===================================================
 
@@ -318,9 +329,7 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 
 void NotorBanger::Render()
 {
-	if (this->destroyed)
-		return;
-
+	//======================check destroyed=================================
 	if (this->state == DESTROY && this->animation->listSprite[state]->IsFinalFrame())
 	{
 		destroyed = true;

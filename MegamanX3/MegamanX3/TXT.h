@@ -80,6 +80,8 @@ enum TypeSprite {
 	SWALLSLIDE,
 
 	SLIFEBAR,
+
+	SHEADGUNNERCUSTOMERDESTROY,
 };
 
 enum TypeTexture {

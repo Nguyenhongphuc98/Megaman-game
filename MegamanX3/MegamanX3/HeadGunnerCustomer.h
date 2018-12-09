@@ -4,9 +4,11 @@
 #include"ActionObject.h"
 #include"HeadGunnerCustomerBulletTube.h"
 #include"WeaponSystem.h"
+#include"Megaman.h"
 
 #define HEADGUNNERCUSTOMER_WIDTH 36*2.5
 #define HEADGUNNERCUSTOMER_HEIGHT 43*2.5
+#define HEADGUNNERCUSTOMER_MAX_HP 6
 
 class HeadGunnerCustomer:public ActionObject
 {
