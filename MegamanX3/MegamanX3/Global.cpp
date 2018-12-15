@@ -13,14 +13,14 @@
 
 
 char*		G_GameName = (char*)"GAME MEGAMAN ";
-int			G_FrameRate = 60;
+int			G_FrameRate = 90;
 
 bool		G_IsFullScreen = false;
 D3DFORMAT	G_BackBufferFormat;
 
 
 RECT		G_WindowSize;
-int			G_ScreenWidth = 600; //640;	//640	//1024	//1366
+int			G_ScreenWidth =  620; //640;	//640	//1024	//1366
 int			G_ScreenHeight = 580; //480;	//480	//768	//768
 
 

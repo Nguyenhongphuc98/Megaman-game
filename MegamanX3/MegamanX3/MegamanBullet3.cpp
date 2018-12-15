@@ -40,6 +40,30 @@ void MegamanBullet3::Update(DWORD dt, vector<Object*>* List_enemy_objects)
 		if (((ActionObject*)O)->IsDestroy())
 			continue;
 
+		//=============AABB With Shurikein to chinh xac hon=================
+		if (O->GetNameObject() == SHURIKEIN)
+		{
+			bool r = false;
+			r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
+
+			//======avoid loop because AABB==================
+			if (r&&this->state != DESTROYBULLET)
+			{
+				check_coll = true;
+				float x_temp, y_temp;
+
+				O->GetPosition(x_temp, y_temp);
+				//O->SetPosition(x_temp+ 10, y_temp);
+				((ActionObject*)O)->SetBeingAttacked(this->damage);
+
+				this->SetPosition(x_temp + 5, y);
+				this->SetState(DESTROYBULLET);
+			}
+
+			continue;
+		}
+
+		//=================else process swept AABB=============================
 		ResultCollision r;
 		r = Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r.isCollision)

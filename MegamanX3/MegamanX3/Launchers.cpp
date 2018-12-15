@@ -34,6 +34,7 @@ Launchers::~Launchers()
 
 void Launchers::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	
 	if (is_allow_runing)
 	{
 		if (this->y > (1610 + G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y)
@@ -48,7 +49,13 @@ void Launchers::Update(DWORD dt, vector<Object*>* List_object_can_col)
 			Object::Update(dt, List_object_can_col);
 			this->y += dy;
 
+			//float megaman_x, megaman_y;
+		//	Megaman::Instance()->GetPosition(megaman_x, megaman_y);
+			
 			Megaman::Instance()->GetPosition(temp_X, temp_Y);
+
+			if (abs(this->x - temp_X) > 100)
+				return;
 			Megaman::Instance()->SetPosition(temp_X, temp_Y + dy);
 		}
 	

@@ -142,6 +142,7 @@ void TXT::LoadAllTexture()
 	//===============================SHURIKEIN SPRITE=====================================
 	listTexture[TSHURIKEINAPPEAR] = new MyTexture((char*)"SourceImage\\ShurikeinAppear.png", D3DCOLOR_XRGB(255, 255, 255));
 	listTexture[TSHURIKEINROTATELEFT] = new MyTexture((char*)"SourceImage\\shurikein_rotate_left.png", D3DCOLOR_XRGB(255, 255, 255));
+	listTexture[TSHURIKEINJUMPANDDIE] = new MyTexture((char*)"SourceImage\\shurikein_jump_and_die.png", D3DCOLOR_XRGB(255, 255, 255));
 
 	//===============================BULLET1 MEGAMAN SPRITE=====================================
 	listTexture[TBULLETMEGAMAN] = new MyTexture((char*)"SourceImage\\megamanbullet.png", D3DCOLOR_XRGB(50, 96, 166));
@@ -151,6 +152,13 @@ void TXT::LoadAllTexture()
 
 	//===============================EFFECT SPRITE=====================================
 	listTexture[TEFFECT] = new MyTexture((char*)"SourceImage\\effect.png", D3DCOLOR_XRGB(64, 102, 232));
+
+	//===============================DOOR SPRITE=====================================
+	listTexture[TDOOR] = new MyTexture((char*)"SourceImage\\door.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================GENJIBO SPRITE=====================================
+	listTexture[TGENJIBO] = new MyTexture((char*)"SourceImage\\Genjibo.png", D3DCOLOR_XRGB(255, 255, 255));
+
 }
 
 vector<RECT*> TXT::GetListSourceRect(TypeSprite type_sprite)

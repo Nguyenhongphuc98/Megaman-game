@@ -3,6 +3,8 @@ Camera* Camera::instance;
 
 Camera::Camera()
 {
+	this->auto_moving_x = false;
+	this->locked = false;
 }
 
 Camera::~Camera()
@@ -18,6 +20,33 @@ Camera * Camera::Instance()
 
 void Camera::Update(float x, float y)
 {
+	//========don't allow update x,y when meet boss===================
+	if (this->locked)
+		return;
+
+	//=======if open the door, can auto moving camera and megaman to meet boss
+	if (this->auto_moving_x)
+	{
+		this->x += 3;
+
+		//=========boss shurikein die / open door==============================
+		if (this->x > 2553 * G_Scale.x&&this->x < 2556 * G_Scale.x)
+		{
+			this->auto_moving_x = false;
+			//this->locked = true;
+		}
+		else
+		//=========meet boss shurikein==============================
+		if (this->x > 2313 * G_Scale.x&&this->x < 2317 * G_Scale.x&&!locked)
+		{
+			this->auto_moving_x = false;
+			this->locked = true;
+		}
+		return;
+	}
+
+
+
 	this->x = x - G_ScreenWidth / 2;
 	this->y = y + 3*G_ScreenHeight / 4-40;
 
@@ -26,18 +55,25 @@ void Camera::Update(float x, float y)
 	if (this->y < G_ScreenHeight)
 		this->y = G_ScreenHeight;
 
-	//duong ong ngang dau tien
+	//d=========uong ong ngang dau tien================
 	if (this->x < (700)*G_Scale.x && this->y>((1285+G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y))
 		this->y = (1285 + G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y;
 
-	//duong ong doc
+	//==============duong ong doc===============
 	if (this->x > 772 * G_Scale.x&&this->x<1520*G_Scale.x&&this->y<(1765+G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
 		this->x = 772 * G_Scale.x;
 
-	//duong ong ngang tiep theo
+	//============duong ong ngang tiep theo===============
 	if (this->x > 770 * G_Scale.x&&this->y > (1799 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
 		this->y = (1799 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
+	//==========open door shurikein boss==============
+	if (this->x > 2060 * G_Scale.x&&this->x < 2260 * G_Scale.x)
+		this->x = 2060 * G_Scale.x;
+
+	//=========khi di qua o boss k cho cam quay lai
+	if (this->x > 2313 * G_Scale.x&&this->x < 2553 * G_Scale.x)
+		this->x = 2553 * G_Scale.x;
 }
 
 void Camera::Reset()

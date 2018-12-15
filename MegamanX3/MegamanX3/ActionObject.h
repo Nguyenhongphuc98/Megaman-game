@@ -13,6 +13,9 @@ protected:
 	int hitpoints;
 	bool destroyed;
 
+	//door shurikein==============
+	bool actived;
+
 public:
 	ActionObject();
 	ActionObject(int x,int y,int w,int h,Direction d);
@@ -26,11 +29,15 @@ public:
 
 	virtual void SetState(State s) {};
 	virtual void SetDirection(Direction d) {};
-	virtual void SetBeingAttacked(int damage) { this->hitpoints -= damage; };
+	virtual void SetBeingAttacked(int damage) { this->hitpoints -= damage; }
 	virtual bool IsDestroy() { return destroyed; }
 
 	virtual State GetState();
 	virtual Direction GetDirection();
+	virtual int GetDamage() { return 1; }
+
+	//==============door===========================
+	virtual void SetActived(bool active) { this->actived = active; }
 };
 
 

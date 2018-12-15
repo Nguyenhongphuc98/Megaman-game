@@ -1,9 +1,9 @@
 #include"VirtualObject.h"
 
-VirtualObject::VirtualObject(float top, float left, float w, float h)
+VirtualObject::VirtualObject(float bottom, float left, float w, float h)
 {
 	this->x = left;
-	this->y = top;
+	this->y = bottom;
 	this->width = w;
 	this->height = h;
 }

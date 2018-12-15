@@ -58,6 +58,12 @@
     <Filter Include="Objects\Source\Bullet">
       <UniqueIdentifier>{f0cb8e78-2b89-4d2e-8edf-d1ab5bbbef5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Define\Static">
+      <UniqueIdentifier>{7322e035-ec20-4e1c-ab56-544de568d773}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Source\Static">
+      <UniqueIdentifier>{cc94354b-4046-4a14-bee0-2c070373a5c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyTexture.h">
@@ -170,6 +176,15 @@
     </ClInclude>
     <ClInclude Include="DashSmoke.h">
       <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorShurikein.h">
+      <Filter>Objects\Define\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="Genjibo.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorRightShurikein.h">
+      <Filter>Objects\Define\Static</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +301,15 @@
     </ClCompile>
     <ClCompile Include="DashSmoke.cpp">
       <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorShurikein.cpp">
+      <Filter>Objects\Source\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="Genjibo.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorRightShurikein.cpp">
+      <Filter>Objects\Source\Static</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

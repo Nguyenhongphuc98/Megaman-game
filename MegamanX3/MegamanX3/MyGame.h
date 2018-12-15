@@ -16,7 +16,9 @@
 #include"HeadGunnerCustomer.h"
 #include"CarryArm.h"
 #include"Launchers.h"
+#include"DoorShurikein.h"
 #include"QuadTree.h"
+#include"Genjibo.h"
 
 class MyGame :public Game
 {
@@ -33,7 +35,10 @@ private:
 	BlastHornet* hornet;
 	Bee* bee;
 	Launchers* launchers;
-	
+	DoorShurikein* doorShuri;
+	Genjibo* genjibo;
+	DoorRightShurikein* doorRightShuri;
+
 public:
 	MyGame();
 	MyGame(int cmd);

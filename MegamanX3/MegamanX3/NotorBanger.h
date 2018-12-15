@@ -15,6 +15,7 @@
 #define PII 3.141415
 #define NOTORBANGER_GRAVITY 0.1f
 #define NOTORBANGER_MAX_HP 5
+#define NOTORBANGER_DAMAGE 1
 
 
 class NotorBanger:public ActionObject
@@ -56,6 +57,7 @@ public:
 	void LoadResource();
 
 	BoundingBox GetBoundingBox();
+	int GetDamage() {return NOTORBANGER_DAMAGE;}
 
 	void SetState(State s);
 	void SetDirection(Direction d);

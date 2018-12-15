@@ -8,7 +8,7 @@
 
 
 #define MEGAMAN_HEIGHT 84
-#define MEGAMAN_WIDTH 75
+#define MEGAMAN_WIDTH 65
 #define MEGAMAN_GRAVITY -0.0015f
 #define MEGAMAN_WALK_SPEED 0.2f
 
@@ -16,11 +16,12 @@
 #define MEGAMAN_JUMP_BONUS_SPEED 0.4f
 #define MEGAMAN_RUN_JUMP_SPEED 0.55f
 #define MEGAMAN_JUMP_WALL_SPEED 0.4f
-
 #define MEGAMAN_DASH_SPEED 0.4f
+
 #define MEGAMAN_DISTANCE_DASH 250
 #define MEGAMAN_DISTANCE_ALLOW_BOUNS 50
 #define MEGAMAN_TIME_NEED_TO_CHARING 400
+#define MEGAMAN_MAX_HP 16
 
 class Megaman:public ActionObject
 {
@@ -36,6 +37,7 @@ private:
 	bool charging;
 	bool hurting;
 	bool bounsed;
+	bool autoMoving;
 
 	float time_start_press_A;
 	static Megaman* instance;
@@ -49,8 +51,10 @@ public:
 
 	static Megaman* Instance();
 
+	//colli with virual, static, laucher
 	void Update(DWORD dt, vector<Object*> *List__virtual_object_can_col);
 	void ProcessCollisionBullet(list<Bullet*> List__bullet_enemy);
+	void ProcessCollisionEnemy(vector<Object*> List_enemy);
 	void Render();
 	void LoadResource();
 
@@ -63,6 +67,7 @@ public:
 	void SetAllowJump(bool allow) { this->isAllowJump = allow;	}
 	void SetStartJump() { this->yStartJump = this->y; this->bounsed = false; }
 	void SetBonus(float vy) { this->vy = vy; this->bounsed = true; }
+	void SetAutoMoving(bool moving) { this->autoMoving = moving; }
 
 	void ResetTimeStartPressA();
 
@@ -82,7 +87,7 @@ public:
 	bool IsCharging() { return this->charging; }
 	bool IsCanDash() { return (this->isAllowDash&&this->isGround); }
 	bool IsBounused() { return this->bounsed; }
-	bool IsFreeFall() { return (this->y+5 < yPre); }
+	bool IsFreeFall() { return (this->y+3 < yPre); }
 
 	void SetGround(bool ground) { this->isGround = ground; }
 	void ResetAnimation() { this->animation->listSprite[state]->Reset(); }

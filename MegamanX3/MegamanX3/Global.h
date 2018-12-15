@@ -146,6 +146,13 @@ enum State {
 	STRAIGHTROPE,
 	BREAKROPE,
 	SLACKROPE,
+	// DOOR
+	DOOROPEN,
+	DOORCLOSE,
+	//GEJIBO
+	GODOWN,
+	CREATESHURIKEIN,
+	GOUP,
 };
 
 enum Direction {
@@ -163,6 +170,7 @@ enum TypeObject {
 	BLASTHORNET,
 	SHURIKEIN,
 	LAUNCHER,
+	DOOR,
 };
 
 //write string to a tracing file

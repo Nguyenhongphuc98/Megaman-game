@@ -30,8 +30,11 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 
 	this->hornet->Render();
 	this->bee->Render();
-//	this->shuri->Render();
 	this->launchers->Render();
+	this->doorShuri->Render();
+	this->genjibo->Render();
+	this->shuri->Render();
+	this->doorRightShuri->Render();
 
 	WeaponSystem::Instance()->Render();
 	this->megaman->Render();
@@ -77,10 +80,11 @@ void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 			bullet = new DashSpark(x-6, y, (megaman->GetDirection()==RIGHT)?LEFT:RIGHT);
 			WeaponSystem::Instance()->AddBulletMegaman(bullet);
 			
+			Bullet  *bullet2;
+			bullet2 = new DashSmoke(x - 6, y, (megaman->GetDirection() == RIGHT) ? LEFT : RIGHT);
+			WeaponSystem::Instance()->AddBulletMegaman(bullet2);
 		}
-		Bullet  *bullet2;
-		bullet2 = new DashSmoke(x - 6, y, (megaman->GetDirection() == RIGHT) ? LEFT : RIGHT);
-		WeaponSystem::Instance()->AddBulletMegaman(bullet2);
+		
 	}
 
 	if (IsKeyDown(DIK_A)) {
@@ -151,10 +155,20 @@ void MyGame::Update()
 	}
 
 	ListVirtualObject.push_back(this->launchers);
+	ListVirtualObject.push_back(this->doorShuri);
+	ListVirtualObject.push_back(this->doorRightShuri);
+
 	this->launchers->Update(delta_time,&List_temp);
+	this->doorShuri->Update(delta_time, &List_temp);
+	this->genjibo->Update(delta_time, &List_temp);
+	this->doorRightShuri->Update(delta_time, &List_temp);
+
+	ListEnemy.push_back(this->shuri);
 
 	megaman->Update(delta_time, &ListVirtualObject);
 	megaman->ProcessCollisionBullet(WeaponSystem::Instance()->GetListWeaponEnemy());
+	megaman->ProcessCollisionEnemy(ListEnemy);
+
 	WeaponSystem::Instance()->UpdateTeamEnemies(delta_time, &ListVirtualObject);
 	WeaponSystem::Instance()->UpdateTeamMegaman(delta_time, &ListEnemy);
 
@@ -170,10 +184,13 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 	this->megaman->SetDirection(RIGHT);
 	
 
-	this->shuri = new Shurikein();
+	this->shuri = Shurikein::Instance();
 	this->bee = new Bee();
 	this->hornet = new BlastHornet();
 	this->launchers = new Launchers();
+	this->doorShuri = new DoorShurikein((878 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 2300 * G_Scale.x, 0, 0);
+	this->genjibo = Genjibo::Instance();
+	this->doorRightShuri = DoorRightShurikein::Instance();
 
 	map = new Map();
 }

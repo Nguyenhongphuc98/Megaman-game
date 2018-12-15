@@ -3,8 +3,10 @@ Megaman* Megaman::instance;
 
 Megaman::Megaman()
 {
-	x = 100;
-	y = 7200*G_Scale.y;
+	x = 2000*G_Scale.x;
+	//x = 200 * G_Scale.x;
+	y = (920+G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+	//y = (1200 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 	this->isGround = false;
 	this->isAllowClimbWall = false;
 	this->charging = false;
@@ -12,9 +14,10 @@ Megaman::Megaman()
 	this->isAllowJump = true;
 	this->time_start_press_A = 0;
 	this->xStartDash = 0;
-	this->hitpoints = 16;
+	this->hitpoints = MEGAMAN_MAX_HP;
 	this->hurting = false;
 	this->bounsed = false;
+	this->autoMoving = false;
 	this->state = FREEFALL;
 
 	animation_charging = new Animation();
@@ -35,19 +38,34 @@ Megaman * Megaman::Instance()
 
 void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 {
-	vy += MEGAMAN_GRAVITY*dt;
-	Object::Update(dt, List__virtual_object_can_col);
-	//x += dx;
-	//y += dy;
+	//==============auto moving when open door, door control===============
+	if (this->autoMoving)
+		return;
 
-	//if (y > 410)
-	//	y = 410;
+	vy += MEGAMAN_GRAVITY*dt;
+
+	// =====change mode camera when met shurikein==========
+	Object::Update(dt, List__virtual_object_can_col);
+
+	/*if (this->x > 2300 * G_Scale.x&&this->x < 2323 * G_Scale.x)
+	{
+		this->x += 8;
+		Camera::Instance()->SetMovingX(true);
+		return;
+	}*/
+
+
 	yPre = y;
 
 	vector<ResultCollision> List_result_col;
 	List_result_col.clear();
 
 	for (Object* O : *List__virtual_object_can_col) {
+
+		if (O->GetNameObject()==DOOR)
+		{
+			MyDebugOUT("-");
+		}
 		ResultCollision r ;
 		r=Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r.isCollision)
@@ -55,12 +73,15 @@ void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 			List_result_col.push_back(r);
 			if (O->GetNameObject() == LAUNCHER&&r.ny!=0)
 			{
-				/*vector<Object*> l;
-				O->Update(dt, &l);
-				this->y += 0.1*dt;*/
+				//======active laucher============
 				O->SetState(RUN);
 			}
 				
+			if (O->GetNameObject() == DOOR)
+			{
+				((ActionObject *) O)->SetActived(true);
+				//this->autoMoving = true;
+			}
 		}
 			
 	}
@@ -85,7 +106,7 @@ void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 		}
 
 		x += (min_tx * dx + nx * 2.0f);		
-		y += (min_ty * dy + ny * 0.4f);
+		y += (min_ty * dy + ny * 0.3f);
 		if (nx != 0)
 		{
 			//================================================================
@@ -104,6 +125,10 @@ void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 
 void Megaman::ProcessCollisionBullet(list<Bullet*> List__bullet_enemy)
 {
+	//==============auto moving when open door, door control===============
+	if (this->autoMoving)
+		return;
+
 	for (Bullet* O : List__bullet_enemy) {
 		bool r;
 		r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
@@ -121,10 +146,33 @@ void Megaman::ProcessCollisionBullet(list<Bullet*> List__bullet_enemy)
 	}
 }
 
+void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
+{
+	//==============auto moving when open door, door control===============
+	if (this->autoMoving)
+		return;
+
+	for (Object* O : List_enemy) {
+		bool r;
+		r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
+		if (r)
+		{
+			if (!((ActionObject*) O)->IsDestroy() && !this->hurting)
+			{
+				this->hurting = true;
+				this->hitpoints -= ((ActionObject*)O)->GetDamage();
+				this->SetState(INJURED);
+			}
+		}
+	}
+}
+
 void Megaman::Render()
 {
+
 	if (this->hitpoints < 0)
 		return;
+
 	//============life-bar==================================
 	this->animation_lifebar->listSprite[STAND]->Set_current_frame(this->hitpoints);
 	this->animation_lifebar->Render(STAND, RIGHT, D3DXVECTOR2(30, 100));
@@ -137,6 +185,8 @@ void Megaman::Render()
 	//this->animation_charging->Render(CHARGINGLV1, direction, position);
 	//this->animation_charging->Next(CHARGINGLV1);
 
+
+	//======== choose render charing lv ==============
 	if (this->charging)
 	{
 		if (this->GetTimePressA() > 1300)
@@ -163,7 +213,7 @@ void Megaman::Render()
 			this->animation->listSprite[this->state]->Set_current_frame(2);
 	}
 
-	//================== RUN JUMP -USING WHEN FREE FALL============
+	//================== JUMP -USING WHEN FREE FALL============
 
 	if (this->state == FREEFALL)
 	{
@@ -176,10 +226,11 @@ void Megaman::Render()
 
 	if (this->state == JUMPWALL && this->isAllowClimbWall)
 	{
-		if(this->animation->listSprite[state]->GetCurrentFrame()<=1)
-		this->animation->listSprite[state]->Set_current_frame(3);
+		//if(this->animation->listSprite[state]->GetCurrentFrame()<=1)
+		//this->animation->listSprite[state]->Set_current_frame(0);
 	}
 	
+
 	animation->Render(state, direction, position);
 
 	if (this->state == RUN)
@@ -194,6 +245,10 @@ void Megaman::Render()
 		return;
 	if (state == DASHSHOOT && animation->listSprite[DASHSHOOT]->GetCurrentFrame() == 1)
 		return;
+	//==============auto moving when open door, door control===============
+	if (this->autoMoving)
+		return;
+
 	animation->Next(state);
 }
 
@@ -212,15 +267,15 @@ void Megaman::LoadResource()
 	//=====================Load Status Run=============================
 
 	vector<RECT*> list_source_rect_run = TXT::Instance()->GetListSourceRect(SMEGAMANRUN);
-	animation->listSprite[State::RUN] = new Sprite(texture, list_source_rect_run, 1);
+	animation->listSprite[State::RUN] = new Sprite(texture, list_source_rect_run, 2);
 
 	vector<RECT*> list_source_rect_run_shoot = TXT::Instance()->GetListSourceRect(SMEGAMANRUNSHOOT);
-	animation->listSprite[State::RUNSHOOT] = new Sprite(texture, list_source_rect_run_shoot, 1);
+	animation->listSprite[State::RUNSHOOT] = new Sprite(texture, list_source_rect_run_shoot, 2);
 
 	//=====================Load Status Jump=============================
 
 	vector<RECT*> list_source_rect_jump = TXT::Instance()->GetListSourceRect(SMEGAMANJUMP);	
-	animation->listSprite[State::STANDJUMP] = new Sprite(texture, list_source_rect_jump, 2);
+	animation->listSprite[State::STANDJUMP] = new Sprite(texture, list_source_rect_jump, 3);
 	animation->listSprite[State::FREEFALL] = new Sprite(texture, list_source_rect_jump, 1);
 
 	vector<RECT*> list_source_rect_jump_shoot = TXT::Instance()->GetListSourceRect(SMEGAMANJUMPSHOOT);
@@ -285,6 +340,8 @@ BoundingBox Megaman::GetBoundingBox()
 
 void Megaman::SetState(State new_state)
 {
+	if(this->state!=new_state)
+		this->animation->Refresh(this->state);
 
 	switch (new_state)
 	{
@@ -315,7 +372,8 @@ void Megaman::SetState(State new_state)
 
 	case STAND:
 		MyDebugOUT("stand \n");
-		//this->animation->Refresh(this->state);
+		//if (this->state == STANDJUMP || this->state == FREEFALL)
+		//	this->animation->Refresh(this->state);
 		this->state = STAND;
 		vx = 0;
 		//vy = 0;
@@ -350,6 +408,7 @@ void Megaman::SetState(State new_state)
 		this->state = JUMPSHOOT;
 		this->isGround = false;
 		MyDebugOUT("jump shoot\n");
+		
 		break;
 
 	case JUMPWALL:
@@ -426,7 +485,10 @@ void Megaman::SetState(State new_state)
 
 void Megaman::SetDirection(Direction d)
 {
-	
+	//==============auto moving when open door, door control===============
+	if (this->autoMoving)
+		return;
+
 	switch (state)
 	{
 	case RUN:		
@@ -473,6 +535,10 @@ State Megaman::GetState()
 
 State Megaman::GetNewState(State currentState, EControler controler)
 {
+	//==============auto moving when open door, door control===============
+	if (this->autoMoving)
+		return currentState;
+
 	State new_state = currentState;
 	int temp;
 
@@ -537,7 +603,9 @@ State Megaman::GetNewState(State currentState, EControler controler)
 		switch (controler)
 		{
 		case NoneControl:
-			 new_state = STANDJUMP; break;
+			//if(this->isGround)
+			 new_state = STANDJUMP;
+			break;
 		case LeftControl:
 		
 			if (this->isAllowClimbWall) new_state = JUMPWALL;
@@ -619,7 +687,7 @@ State Megaman::GetNewState(State currentState, EControler controler)
 			break;
 		case ShootControl:  new_state = JUMPSHOOT; break;
 		case JumpControl: break;
-		case DashControl: break;
+		case DashControl: if (this->isGround) new_state = STAND; break;
 		}
 
 		/*switch (controler)
@@ -655,8 +723,8 @@ State Megaman::GetNewState(State currentState, EControler controler)
 		switch (controler)
 		{
 		case NoneControl:new_state = STAND; break;
-		case LeftControl: break;
-		case RightControl: break;
+		case LeftControl:new_state = STAND; break;
+		case RightControl:new_state = STAND; break;
 		case ShootControl:new_state = DASHSHOOT; break;
 		case JumpControl:new_state = STANDJUMP; break;
 		case DashControl: break;

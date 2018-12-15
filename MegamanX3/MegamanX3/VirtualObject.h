@@ -3,11 +3,11 @@
 #define Virtual_Object_H_
 #include "Object.h"
 
-//virtual object co location button-Left in world
+//virtual object co location buttom-Left in world
 class VirtualObject:public Object
 {
 public:
-	VirtualObject(float top,float left,float w,float h);
+	VirtualObject(float bottom,float left,float w,float h);
 	~VirtualObject();
 
 	void Render() {};
