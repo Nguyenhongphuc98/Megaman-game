@@ -11,6 +11,8 @@ MegamanBullet2::MegamanBullet2(float x, float y, Direction d)
 	this->damage = MEGAMAN_BULLET2_DAMAGE;
 	this->SetState(SHOOTING);
 
+	this->nameObject = MEGAMANBULLLET2;
+
 	MyTexture *texture = TXT::Instance()->GetTexture(TBULLETMEGAMAN);
 	vector<RECT*> list_source_rect_shooting = TXT::Instance()->GetListSourceRect(SBULLET2MEGAMANSTART);
 	animation->listSprite[SHOOTING] = new Sprite(texture, list_source_rect_shooting, 1);
@@ -41,7 +43,7 @@ void MegamanBullet2::Update(DWORD dt, vector<Object*>* List_enemy_objects)
 			continue;
 
 		//=============AABB With Shurikein to chinh xac hon=================
-		if (O->GetNameObject() == SHURIKEIN)
+		if (O->GetNameObject() == SHURIKEIN || O->GetNameObject() == HELIT)
 		{
 			bool r = false;
 			r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());

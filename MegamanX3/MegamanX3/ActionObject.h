@@ -31,13 +31,14 @@ public:
 	virtual void SetDirection(Direction d) {};
 	virtual void SetBeingAttacked(int damage) { this->hitpoints -= damage; }
 	virtual bool IsDestroy() { return destroyed; }
+	virtual bool IsActived() { return actived; }
 
 	virtual State GetState();
 	virtual Direction GetDirection();
 	virtual int GetDamage() { return 1; }
 
 	//==============door===========================
-	virtual void SetActived(bool active) { this->actived = active; }
+	virtual void SetActived(bool active) {this->actived = active; }
 };
 
 

@@ -186,6 +186,24 @@
     <ClInclude Include="DoorRightShurikein.h">
       <Filter>Objects\Define\Static</Filter>
     </ClInclude>
+    <ClInclude Include="HelitBullet.h">
+      <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubBossCarry.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CarryBox.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="TextStartGame.h">
+      <Filter>Objects\Define\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="MetaCapsule.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="MetaCapsuleBullet.h">
+      <Filter>Objects\Define\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyTexture.cpp">
@@ -310,6 +328,24 @@
     </ClCompile>
     <ClCompile Include="DoorRightShurikein.cpp">
       <Filter>Objects\Source\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="HelitBullet.cpp">
+      <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubBossCarry.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CarryBox.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="TextStartGame.cpp">
+      <Filter>Objects\Source\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="MetaCapsule.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="MetaCapsuleBullet.cpp">
+      <Filter>Objects\Source\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

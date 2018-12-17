@@ -28,6 +28,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CarryArm.h" />
+    <ClInclude Include="CarryBox.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="DashSmoke.h" />
     <ClInclude Include="DashSpark.h" />
@@ -40,12 +41,15 @@
     <ClInclude Include="HeadGunnerCustomer.h" />
     <ClInclude Include="HeadGunnerCustomerBulletTube.h" />
     <ClInclude Include="Helit.h" />
+    <ClInclude Include="HelitBullet.h" />
     <ClInclude Include="Launchers.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Megaman.h" />
     <ClInclude Include="MegamanBullet1.h" />
     <ClInclude Include="MegamanBullet2.h" />
     <ClInclude Include="MegamanBullet3.h" />
+    <ClInclude Include="MetaCapsule.h" />
+    <ClInclude Include="MetaCapsuleBullet.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyTexture.h" />
     <ClInclude Include="Node.h" />
@@ -56,6 +60,8 @@
     <ClInclude Include="Shurikein.h" />
     <ClInclude Include="Speedburner.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SubBossCarry.h" />
+    <ClInclude Include="TextStartGame.h" />
     <ClInclude Include="TXT.h" />
     <ClInclude Include="VirtualObject.h" />
     <ClInclude Include="WeaponSystem.h" />
@@ -70,6 +76,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CarryArm.cpp" />
+    <ClCompile Include="CarryBox.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DashSmoke.cpp" />
     <ClCompile Include="DashSpark.cpp" />
@@ -82,6 +89,7 @@
     <ClCompile Include="HeadGunnerCustomer.cpp" />
     <ClCompile Include="HeadGunnerCustomerBulletTube.cpp" />
     <ClCompile Include="Helit.cpp" />
+    <ClCompile Include="HelitBullet.cpp" />
     <ClCompile Include="Launchers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -89,6 +97,8 @@
     <ClCompile Include="MegamanBullet1.cpp" />
     <ClCompile Include="MegamanBullet2.cpp" />
     <ClCompile Include="MegamanBullet3.cpp" />
+    <ClCompile Include="MetaCapsule.cpp" />
+    <ClCompile Include="MetaCapsuleBullet.cpp" />
     <ClCompile Include="MyGame.cpp" />
     <ClCompile Include="MyTexture.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -99,6 +109,8 @@
     <ClCompile Include="Shurikein.cpp" />
     <ClCompile Include="Speedburner.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SubBossCarry.cpp" />
+    <ClCompile Include="TextStartGame.cpp" />
     <ClCompile Include="TXT.cpp" />
     <ClCompile Include="VirtualObject.cpp" />
     <ClCompile Include="WeaponSystem.cpp" />

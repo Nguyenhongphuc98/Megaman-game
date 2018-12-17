@@ -17,10 +17,13 @@ private:
 	bool allow_open; //default true, can open one time.
 	float x_start_megaman;
 
+	static DoorShurikein* instance;
 
 public:
 	DoorShurikein(float top, float left, float w, float h);
 	~DoorShurikein() {};
+
+	static  DoorShurikein* Instance();
 
 	void Update(DWORD dt, vector<Object*> *List_object_can_col) ;
 	void Render();

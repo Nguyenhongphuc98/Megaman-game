@@ -29,7 +29,7 @@ void DashSmoke::Render()
 
 void DashSmoke::SetState(State s)
 {
-	this->state = s;
+
 }
 
 void DashSmoke::SetDirection(Direction d)

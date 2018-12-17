@@ -4,8 +4,6 @@ DoorRightShurikein* DoorRightShurikein::instance;
 
 DoorRightShurikein::DoorRightShurikein(float top, float left, float w, float h)
 {
-	this->nameObject = DOOR;
-
 	this->x = left;
 	this->y = top;
 	this->width = w;

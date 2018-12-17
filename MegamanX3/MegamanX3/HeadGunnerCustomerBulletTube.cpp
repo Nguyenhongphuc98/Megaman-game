@@ -4,8 +4,10 @@ HeadGunnerCustomerBulletTube::HeadGunnerCustomerBulletTube(float x, float y, Dir
 {
 	this->x = x;
 	this->y = y;
+	this->start_x = x;
 	this->vx = HEADGUNNERCUSTOMER_BULLET_TUBE_VX;
 	this->vy = HEADGUNNERCUSTOMER_BULLET_TUBE_VY;
+	this->nameObject = HEADGUNNERCUSTOMERBULLET;
 
 	SetDirection(d);
 	SetState(SHOOTING);
@@ -27,6 +29,8 @@ void HeadGunnerCustomerBulletTube::Update(DWORD dt, vector<Object*>* List_object
 {
 	if (this->destroyed)
 		return;
+	if (abs(this->x - this->start_x) > 300)
+		this->destroyed = true;
 
 	if (this->state == DESTROYBULLET)
 	{

@@ -42,6 +42,13 @@ void Camera::Update(float x, float y)
 			this->auto_moving_x = false;
 			this->locked = true;
 		}
+		else
+			//===============meet subboss carry=======================
+		if (this->x > 4900 * G_Scale.x&&this->x < 4902 * G_Scale.x)
+		{
+			this->auto_moving_x = false;
+			this->locked = true;
+		}
 		return;
 	}
 
@@ -71,9 +78,13 @@ void Camera::Update(float x, float y)
 	if (this->x > 2060 * G_Scale.x&&this->x < 2260 * G_Scale.x)
 		this->x = 2060 * G_Scale.x;
 
-	//=========khi di qua o boss k cho cam quay lai
+	//=========khi di qua door right boss shurikein k cho camera quay lai
 	if (this->x > 2313 * G_Scale.x&&this->x < 2553 * G_Scale.x)
 		this->x = 2553 * G_Scale.x;
+
+	//============when subboss box die - not allow camera quay lai===============
+	if (this->x > 4800 * G_Scale.x&&this->x < 4902 * G_Scale.x)
+		this->x = 4902 * G_Scale.x;
 }
 
 void Camera::Reset()

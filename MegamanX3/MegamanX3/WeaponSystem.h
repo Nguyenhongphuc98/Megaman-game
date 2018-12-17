@@ -9,6 +9,8 @@
 #include"MegamanBullet3.h"
 #include"DashSpark.h"
 #include"DashSmoke.h"
+#include"HelitBullet.h"
+#include"MetaCapsuleBullet.h"
 
 class WeaponSystem
 {

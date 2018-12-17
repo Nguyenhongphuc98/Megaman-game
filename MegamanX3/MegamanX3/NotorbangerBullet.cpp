@@ -9,6 +9,8 @@ NotorbangerBullet::NotorbangerBullet(float x, float y, Direction d, float angle)
 	this->angle = angle;
 	this->damage = NOTORBANGER_BULLET_DAMAGE;
 
+	this->nameObject = NOTORBANGERBULLET;
+
 	SetDirection(d);
 	SetState(SHOOTING);
 

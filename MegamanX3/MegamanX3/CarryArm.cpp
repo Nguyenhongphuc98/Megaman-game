@@ -6,12 +6,34 @@ CarryArm::CarryArm()
 	y = 7100 * G_Scale.y;
 	count_time_change_animation = 0;
 
+	this->start_location_y = this->y;
+	this->start_location_x = this->x;
+	this->destroyed = false;
+	this->actived = false;
+	this->uping = false;
+	this->state = STRAIGHTROPE;
+
+	this->vx = CARRYARM_VX;
+	this->vy = CARRYARM_VY;
+
 	this->nameObject = CARRYARM;
 	LoadResource();
 }
 
 CarryArm::CarryArm(int x, int y, int w, int h, Direction d):ActionObject(x,y,w,h,d)
 {
+	this->x = x;
+	this->y = y;
+	this->start_location_y = this->y;
+	this->start_location_x = this->x;
+	this->destroyed = false;
+	this->actived = false;
+	this->uping = false;
+	this->state = STRAIGHTROPE;
+
+	this->vx = CARRYARM_VX;
+	this->vy = CARRYARM_VY;
+
 	this->nameObject = CARRYARM;
 	LoadResource();
 }
@@ -22,12 +44,44 @@ CarryArm::~CarryArm()
 
 void CarryArm::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
-	count_time_change_animation++;
-	if (count_time_change_animation % 50 == 0)
-		SetState(STRAIGHTROPE);
+	if (destroyed || !this->actived)
+		return;
 
-	if (count_time_change_animation % 100 == 0)
-		SetState(BREAKROPE);
+	//=================uping==================
+	if (this->y > this->start_location_y &&uping)
+		this->actived = false;
+
+	//========moving cheo'=> down===================
+	if (this->y < this->start_location_y - 500)
+		this->vx = 0;
+
+	//====================colli with ground=====================
+	if (this->y < this->start_location_y - 620&&this->state!=SLACKROPE&&!uping)
+	{
+		this->vy = 0;
+		this->SetState(SLACKROPE);
+	}
+
+	if (this->state == SLACKROPE&&this->animation->listSprite[SLACKROPE]->GetCurrentFrame()==2)
+	{
+		this->y -= 10;
+		this->vy = -CARRYARM_VY;
+	}
+
+	if (this->state == SLACKROPE && this->animation->listSprite[SLACKROPE]->IsFinalFrame())
+	{
+		this->SetState(STRAIGHTROPE);
+		this->uping = true;
+	}
+
+	//===================alive===================================
+	Object::Update(dt, List_object_can_col);
+	x += dx;
+	y += dy;
+
+
+	/*if (this->y > this->start_location_y&&this->uping)
+		this->Reset();*/
 }
 
 void CarryArm::Render()
@@ -48,6 +102,9 @@ void CarryArm::LoadResource()
 	//vector<RECT*> list_source_rect_break_rope = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\subboss_carryarm_break.txt");
 	vector<RECT*> list_source_rect_break_rope = TXT::Instance()->GetListSourceRect(SCARRYARMBREAK);
 	animation->listSprite[State::BREAKROPE] = new Sprite(texture, list_source_rect_break_rope, 1);
+
+	vector<RECT*> list_source_rect_slack_rope = TXT::Instance()->GetListSourceRect(SCARRYARMSLACK);
+	animation->listSprite[State::SLACKROPE] = new Sprite(texture, list_source_rect_slack_rope, 1);
 }
 
 BoundingBox CarryArm::GetBoundingBox()
@@ -77,6 +134,7 @@ BoundingBox CarryArm::GetBoundingBox()
 void CarryArm::SetState(State s)
 {
 	this->state = s;
+	this->animation->Refresh(SLACKROPE);
 }
 
 void CarryArm::SetDirection(Direction d)
@@ -92,4 +150,17 @@ State CarryArm::GetState()
 Direction CarryArm::GetDirection()
 {
 	return this->direction;
+}
+
+void CarryArm::Reset()
+{
+	this->x = this->start_location_x;
+	this->y = this->start_location_y;
+
+	this->destroyed = false;
+	this->actived = false;
+	this->uping = false;
+
+	this->vx = CARRYARM_VX;
+	this->vy = CARRYARM_VY;
 }

@@ -27,6 +27,7 @@ Sprite::Sprite(MyTexture * texture, vector<RECT*> List_source_rect, int animatio
 
 void Sprite::Next()
 {
+	animation_count_time++;
 	if (animation_count_time==animation_time)
 	{
 		current_frame++;
@@ -34,7 +35,7 @@ void Sprite::Next()
 		if (current_frame > number_of_frame - 1)
 			current_frame = 0;
 	}
-	animation_count_time++;
+	
 }
 
 void Sprite::Reset()

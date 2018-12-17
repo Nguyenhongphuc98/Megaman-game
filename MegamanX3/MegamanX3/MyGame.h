@@ -19,6 +19,9 @@
 #include"DoorShurikein.h"
 #include"QuadTree.h"
 #include"Genjibo.h"
+#include"SubBossCarry.h"
+#include"CarryBox.h"
+#include"TextStartGame.h"
 
 class MyGame :public Game
 {
@@ -31,13 +34,16 @@ private:
 	vector<Object*> ListVirtualObject;
 	vector<Object*> ListItem;
 
-	Shurikein* shuri;
+	//Shurikein* shuri;
 	BlastHornet* hornet;
 	Bee* bee;
 	Launchers* launchers;
 	DoorShurikein* doorShuri;
 	Genjibo* genjibo;
-	DoorRightShurikein* doorRightShuri;
+	//DoorRightShurikein* doorRightShuri;
+	SubBossCarry* subboss;
+	//CarryBox* carryBox;
+	TextStartGame* textStartGame;
 
 public:
 	MyGame();

@@ -128,7 +128,7 @@ void TXT::LoadAllTexture()
 	listTexture[TBLASTHORNETOPENINGVENOM]= new MyTexture((char*)"SourceImage\\blast_hornet_opening_venom.png", D3DCOLOR_XRGB(255, 255, 255));
 
 	//===============================CARRY ARM SPRITE=====================================
-	listTexture[TCARRYARM] = new MyTexture((char*)"SourceImage\\subboss_carryarm.png", D3DCOLOR_XRGB(50, 96, 166));
+	listTexture[TCARRYARM] = new MyTexture((char*)"SourceImage\\subboss_carryarm.png", D3DCOLOR_XRGB(255, 255, 255));
 
 	//===============================HEAD GUNNER CUSTOMER SPRITE=====================================
 	listTexture[THEADGUNNERCUSTOMER] = new MyTexture((char*)"SourceImage\\HeadGunnerCustomer.png", D3DCOLOR_XRGB(255, 255, 255));
@@ -158,6 +158,10 @@ void TXT::LoadAllTexture()
 
 	//===============================GENJIBO SPRITE=====================================
 	listTexture[TGENJIBO] = new MyTexture((char*)"SourceImage\\Genjibo.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	//===============================TEXT START GAME SPRITE=====================================
+	listTexture[TTEXTSTARTGAME] = new MyTexture((char*)"SourceImage\\startGame.png", D3DCOLOR_XRGB(173, 85, 247));
+
 
 }
 

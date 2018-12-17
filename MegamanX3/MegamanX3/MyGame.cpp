@@ -22,7 +22,7 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 
 	this->map->Render();
 		
-	
+	this->textStartGame->Render();
 
 	for (auto o : ListObject) {	
 		o->Render();
@@ -33,8 +33,10 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 	this->launchers->Render();
 	this->doorShuri->Render();
 	this->genjibo->Render();
-	this->shuri->Render();
-	this->doorRightShuri->Render();
+	//this->shuri->Render();
+	//this->doorRightShuri->Render();
+	this->subboss->Render();
+	//this->carryBox->Render();
 
 	WeaponSystem::Instance()->Render();
 	this->megaman->Render();
@@ -44,6 +46,11 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 
 void MyGame::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 {
+	if (IsKeyDown(DIK_RETURN)) {
+		this->megaman->SetAutoMoving(false);
+		this->textStartGame->SetDestroy(true);
+	}
+
 	EControler controler =NoneControl;
 
 	if (IsKeyDown(DIK_LEFT)&& IsKeyDown(DIK_A)&&(this->megaman->GetTimePressA() < MEGAMAN_TIME_NEED_TO_CHARING)) {
@@ -137,10 +144,13 @@ void MyGame::Update()
 		case HEADGUNNERCUSTOMER:
 		case HELIT:
 		case NOTORBANGER:
+		case SHURIKEIN:
+		//case DOOR:
 			ListEnemy.push_back(o);
 			break;
 
 		case VIRTUALOBJECT:
+		case DOOR:
 			ListVirtualObject.push_back(o);
 			break;
 
@@ -156,14 +166,17 @@ void MyGame::Update()
 
 	ListVirtualObject.push_back(this->launchers);
 	ListVirtualObject.push_back(this->doorShuri);
-	ListVirtualObject.push_back(this->doorRightShuri);
+	//ListVirtualObject.push_back(this->doorRightShuri);
+
 
 	this->launchers->Update(delta_time,&List_temp);
 	this->doorShuri->Update(delta_time, &List_temp);
 	this->genjibo->Update(delta_time, &List_temp);
-	this->doorRightShuri->Update(delta_time, &List_temp);
+	DoorRightShurikein::Instance()->Update(delta_time, &List_temp);
+	this->subboss->Update(delta_time, &List_temp);
 
-	ListEnemy.push_back(this->shuri);
+	//ListEnemy.push_back(this->shuri);
+	ListEnemy.push_back(this->subboss);
 
 	megaman->Update(delta_time, &ListVirtualObject);
 	megaman->ProcessCollisionBullet(WeaponSystem::Instance()->GetListWeaponEnemy());
@@ -174,7 +187,8 @@ void MyGame::Update()
 
 	this->hornet->Update(delta_time, &ListVirtualObject);
 	this->bee->Update(delta_time, &ListVirtualObject);
-	this->shuri->Update(delta_time, &ListVirtualObject);
+	//this->shuri->Update(delta_time, &ListVirtualObject);
+	
 }
 
 void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
@@ -183,14 +197,17 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 	//this->megaman = new Megaman();
 	this->megaman->SetDirection(RIGHT);
 	
+	this->textStartGame = new TextStartGame();
 
-	this->shuri = Shurikein::Instance();
+//	this->shuri = Shurikein::Instance();
 	this->bee = new Bee();
 	this->hornet = new BlastHornet();
 	this->launchers = new Launchers();
-	this->doorShuri = new DoorShurikein((878 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 2300 * G_Scale.x, 0, 0);
+	this->doorShuri = DoorShurikein::Instance();
 	this->genjibo = Genjibo::Instance();
-	this->doorRightShuri = DoorRightShurikein::Instance();
+	//this->doorRightShuri = DoorRightShurikein::Instance();
+	this->subboss = SubBossCarry::Instance();
+	//this->carryBox = new CarryBox();
 
 	map = new Map();
 }

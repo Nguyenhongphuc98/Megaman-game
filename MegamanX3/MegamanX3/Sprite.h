@@ -33,8 +33,6 @@ public:
 	//chọn 1 frame nào đó
 	void Set_current_frame(int index);
 
-	//update animation
-	void Update(int ellapseTime);
 
 	// Render current sprite at location (X,Y) at the target surface
 	void Draw(int x, int y);

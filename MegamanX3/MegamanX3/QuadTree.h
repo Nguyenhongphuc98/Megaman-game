@@ -12,6 +12,8 @@
 #include"NotorBanger.h"
 #include"HeadGunnerCustomer.h"
 #include"CarryArm.h"
+#include"DoorRightShurikein.h"
+#include"DoorShurikein.h"
 
 using namespace std;
 

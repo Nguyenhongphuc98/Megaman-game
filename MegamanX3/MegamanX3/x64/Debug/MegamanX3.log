@@ -1,7 +1,12 @@
-﻿  Camera.cpp
+﻿  MyGame.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\camera.cpp(56): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\camera.cpp(82): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\camera.cpp(109): warning C4244: 'argument': conversion from 'FLOAT' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\camera.cpp(109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(80): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(81): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\textstartgame.h(6): warning C4005: 'CARRYBOX_VY': macro redefinition
+  d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\carrybox.h(7): note: see previous definition of 'CARRYBOX_VY'
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\textstartgame.h(7): warning C4005: 'CARRYBOX_WIDTH': macro redefinition
+  d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\carrybox.h(9): note: see previous definition of 'CARRYBOX_WIDTH'
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\textstartgame.h(8): warning C4005: 'CARRYBOX_HEIGHT': macro redefinition
+  d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\carrybox.h(10): note: see previous definition of 'CARRYBOX_HEIGHT'
   MegamanX3.vcxproj -> D:\IT\2018\Nhập môn game\Source-Code-Game\MegamanX3\x64\Debug\MegamanX3.exe

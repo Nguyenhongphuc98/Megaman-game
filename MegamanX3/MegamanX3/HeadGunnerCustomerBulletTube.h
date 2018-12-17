@@ -12,6 +12,7 @@ class HeadGunnerCustomerBulletTube:public Bullet
 {
 private:
 	bool finish_smoke;
+	float start_x;
 
 public:
 	HeadGunnerCustomerBulletTube(float x, float y, Direction d);

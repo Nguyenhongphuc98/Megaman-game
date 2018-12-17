@@ -1,4 +1,5 @@
 #include"DoorShurikein.h"
+DoorShurikein* DoorShurikein::instance;
 
 DoorShurikein::DoorShurikein(float top, float left, float w, float h)
 {
@@ -24,6 +25,13 @@ DoorShurikein::DoorShurikein(float top, float left, float w, float h)
 	animation->listSprite[State::DOORCLOSE] = new Sprite(texture, list_source_rect_close, 5);
 
 	this->state = DOOROPEN;
+}
+
+DoorShurikein * DoorShurikein::Instance()
+{
+	if(!instance)
+		instance = new DoorShurikein((878 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 2300 * G_Scale.x, 0, 0);
+	return instance;
 }
 
 void DoorShurikein::Update(DWORD dt, vector<Object*>* List_object_can_col)

@@ -3,10 +3,19 @@ Megaman* Megaman::instance;
 
 Megaman::Megaman()
 {
-	x = 2000*G_Scale.x;
+	////============subboss box=====================
+	//x = 4900*G_Scale.x;
+	//y = (932 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
+	////============start=============================
 	//x = 200 * G_Scale.x;
-	y = (920+G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 	//y = (1200 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
+	//============meet shurikein=============================
+	x = 2176 * G_Scale.x;
+	y = (917 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
+
 	this->isGround = false;
 	this->isAllowClimbWall = false;
 	this->charging = false;
@@ -19,6 +28,9 @@ Megaman::Megaman()
 	this->bounsed = false;
 	this->autoMoving = false;
 	this->state = FREEFALL;
+
+	this->autoMoving = true;
+	this->direction = RIGHT;
 
 	animation_charging = new Animation();
 	animation_lifebar = new Animation();
@@ -38,6 +50,13 @@ Megaman * Megaman::Instance()
 
 void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 {
+	//===============make appear sub-boss and move camera to lock==============
+	if (this->x > 4900 * G_Scale.x&&this->x < 4902 * G_Scale.x)
+	{
+		SubBossCarry::Instance()->SetActived(true);
+		Camera::Instance()->SetAutoMovingX(true);
+	}
+		
 	//==============auto moving when open door, door control===============
 	if (this->autoMoving)
 		return;
@@ -157,6 +176,13 @@ void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
 		r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r)
 		{
+			//if (O->GetNameObject() == DOOR)
+			//{
+			//	((ActionObject *)O)->SetActived(true);
+			//	//this->autoMoving = true;
+			//	return;
+			//}
+
 			if (!((ActionObject*) O)->IsDestroy() && !this->hurting)
 			{
 				this->hurting = true;

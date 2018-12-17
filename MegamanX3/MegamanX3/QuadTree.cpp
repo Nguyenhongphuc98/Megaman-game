@@ -120,6 +120,7 @@ Object * QuadTree::CreateObject(int id, int x, int y, int w, int h, int d)
 	x *= G_Scale.x;
 	w *= G_Scale.x;
 	h *= G_Scale.y;
+
 	switch (id)
 	{
 	case VIRTUALOBJECT:
@@ -140,6 +141,18 @@ Object * QuadTree::CreateObject(int id, int x, int y, int w, int h, int d)
 	case HEADGUNNERCUSTOMER:
 		o = new HeadGunnerCustomer(x + w / 2, y - h / 2, w, h, dir);
 		o->SetState(SHOOTABOVE);
+		break;
+	case DOORLEFTSHURI:
+		o = new DoorShurikein(0, 0, 0, 0);
+		break;
+	case DOORRIGHTSHURI:
+		o = DoorRightShurikein::Instance();
+		break;
+	case SHURIKEIN:
+		o = Shurikein::Instance();
+		break;
+	case SUBBOSSCARRY:
+		o = SubBossCarry::Instance();
 		break;
 	default:
 		o = new VirtualObject(y - h, x, w, h);
