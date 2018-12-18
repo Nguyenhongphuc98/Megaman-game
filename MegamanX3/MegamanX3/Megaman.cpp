@@ -11,9 +11,13 @@ Megaman::Megaman()
 	//x = 200 * G_Scale.x;
 	//y = (1200 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
-	//============meet shurikein=============================
-	x = 2176 * G_Scale.x;
-	y = (917 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+	////============meet shurikein=============================
+	//x = 2176 * G_Scale.x;
+	//y = (917 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
+	//============meet blast hornet=============================
+	x = 5520 * G_Scale.x;
+	y = (1000 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
 
 	this->isGround = false;
@@ -60,6 +64,11 @@ void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 	//==============auto moving when open door, door control===============
 	if (this->autoMoving)
 		return;
+
+	if (this->hurting&&GetTickCount()-this->time_start_huring>MEGAMAN_TIME_HURTING)
+	{
+		this->hurting = false;
+	}
 
 	vy += MEGAMAN_GRAVITY*dt;
 
@@ -156,6 +165,8 @@ void Megaman::ProcessCollisionBullet(list<Bullet*> List__bullet_enemy)
 			if (!O->IsDestroying()&&!this->hurting)
 			{
 				this->hurting = true;
+				this->time_start_huring = GetTickCount();
+
 				this->hitpoints -= O->GetDamege();
 				this->SetState(INJURED);
 				O->SetState(DESTROYBULLET);
@@ -171,7 +182,13 @@ void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
 	if (this->autoMoving)
 		return;
 
+	
+
 	for (Object* O : List_enemy) {
+
+		if (((ActionObject*)O)->IsDestroy())
+			continue;
+
 		bool r;
 		r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r)
@@ -183,9 +200,11 @@ void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
 			//	return;
 			//}
 
-			if (!((ActionObject*) O)->IsDestroy() && !this->hurting)
+			if (!this->hurting)
 			{
 				this->hurting = true;
+				this->time_start_huring = GetTickCount();
+
 				this->hitpoints -= ((ActionObject*)O)->GetDamage();
 				this->SetState(INJURED);
 			}
@@ -195,13 +214,22 @@ void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
 
 void Megaman::Render()
 {
-
+	
 	if (this->hitpoints < 0)
 		return;
 
 	//============life-bar==================================
 	this->animation_lifebar->listSprite[STAND]->Set_current_frame(this->hitpoints);
 	this->animation_lifebar->Render(STAND, RIGHT, D3DXVECTOR2(30, 100));
+	
+	//============nhap nhay khi khong khong the bi thuong==============
+
+	if (this->hurting&&this->state != INJURED)
+	{
+		int x = rand();
+		if (x % 2 == 0)
+			return;
+	}
 
 	//==============================================
 
@@ -775,7 +803,7 @@ State Megaman::GetNewState(State currentState, EControler controler)
 			return new_state;
 		}
 		//-==================================================================
-		this->hurting = false;
+		//this->hurting = false;
 		switch (controler)
 		{
 		case NoneControl:new_state = STAND; break;

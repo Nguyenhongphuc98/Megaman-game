@@ -18,10 +18,10 @@ DoorRightShurikein::DoorRightShurikein(float top, float left, float w, float h)
 
 	MyTexture* texture = TXT::Instance()->GetTexture(TDOOR);
 
-	vector<RECT*> list_source_rect_open = TXT::Instance()->GetListSourceRect(SDOOROPEN);
+	vector<RECT*> list_source_rect_open = TXT::Instance()->GetListSourceRect(SDOORSHURIKEINOPEN);
 	animation->listSprite[State::DOOROPEN] = new Sprite(texture, list_source_rect_open, 5);
 
-	vector<RECT*> list_source_rect_close = TXT::Instance()->GetListSourceRect(SDOORCLOSE);
+	vector<RECT*> list_source_rect_close = TXT::Instance()->GetListSourceRect(SDOORSHURIKEINCLOSE);
 	animation->listSprite[State::DOORCLOSE] = new Sprite(texture, list_source_rect_close, 5);
 
 	this->state = DOOROPEN;

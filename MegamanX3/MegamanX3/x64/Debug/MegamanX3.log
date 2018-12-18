@@ -1,12 +1,24 @@
-﻿  MyGame.cpp
+﻿  DoorBlasHornet.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(80): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(81): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\textstartgame.h(6): warning C4005: 'CARRYBOX_VY': macro redefinition
-  d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\carrybox.h(7): note: see previous definition of 'CARRYBOX_VY'
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\textstartgame.h(7): warning C4005: 'CARRYBOX_WIDTH': macro redefinition
-  d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\carrybox.h(9): note: see previous definition of 'CARRYBOX_WIDTH'
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\textstartgame.h(8): warning C4005: 'CARRYBOX_HEIGHT': macro redefinition
-  d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\carrybox.h(10): note: see previous definition of 'CARRYBOX_HEIGHT'
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(72): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(83): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(84): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(94): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(95): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(103): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(104): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  DoorRightShurikein.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(72): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(83): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(84): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(9): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(95): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(96): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(104): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(105): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   MegamanX3.vcxproj -> D:\IT\2018\Nhập môn game\Source-Code-Game\MegamanX3\x64\Debug\MegamanX3.exe

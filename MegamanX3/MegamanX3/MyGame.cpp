@@ -38,6 +38,9 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 	this->subboss->Render();
 	//this->carryBox->Render();
 
+	//======================================
+	this->doorBlast1->Render();
+
 	WeaponSystem::Instance()->Render();
 	this->megaman->Render();
 
@@ -168,6 +171,10 @@ void MyGame::Update()
 	ListVirtualObject.push_back(this->doorShuri);
 	//ListVirtualObject.push_back(this->doorRightShuri);
 
+	//=====================================
+	ListVirtualObject.push_back(this->doorBlast1);
+	this->doorBlast1->Update(delta_time, &List_temp);
+
 
 	this->launchers->Update(delta_time,&List_temp);
 	this->doorShuri->Update(delta_time, &List_temp);
@@ -208,6 +215,9 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 	//this->doorRightShuri = DoorRightShurikein::Instance();
 	this->subboss = SubBossCarry::Instance();
 	//this->carryBox = new CarryBox();
+
+
+	this->doorBlast1 = DoorBlasHornet::Instance();
 
 	map = new Map();
 }

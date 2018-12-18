@@ -32,6 +32,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="DashSmoke.h" />
     <ClInclude Include="DashSpark.h" />
+    <ClInclude Include="DoorBlasHornet.h" />
     <ClInclude Include="DoorRightShurikein.h" />
     <ClInclude Include="DoorShurikein.h" />
     <ClInclude Include="Game.h" />
@@ -80,6 +81,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DashSmoke.cpp" />
     <ClCompile Include="DashSpark.cpp" />
+    <ClCompile Include="DoorBlasHornet.cpp" />
     <ClCompile Include="DoorRightShurikein.cpp" />
     <ClCompile Include="DoorShurikein.cpp" />
     <ClCompile Include="Game.cpp" />

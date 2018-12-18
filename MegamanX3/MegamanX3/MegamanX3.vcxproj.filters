@@ -204,6 +204,9 @@
     <ClInclude Include="MetaCapsuleBullet.h">
       <Filter>Objects\Define\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="DoorBlasHornet.h">
+      <Filter>Objects\Define\Static</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyTexture.cpp">
@@ -346,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="MetaCapsuleBullet.cpp">
       <Filter>Objects\Source\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorBlasHornet.cpp">
+      <Filter>Objects\Source\Static</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

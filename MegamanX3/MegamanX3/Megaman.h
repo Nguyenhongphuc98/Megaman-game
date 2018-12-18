@@ -23,6 +23,7 @@
 #define MEGAMAN_DISTANCE_ALLOW_BOUNS 50
 #define MEGAMAN_TIME_NEED_TO_CHARING 400
 #define MEGAMAN_MAX_HP 16
+#define MEGAMAN_TIME_HURTING 2000
 
 class Megaman:public ActionObject
 {
@@ -41,6 +42,8 @@ private:
 	bool autoMoving;
 
 	float time_start_press_A;
+	float time_start_huring;
+
 	static Megaman* instance;
 
 	
