@@ -162,6 +162,9 @@ void TXT::LoadAllTexture()
 	//===============================TEXT START GAME SPRITE=====================================
 	listTexture[TTEXTSTARTGAME] = new MyTexture((char*)"SourceImage\\startGame.png", D3DCOLOR_XRGB(173, 85, 247));
 
+	//===============================BOXBOX SPRITE=====================================
+	listTexture[TBOXBOX] = new MyTexture((char*)"SourceImage\\BoxBox.png", D3DCOLOR_XRGB(255, 255, 255));
+
 
 }
 

@@ -3,21 +3,23 @@ Megaman* Megaman::instance;
 
 Megaman::Megaman()
 {
-	////============subboss box=====================
-	//x = 4900*G_Scale.x;
-	//y = (932 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+	
 
-	////============start=============================
-	//x = 200 * G_Scale.x;
-	//y = (1200 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+	//============start=============================
+	x = 200 * G_Scale.x;
+	y = (1200 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
 	////============meet shurikein=============================
 	//x = 2176 * G_Scale.x;
 	//y = (917 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
-	//============meet blast hornet=============================
-	x = 5520 * G_Scale.x;
-	y = (1000 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+	////============subboss box=====================
+	//x = 4900*G_Scale.x;
+	//y = (932 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
+	////============meet emplty room=============================
+	//x = 5520 * G_Scale.x;
+	//y = (1000 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
 
 	this->isGround = false;
@@ -92,7 +94,7 @@ void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 
 		if (O->GetNameObject()==DOOR)
 		{
-			MyDebugOUT("-");
+			MyDebugOUT("DOOR in update megaman");
 		}
 		ResultCollision r ;
 		r=Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
@@ -188,6 +190,30 @@ void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
 
 		if (((ActionObject*)O)->IsDestroy())
 			continue;
+
+		//if (O->GetNameObject() == BOXBOX)
+		//{
+		//	ResultCollision r;
+		//	r = Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
+		//	if (r.isCollision)
+		//	{
+		//		x += (r.t * dx + r.nx * 2.0f);
+		//		y += (r.t * dy + r.ny * 0.3f);
+		//		if (r.nx != 0)
+		//		{
+		//			//================================================================
+		//			vx = (vx > 0) ? -0.05 : 0.05;
+		//			this->isAllowClimbWall = true;
+		//			//this->SetState(JUMPWALL);
+		//		}
+		//		if (r.ny != 0)
+		//		{
+		//			vy = 0;
+		//			this->isGround = true;
+		//		}
+		//	}
+		//	continue;
+		//}
 
 		bool r;
 		r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());

@@ -110,6 +110,9 @@ enum TypeSprite {
 
 	SDOORBLASTHORNETOPEN,
 	SDOORBLASTHORNETCLOSE,
+
+	SBOXBOX5,
+	SBOXBOX1,
 };
 
 enum TypeTexture {
@@ -152,6 +155,8 @@ enum TypeTexture {
 	TSHURIKEINJUMPANDDIE,
 
 	TTEXTSTARTGAME,
+
+	TBOXBOX,
 };
 
 

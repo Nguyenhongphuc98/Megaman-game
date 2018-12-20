@@ -15,6 +15,7 @@ class HeadGunnerCustomer:public ActionObject
 private:
 	int count_animation;
 	int count_bulet_tube;
+	float time_latest_shot;
 
 public:
 	HeadGunnerCustomer();

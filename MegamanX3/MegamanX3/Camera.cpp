@@ -49,6 +49,39 @@ void Camera::Update(float x, float y)
 			this->auto_moving_x = false;
 			this->locked = true;
 		}
+		else
+			//=================go in to empty room/ noboss here===========
+
+		if (this->x > 5642 * G_Scale.x&&this->x < 5645 * G_Scale.x)
+		{
+				this->auto_moving_x = false;
+				this->locked = true;
+		}
+
+		else
+			//=================go out to empty room/ noboss here (door right)===========
+
+		if (this->x > 5878 * G_Scale.x&&this->x < 5880 * G_Scale.x)
+		{
+				this->auto_moving_x = false;
+		}
+		else
+			//=================go in door left blasthornet===========
+
+		if (this->x > 7430 * G_Scale.x&&this->x < 7432 * G_Scale.x)
+		{
+				this->auto_moving_x = false;
+				this->locked = true;
+		}
+		else
+			//=================go in door left blasthornet/ room final===========
+
+		if (this->x > 7690 * G_Scale.x&&this->x < 7700 * G_Scale.x)
+		{
+				this->auto_moving_x = false;
+				this->locked = true;
+		}
+
 		return;
 	}
 
@@ -57,22 +90,63 @@ void Camera::Update(float x, float y)
 	this->x = x - G_ScreenWidth / 2;
 	this->y = y + 3*G_ScreenHeight / 4-40;
 
+
+	//==================================================================
+	//================RE-LOCATION=======================================
+	//==================================================================
+
 	if (this->x < 0)
 		this->x = 0;
 	if (this->y < G_ScreenHeight)
 		this->y = G_ScreenHeight;
 
-	//d=========uong ong ngang dau tien================
-	if (this->x < (700)*G_Scale.x && this->y>((1285+G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y))
+	//d=========uong ong ngang dau tien 1================
+	if (this->x < (700)*G_Scale.x && this->y>((1285 + G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y))
+	{
 		this->y = (1285 + G_ADDITIONS_TO_BECOME_THE_SQUARE) * G_Scale.y;
+		return;
+	}
+		
 
-	//==============duong ong doc===============
-	if (this->x > 772 * G_Scale.x&&this->x<1520*G_Scale.x&&this->y<(1765+G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	
+	//==============duong ong doc 2===============
+	if (this->x > 772 * G_Scale.x&&this->x < 1520 * G_Scale.x&&this->y < (1765 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
 		this->x = 772 * G_Scale.x;
+		//return;
+	}
+		
 
-	//============duong ong ngang tiep theo===============
-	if (this->x > 770 * G_Scale.x&&this->y > (1799 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
-		this->y = (1799 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+	//============duong ong ngang tiep theo 3===============
+	if (this->x > 770 * G_Scale.x&&this->y > (1780 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
+		this->y = (1780 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+		return;
+	}
+		
+
+	//============duong ong doc tiep theo 4===============
+	if (this->y > (1077 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y
+		&&this->y < (1603 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
+		if (this->x < 1540 * G_Scale.x&&this->x > 1400 * G_Scale.x)
+			this->x = 1540 * G_Scale.x;
+		else
+			if (this->x > 1809 * G_Scale.x&&this->x < 2100 * G_Scale.x)
+				this->x = 1809 * G_Scale.x;
+		return;
+	}
+	
+		
+	//============duong ong ngang tiep theo 5===============
+	if (this->x > 1990 * G_Scale.x&&this->x < 2220 * G_Scale.x
+		&&this->y >(1027 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
+		this->y = (1027 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+		//return;
+	}
+		
+
 
 	//==========open door shurikein boss==============
 	if (this->x > 2060 * G_Scale.x&&this->x < 2260 * G_Scale.x)
@@ -85,6 +159,22 @@ void Camera::Update(float x, float y)
 	//============when subboss box die - not allow camera quay lai===============
 	if (this->x > 4800 * G_Scale.x&&this->x < 4902 * G_Scale.x)
 		this->x = 4902 * G_Scale.x;
+
+	//=============when meet room no boss door left=========================
+	if (this->x > 5385 * G_Scale.x&&this->x < 5485 * G_Scale.x)
+		this->x = 5385 * G_Scale.x;
+
+
+	//=================go out  empty room/ noboss here (door right)===========
+
+	if (this->x > 5765 * G_Scale.x&&this->x < 5878 * G_Scale.x)
+		this->x = 5878 * G_Scale.x;
+
+	//=================go out  door left blast hornet===========
+
+	if (this->x > 7185 * G_Scale.x&&this->x < 7190 * G_Scale.x)
+		this->x = 7185 * G_Scale.x;
+
 }
 
 void Camera::Reset()

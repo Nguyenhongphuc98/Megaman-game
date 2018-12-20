@@ -23,6 +23,7 @@
 #include"CarryBox.h"
 #include"TextStartGame.h"
 #include"DoorBlasHornet.h"
+#include"BoxBox.h"
 
 class MyGame :public Game
 {
@@ -46,7 +47,9 @@ private:
 	//CarryBox* carryBox;
 	TextStartGame* textStartGame;
 
-	DoorBlasHornet* doorBlast1;
+	DoorBlasHornet* doorBlast1, *doorBlast2;
+	DoorBlasHornet* doorBlast3, *doorBlast4;
+	BoxBox* boxbox1,*boxbox2;
 
 public:
 	MyGame();

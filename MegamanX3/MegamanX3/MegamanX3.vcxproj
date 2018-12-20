@@ -25,6 +25,7 @@
     <ClInclude Include="Bee.h" />
     <ClInclude Include="BlastHornet.h" />
     <ClInclude Include="Box.h" />
+    <ClInclude Include="BoxBox.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CarryArm.h" />
@@ -74,6 +75,7 @@
     <ClCompile Include="Bee.cpp" />
     <ClCompile Include="BlastHornet.cpp" />
     <ClCompile Include="Box.cpp" />
+    <ClCompile Include="BoxBox.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CarryArm.cpp" />

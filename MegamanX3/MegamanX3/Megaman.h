@@ -91,7 +91,7 @@ public:
 	bool IsCharging() { return this->charging; }
 	bool IsCanDash() { return (this->isAllowDash&&this->isGround); }
 	bool IsBounused() { return this->bounsed; }
-	bool IsFreeFall() { return (this->y+3 < yPre); }
+	bool IsFreeFall() { return (this->y+2 < yPre); }
 
 	void SetGround(bool ground) { this->isGround = ground; }
 	void ResetAnimation() { this->animation->listSprite[state]->Reset(); }

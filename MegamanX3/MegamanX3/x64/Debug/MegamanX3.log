@@ -1,24 +1,7 @@
-﻿  DoorBlasHornet.cpp
+﻿  Camera.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(72): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(83): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(84): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(94): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(95): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(103): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorblashornet.cpp(104): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  DoorRightShurikein.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(72): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(83): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\megaman.h(84): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(9): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(95): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(96): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(104): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\doorrightshurikein.cpp(105): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\camera.cpp(101): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\camera.cpp(183): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\camera.cpp(210): warning C4244: 'argument': conversion from 'FLOAT' to 'int', possible loss of data
+d:\it\2018\nhập môn game\source-code-game\megamanx3\megamanx3\camera.cpp(210): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   MegamanX3.vcxproj -> D:\IT\2018\Nhập môn game\Source-Code-Game\MegamanX3\x64\Debug\MegamanX3.exe

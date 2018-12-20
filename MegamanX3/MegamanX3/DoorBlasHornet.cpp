@@ -30,7 +30,7 @@ DoorBlasHornet::DoorBlasHornet(float top, float left, float w, float h)
 DoorBlasHornet * DoorBlasHornet::Instance()
 {
 	if (!instance)
-		instance = new DoorBlasHornet((878 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 5620 * G_Scale.x, 0, 0);
+		instance = new DoorBlasHornet((878 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 5627 * G_Scale.x, 0, 0);
 	return instance;
 }
 
@@ -48,6 +48,8 @@ void DoorBlasHornet::Update(DWORD dt, vector<Object*>* List_object_can_col)
 			this->x += 40;
 
 			Megaman::Instance()->SetAutoMoving(false);
+			//Camera::Instance()->SetAutoMovingX(false);
+
 			return;
 		}
 		Megaman::Instance()->SetPosition(x_megaman + 3, y_megman);
@@ -59,6 +61,8 @@ void DoorBlasHornet::Update(DWORD dt, vector<Object*>* List_object_can_col)
 	{
 		this->moving_megaman = true;
 		Camera::Instance()->SetAutoMovingX(true);
+		Camera::Instance()->SetLocked(false);
+		Camera::Instance()->SetBonousX(5);
 	}
 
 	if (this->state == DOORCLOSE && this->animation->listSprite[DOORCLOSE]->IsFinalFrame())

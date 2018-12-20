@@ -207,6 +207,9 @@
     <ClInclude Include="DoorBlasHornet.h">
       <Filter>Objects\Define\Static</Filter>
     </ClInclude>
+    <ClInclude Include="BoxBox.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyTexture.cpp">
@@ -352,6 +355,9 @@
     </ClCompile>
     <ClCompile Include="DoorBlasHornet.cpp">
       <Filter>Objects\Source\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxBox.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

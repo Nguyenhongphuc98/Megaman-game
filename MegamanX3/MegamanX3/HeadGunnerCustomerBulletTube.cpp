@@ -1,4 +1,5 @@
 #include"HeadGunnerCustomerBulletTube.h"
+#include"Megaman.h"
 
 HeadGunnerCustomerBulletTube::HeadGunnerCustomerBulletTube(float x, float y, Direction d)
 {
@@ -6,7 +7,20 @@ HeadGunnerCustomerBulletTube::HeadGunnerCustomerBulletTube(float x, float y, Dir
 	this->y = y;
 	this->start_x = x;
 	this->vx = HEADGUNNERCUSTOMER_BULLET_TUBE_VX;
-	this->vy = HEADGUNNERCUSTOMER_BULLET_TUBE_VY;
+	float xmegaman, ymegaman;
+	Megaman::Instance()->GetPosition(xmegaman, ymegaman);
+	if(this->y>ymegaman+50)
+	this->vy = -HEADGUNNERCUSTOMER_BULLET_TUBE_VY;
+	else
+		if (this->y < ymegaman - 50)
+	{
+			this->vy = HEADGUNNERCUSTOMER_BULLET_TUBE_VY;
+	}
+		else
+		{
+			this->vy = 0;
+		}
+
 	this->nameObject = HEADGUNNERCUSTOMERBULLET;
 
 	SetDirection(d);

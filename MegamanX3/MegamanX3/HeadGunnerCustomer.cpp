@@ -7,6 +7,7 @@ HeadGunnerCustomer::HeadGunnerCustomer()
 
 	this->count_animation = 0;
 	this->count_bulet_tube = 0;
+	this->time_latest_shot = GetTickCount();
 	this->destroyed = false;
 	this->hitpoints = HEADGUNNERCUSTOMER_MAX_HP;
 	this->nameObject = HEADGUNNERCUSTOMER;
@@ -17,6 +18,7 @@ HeadGunnerCustomer::HeadGunnerCustomer(int x, int y, int w, int h, Direction d):
 {
 	this->count_animation = 0;
 	this->count_bulet_tube = 0;
+	this->time_latest_shot = GetTickCount();
 	this->destroyed = false;
 	this->hitpoints = HEADGUNNERCUSTOMER_MAX_HP;
 	this->nameObject = HEADGUNNERCUSTOMER;
@@ -75,14 +77,14 @@ void HeadGunnerCustomer::Update(DWORD dt, vector<Object*>* List_object_can_col)
 	if (this->state != SHOOTABOVE)
 		count_bulet_tube = 0;
 
-	if(this->state== SHOOTABOVE&&this->animation->listSprite[state]->IsFinalFrame())
+	if (this->state != STAND
+		&& this->animation->listSprite[state]->IsFinalFrame()
+		&& GetTickCount() - this->time_latest_shot > 1000)
 	{
-		if (count_bulet_tube < 3)
-		{
-			Bullet* bullet = new HeadGunnerCustomerBulletTube(this->x, this->y, (this->direction == RIGHT) ? LEFT : RIGHT);
-			WeaponSystem::Instance()->AddBulletEnemy(bullet);
-			count_bulet_tube++;
-		}
+
+		Bullet* bullet = new HeadGunnerCustomerBulletTube(this->x, this->y+10, (this->direction == RIGHT) ? LEFT : RIGHT);
+		WeaponSystem::Instance()->AddBulletEnemy(bullet);
+		this->time_latest_shot = GetTickCount();
 	}
 }
 
@@ -113,12 +115,12 @@ void HeadGunnerCustomer::LoadResource()
 	//vector<RECT*> list_source_rect_shoot_above = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\HeadGunnerCustomerShootAbove.txt");
 
 	vector<RECT*> list_source_rect_shoot_above = TXT::Instance()->GetListSourceRect(SHEADGUNNERCUSTOMERSHOOTABOVE);
-	animation->listSprite[State::SHOOTABOVE] = new Sprite(texture, list_source_rect_shoot_above, 1);
+	animation->listSprite[State::SHOOTABOVE] = new Sprite(texture, list_source_rect_shoot_above, 3);
 
 	//vector<RECT*> list_source_rect_shoot_below = TXT::Instance()->LoadListSourceRect((char*)"SourceImage\\HeadGunnerCustomerShootBelow.txt");
 
 	vector<RECT*> list_source_rect_shoot_below = TXT::Instance()->GetListSourceRect(SHEADGUNNERCUSTOMERSHOOTBELOW);
-	animation->listSprite[State::SHOOTBELOW] = new Sprite(texture, list_source_rect_shoot_below, 1);
+	animation->listSprite[State::SHOOTBELOW] = new Sprite(texture, list_source_rect_shoot_below,3);
 
 	vector<RECT*> list_source_rect_destroy = TXT::Instance()->GetListSourceRect(SHEADGUNNERCUSTOMERDESTROY);
 	animation->listSprite[State::DESTROY] = new Sprite(texture, list_source_rect_destroy, 1);

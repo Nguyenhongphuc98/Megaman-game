@@ -40,6 +40,11 @@ void MyGame::RenderFrame(LPDIRECT3DDEVICE9 d3ddv, int t)
 
 	//======================================
 	this->doorBlast1->Render();
+	this->doorBlast2->Render();
+	this->doorBlast3->Render();
+	this->doorBlast4->Render();
+	this->boxbox1->Render();
+	this->boxbox2->Render();
 
 	WeaponSystem::Instance()->Render();
 	this->megaman->Render();
@@ -174,6 +179,16 @@ void MyGame::Update()
 	//=====================================
 	ListVirtualObject.push_back(this->doorBlast1);
 	this->doorBlast1->Update(delta_time, &List_temp);
+	ListVirtualObject.push_back(this->doorBlast2);
+	this->doorBlast2->Update(delta_time, &List_temp);
+	ListVirtualObject.push_back(this->doorBlast3);
+	this->doorBlast3->Update(delta_time, &List_temp);
+	ListVirtualObject.push_back(this->doorBlast4);
+	this->doorBlast4->Update(delta_time, &List_temp);
+
+	//=========================
+	ListVirtualObject.push_back(this->boxbox1);
+	ListVirtualObject.push_back(this->boxbox2);
 
 
 	this->launchers->Update(delta_time,&List_temp);
@@ -182,8 +197,16 @@ void MyGame::Update()
 	DoorRightShurikein::Instance()->Update(delta_time, &List_temp);
 	this->subboss->Update(delta_time, &List_temp);
 
+	//================================
+	this->boxbox1->Update(delta_time, &List_temp);
+	this->boxbox2->Update(delta_time, &List_temp);
+
 	//ListEnemy.push_back(this->shuri);
 	ListEnemy.push_back(this->subboss);
+
+	//================================
+	ListEnemy.push_back(this->boxbox1);
+	ListEnemy.push_back(this->boxbox2);
 
 	megaman->Update(delta_time, &ListVirtualObject);
 	megaman->ProcessCollisionBullet(WeaponSystem::Instance()->GetListWeaponEnemy());
@@ -218,6 +241,11 @@ void MyGame::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
 
 
 	this->doorBlast1 = DoorBlasHornet::Instance();
+	this->doorBlast2= new DoorBlasHornet((878 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 5885 * G_Scale.x, 0, 0);
+	this->doorBlast3 = new DoorBlasHornet((107 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 7420 * G_Scale.x, 0, 0);
+	this->doorBlast4 = new DoorBlasHornet((107 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 7675 * G_Scale.x, 0, 0);
+	this->boxbox1 = new BoxBox((139 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 6539 * G_Scale.x, 0, 0);
+	this->boxbox2 = new BoxBox((139 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 6749 * G_Scale.x, 0, 0);
 
 	map = new Map();
 }
