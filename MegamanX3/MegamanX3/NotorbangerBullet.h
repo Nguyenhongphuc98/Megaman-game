@@ -2,6 +2,8 @@
 #ifndef NotorbangerBullet_H_
 #define NotorbangerBullet_H_
 #include"Bullet.h"
+#include"Sound.h"
+
 
 #define NOTORBANGER_BULLET_VX 0.5
 #define NOTORBANGER_BULLET_VY 0.5

@@ -5,6 +5,7 @@
 #include"ActionObject.h"
 #include"Megaman.h"
 #include"WeaponSystem.h"
+#include"ItemBlood.h"
 
 
 #define NOTORBANGER_WIDTH 25*G_Scale.x

@@ -30,7 +30,7 @@ DoorRightShurikein::DoorRightShurikein(float top, float left, float w, float h)
 DoorRightShurikein * DoorRightShurikein::Instance()
 {
 	if(!instance)
-		instance=new DoorRightShurikein((878 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 2558 * G_Scale.x, 0, 0);
+		instance=new DoorRightShurikein((878 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y, 2563 * G_Scale.x, 0, 0);
 	return instance;
 }
 

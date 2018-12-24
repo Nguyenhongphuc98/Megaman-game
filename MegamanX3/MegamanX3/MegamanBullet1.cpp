@@ -42,6 +42,36 @@ void MegamanBullet1::Update(DWORD dt, vector<Object*>* List_enemy_objects)
 		if (((ActionObject*)O)->IsDestroy())
 			continue;
 
+		if (O->GetNameObject() == BLASTHORNET)
+		{
+			//============bosss main===================
+			ResultCollision r;
+			r = Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
+			if (r.isCollision)
+			{
+				((ActionObject*)O)->SetBeingAttacked(this->damage);
+
+				this->SetPosition(x, y);
+				this->SetState(DESTROYBULLET);
+			}
+
+			//============bosss bee===================
+			bool result;
+			for (int i = 0; i < 5; i++)
+			{
+				result = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), ((ActionObject*)O)->GetBoundBee(i));
+				if (result)
+				{
+					((ActionObject*)O)->SetBeeSBeingAttack(i, damage);
+
+					this->SetPosition(x, y);
+					this->SetState(DESTROYBULLET);
+				}
+			}
+
+			continue;
+		}
+
 		//=============AABB With Shurikein to chinh xac hon=================
 		if (O->GetNameObject() == SHURIKEIN||O->GetNameObject()==HELIT)
 		{

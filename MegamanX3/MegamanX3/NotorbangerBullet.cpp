@@ -43,6 +43,14 @@ void NotorbangerBullet::Update(DWORD dt, vector<Object*>* List_object_can_col)
 		if (this->animation->listSprite[state]->IsFinalFrame())
 		{
 			this->destroyed = true;
+
+			//float megaman_x, megaman_y;
+			//Megaman::Instance()->GetPosition(megaman_x, megaman_y);
+
+			//=============================================
+			//if(abs(this->x-megaman_x)<400&&abs(this->y-megaman_y)<400)
+			Sound::Instance()->play(SOUND_ENEMIDISTROY);
+			//=============================================
 		}	
 		return;
 	}

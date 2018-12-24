@@ -39,6 +39,10 @@ public:
 
 	//==============door===========================
 	virtual void SetActived(bool active) {this->actived = active; }
+
+	//================blasthornet===========
+	virtual BoundingBox GetBoundBee(int i) { return BoundingBox(); }
+	virtual void SetBeeSBeingAttack(int indexBee, int damage) {}
 };
 
 

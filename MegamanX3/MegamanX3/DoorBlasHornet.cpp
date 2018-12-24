@@ -3,12 +3,36 @@ DoorBlasHornet* DoorBlasHornet::instance;
 
 DoorBlasHornet::DoorBlasHornet(float top, float left, float w, float h)
 {
-	this->nameObject = DOOR;
 
 	this->x = left;
 	this->y = top;
 	this->width = w;
 	this->height = h;
+
+	if (this->x > 18750)// door 4	
+	{
+		this->x = 19187;
+		this->y = 14973;
+	}
+	else
+	if (this->x > 18000)// door 3
+	{
+		this->x = 18545;
+		this->y = 14973;
+	}
+	else
+		if(this->x>14375) //door2
+		{
+			this->x = 14712;
+			this->y = 16895;
+		}
+		else
+			if (this->x > 13755) //door1
+			{
+				this->x = 14067;
+				this->y = 16895;
+			}
+
 	this->actived = false;
 	this->moving_megaman = false;
 	this->locked = true;
@@ -36,6 +60,10 @@ DoorBlasHornet * DoorBlasHornet::Instance()
 
 void DoorBlasHornet::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
+	//==========don't update but, we render still========
+	if (this->destroyed)
+		return;
+
 	//===========when door opened -> move megaman thought door==============
 	if (this->moving_megaman)
 	{
@@ -68,7 +96,14 @@ void DoorBlasHornet::Update(DWORD dt, vector<Object*>* List_object_can_col)
 	if (this->state == DOORCLOSE && this->animation->listSprite[DOORCLOSE]->IsFinalFrame())
 	{
 		this->actived = false;
-		Genjibo::Instance()->SetActived(true);
+		this->destroyed = true;
+		//Genjibo::Instance()->SetActived(true);
+		
+		if (this->x > 18750)// door 4	
+		{
+			BlastHornet::Instance()->SetActived(true);
+		}
+		
 	}
 
 }

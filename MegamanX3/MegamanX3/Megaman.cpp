@@ -21,6 +21,18 @@ Megaman::Megaman()
 	//x = 5520 * G_Scale.x;
 	//y = (1000 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
+	////============meeet blast hornet=============================
+	//x = 7620 * G_Scale.x;
+	//y = (187 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
+	////============meeet blast boxbox=============================
+	//x = 6268 * G_Scale.x;
+	//y = (187 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
+	////============test=============================
+	//x = 3444 * G_Scale.x;
+	//y = (1177 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+
 
 	this->isGround = false;
 	this->isAllowClimbWall = false;
@@ -34,6 +46,7 @@ Megaman::Megaman()
 	this->bounsed = false;
 	this->autoMoving = false;
 	this->state = FREEFALL;
+	this->sound_dieed = false;
 
 	this->autoMoving = true;
 	this->direction = RIGHT;
@@ -56,8 +69,24 @@ Megaman * Megaman::Instance()
 
 void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 {
+
+	//==============check alive (life)==================
+	if (this->hitpoints <= 0)
+	{
+		this->destroyed = true;
+		this->state = DESTROY;
+		Camera::Instance()->SetLocked(true);
+		this->autoMoving = true;
+		if (!this->sound_dieed)
+		{
+			this->sound_dieed = true;
+			Sound::Instance()->play(SOUND_MEGAMANDIE);
+		}
+		
+	}
+
 	//===============make appear sub-boss and move camera to lock==============
-	if (this->x > 4900 * G_Scale.x&&this->x < 4902 * G_Scale.x)
+	if (this->x > 4850 * G_Scale.x&&this->x < 4902 * G_Scale.x)
 	{
 		SubBossCarry::Instance()->SetActived(true);
 		Camera::Instance()->SetAutoMovingX(true);
@@ -87,15 +116,38 @@ void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 
 	yPre = y;
 
+
+
 	vector<ResultCollision> List_result_col;
 	List_result_col.clear();
 
 	for (Object* O : *List__virtual_object_can_col) {
 
-		if (O->GetNameObject()==DOOR)
+		/*if (O->GetNameObject()==ELEVATOR)
 		{
-			MyDebugOUT("DOOR in update megaman");
+			bool r;
+			r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
+
+			if (r) {
+				this->x += (O->GetDirection() == RIGHT) ? 0.5 : -0.5;
+			}
+
+			continue;
 		}
+
+		if (O->GetNameObject() == DIEBOX)
+		{
+			bool r;
+			r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
+
+			if (r) {
+				this->hitpoints = 0;
+			}
+
+			continue;
+		}*/
+
+
 		ResultCollision r ;
 		r=Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
 		if (r.isCollision)
@@ -151,6 +203,154 @@ void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 		}
 	}
 
+	//=====================leo doc 1========================
+	if (this->x > 3077 * G_Scale.x&&this->x < 3173 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < 0.54*x + 13280)
+		{
+			this->isGround = true;
+			y = 0.54*x + 13280;
+		}
+		
+	}
+
+	//=====================xuong doc 1========================
+	if (this->x > 3269 * G_Scale.x&&this->x < 3364 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < -0.547511*x + 22050)
+		{
+			y = -0.547511*x + 22050;
+			this->isGround = true;
+		}
+		
+	}
+
+	//=====================leo doc 2========================
+	if (this->x > 3524 * G_Scale.x&&this->x < 3610 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < 0.510638*x + 12980)
+		{
+			this->isGround = true;
+			y = 0.510638*x + 12980;
+		}
+			
+	}
+
+	//=====================xuong doc 2========================
+	if (this->x > 3716 * G_Scale.x&&this->x < 3809 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < -0.516129*x + 22350)
+		{
+			y = -0.516129*x + 22350;
+			this->isGround = true;
+		}
+			
+	}
+
+	//=====================leo doc 3========================
+	if (this->x > 3973 * G_Scale.x&&this->x < 4070 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < 0.494845*x + 12522)
+		{
+			this->isGround = true;
+			y = 0.494845*x + 12522;
+		}
+			
+	}
+
+	//=====================xuong doc 3========================
+	if (this->x > 4164 * G_Scale.x&&this->x < 4258 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < -0.510638*x + 22873)
+		{
+			y = -0.510638*x + 22873;
+			this->isGround = true;
+		}
+			
+	}
+
+	//=====================xuong doc box 1========================
+	if (this->x > 6450 * G_Scale.x&&this->x < 6515 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < -0.25*x + 18986)
+		{
+			this->isGround = true;
+			y = -0.25*x + 18986;
+		}
+		
+	}
+
+	//=====================leo doc box1========================
+	if (this->x > 6567 * G_Scale.x&&this->x < 6650 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < 0.238806*x + 10994)
+		{
+			y = 0.238806*x + 10994;
+			this->isGround = true;
+		}
+			
+	}
+
+	//=====================xuong doc box 2========================
+	if (this->x > 6648 * G_Scale.x&&this->x < 6721 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < -0.242424*x + 18988)
+		{
+			this->isGround = true;
+			y = -0.242424*x + 18988;
+		}
+
+	}
+
+	//=====================leo doc box2========================
+	if (this->x > 6776 * G_Scale.x&&this->x < 6850 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < 0.253968*x + 10612)
+		{
+			y = 0.253968*x + 10612;
+			this->isGround = true;
+		}
+
+	}
+
+	//=====================xuong doc box 3========================
+	if (this->x > 6850 * G_Scale.x&&this->x < 6929 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < -0.242424*x + 19114)
+		{
+			this->isGround = true;
+			y = -0.242424*x + 19114;
+		}
+
+	}
+
+	//=====================leo doc box3========================
+	if (this->x > 6983 * G_Scale.x&&this->x < 7048 * G_Scale.x)
+	{
+		//pt y=ax+b
+		if (y < 0.246154*x + 10617)
+		{
+			y = 0.246154*x + 10617;
+			this->isGround = true;
+		}
+
+	}
+
+	//=====================left og map========================
+	if (this->x <= 30)
+		this->x = 30;
+
 }
 
 void Megaman::ProcessCollisionBullet(list<Bullet*> List__bullet_enemy)
@@ -162,9 +362,23 @@ void Megaman::ProcessCollisionBullet(list<Bullet*> List__bullet_enemy)
 	for (Bullet* O : List__bullet_enemy) {
 		bool r;
 		r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
-		if (r)
+		if (r&& !O->IsDestroying())
 		{
-			if (!O->IsDestroying()&&!this->hurting)
+			//==========if item blood=============
+			if (O->GetNameObject() == ITEMBLOOD)
+			{
+				this->hitpoints -= O->GetDamege();
+				if (this->hitpoints > MEGAMAN_MAX_HP)
+					this->hitpoints = MEGAMAN_MAX_HP;
+
+				O->SetDestroying(true);
+
+				//===========================================
+				Sound::Instance()->play(SOUND_GET_ITEM);
+				//===========================================
+			}
+			else
+			if (!this->hurting)
 			{
 				this->hurting = true;
 				this->time_start_huring = GetTickCount();
@@ -191,29 +405,40 @@ void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
 		if (((ActionObject*)O)->IsDestroy())
 			continue;
 
-		//if (O->GetNameObject() == BOXBOX)
-		//{
-		//	ResultCollision r;
-		//	r = Collision::Instance()->CollisionSweptAABB(this->GetBoundingBox(), O->GetBoundingBox());
-		//	if (r.isCollision)
-		//	{
-		//		x += (r.t * dx + r.nx * 2.0f);
-		//		y += (r.t * dy + r.ny * 0.3f);
-		//		if (r.nx != 0)
-		//		{
-		//			//================================================================
-		//			vx = (vx > 0) ? -0.05 : 0.05;
-		//			this->isAllowClimbWall = true;
-		//			//this->SetState(JUMPWALL);
-		//		}
-		//		if (r.ny != 0)
-		//		{
-		//			vy = 0;
-		//			this->isGround = true;
-		//		}
-		//	}
-		//	continue;
-		//}
+		if (O->GetNameObject() == BLASTHORNET)
+		{
+			//============bosss main===================
+			bool result;
+			result = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
+			if (result)
+			{
+				if (!this->hurting)
+				{
+					this->hurting = true;
+					this->time_start_huring = GetTickCount();
+
+					this->hitpoints -= ((ActionObject*)O)->GetDamage();
+					this->SetState(INJURED);
+				}
+			}
+
+			//============bosss bee===================
+			
+			for (int i = 0; i < 5; i++)
+			{
+				result = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), ((ActionObject*)O)->GetBoundBee(i));
+				if (!this->hurting&&result)
+				{
+					this->hurting = true;
+					this->time_start_huring = GetTickCount();
+
+					this->hitpoints -= ((ActionObject*)O)->GetDamage();
+					this->SetState(INJURED);
+				}
+			}
+			
+			continue;
+		}
 
 		bool r;
 		r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
@@ -238,11 +463,41 @@ void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
 	}
 }
 
+void Megaman::ProcessCollisionStatic(vector<Object*> List_static)
+{
+	for (Object* O : List_static) {
+
+		if (O->GetNameObject() == ELEVATOR)
+		{
+			bool r;
+			r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
+
+			if (r) {
+				this->x += (O->GetDirection() == RIGHT) ? 0.5 : -0.5;
+			}
+
+			continue;
+		}
+
+		if (O->GetNameObject() == DIEBOX)
+		{
+			bool r;
+			r = Collision::Instance()->CollisionAABB(this->GetBoundingBox(), O->GetBoundingBox());
+
+			if (r) {
+				this->hitpoints = 0;
+			}
+
+			continue;
+		}
+	}
+}
+
 void Megaman::Render()
 {
 	
-	if (this->hitpoints < 0)
-		return;
+	/*if (this->hitpoints < 0)
+		return;*/
 
 	//============life-bar==================================
 	this->animation_lifebar->listSprite[STAND]->Set_current_frame(this->hitpoints);
@@ -250,7 +505,7 @@ void Megaman::Render()
 	
 	//============nhap nhay khi khong khong the bi thuong==============
 
-	if (this->hurting&&this->state != INJURED)
+	if (this->hurting&&this->state != INJURED&&!this->destroyed)
 	{
 		int x = rand();
 		if (x % 2 == 0)
@@ -326,7 +581,7 @@ void Megaman::Render()
 	if (state == DASHSHOOT && animation->listSprite[DASHSHOOT]->GetCurrentFrame() == 1)
 		return;
 	//==============auto moving when open door, door control===============
-	if (this->autoMoving)
+	if (this->autoMoving&&this->hitpoints>0)
 		return;
 
 	animation->Next(state);
@@ -404,6 +659,12 @@ void Megaman::LoadResource()
 	vector<RECT*> list_source_rect_lifebar = TXT::Instance()->GetListSourceRect(SLIFEBAR);
 	animation_lifebar->listSprite[State::STAND] = new Sprite(texture, list_source_rect_lifebar, 1);
 
+
+
+	MyTexture* texture_die = TXT::Instance()->GetTexture(TMEGAMANDESTROY);
+	vector<RECT*> list_source_rect_destroy = TXT::Instance()->GetListSourceRect(SMEGAMANDESTROY);
+	animation->listSprite[State::DESTROY] = new Sprite(texture_die, list_source_rect_destroy, 2);
+
 }
 
 BoundingBox Megaman::GetBoundingBox()
@@ -428,17 +689,17 @@ void Megaman::SetState(State new_state)
 	case RUN:
 		vx = (this->direction==RIGHT)? MEGAMAN_WALK_SPEED:-MEGAMAN_WALK_SPEED;
 		this->state = RUN;
-		MyDebugOUT("runing \n");
+		//MyDebugOUT("runing \n");
 		break;
 
 	case RUNSHOOT:
 		vx = (this->direction == RIGHT) ? MEGAMAN_WALK_SPEED : -MEGAMAN_WALK_SPEED;
 		this->state = RUNSHOOT;
-		MyDebugOUT("run shoot \n");
+		//MyDebugOUT("run shoot \n");
 		break;
 
 	case FREEFALL:
-		MyDebugOUT("Free fall \n");
+		//MyDebugOUT("Free fall \n");
 		//vx = (this->direction == RIGHT) ? MEGAMAN_WALK_SPEED : -MEGAMAN_WALK_SPEED;
 		/*if (this->isGround)
 		{
@@ -451,7 +712,7 @@ void Megaman::SetState(State new_state)
 		break;
 
 	case STAND:
-		MyDebugOUT("stand \n");
+		//MyDebugOUT("stand \n");
 		//if (this->state == STANDJUMP || this->state == FREEFALL)
 		//	this->animation->Refresh(this->state);
 		this->state = STAND;
@@ -462,16 +723,16 @@ void Megaman::SetState(State new_state)
 	case STANDJUMP:
 		this->state = STANDJUMP;
 		//vx = 0;
-		MyDebugOUT("stand jump \n");
+		//MyDebugOUT("stand jump \n");
 		if (this->isGround)
 		{
-			MyDebugOUT("start stand jump \n");
+		//	MyDebugOUT("start stand jump \n");
 			vy = MEGAMAN_STAND_JUMP_SPEED;
 		}	
 
 		if(this->isAllowClimbWall)
 		{
-			MyDebugOUT("start jump wall\n");
+			//MyDebugOUT("start jump wall\n");
 			vy = MEGAMAN_JUMP_WALL_SPEED;
 			isAllowClimbWall = false;
 		}
@@ -487,16 +748,16 @@ void Megaman::SetState(State new_state)
 	case JUMPSHOOT:
 		this->state = JUMPSHOOT;
 		this->isGround = false;
-		MyDebugOUT("jump shoot\n");
+		//MyDebugOUT("jump shoot\n");
 		
 		break;
 
 	case JUMPWALL:
-		MyDebugOUT("jump wall \n");
+		//MyDebugOUT("jump wall \n");
 		this->state = JUMPWALL;
 		if (this->isAllowClimbWall)
 		{
-			MyDebugOUT("start jump wall \n");
+			//MyDebugOUT("start jump wall \n");
 			vy = MEGAMAN_JUMP_WALL_SPEED;
 		}
 		
@@ -506,7 +767,7 @@ void Megaman::SetState(State new_state)
 	case STANDSHOOT:
 		this->state = STANDSHOOT;	
 		vx = 0;
-		MyDebugOUT("stand  shoot\n");
+	//	MyDebugOUT("stand  shoot\n");
 		break;
 
 	case DASH:
@@ -523,7 +784,7 @@ void Megaman::SetState(State new_state)
 			this->SetState(STAND);
 			xStartDash = 0;
 		}
-		MyDebugOUT("dash \n");
+	//	MyDebugOUT("dash \n");
 		break;
 
 	case DASHSHOOT:
@@ -542,7 +803,7 @@ void Megaman::SetState(State new_state)
 				this->SetState(STAND);
 				xStartDash = 0;
 			}
-		MyDebugOUT("dash shoot \n");
+	//	MyDebugOUT("dash shoot \n");
 		break;
 
 	case INJURED:
@@ -554,7 +815,7 @@ void Megaman::SetState(State new_state)
 	default:
 		this->state = new_state;
 		vx = vy = 0;
-		MyDebugOUT("default \n");
+	//	MyDebugOUT("default \n");
 		break;
 	}
 
@@ -673,7 +934,8 @@ State Megaman::GetNewState(State currentState, EControler controler)
 			break;
 		case ShootControl:new_state = JUMPSHOOT; break;
 		case JumpControl: break;
-		case DashControl: break;
+		case DashControl: 
+			if (this->isGround) new_state = DASH; break;
 		}
 		break;
 

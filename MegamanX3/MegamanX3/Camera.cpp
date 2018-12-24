@@ -110,7 +110,7 @@ void Camera::Update(float x, float y)
 
 	
 	//==============duong ong doc 2===============
-	if (this->x > 772 * G_Scale.x&&this->x < 1520 * G_Scale.x&&this->y < (1765 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	if (this->x > 772 * G_Scale.x&&this->x < 1000 * G_Scale.x&&this->y < (1765 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
 	{
 		this->x = 772 * G_Scale.x;
 		//return;
@@ -121,7 +121,7 @@ void Camera::Update(float x, float y)
 	if (this->x > 770 * G_Scale.x&&this->y > (1780 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
 	{
 		this->y = (1780 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
-		return;
+		//return;
 	}
 		
 
@@ -134,16 +134,80 @@ void Camera::Update(float x, float y)
 		else
 			if (this->x > 1809 * G_Scale.x&&this->x < 2100 * G_Scale.x)
 				this->x = 1809 * G_Scale.x;
-		return;
+	//	return;
 	}
 	
 		
 	//============duong ong ngang tiep theo 5===============
 	if (this->x > 1990 * G_Scale.x&&this->x < 2220 * G_Scale.x
-		&&this->y >(1027 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+		&&this->y >(1030 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
 	{
-		this->y = (1027 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+		this->y = (1030 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 		//return;
+	}
+
+	//============duong ong ngang 6===============
+	if (this->x > 2400 * G_Scale.x&&this->x < 2887 * G_Scale.x
+		&&this->y >(1030 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
+		this->y = (1030 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+		//return;
+	}
+
+	//============duong ong ngang 7===============
+	if (this->x > 2900 * G_Scale.x&&this->x < 4260 * G_Scale.x
+		&&this->y >(1250 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
+		this->y = (1250 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+		//return;
+	}
+
+	//============duong ong ngang 8===============
+	if (this->x > 4292 * G_Scale.x
+		&&this->y >(1030 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
+		this->y = (1030 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+		//return;
+	}
+
+
+	//==============duong ong doc 9===============
+	if (this->x > 5893 * G_Scale.x
+		&&this->y > (927 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y
+		)
+	{
+		this->x = 5893 * G_Scale.x;
+		//return;
+	}
+
+	if (this->y > (400 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y
+		&&this->y < (927 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y
+		&&this->x<6292 * G_Scale.x
+		)
+	{
+		this->x = 5893 * G_Scale.x;
+		//return;
+	}
+	if (this->y < (400 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y
+		&&this->x<5893*G_Scale.x
+		)
+	{
+		this->x = 5893 * G_Scale.x;
+		//return;
+	}
+
+	//============duong ong ngang 10===============
+	if (this->x > 5924 * G_Scale.x
+		&&this->y > (245 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y
+		&&this->y < (500 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
+		this->y = (245 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
+		//return;
+	}
+
+	if (this->x > 6244 * G_Scale.x)
+	{
+		this->y = (245 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 	}
 		
 
@@ -170,10 +234,15 @@ void Camera::Update(float x, float y)
 	if (this->x > 5765 * G_Scale.x&&this->x < 5878 * G_Scale.x)
 		this->x = 5878 * G_Scale.x;
 
-	//=================go out  door left blast hornet===========
+	//=================go in  door left blast hornet===========
 
-	if (this->x > 7185 * G_Scale.x&&this->x < 7190 * G_Scale.x)
-		this->x = 7185 * G_Scale.x;
+	if (this->x > 7170 * G_Scale.x&&this->x < 7365 * G_Scale.x)
+		this->x = 7170 * G_Scale.x;
+
+	////=================go out  door left blast hornet===========
+
+	//if (this->x > 7185 * G_Scale.x&&this->x < 7190 * G_Scale.x)
+	//	this->x = 7185 * G_Scale.x;
 
 }
 

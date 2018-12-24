@@ -210,6 +210,21 @@
     <ClInclude Include="BoxBox.h">
       <Filter>Objects\Define\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Honey.h">
+      <Filter>Objects\Define\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBlood.h">
+      <Filter>Objects\Define\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="Elevator.h">
+      <Filter>Objects\Define\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="DieBox.h">
+      <Filter>Objects\Define\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyTexture.cpp">
@@ -358,6 +373,21 @@
     </ClCompile>
     <ClCompile Include="BoxBox.cpp">
       <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Honey.cpp">
+      <Filter>Objects\Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBlood.cpp">
+      <Filter>Objects\Source\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="Elevator.cpp">
+      <Filter>Objects\Source\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="DieBox.cpp">
+      <Filter>Objects\Source\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>FrameWork\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

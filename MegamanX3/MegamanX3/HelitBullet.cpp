@@ -39,6 +39,7 @@ void HelitBulet::Update(DWORD dt, vector<Object*>* List_objects)
 		if (this->animation->listSprite[state]->IsFinalFrame())
 		{
 			this->destroyed = true;
+			Sound::Instance()->play(SOUND_ENEMIDISTROY);
 		}
 		return;
 	}
@@ -49,7 +50,8 @@ void HelitBulet::Update(DWORD dt, vector<Object*>* List_objects)
 	this->distance_has_shot_x += dx;
 	if (this->distance_has_shot_x > 400)
 	{
-		this->SetState(DESTROYBULLET);
+		this->destroyed = true;
+		//this->SetState(DESTROYBULLET);
 		return;
 	}
 		

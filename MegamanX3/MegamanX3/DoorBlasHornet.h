@@ -3,7 +3,7 @@
 #define DoorBlasHornet_H_
 #include"ActionObject.h"
 #include"Megaman.h"
-#include"Genjibo.h"
+#include"BlastHornet.h"
 
 #define DOORSHURIKEIN_WIDTH 15*2.5
 #define DOORSHURIKEIN_HEIGHT 48*2.5

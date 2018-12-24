@@ -2,6 +2,7 @@
 #ifndef HelitBullet_H_
 #define HelitBullet_H_
 #include"Bullet.h"
+#include"Sound.h"
 
 #define HELIT_BULLET_VX 0.5f
 #define HELIT_BULLET_VY 0

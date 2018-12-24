@@ -139,11 +139,13 @@ Object * QuadTree::CreateObject(int id, int x, int y, int w, int h, int d)
 		o->SetState(STRAIGHTROPE);
 		break;
 	case HEADGUNNERCUSTOMER:
+		if (x < 3202)
+			y += 5;
 		o = new HeadGunnerCustomer(x + w / 2, y - h / 2, w, h, dir);
 		o->SetState(SHOOTABOVE);
 		break;
 	case DOORLEFTSHURI:
-		o = new DoorShurikein(0, 0, 0, 0);
+		o = DoorShurikein::Instance();
 		break;
 	case DOORRIGHTSHURI:
 		o = DoorRightShurikein::Instance();
@@ -153,6 +155,21 @@ Object * QuadTree::CreateObject(int id, int x, int y, int w, int h, int d)
 		break;
 	case SUBBOSSCARRY:
 		o = SubBossCarry::Instance();
+		break;
+	case DOORBLASHORNET:
+		o = new DoorBlasHornet(y - h / 2, x + w / 2,  0,0);
+		break;
+	case BOXBOX:
+		o= new BoxBox(y - h / 2, x + w / 2,  0, 0);
+		break;
+	case BLASTHORNET:
+		o = BlastHornet::Instance();
+		break;
+	case ELEVATOR:
+		o = new Elevator(y - h, x, w, h,dir);
+		break;
+	case DIEBOX:
+		o = new DieBox(y - h, x, w, h);
 		break;
 	default:
 		o = new VirtualObject(y - h, x, w, h);

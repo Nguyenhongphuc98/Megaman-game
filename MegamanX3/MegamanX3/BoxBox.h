@@ -7,7 +7,7 @@
 #define BOX_WIDTH 100
 #define BOX_HEIGHT 100
 #define BOXBOX_WIDTH 100
-#define BOXBOX_HEIGHT 500
+#define BOXBOX_HEIGHT 600
 
 #define BOXBOX_MAX_HP 5
 #define BOXBOX_DAMAGE 0

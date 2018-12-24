@@ -6,6 +6,7 @@
 #include"Bullet.h"
 #include"SubBossCarry.h"
 #include<list>
+#include"Sound.h"
 
 
 #define MEGAMAN_HEIGHT 84
@@ -41,6 +42,8 @@ private:
 	bool bounsed;
 	bool autoMoving;
 
+	bool sound_dieed;
+
 	float time_start_press_A;
 	float time_start_huring;
 
@@ -59,6 +62,7 @@ public:
 	void Update(DWORD dt, vector<Object*> *List__virtual_object_can_col);
 	void ProcessCollisionBullet(list<Bullet*> List__bullet_enemy);
 	void ProcessCollisionEnemy(vector<Object*> List_enemy);
+	void ProcessCollisionStatic(vector<Object*> List_static); //elevator, die box
 	void Render();
 	void LoadResource();
 
@@ -92,6 +96,8 @@ public:
 	bool IsCanDash() { return (this->isAllowDash&&this->isGround); }
 	bool IsBounused() { return this->bounsed; }
 	bool IsFreeFall() { return (this->y+2 < yPre); }
+	bool IsDie() { return this->hitpoints <= 0; }
+	bool IsSpriteHurting() { return this->state == INJURED; }
 
 	void SetGround(bool ground) { this->isGround = ground; }
 	void ResetAnimation() { this->animation->listSprite[state]->Reset(); }

@@ -33,9 +33,11 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="DashSmoke.h" />
     <ClInclude Include="DashSpark.h" />
+    <ClInclude Include="DieBox.h" />
     <ClInclude Include="DoorBlasHornet.h" />
     <ClInclude Include="DoorRightShurikein.h" />
     <ClInclude Include="DoorShurikein.h" />
+    <ClInclude Include="Elevator.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Genjibo.h" />
     <ClInclude Include="Global.h" />
@@ -44,6 +46,8 @@
     <ClInclude Include="HeadGunnerCustomerBulletTube.h" />
     <ClInclude Include="Helit.h" />
     <ClInclude Include="HelitBullet.h" />
+    <ClInclude Include="Honey.h" />
+    <ClInclude Include="ItemBlood.h" />
     <ClInclude Include="Launchers.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Megaman.h" />
@@ -60,6 +64,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Shurikein.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Speedburner.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SubBossCarry.h" />
@@ -83,9 +88,11 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DashSmoke.cpp" />
     <ClCompile Include="DashSpark.cpp" />
+    <ClCompile Include="DieBox.cpp" />
     <ClCompile Include="DoorBlasHornet.cpp" />
     <ClCompile Include="DoorRightShurikein.cpp" />
     <ClCompile Include="DoorShurikein.cpp" />
+    <ClCompile Include="Elevator.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Genjibo.cpp" />
     <ClCompile Include="Global.cpp" />
@@ -94,6 +101,8 @@
     <ClCompile Include="HeadGunnerCustomerBulletTube.cpp" />
     <ClCompile Include="Helit.cpp" />
     <ClCompile Include="HelitBullet.cpp" />
+    <ClCompile Include="Honey.cpp" />
+    <ClCompile Include="ItemBlood.cpp" />
     <ClCompile Include="Launchers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -111,6 +120,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Shurikein.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Speedburner.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SubBossCarry.cpp" />
@@ -142,7 +152,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">

@@ -50,7 +50,7 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 		this->destroyed = false;
 		this->hitpoints = NOTORBANGER_MAX_HP;
 		this->SetState(STAND);
-		MyDebugOUT("reset notorbanger ");
+//		MyDebugOUT("reset notorbanger ");
 		this->animation->listSprite[DESTROY]->Set_current_frame(0);
 		return;
 	}
@@ -329,10 +329,15 @@ void NotorBanger::Update(DWORD dt, vector<Object*>* List_object_can_col)
 
 void NotorBanger::Render()
 {
+	if (this->destroyed)
+		return;
+
 	//======================check destroyed=================================
 	if (this->state == DESTROY && this->animation->listSprite[state]->IsFinalFrame())
 	{
 		destroyed = true;
+		Bullet* blood = new ItemBlood(this->x, this->y-45);
+		WeaponSystem::Instance()->AddBulletEnemy(blood);
 		return;
 	}
 		

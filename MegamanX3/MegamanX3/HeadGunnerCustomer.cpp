@@ -42,7 +42,7 @@ void HeadGunnerCustomer::Update(DWORD dt, vector<Object*>* List_object_can_col)
 		this->destroyed = false;
 		this->hitpoints = HEADGUNNERCUSTOMER_MAX_HP;
 		this->SetState(STAND);
-		MyDebugOUT("reset headgunercustomer ");
+//		MyDebugOUT("reset headgunercustomer ");
 		this->animation->listSprite[DESTROY]->Set_current_frame(0);
 		return;
 	}

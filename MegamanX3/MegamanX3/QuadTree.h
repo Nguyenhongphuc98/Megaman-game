@@ -14,6 +14,10 @@
 #include"CarryArm.h"
 #include"DoorRightShurikein.h"
 #include"DoorShurikein.h"
+#include"DoorBlasHornet.h"
+#include"BoxBox.h"
+#include"Elevator.h"
+#include"DieBox.h"
 
 using namespace std;
 

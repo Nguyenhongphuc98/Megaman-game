@@ -7,6 +7,11 @@ Bee::Bee()
 
 	center_region_y = y;
 	vy = BEE_VY;
+	this->hitpoints = BEE_MAX_HP;
+
+	this->destroyed = true;
+	this->folowBlasthornet = false;
+	this->folowMegaman = false;
 
 	this->nameObject = BEE;
 	this->SetState(FLAPPINGANDFLYING);
@@ -28,18 +33,78 @@ Bee::~Bee()
 
 void Bee::Update(DWORD dt, vector<Object*>* List_object_can_col)
 {
-	Object::Update(dt,List_object_can_col);
-	x += dx;
-	y += dy;
+	if (this->destroyed)
+		return;
 
-	if (vy > 0 && y > center_region_y + 100)
-		vy = -BEE_VY;
-	if (vy <0 && y < center_region_y - 100)
-		vy = BEE_VY;
+	if (this->hitpoints <= 0)
+	{
+		this->destroyed = true;
+		Bullet* tempBullet = new NotorbangerBullet(this->x, this->y, RIGHT, 0);
+		tempBullet->SetState(DESTROYBULLET);
+		WeaponSystem::Instance()->AddBulletEnemy(tempBullet);
+	}
+
+	if (this->state == DESTROY)
+	{
+		if (this->animation->listSprite[this->state]->IsFinalFrame())
+		{
+			this->destroyed = true;
+			this->animation->Refresh(DESTROY);
+		}
+			
+	}
+	else
+	if (GetTickCount() - this->time_start_active > BEE_TIME_DESTROY)
+		this->state = DESTROY;
+
+
+
+	if (this->folowMegaman)
+	{
+		float megaman_x, megaman_y;
+		Megaman::Instance()->GetPosition(megaman_x, megaman_y);
+
+		float a = (this->y - megaman_y) / (this->x - megaman_x);
+		float b = megaman_y - a * megaman_x;
+
+		this->y += (this->y < megaman_y) ? 1 : -1;
+		this->x = (this->y - b) / a;
+	}
+	else
+	{
+		//=====================follow blast horner============
+		if (this->folowBlasthornet)
+		{
+			dx = (rand() % 5)*(rand() % 2 == 0 ? 1 : -1);
+			dy = (rand() % 5)*(rand() % 2 == 0 ? 1 : -1);
+			x += dx;
+			y += dy;
+		}
+		else
+
+		{
+			Object::Update(dt, List_object_can_col);
+			x += dx;
+			y += dy;
+		}
+	}
+	
+	
+
+	if(this->state!=FLAPPING
+		&&this->state != DESTROY
+		&& (this->y > BLASTHORNET_TOP || this->y < GROUND-20 || this->x<BLASTHORNET_LEFT || this->x>BLASTHORNET_RIGHT))
+	{
+		this->vx = this->vy = 0;
+		this->state = FLAPPING;
+	}
 }
 
 void Bee::Render()
 {
+	if (this->destroyed)
+		return;
+
 	ActionObject::Render();
 }
 
@@ -62,10 +127,17 @@ void Bee::LoadResource()
 
 	vector<RECT*> list_source_rect_stand = TXT::Instance()->GetListSourceRect(SBEESTAND);
 	animation->listSprite[State::STAND] = new Sprite(texture, list_source_rect_stand, 10);
+
+	MyTexture* texture2 = TXT::Instance()->GetTexture(TBLASHORNETHONEY);
+	vector<RECT*> list_source_rect_autodestroy = TXT::Instance()->GetListSourceRect(SBEEAUTODESTROY);
+	animation->listSprite[State::DESTROY] = new Sprite(texture2, list_source_rect_autodestroy, 2);
 }
 
 BoundingBox Bee::GetBoundingBox()
 {
+	if (this->destroyed)
+		return BoundingBox();
+
 	BoundingBox bound;
 	bound.x = x - BEE_WIDTH / 2;
 	bound.y = y - BEE_HEIGHT / 2;
@@ -84,4 +156,21 @@ void Bee::SetState(State s)
 void Bee::SetDirection(Direction d)
 {
 	this->direction = d;
+}
+
+void Bee::ResetBee(int x, int y, Direction d, float vx, float vy)
+{
+	this->vx = (d == LEFT) ? -vx : vx;
+	this->vy =-vy;
+	this->direction = d;
+	this->destroyed = false;
+	this->SetState(FLAPPINGANDFLYING);
+	this->x = x;
+	this->y = y;
+
+	this->folowMegaman = false;
+
+	this->time_start_active = GetTickCount();
+	this->hitpoints = BEE_MAX_HP;
+	//MyDebugOUT("reset time create bee\n");
 }

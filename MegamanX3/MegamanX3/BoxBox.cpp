@@ -4,6 +4,8 @@
 BoxBox::BoxBox(float top, float left, float w, float h)
 {
 	this->x = left;
+	if (x > 6478 * G_Scale.x& x < 6600 * G_Scale.x)
+		this->x = 6542 * G_Scale.x;
 	this->y = top;
 	this->width = w;
 	this->height = h;

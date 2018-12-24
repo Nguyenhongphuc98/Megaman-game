@@ -24,32 +24,41 @@
 #include"TextStartGame.h"
 #include"DoorBlasHornet.h"
 #include"BoxBox.h"
+#include"Elevator.h"
+#include"DieBox.h"
+#include"Sound.h"
 
 class MyGame :public Game
 {
 private:
 	Megaman* megaman;
 	Map* map;
+	Sound* sound;
 	vector<Object*> ListObject;
 
 	vector<Object*> ListEnemy;
-	vector<Object*> ListVirtualObject;
-	vector<Object*> ListItem;
+	vector<Object*> ListVirtualObject; ///ground, launcher, door
+	vector<Object*> ListStaticObject;//levator, diebox
+	vector<Object*> ListItem;// added waponsystem, so don't need
 
 	//Shurikein* shuri;
-	BlastHornet* hornet;
-	Bee* bee;
+	//BlastHornet* hornet;
+	//Bee* bee; //clear
 	Launchers* launchers;
-	DoorShurikein* doorShuri;
+//	DoorShurikein* doorShuri;
 	Genjibo* genjibo;
 	//DoorRightShurikein* doorRightShuri;
 	SubBossCarry* subboss;
 	//CarryBox* carryBox;
 	TextStartGame* textStartGame;
 
-	DoorBlasHornet* doorBlast1, *doorBlast2;
-	DoorBlasHornet* doorBlast3, *doorBlast4;
-	BoxBox* boxbox1,*boxbox2;
+	//DoorBlasHornet* doorBlast1, *doorBlast2;
+	//DoorBlasHornet* doorBlast3, *doorBlast4;
+//	BoxBox* boxbox1,*boxbox2;
+
+	//===============
+//	Elevator* elevator;
+	//DieBox* dieBox;
 
 public:
 	MyGame();
