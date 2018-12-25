@@ -35,8 +35,21 @@ void BoxBox::Update(DWORD dt, vector<Object*>* List_object_can_col)
 	if (this->destroyed)
 		return;
 
+	/*if (this->state == STAND)
+	{
+		MyDebugOUT("stand======================================\n");
+	}
+	else
+	{
+		if (this->state == DESTROY)
+		{
+			MyDebugOUT("destroy======================================\n");
+		}
+		else
+			MyDebugOUT("undefine======================================\n");
+	}*/
 	
-
+	
 
 	//===========when stand ( box don't die)==============
 	if (this->state == STAND)

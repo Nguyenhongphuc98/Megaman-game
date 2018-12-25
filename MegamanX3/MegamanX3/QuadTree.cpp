@@ -139,8 +139,11 @@ Object * QuadTree::CreateObject(int id, int x, int y, int w, int h, int d)
 		o->SetState(STRAIGHTROPE);
 		break;
 	case HEADGUNNERCUSTOMER:
-		if (x < 3202)
+		if(x<900*2.5)
 			y += 5;
+		//else
+		//if (x < 3202)
+		//	y += 5;
 		o = new HeadGunnerCustomer(x + w / 2, y - h / 2, w, h, dir);
 		o->SetState(SHOOTABOVE);
 		break;

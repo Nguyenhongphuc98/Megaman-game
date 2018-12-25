@@ -30,7 +30,7 @@ Megaman::Megaman()
 	//y = (187 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
 	////============test=============================
-	//x = 3444 * G_Scale.x;
+	//x = 4647 * G_Scale.x;
 	//y = (1177 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y;
 
 
@@ -69,6 +69,12 @@ Megaman * Megaman::Instance()
 
 void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 {
+
+	//============when free fall box box ho^'============
+	if (this->x > 6516 * G_Scale.x
+		&&this->x < 6564 * G_Scale.x
+		&&(this->y < (80 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y))
+		this->hitpoints = 0;
 
 	//==============check alive (life)==================
 	if (this->hitpoints <= 0)
@@ -336,7 +342,7 @@ void Megaman::Update(DWORD dt, vector<Object*> *List__virtual_object_can_col)
 	}
 
 	//=====================leo doc box3========================
-	if (this->x > 6983 * G_Scale.x&&this->x < 7048 * G_Scale.x)
+	if (this->x > 6983 * G_Scale.x&&this->x < 7057 * G_Scale.x)
 	{
 		//pt y=ax+b
 		if (y < 0.246154*x + 10617)
@@ -418,6 +424,9 @@ void Megaman::ProcessCollisionEnemy(vector<Object*> List_enemy)
 					this->time_start_huring = GetTickCount();
 
 					this->hitpoints -= ((ActionObject*)O)->GetDamage();
+					if (this->hitpoints < 0)
+						this->hitpoints = 0;
+
 					this->SetState(INJURED);
 				}
 			}

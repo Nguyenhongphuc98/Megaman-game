@@ -115,6 +115,13 @@ void Camera::Update(float x, float y)
 		this->x = 772 * G_Scale.x;
 		//return;
 	}
+
+	if (this->x < 772 * G_Scale.x
+		&&this->y > (1286 + G_ADDITIONS_TO_BECOME_THE_SQUARE)*G_Scale.y)
+	{
+		this->x = 772 * G_Scale.x;
+		//return;
+	}
 		
 
 	//============duong ong ngang tiep theo 3===============
