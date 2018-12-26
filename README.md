@@ -1,9 +1,9 @@
 # Game
 
 Name: MegamanX3 <br>
-Team:<br>
-- Nguyễn Hồng Phúc- team leader.<br>
-- Nguyễn Quang Nghĩa - member.<br>
+Author:<br>
+- Nguyễn Hồng Phúc.<br>
+
 <br>
 API: DirectX (june).<br>
 Language: C++.<br>
@@ -34,3 +34,9 @@ List Class and Function:<br>
 - have animation state, charing, lifebar.<br>
 - Update - with virtual object. tu stand/ jump,..<br>
 - Process with Bullet: -with enemy, being hurting, and set state bullet to destroy when collision.<br>
+<br>
+Image in game:
+<img src="https://uphinhnhanh.com/images/2018/12/26/start.png" alt="start.png" border="0" />
+<img src="https://uphinhnhanh.com/images/2018/12/26/shuri.png" alt="shuri.png" border="0" />
+<img src="https://uphinhnhanh.com/images/2018/12/26/subboss.png" alt="subboss.png" border="0" />
+<img src="https://uphinhnhanh.com/images/2018/12/26/blasthornet.png" alt="blasthornet.png" border="0" />
