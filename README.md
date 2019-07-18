@@ -36,9 +36,9 @@ List Class and Function:<br>
 - Process with Bullet: -with enemy, being hurting, and set state bullet to destroy when collision.<br>
 <br>
 Image in game:
-![image](https://user-images.githubusercontent.com/28861842/61438105-e4184700-a968-11e9-92d0-e973d299fbb1.png)
-![image](https://user-images.githubusercontent.com/28861842/61438134-f6928080-a968-11e9-8f5f-b5b8dd437192.png)
-![image](https://user-images.githubusercontent.com/28861842/61438155-ff835200-a968-11e9-96cf-08c88d07fbb1.png)
-![image](https://user-images.githubusercontent.com/28861842/61438221-26da1f00-a969-11e9-8132-f2ea876e6863.png)
-![image](https://user-images.githubusercontent.com/28861842/61438238-30638700-a969-11e9-910a-4a5b811a1aac.png)
+<img src="https://user-images.githubusercontent.com/28861842/61438105-e4184700-a968-11e9-92d0-e973d299fbb1.png"/>
+<img src="https://user-images.githubusercontent.com/28861842/61438134-f6928080-a968-11e9-8f5f-b5b8dd437192.png"/>
+<img src="https://user-images.githubusercontent.com/28861842/61438155-ff835200-a968-11e9-96cf-08c88d07fbb1.png"/>
+<img src="https://user-images.githubusercontent.com/28861842/61438221-26da1f00-a969-11e9-8132-f2ea876e6863.png"/>
+<img src="https://user-images.githubusercontent.com/28861842/61438238-30638700-a969-11e9-910a-4a5b811a1aac.png"/>
 
